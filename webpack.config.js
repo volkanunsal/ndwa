@@ -47,7 +47,7 @@ if (isPrerelease) {
     'webpack/hot/only-dev-server'
   ]);
 };
-  
+
 
 module.exports = {
   // 'context' sets the directory where webpack looks for module files you list in
@@ -83,7 +83,22 @@ module.exports = {
       { test: /\.woff2(\?v=\d+\.\d+\.\d+)?$/,  loader: "url?limit=10000&minetype=application/font-woff" },
       { test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=application/octet-stream" },
       { test: /\.eot(\?v=\d+\.\d+\.\d+)?$/,    loader: "file" },
-      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=image/svg+xml" }
+      { test: /\.svg(\?v=\d+\.\d+\.\d+)?$/,    loader: "url?limit=10000&minetype=image/svg+xml" },
+      ,
+      {
+        test: /\.css$/,
+        loader: 'style!css!postcss-loader'
+      },
+      // the url is like the file, but it inlines the image if it's below a certain file size.
+      {
+        test: /\.(png|jpg)$/,
+        loader: 'url?limit=8192&name=[name]-[hash].[ext]'
+      },
+      {
+        test: /\.scss$/,
+        // Query parameters are passed to node-sass
+        loader: 'style!css!postcss-loader!sass?outputStyle=expanded&includePaths[]=' + (path.resolve(__dirname, './node_modules'))
+      }
     ]
   }
 };
