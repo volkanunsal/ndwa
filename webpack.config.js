@@ -47,14 +47,7 @@ if (isPrerelease) {
     'webpack/hot/only-dev-server'
   ]);
 };
-
-
-
-if (!isPrerelease) {
-  entries['dev'] = 'webpack/hot/only-dev-server';
-  entries['dev.client'] = 'webpack-dev-server/client?http://localhost:8080/';
-};
-
+  
 
 module.exports = {
   // 'context' sets the directory where webpack looks for module files you list in
