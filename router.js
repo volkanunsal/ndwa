@@ -4,8 +4,8 @@ var { create: createRouter, HistoryLocation, HashLocation } = require('react-rou
     routes = require('./routes');
 
 var router = createRouter({
-  location: process.env.NODE_ENV === 'production' ? HashLocation : HistoryLocation,
+  location: __PRERELEASE__ ? HashLocation : HistoryLocation,
   routes: routes
 });
-
+  
 module.exports = router;

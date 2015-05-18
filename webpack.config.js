@@ -4,9 +4,11 @@ var autoprefixer = require('autoprefixer');
 var serverBase = "http://localhost:8080";
 
 var isPrerelease = JSON.parse(process.env.BUILD_PRERELEASE || 'false');
+var definePlugin = new webpack.DefinePlugin({
+  __PRERELEASE__: isPrerelease
+});
 
-
-var plugins = [];
+var plugins = [definePlugin];
 var entries = ['./index'];
 
 if (isPrerelease) {
