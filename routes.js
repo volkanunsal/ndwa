@@ -7,6 +7,5 @@ import App from './app';
 module.exports = (
   <Route name='app' path={'/'} handler={App}>
     <DefaultRoute name='home' handler={HomePage}/>
-    <Route name='test' path='test' handler={HomePage}/>
   </Route>
 );
