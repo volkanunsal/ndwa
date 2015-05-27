@@ -91,7 +91,6 @@ class InnerComponent extends React.Component {
   render(){
     return <div>
       <div className='container' style={{alignSelf: 'center'}}>
-        {this.props.yo}
         <Form ref="form" type={Person} options={options} value={value} />
         <button onClick={this.save.bind(this)}>Save</button>
       </div>
@@ -101,7 +100,6 @@ class InnerComponent extends React.Component {
 export default class HomePage extends React.Component {
 
   render() {
-    console.log('hi')
     return <div>
       <div className='jumbotron' style={{minHeight: 400, display: 'flex', justifyContent: 'center'}}>
         <FluxComponent flux={this.props.flux} connectToStores={{

@@ -4,9 +4,10 @@ import DocumentTitle from 'react-document-title';
 import { RouteHandler } from 'react-router';
 import { PropTypes } from 'react';
 import { contractPropTypes } from 'schema';
+import Nav from 'components/Nav';
 require('./styles/Main.scss');
-require('./jspdf');
 
+  
 // //================ ACTIONS =======================
 
 class NavigationActions extends Actions {
@@ -105,6 +106,7 @@ export default class App extends React.Component {
     return (
       <DocumentTitle title={'National Domestic Workers Alliance'}>
         <div>
+          <Nav {...this.props}/>
           <RouteHandler {...this.props} />
         </div>
       </DocumentTitle>
