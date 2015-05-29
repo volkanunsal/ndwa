@@ -23,7 +23,7 @@ module.exports = {
 
     "component-animations": true,
     "glyphicons": false,
-    "dropdowns": true,
+    "dropdowns": false,
     "button-groups": true,
     "input-groups": true,
     "navs": true,

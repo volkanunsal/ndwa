@@ -1,3 +1,143 @@
-body{
 
+.form-nav{
+  padding: 10px 20px 0;
+  margin-bottom: 20px;
+
+  .secondary{
+    margin-top: 20px;
+  }
+  .nav li{
+    margin-right: 5px;
+  }
+}
+
+
+.calendar-row{
+  & > div {
+    padding: 0 11px;
+  }
+  li{
+    margin-top:5px;
+    height:40px;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .label{
+    font-size: 1em;
+    border-radius: 0;
+  }
+
+  .time-input-wrapper{
+    height: inherit;
+    width: 100%;
+    padding-right:0px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    // TODO: make the text unselectable
+
+    *[class^='time-input-']{
+      align-self: stretch;
+
+      &:hover{
+        background: rgba(255,255,255,0.5);
+      }
+    }
+  }
+
+  .time-input-meridiem{
+    display: flex;
+    padding-left: 3px;
+    padding-right: 10px;
+    span{
+      align-self: center;
+    }
+  }
+  .time-input-field{
+    outline: 0;
+    background: none;
+    padding: 0 3px;
+    max-width: 26px;
+    border: 0;
+
+    &.left{
+      text-align: right;
+    }
+    &.right{
+      text-align: left;
+    }
+
+  }
+
+
+  input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+
+  input[readonly]{
+    outline: 0;
+  }
+
+
+  .time-picker-cell{
+    cursor: pointer;
+    display: flex;
+    width: 100%;
+    height: inherit;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    background: #3498db;
+    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    border-radius: 0px;
+    font-family: Arial;
+    color: #ffffff;
+    font-size: 18px;
+    padding: 0;
+    text-decoration: none;
+    outline: 0;
+    resize: none;
+
+    &:hover {
+      background: #3cb0fd;
+      background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+      text-decoration: none;
+
+      .time-picker-controls{
+        display: block;
+      }
+    }
+
+    &.active{
+      background: red;
+    }
+
+    .time-picker-controls{
+      position: absolute;
+      top: 0;
+      right: -0.7em;
+      width: 0.7em;
+      display: none;
+    }
+
+    .fa{
+      font-size: 0.6em;
+      margin-bottom: 7px;
+    }
+
+
+
+  }
+}
+
+.form-section{
+  margin-left: 10px;
 }
