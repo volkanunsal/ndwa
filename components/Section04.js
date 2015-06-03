@@ -119,9 +119,24 @@ export default class SectionPage extends React.Component {
   }
 
   getPageTypes(contract){
-    let {parental_leave} = contract;
-
+    let {parental_leave, room} = contract;
     let paid_note = parental_leave && parental_leave.paid ? t.Str : false;
+    let heat_controlled = room && room.living_accommodations && room.living_accommodations.working_heat ? t.Bool : false;
+
+    let living_accommodations = room && room.provided ? t.struct(compact({
+      size: t.Num,
+      num_beds: t.Num,
+      working_heat: t.Bool,
+      heat_controlled,
+      clean: t.Bool,
+      num_people: t.Num,
+      entry: t.struct({
+        notice_length: t.Bool,
+        emergency_repairs: t.Bool,
+        specific_repairs: t.Bool,
+        other: t.maybe(t.Str)
+      })
+    })) : false;
 
     let Page1 = t.struct({
       hourly_rate: t.subtype(t.Num, n => n > 9 ),
@@ -168,17 +183,10 @@ export default class SectionPage extends React.Component {
     });
 
     let Page4 = t.struct({
-      room_provided: t.Bool,
-      room_size: t.Num,
-      room_num_beds: t.Num,
-      room_working_heat: t.Bool,
-      room_heat_controlled: t.Bool,
-      room_clean: t.Bool,
-      room_entry_notice_length: t.Str,
-      room_entry_emergency_repairs: t.Bool,
-      room_entry_specific_repairs: t.Bool,
-      room_entry_other: t.Bool,
-      room_num_people: t.Num
+      room: t.struct(compact({
+        provided: t.Bool,
+        living_accommodations
+      }))
     });
 
     let Page5 = t.struct({
@@ -253,8 +261,6 @@ export default class SectionPage extends React.Component {
         },
         overtime_holidays: {
           label: 'The employee and the Family agree that the employee will be paid when working which of the following holidays?',
-          // factory: t.form.Select,
-          help: <i>Hold down Shift to select multiple items.</i>,
           attrs: {
             style: {height: 130}
           },
@@ -334,6 +340,13 @@ export default class SectionPage extends React.Component {
               },
               type: 'textarea'
             }
+          },
+          template: function(locals){
+            return <fieldset>
+              <hr/>
+              <p className='lead'>{locals.label}</p>
+              {React.addons.createFragment(locals.inputs)}
+            </fieldset>
           }
         },
         reduced_hours_reg_wage: {
@@ -369,7 +382,119 @@ export default class SectionPage extends React.Component {
         }
       }
     }
-    let Page4, Page5 = {};
+    let Page4 = {
+      config: {
+        horizontal: {
+          lg: [4, 8],
+          md: [4, 8],
+          sm: [6, 6]
+        }
+      },
+      fields: {
+        room: {
+          fields: {
+            provided: {
+              label: "Will the Family provide the employee with living accommodations?",
+              template: function(locals){
+                return <YesNo flux={props.flux} {...locals}/>
+              }
+            },
+            living_accommodations: {
+              fields: {
+                size: {
+                  label: 'Room Size?',
+                  type: 'number',
+                  config: {
+                    addonAfter: <i>sq feet</i>
+                  }
+                },
+                num_beds: {
+                  label: 'Number of beds in room?',
+                  type: 'number',
+                  config: {
+                    addonAfter: <i>beds</i>
+                  }
+                },
+                num_people: {
+                  label: 'Number of people living in the room besides the employee?',
+                  type: 'number',
+                  config: {
+                    addonAfter: <i>people</i>
+                  }
+                },
+                working_heat: {
+                  label: 'Working heat?',
+                  template: function(locals){
+                    console.log(locals.path)
+                    return <YesNo flux={props.flux} {...locals}/>
+                  }
+                },
+                heat_controlled: {
+                  label: 'Does the employee control the heat?',
+                  template: function(locals){
+                    return <YesNo flux={props.flux} {...locals}/>
+                  }
+                },
+                clean: {
+                  label: 'Room free of dust, bugs and mold?',
+                  template: function(locals){
+                    return <YesNo flux={props.flux} {...locals}/>
+                  }
+                },
+                entry: {
+                  fields: {
+                    notice_length: {
+                      label: 'Will the Family provide the employee with at least 24 hours notice?',
+                      template: function(locals){
+                        return <YesNo flux={props.flux} {...locals}/>
+                      }
+                    },
+                    emergency_repairs: {
+                      label: "Will the Family enter the employee's living space in cases of emergencies or repairs?",
+                      template: function(locals){
+                        return <YesNo flux={props.flux} {...locals}/>
+                      }
+                    },
+                    specific_repairs: {
+                      label: "Will the Family enter the employee's living space at the employee's request for specific repairs?",
+                      template: function(locals){
+                        return <YesNo flux={props.flux} {...locals}/>
+                      }
+                    },
+                    other: {
+                      label: ' ',
+                      type: 'textarea',
+                      attrs: {
+                        placeholder: 'Other'
+                      }
+                    }
+                  },
+                  template: function(locals){
+                    return <fieldset>
+                      <hr/>
+                      <p className='lead'>{"The Family may enter the employee's living accommodations only under the following agreed upon circumstances"}</p>
+                      {React.addons.createFragment(locals.inputs)}
+                    </fieldset>
+                  }
+                }
+              },
+              template: function(locals){
+                return <div>
+                  <p className='lead'>{'Describe the living accommodations provided by the Family for the employee'}</p>
+                  {React.addons.createFragment(locals.inputs)}
+                </div>
+              }
+            }
+          },
+          template: function(locals){
+            return <div>
+              {React.addons.createFragment(locals.inputs)}
+            </div>
+          }
+        }
+      }
+    };
+    let Page5 = {};
     return [ Page1, Page2, Page3, Page4, Page5];
   }
 

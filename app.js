@@ -131,7 +131,13 @@ class ContractStore extends Store {
         notice_length: 2,
         paid: false
       },
-      reduced_hours_reg_wage: true
+      reduced_hours_reg_wage: true,
+      room: {
+        provided: true,
+        living_accommodations: {
+        }
+
+      }
     };
   }
 
