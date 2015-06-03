@@ -17,6 +17,16 @@ export class CalendarActions extends Actions {
   updateDay(day, position, hours){ return {day, position, hours} }
 }
 
+export class ContractActions extends Actions {
+  setIn(path, value){
+    return {path, value}
+  }
+
+  merge(value){
+    return value
+  }
+}
+
 // //================ STORES =======================
 class CalendarStore extends Store {
   constructor(flux) {
@@ -107,11 +117,30 @@ class ContractStore extends Store {
   constructor(flux) {
     super(); // Don't forget this step
     const APP_ACTION_IDS = flux.getActionIds('app');
-    this.state = {};
+    const CONTRACT_ACTION_IDS = flux.getActionIds('contract_actions');
+    this.register(CONTRACT_ACTION_IDS.setIn, this.handleSetIn);
+    this.register(CONTRACT_ACTION_IDS.merge, this.handleMerge);
+
+
+    this.state = {
+      hourly_rate:9,
+      overtime_rate:18,
+      vacation_days: 2,
+      personal_days: 2,
+      parental_leave: {
+        notice_length: 2,
+        paid: false
+      },
+      reduced_hours_reg_wage: true
+    };
   }
 
-  handleNavigation({leaving, entering}){
-    // TODO: call the appropriate event method on the fsm
+  handleSetIn({path, value}){
+    this.setState(I.fromJS(this.state).setIn(path, value).toJS())
+  }
+
+  handleMerge(value){
+    this.setState(I.fromJS(this.state).merge(value).toJS())
   }
 }
 ContractStore.propTypes = contractPropTypes;
@@ -123,6 +152,7 @@ export class AppFlux extends Flux {
     super();
     // actions
     this.createActions('calendar_actions', CalendarActions);
+    this.createActions('contract_actions', ContractActions);
     // stores
     this.createStore('nav', NavigationStore, this);
     this.createStore('contract', ContractStore, this);
