@@ -66,7 +66,7 @@ class TimePicker extends React.Component {
   }
 
   isUpdated(ns, np){
-    return this.isUpdatedLocally(ns, np) || np.active != this.props.active || np.invalid != this.props.invalid
+    return this.isUpdatedLocally(ns, np) || np.active != this.props.active || np.valid != this.props.valid
   }
 
   isUpdatedLocally(ns, np){
@@ -130,7 +130,7 @@ class TimePicker extends React.Component {
 
   render(){
     let {minutes, hours, meridiem} = this.state;
-    let {active, invalid} = this.props;
+    let {active, valid} = this.props;
 
     let hourField = <input
       type='number'
@@ -156,13 +156,14 @@ class TimePicker extends React.Component {
       onClick={this.handleMeridiemClick.bind(this)}>
         <span>{meridiem}</span>
       </span>;
-      
+
     let time = <div className='time-input-wrapper'>
       {hourField}<span>:</span>{minuteField}{meridiemField}
     </div>
 
     let cs = cx({
-      active, invalid,
+      active,
+      invalid: !valid,
       'time-picker-cell': true
     })
 
@@ -179,10 +180,9 @@ class WorkWeekTimePicker extends React.Component {
   render(){
     let {flux, calendar} = this.props;
     let work_days = this.props.calendar.work_days.map((day,i) => {
-      let {name, times} = day;
+      let {name, times, valid} = day;
       let {active} = day;
-      // The start time is after the end time
-      let invalid_day = !moment(times[0], 'hh:mm A').isBefore(moment(times[1], 'hh:mm A'));
+
       return <div className='col-lg-1' key={i}>
           <ul className='list-unstyled'>
             <li>
@@ -197,7 +197,7 @@ class WorkWeekTimePicker extends React.Component {
                 position={0}
                 day={name}
                 flux={flux}
-                invalid={invalid_day}
+                valid={valid}
                 active={active} />
             </li>
             <li>
@@ -206,7 +206,7 @@ class WorkWeekTimePicker extends React.Component {
                 position={1}
                 day={name}
                 flux={flux}
-                invalid={invalid_day}
+                valid={valid}
                 active={active} />
             </li>
           </ul>
@@ -263,7 +263,8 @@ export default class SectionPage extends React.Component {
     this.state = {errorMsg: 'The schedule you specified is not valid.', isValid: true};
 
   }
-  save() {
+  save(calendar) {
+
     let WorkSchedule = t.struct({
       work_duration: TNonZero
     });
@@ -272,12 +273,12 @@ export default class SectionPage extends React.Component {
       work_duration: this.props.calendar.total_time_in_ms
     };
 
-    let validation = t.validate(formValues, WorkSchedule);
+    let fieldValidation = t.validate(formValues, WorkSchedule);
 
-    this.setState({isValid: validation.isValid()})
-
-    // if validation fails, value will be null
-    if (!validation.firstError()) {
+    this.setState({isValid: fieldValidation.isValid() && calendar.all_dates_valid})
+    
+    // if fieldValidation fails, value will be null
+    if (!fieldValidation.firstError()) {
       // TODO: call the contract action creator to update the contract
       router.transitionTo('page', nextPageOrSection(this.props));
     }
@@ -293,8 +294,9 @@ export default class SectionPage extends React.Component {
         <FluxComponent
           connectToStores={{calendar: store => ({ calendar: store.state })}} {...this.props}>
           <WorkWeekTimePicker/>
+          <a className='btn btn-primary' onClick={this.save.bind(this, this.props.calendar)}>Save</a>
         </FluxComponent>
-        <a className='btn btn-primary' onClick={this.save.bind(this)}>Save</a>
+
       </div>
     </div>
   }
