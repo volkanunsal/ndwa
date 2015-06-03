@@ -42,7 +42,9 @@
     "moment": "2.10.3",
     "pdfmake": "0.1.18",
     "object-assign": "*",
-    "tcomb-form": "0.5.3",
+    "tcomb-validation": "gcanti/tcomb-validation",
+    "tcomb": "gcanti/tcomb#2.0.0-beta",
+    "tcomb-form": "gcanti/tcomb-form",
     "react-document-title": "^1.0.2"
   }
 }
