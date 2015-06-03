@@ -10,15 +10,16 @@ var Recipient = t.struct({
   description_of_care: t.Str
 });
 
-var Page2Form = t.struct({
-  description: t.maybe(t.Str)
-});
 var Page1Form = t.struct({
   children: t.list(Recipient),
   childcare_tasks: t.list(t.Str),
   cleaning_tasks: t.list(t.Str),
   home_care_recipients: t.list(Recipient),
   home_care_tasks: t.list(t.Str)
+});
+
+var Page2Form = t.struct({
+  description: t.maybe(t.Str)
 });
 
 var page2FormLayout = function (locals) {

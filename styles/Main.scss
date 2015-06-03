@@ -44,16 +44,16 @@
     *[class^='time-input-']{
       align-self: stretch;
 
-      &:hover{
-        background: rgba(255,255,255,0.5);
-      }
+
     }
   }
 
   .time-input-meridiem{
     display: flex;
     padding-left: 3px;
-    padding-right: 10px;
+    padding-right: 5px;
+    cursor: pointer;
+    user-select: none;
     span{
       align-self: center;
     }
@@ -64,12 +64,17 @@
     padding: 0 3px;
     max-width: 26px;
     border: 0;
+    // cursor: ns-resize;
 
     &.left{
       text-align: right;
     }
     &.right{
       text-align: left;
+    }
+
+    &:hover{
+      background: rgba(0,0,0,0.05);
     }
 
   }
@@ -85,9 +90,7 @@
     outline: 0;
   }
 
-
-  .time-picker-cell{
-    cursor: pointer;
+  .day-name{
     display: flex;
     width: 100%;
     height: inherit;
@@ -96,11 +99,13 @@
     position: relative;
 
     background: #3498db;
+    cursor: pointer;
+    color: white;
     background-image: linear-gradient(to bottom, #3498db, #2980b9);
     border-radius: 0px;
     font-family: Arial;
     color: #ffffff;
-    font-size: 18px;
+    font-size: 1.1em;
     padding: 0;
     text-decoration: none;
     outline: 0;
@@ -110,31 +115,40 @@
       background: #3cb0fd;
       background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
       text-decoration: none;
-
-      .time-picker-controls{
-        display: block;
-      }
     }
 
     &.active{
-      background: red;
-    }
-
-    .time-picker-controls{
-      position: absolute;
-      top: 0;
-      right: -0.7em;
-      width: 0.7em;
-      display: none;
-    }
-
-    .fa{
-      font-size: 0.6em;
-      margin-bottom: 7px;
+      background: white;
+      border: solid 1px #3498db;
+      color: #3498db;
     }
 
 
+  }
 
+  .time-picker-cell{
+    display: flex;
+    width: 100%;
+    height: inherit;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: not-allowed;
+
+    border: solid 1px #3498db;
+    color: #3498db;
+    font-size: 1.2em;
+
+
+    &.active{
+      border-color: orange;
+      color: orange;
+
+      &.invalid{
+        border: solid 1px red;
+        color: red;
+      }
+    }
   }
 }
 
