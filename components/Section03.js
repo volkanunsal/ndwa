@@ -274,11 +274,12 @@ export default class SectionPage extends React.Component {
     };
 
     let fieldValidation = t.validate(formValues, WorkSchedule);
+    let isValid = fieldValidation.isValid() && calendar.all_dates_valid;
 
-    this.setState({isValid: fieldValidation.isValid() && calendar.all_dates_valid})
-    
+    this.setState({isValid})
+
     // if fieldValidation fails, value will be null
-    if (!fieldValidation.firstError()) {
+    if (isValid) {
       // TODO: call the contract action creator to update the contract
       router.transitionTo('page', nextPageOrSection(this.props));
     }
