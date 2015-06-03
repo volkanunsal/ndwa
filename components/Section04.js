@@ -40,7 +40,7 @@ class YesNo extends React.Component {
     flux.getActions('contract_actions').setIn(path, false)
   }
   render(){
-    let {value, hasError, label, attrs} = this.props;
+    let {value, hasError, label, attrs, config} = this.props;
 
     let cs = cx({
       'has-error': hasError,
@@ -57,11 +57,29 @@ class YesNo extends React.Component {
       'btn-primary': !value,
       'btn-link': value
     })
+
+    let col1Cs = {
+      'control-label': true
+    }
+    let col2Cs = {
+    }
+
+
+    if (config.horizontal) {
+      let {horizontal} = config;
+      for(let key in horizontal){
+        let col1 = horizontal[key][0];
+        let col2 = horizontal[key][1];
+        col1Cs[`col-${key}-${col1}`] = true;
+        col2Cs[`col-${key}-${col2}`] = true;
+      }
+    };
+
     return <div className={cs}>
-      <label className='control-label col-sm-6 col-md-3 col-lg-3'>
+      <label className={cx(col1Cs)}>
         {label}
       </label>
-      <div className='col-sm-6 col-md-9 col-lg-9'>
+      <div className={cx(col2Cs)}>
         <ul className='list-inline'>
           <li>
             <a className={yesClasses}
@@ -102,7 +120,7 @@ export default class SectionPage extends React.Component {
 
   getPageTypes(contract){
     let {parental_leave} = contract;
-    
+
     let paid_note = parental_leave && parental_leave.paid ? t.Str : false;
 
     let Page1 = t.struct({
@@ -328,28 +346,60 @@ export default class SectionPage extends React.Component {
       }
     };
 
-    let Page3, Page4, Page5 = {};
+    let Page3 = {
+      config: {
+        horizontal: {
+          lg: [5, 7],
+          md: [5, 7],
+          sm: [6, 6]
+        }
+      },
+      fields: {
+        cancelled_day_paid: {
+          label: "If the Family has to cancel one or more days of the employee's work week, will Tia be paid as usual?",
+          template: function(locals){
+            return <YesNo flux={props.flux} {...locals}/>
+          }
+        },
+        bad_weather_day_paid: {
+          label: "The Family expects that the employee will make every effort to come to work during bad weather. When a city or region is shutdown due to poor weather conditions, will the Family pay the employee for days of missed work?",
+          template: function(locals){
+            return <YesNo flux={props.flux} {...locals}/>
+          }
+        }
+      }
+    }
+    let Page4, Page5 = {};
     return [ Page1, Page2, Page3, Page4, Page5];
   }
 
   getPage(){
     let pageNum = (this.props.params.pageName || 1) - 1;
     let {contract} = this.props;
+    let pageOptions = this.getPageOptions(contract)[pageNum];
 
-    return <Form
+    let form = <Form
       ref="form"
       type={this.getPageTypes(contract)[pageNum]}
-      options={this.getPageOptions(contract)[pageNum]}
+      options={pageOptions}
       value={contract}
-    />
+    />;
+
+    let page = form;
+
+    if(pageOptions && pageOptions.config && pageOptions.config.horizontal){
+      page = <div className='form-horizontal'>
+        {form}
+      </div>
+    }
+
+    return page
   }
 
   render() {
     return <div className='form-section'>
       <div className='container-fluid'>
-        <div className='form-horizontal'>
-          {this.getPage()}
-        </div>
+        {this.getPage()}
         <a className='btn btn-primary' onClick={this.save.bind(this)}>Save</a>
       </div>
     </div>
