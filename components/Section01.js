@@ -80,21 +80,21 @@ export default class SectionPage extends React.Component {
       template: function(locals){
         return <div>
           <p className='lead'>{locals.label}</p>
-          {locals.inputs}
+          {React.addons.createFragment(locals.inputs)}
         </div>;
       }
     };
     var Page3 = {
       fields: {
         work_address: {
-          label: 'Where will the work take place?',
+          label: <p className='lead'>Where will the work take place?</p>,
           help: <i>Please enter an address</i>,
           config: {
             addonBefore: <span className='fa fa-map-marker'/>
           }
         },
         start_date: {
-          label: "On what date will this agreement begin?"
+          label: <p className='lead'>On what date will this agreement begin?</p>
         }
       }
     };

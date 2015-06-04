@@ -5,7 +5,7 @@ var {Form} = t.form;
 var router = require('../router');
 import YesNo from './YesNo'
 import ActionBar from './ActionBar';
-  
+
 export default class SectionPage extends React.Component {
   save() {
     // call getValue() to get the values of the form
@@ -63,7 +63,7 @@ export default class SectionPage extends React.Component {
           },
           fields: {
             info_disclosure_permitted: {
-              label: "Will the employee disclose any and all private information obtained about the Family during the course of employment, including but not limited to medical, financial, legal, and career information?",
+              label: <p className='lead'>{"Will the employee disclose any and all private information obtained about the Family during the course of employment, including but not limited to medical, financial, legal, and career information?"}</p>,
               template: function(locals){
                 return <div>
                   <YesNo flux={props.flux} {...locals}/>
@@ -71,7 +71,7 @@ export default class SectionPage extends React.Component {
               }
             },
             family_pics_sharing_permitted: {
-              label: "Will the employee share pictures of the Family, their home or children on social media networks or with the employee's friends and family?",
+              label: <p className='lead'>{"Will the employee share pictures of the Family, their home or children on social media networks or with the employee's friends and family?"}</p>,
               template: function(locals){
                 return <div>
                   <YesNo flux={props.flux} {...locals}/>
@@ -101,7 +101,7 @@ export default class SectionPage extends React.Component {
           },
           fields: {
             restrict_private_comm: {
-              label: "Will the Family restrict or interfere with the employee's means of private communications?",
+              label: <p className='lead'>{"Will the Family restrict or interfere with the employee's means of private communications?"}</p>,
               template: function(locals){
                 return <div>
                   <YesNo flux={props.flux} {...locals}/>
@@ -109,7 +109,7 @@ export default class SectionPage extends React.Component {
               }
             },
             surveillance: {
-              label: "Will the Family employ surveillance technology to monitor the employee?",
+              label: <p className='lead'>{"Will the Family employ surveillance technology to monitor the employee?"}</p>,
               template: function(locals){
                 return <div>
                   <YesNo flux={props.flux} {...locals}/>
@@ -117,7 +117,7 @@ export default class SectionPage extends React.Component {
               }
             },
             take_away_personal_docs: {
-              label: "Will the Family take the employee's documents or personal effects, without the employee's permission?",
+              label: <p className='lead'>{"Will the Family take the employee's documents or personal effects, without the employee's permission?"}</p>,
               template: function(locals){
                 return <div>
                   <YesNo flux={props.flux} {...locals}/>
@@ -125,7 +125,7 @@ export default class SectionPage extends React.Component {
               }
             },
             force_service: {
-              label: "Will the Family engage in conduct that constitutes forced services?",
+              label: <p className='lead'>{"Will the Family engage in conduct that constitutes forced services?"}</p>,
               template: function(locals){
                 return <div>
                   <YesNo flux={props.flux} {...locals}/>
