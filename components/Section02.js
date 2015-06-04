@@ -174,7 +174,7 @@ export default class SectionPage extends React.Component {
       }
     };
     var Page2 = {
-      legend: 'Are there additional responsibilities? (Please elaborate.)',
+      legend: <p className='lead'>Are there additional responsibilities? (Please elaborate.)</p>,
       fields: {
         description: {
           label: ' ',

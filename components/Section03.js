@@ -229,7 +229,7 @@ class WorkWeekTimePicker extends React.Component {
       value={calendar.total_time_in_ms}/>;
 
     return <div>
-      <h3>What are the hours employee is scheduled to work?</h3>
+      <p className='lead'>What are the hours employee is scheduled to work?</p>
       <div className='row calendar-row'>
         <div className='col-lg-1'>
           <ul className='list-unstyled'>
