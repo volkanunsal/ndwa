@@ -3,43 +3,128 @@ var t = require('tcomb-form');
 var {nextPageOrSection} = require('../utils/NavUtils');
 var {Form} = t.form;
 var router = require('../router');
-
-
-var Page1Form = t.struct({
-  benefits_paid_health: t.Bool,
-  benefits_transportation: t.Bool,
-  benefits_notes: t.Str,
-  workers_comp_insurance_company: t.Str,
-  workers_comp_insurance_policy: t.Str,
-});
+import cx from 'classnames';
+import compact from '../utils/compact';
+import isEmpty from '../utils/isEmpty';
+import YesNo from './YesNo'
 
 
 export default class SectionPage extends React.Component {
+  getPageTypes(contract){
+
+    var Page1 = t.struct({
+      benefits: t.struct({
+        health: t.Bool,
+        transportation: t.Bool,
+        notes: t.maybe(t.Str)
+      }),
+      workers_comp_insurance: t.struct({
+        company: t.Str,
+        policy: t.Str
+      })
+    });
+    return [Page1]
+  }
+
+  getPageOptions(contract){
+    let props = this.props;
+
+    var Page1 = {
+      config: {
+        horizontal: {
+          lg: [2, 10],
+          md: [2, 10],
+          sm: [6, 6]
+        }
+      },
+      fields: {
+        workers_comp_insurance: {
+          label: "What are the Family’s workers' compensation company and information?",
+          template: function(locals){
+            return <div>
+              <p className='lead'>{locals.label}</p>
+              {React.addons.createFragment(locals.inputs)}
+            </div>
+          },
+          fields: {
+            company: {
+              label: 'Insurance Company'
+            },
+            policy: {
+              label: 'Insurance Policy'
+            }
+          }
+        },
+        benefits: {
+          label: 'Which benefits will the Family offer the employee during the employee\'s employment?',
+          template: function(locals){
+            return <div>
+              <p className='lead'>{locals.label}</p>
+              {React.addons.createFragment(locals.inputs)}
+            </div>
+          },
+          fields: {
+            health: {
+              label: "Paid Health Insurance?",
+              template: function(locals){
+                return <YesNo flux={props.flux} {...locals}/>
+              }
+            },
+            transportation: {
+              label: "Transportation costs?",
+              template: function(locals){
+                return <YesNo flux={props.flux} {...locals}/>
+              }
+            },
+            notes: {
+              label: ' ',
+              type: 'textarea',
+              attrs: {
+                placeholder: "￼Further details (i.e., if certain benefits are not paid, not paid in full, etc., or additional benefits)"
+              }
+            }
+          }
+
+        }
+
+      }
+    }
+    return [Page1]
+  }
+
   save() {
     // call getValue() to get the values of the form
     var value = this.refs.form.getValue();
 
     // if validation fails, value will be null
     if (value) {
-      // TODO: call the contract action creator to update the contract
+      // Update the contract
+      this.props.flux.getActions('contract_actions').merge(value)
       router.transitionTo('page', nextPageOrSection(this.props));
     }
   }
 
   getPage(){
-    let formOptions = [
-      {
-        type: Page1Form,
-        options: {}
-      }
-    ];
+    let pageNum = (this.props.params.pageName || 1) - 1;
+    let {contract} = this.props;
+    let pageOptions = this.getPageOptions(contract)[pageNum];
 
-    let page = (this.props.params.pageName || 1) - 1;
-    return <Form
+    let form = <Form
       ref="form"
-      type={formOptions[page].type}
-      options={formOptions[page].options}
-    />
+      type={this.getPageTypes(contract)[pageNum]}
+      options={pageOptions}
+      value={contract}
+    />;
+
+    let page = form;
+
+    if(pageOptions && pageOptions.config && pageOptions.config.horizontal){
+      page = <div className='form-horizontal'>
+        {form}
+      </div>
+    }
+
+    return page
   }
 
   render() {

@@ -3,19 +3,7 @@ var t = require('tcomb-form');
 var {nextPageOrSection} = require('../utils/NavUtils');
 var {Form} = t.form;
 var router = require('../router');
-
-
-var Page1Form = t.struct({
-  termination_notice_length: t.Str,
-  termination_severance_length: t.Str,
-  termination_accom_eviction_notice_length: t.Str,
-  termination_paid_if_evicted_early: t.Bool
-});
-
-var Page2Form = t.struct({
-  immediate_termination_grounds: t.Str
-});
-
+import YesNo from './YesNo'
 
 export default class SectionPage extends React.Component {
   save() {
@@ -24,29 +12,113 @@ export default class SectionPage extends React.Component {
 
     // if validation fails, value will be null
     if (value) {
-      // TODO: call the contract action creator to update the contract
+      // Update the contract
+      this.props.flux.getActions('contract_actions').merge(value)
       router.transitionTo('page', nextPageOrSection(this.props));
     }
   }
 
-  getPage(){
-    let formOptions = [
-      {
-        type: Page1Form,
-        options: {}
-      },
-      {
-        type: Page2Form,
-        options: {}
-      }
-    ];
+  getPageTypes(contract){
+    var Page1 = t.struct({
+      termination_notice_length: t.Str,
+      termination_severance_length: t.Str,
+      termination_accom_eviction_notice_length: t.Str,
+      termination_paid_if_evicted_early: t.Bool
+    });
 
-    let page = (this.props.params.pageName || 1) - 1;
-    return <Form
+    var Page2 = t.struct({
+      immediate_termination_grounds: t.Str
+    });
+
+    return [Page1, Page2]
+  }
+
+  getPageOptions(contract){
+    let props = this.props;
+    var Page1 = {
+
+      config: {
+        horizontal: {
+          lg: [6, 6],
+          md: [6, 6],
+          sm: [6, 6]
+        }
+      },
+      fields: {
+        termination_notice_length: {
+          label: "If either party wishes to terminate this agreement, how much notice will be provided?",
+          type: "number",
+          attrs: {
+            min: 0
+          },
+          config: {
+            addonAfter: <i>weeks</i>
+          }
+        },
+        termination_severance_length: {
+          label: "If the employee is terminated with or without cause, the Family shall provide the employee with how much severance pay?",
+          type: "number",
+          attrs: {
+            min: 0
+          },
+          config: {
+            addonAfter: <i>weeks</i>
+          }
+        },
+        termination_accom_eviction_notice_length: {
+          label: "And if living accommodations have been provided by the Family, how many days of lodging will the employee be given if the employee is terminated?",
+          type: "number",
+          attrs: {
+            min: 0
+          },
+          config: {
+            addonAfter: <i>days of lodging</i>
+          }
+        },
+        termination_paid_if_evicted_early: {
+          label: "If the employee is asked to leave before the notice period is up, will the employee be paid for that amount of time?",
+          template: function(locals){
+            return <div>
+              <YesNo flux={props.flux} {...locals}/>
+            </div>
+          }
+        }
+      }
+    }
+    var Page2 = {
+      fields: {
+        immediate_termination_grounds: {
+          label: "￼There may be cases when there are grounds or cause for immediate termination without notice. the employee and the Family should discuss (and be as concrete as possible) what these might grounds or cause for immediate termination without notice will be, and list them here:",
+          type: 'textarea'
+
+        }
+      }
+    }
+    return [Page1, Page2]
+  }
+
+
+  getPage(){
+    let pageNum = (this.props.params.pageName || 1) - 1;
+    let {contract} = this.props;
+    let pageOptions = this.getPageOptions(contract)[pageNum];
+
+    let form = <Form
       ref="form"
-      type={formOptions[page].type}
-      options={formOptions[page].options}
-    />
+      type={this.getPageTypes(contract)[pageNum]}
+      options={pageOptions}
+      value={contract}
+    />;
+
+    let page = form;
+
+    if(pageOptions && pageOptions.config && pageOptions.config.horizontal){
+      page = <div className='form-horizontal'>
+        {form}
+      </div>
+    }
+
+    return page
   }
 
   render() {

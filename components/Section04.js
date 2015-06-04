@@ -4,97 +4,11 @@ var {nextPageOrSection} = require('../utils/NavUtils');
 var {Form} = t.form;
 var router = require('../router');
 import cx from 'classnames';
-// var Days = t.enums({
-//   monday: 'Monday',
-//   tuesday: 'Tuesday',
-//   wednesday: 'Wednesday',
-//   thursday: 'Thursday',
-//   friday: 'Friday',
-//   saturday: 'Saturday',
-//   sunday: 'Sunday'
-// });
-function isEmpty(obj) {
-  for(var key in obj) {
-    if(obj.hasOwnProperty(key)){return false;}
-  }
-  return true;
-}
-
-function compact(obj) {
-  let ret = {}
-  for(var key in obj) {
-    if(obj[key] != false){
-      ret[key] = obj[key];
-    }
-  }
-  return ret;
-}
-
-class YesNo extends React.Component {
-  handleYesClick(){
-    let {path, value, flux} = this.props;
-    flux.getActions('contract_actions').setIn(path, true)
-  }
-  handleNoClick(){
-    let {path, value, flux} = this.props;
-    flux.getActions('contract_actions').setIn(path, false)
-  }
-  render(){
-    let {value, hasError, label, attrs, config} = this.props;
-
-    let cs = cx({
-      'has-error': hasError,
-      'form-group':true,
-      'form-group-depth-2': true
-    })
-    let yesClasses = cx({
-      'btn': true,
-      'btn-primary': value,
-      'btn-link': !value
-    })
-    let noClasses = cx({
-      'btn': true,
-      'btn-primary': !value,
-      'btn-link': value
-    })
-
-    let col1Cs = {
-      'control-label': true
-    }
-    let col2Cs = {
-    }
+import compact from '../utils/compact';
+import isEmpty from '../utils/isEmpty';
+import YesNo from './YesNo'
 
 
-    if (config.horizontal) {
-      let {horizontal} = config;
-      for(let key in horizontal){
-        let col1 = horizontal[key][0];
-        let col2 = horizontal[key][1];
-        col1Cs[`col-${key}-${col1}`] = true;
-        col2Cs[`col-${key}-${col2}`] = true;
-      }
-    };
-
-    return <div className={cs}>
-      <label className={cx(col1Cs)}>
-        {label}
-      </label>
-      <div className={cx(col2Cs)}>
-        <ul className='list-inline'>
-          <li>
-            <a className={yesClasses}
-              onClick={this.handleYesClick.bind(this)}>Yes</a>
-          </li>
-          <li>
-            <a className={noClasses}
-              onClick={this.handleNoClick.bind(this)}>No</a>
-          </li>
-        </ul>
-        <input type='hidden' name={attrs.name} />
-      </div>
-    </div>
-  }
-}
 
 
 
@@ -433,7 +347,6 @@ export default class SectionPage extends React.Component {
                 working_heat: {
                   label: 'Working heat?',
                   template: function(locals){
-                    console.log(locals.path)
                     return <YesNo flux={props.flux} {...locals}/>
                   }
                 },
@@ -507,7 +420,9 @@ export default class SectionPage extends React.Component {
         board_provided: {
           label: 'Will the employee be provided with board (food/beverages) at work?',
           template: function(locals){
-            return <YesNo flux={props.flux} {...locals}/>
+            return <div className='text-center'>
+              <YesNo flux={props.flux} {...locals}/>
+            </div>
           }
         },
         board_yes: {
