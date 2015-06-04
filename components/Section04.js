@@ -119,7 +119,7 @@ export default class SectionPage extends React.Component {
   }
 
   getPageTypes(contract){
-    let {parental_leave, room} = contract;
+    let {parental_leave, room, board_provided} = contract;
     let paid_note = parental_leave && parental_leave.paid ? t.Str : false;
     let heat_controlled = room && room.living_accommodations && room.living_accommodations.working_heat ? t.Bool : false;
 
@@ -137,6 +137,17 @@ export default class SectionPage extends React.Component {
         other: t.maybe(t.Str)
       })
     })) : false;
+
+    let board_yes = board_provided == true ? t.struct({
+        house_food: t.Bool,
+        free_food: t.Bool
+      }) : false;
+
+    let board_no = board_provided == false ? t.struct({
+        bring_own_food: t.Bool,
+        food_paid: t.Bool,
+        food_paid_notes: t.Str
+      }) : false;
 
     let Page1 = t.struct({
       hourly_rate: t.subtype(t.Num, n => n > 9 ),
@@ -189,14 +200,11 @@ export default class SectionPage extends React.Component {
       }))
     });
 
-    let Page5 = t.struct({
+    let Page5 = t.struct(compact({
       board_provided: t.Bool,
-      board_provided_house_food: t.Bool,
-      board_provided_free_food: t.Bool,
-      board_provided_bring_own_food: t.Bool,
-      board_provided_paid_food_agreed: t.Bool,
-      board_provided_paid_food_agreed_notes: t.Str
-    })
+      board_yes,
+      board_no
+    }))
 
     return [Page1, Page2, Page3, Page4, Page5]
   }
@@ -494,7 +502,66 @@ export default class SectionPage extends React.Component {
         }
       }
     };
-    let Page5 = {};
+    let Page5 = {
+      fields: {
+        board_provided: {
+          label: 'Will the employee be provided with board (food/beverages) at work?',
+          template: function(locals){
+            return <YesNo flux={props.flux} {...locals}/>
+          }
+        },
+        board_yes: {
+          fields: {
+            house_food: {
+              label: 'May the employee eat/drink household foods or beverages?',
+              template: function(locals){
+                return <YesNo flux={props.flux} {...locals}/>
+              }
+            },
+            free_food: {
+              label: 'Are the food/beverages provided free of charge?',
+              template: function(locals){
+                return <YesNo flux={props.flux} {...locals}/>
+              }
+            }
+          },
+          template: function(locals){
+            return <div>
+              <p className='lead'>Food & Drinks</p>
+              {React.addons.createFragment(locals.inputs)}
+            </div>
+          }
+        },
+        board_no: {
+          fields: {
+            bring_own_food: {
+              label: "May the employee bring own food to work?",
+              template: function(locals){
+                return <YesNo flux={props.flux} {...locals}/>
+              }
+            },
+            food_paid: {
+              label: "Have the employee and the Family agreed that the employee will pay for the employee’s own food?",
+              template: function(locals){
+                return <YesNo flux={props.flux} {...locals}/>
+              }
+            },
+            food_paid_notes: {
+              label: ' ',
+              type: 'textarea',
+              attrs: {
+                placeholder: "Additional notes concerning provision of food and mealtime"
+              }
+            }
+          },
+          template: function(locals){
+            return <div>
+              {React.addons.createFragment(locals.inputs)}
+            </div>
+          }
+        }
+      }
+    };
     return [ Page1, Page2, Page3, Page4, Page5];
   }
 
