@@ -10,59 +10,6 @@ var Recipient = t.struct({
   description_of_care: t.Str
 });
 
-var Page1Form = t.struct({
-  children: t.list(Recipient),
-  childcare_tasks: t.list(t.Str),
-  cleaning_tasks: t.list(t.Str),
-  home_care_recipients: t.list(Recipient),
-  home_care_tasks: t.list(t.Str)
-});
-
-var Page2Form = t.struct({
-  description: t.maybe(t.Str)
-});
-
-var page2FormLayout = function (locals) {
-  return <div>
-    <h3>{locals.label}</h3>
-    <div className='row'>
-      <div className='col-lg-6'>
-        {locals.inputs.description}
-      </div>
-    </div>
-
-  </div>
-}
-var page1FormLayout = function (locals) {
-  let {
-    children
-    , childcare_tasks
-    , cleaning_tasks
-    , home_care_recipients
-    , home_care_tasks
-  } = locals.inputs;
-
-  return <div className='row'>
-    <div className='col-lg-12'>
-      {locals.label}
-    </div>
-    <div className='col-lg-12'>
-      <h4>Childcare & Nanny Services</h4>
-      {children}
-      {childcare_tasks}
-    </div>
-    <div className='col-lg-12'>
-      <h4>House Cleaning & Home Management</h4>
-      {cleaning_tasks}
-    </div>
-    <div className='col-lg-12'>
-      <h4>Home Care & Elder Care</h4>
-      {home_care_recipients}
-      {home_care_tasks}
-    </div>
-  </div>
-}
-
 var RecipientLayout = function (locals) {
   return <div>
 
@@ -76,92 +23,203 @@ export default class SectionPage extends React.Component {
 
     // if validation fails, value will be null
     if (value) {
-      // TODO: call the contract action creator to update the contract
+      // Update the contract
+      this.props.flux.getActions('contract_actions').merge(value)
       router.transitionTo('page', nextPageOrSection(this.props));
     }
   }
 
-  getPage(){
-    let formOptions = [
-      {
-        type: Page1Form,
-        options: {
-          legend: <h3>What are the work responsibilities?</h3>,
+  getPageTypes(contract){
+    var Page1 = t.struct({
+      children: t.list(Recipient),
+      childcare_tasks: t.list(t.Str),
+      cleaning_tasks: t.list(t.Str),
+      home_care_recipients: t.list(Recipient),
+      home_care_tasks: t.list(t.Str)
+    });
+    var Page2 = t.struct({
+      description: t.maybe(t.Str)
+    });
+    return [Page1, Page2]
+  }
+
+  getPageOptions(contract){
+    let props = this.props;
+    var Page1 = {
+      legend: <p className='lead'>What are the work responsibilities?</p>,
+      auto: 'placeholders',
+      fields: {
+        children: {
+          label: ' ',
           auto: 'placeholders',
-          fields: {
-            children: {
-              label: ' ',
-              auto: 'placeholders',
-              i18n: {
-                add: '+ Child',
-                optional: ' (optional)',
-                remove: 'Remove'
-              },
-              disableOrder: true
-            },
-            childcare_tasks: {
-              label: ' ',
-              i18n: {
-                add: '+ Task',
-                optional: ' (optional)',
-                remove: 'Remove'
-              },
-              disableOrder: true
-            },
-            cleaning_tasks: {
-              label: ' ',
-              i18n: {
-                add: '+ Task',
-                optional: ' (optional)',
-                remove: 'Remove'
-              },
-              disableOrder: true
-            },
-            home_care_tasks: {
-              label: ' ',
-              i18n: {
-                add: '+ Task',
-                optional: ' (optional)',
-                remove: 'Remove'
-              },
-              disableOrder: true
-            },
-            home_care_recipients: {
-              label: ' ',
-              auto: 'placeholders',
-              i18n: {
-                add: '+ Care Recipient',
-                optional: ' (optional)',
-                remove: 'Remove'
-              },
-              disableOrder: true
-            }
+          i18n: {
+            add: '+ Child',
+            optional: ' (optional)',
+            remove: 'Remove'
           },
-          template: page1FormLayout
+          disableOrder: true,
+          item: {
+            fields: {
+              age: {
+                type: 'number',
+                attrs:{
+                  min: 0,
+                  max: 20
+                },
+                config: {
+                  addonAfter: <i>years old</i>
+                }
+              },
+              description_of_care: {
+                type: 'textarea'
+              }
+            }
+          }
+        },
+        childcare_tasks: {
+          label: ' ',
+          i18n: {
+            add: '+ Task',
+            optional: ' (optional)',
+            remove: 'Remove'
+          },
+          disableOrder: true,
+          item: {
+            help: <i>Describe the task</i>,
+            type: 'textarea'
+          }
+        },
+        cleaning_tasks: {
+          label: ' ',
+          i18n: {
+            add: '+ Task',
+            optional: ' (optional)',
+            remove: 'Remove'
+          },
+          disableOrder: true,
+          item: {
+            help: <i>Describe the task</i>,
+            type: 'textarea'
+          }
+        },
+        home_care_tasks: {
+          label: ' ',
+          i18n: {
+            add: '+ Task',
+            optional: ' (optional)',
+            remove: 'Remove'
+          },
+          disableOrder: true,
+          item: {
+            help: <i>Describe the task</i>,
+            type: 'textarea'
+          }
+        },
+        home_care_recipients: {
+          label: ' ',
+          auto: 'placeholders',
+          i18n: {
+            add: '+ Care Recipient',
+            optional: ' (optional)',
+            remove: 'Remove'
+          },
+          disableOrder: true,
+          item: {
+            fields: {
+              age: {
+                type: 'number',
+                attrs:{
+                  min: 0,
+                  max: 150
+                },
+                config: {
+                  addonAfter: <i>years old</i>
+                }
+              },
+              description_of_care: {
+                type: 'textarea'
+              }
+            }
+          }
         }
       },
-      {
-        type: Page2Form,
-        options: {
-          legend: 'Are there additional responsibilities? (Please elaborate.)',
-          fields: {
-            description: {
-              label: ' ',
-              auto: 'placeholders',
-              type: 'textarea'
-            }
-          },
-          template: page2FormLayout
-        }
+      template: function (locals) {
+        let {
+          children
+          , childcare_tasks
+          , cleaning_tasks
+          , home_care_recipients
+          , home_care_tasks
+        } = locals.inputs;
+
+        return <div className='row'>
+          <div className='col-lg-12'>
+            {locals.label}
+          </div>
+          <div className='col-lg-12'>
+            <h4>Childcare & Nanny Services</h4>
+            {children}
+            {childcare_tasks}
+          </div>
+          <div className='col-lg-12'>
+            <h4>House Cleaning & Home Management</h4>
+            {cleaning_tasks}
+          </div>
+          <div className='col-lg-12'>
+            <h4>Home Care & Elder Care</h4>
+            {home_care_recipients}
+            {home_care_tasks}
+          </div>
+        </div>
       }
-    ];
-    let page = (this.props.params.pageName || 1) - 1;
-    return <Form
-      ref="form"
-      type={formOptions[page].type}
-      options={formOptions[page].options}
-    />
+    };
+    var Page2 = {
+      legend: 'Are there additional responsibilities? (Please elaborate.)',
+      fields: {
+        description: {
+          label: ' ',
+          auto: 'placeholders',
+          type: 'textarea'
+        }
+      },
+      template: function (locals) {
+        return <div>
+          <h3>{locals.label}</h3>
+          <div className='row'>
+            <div className='col-lg-6'>
+              {locals.inputs.description}
+            </div>
+          </div>
+
+        </div>
+      }
+    };
+    return [Page1, Page2]
   }
+
+  getPage(){
+    let pageNum = (this.props.params.pageName || 1) - 1;
+    let {contract} = this.props;
+    let pageOptions = this.getPageOptions(contract)[pageNum];
+
+    let form = <Form
+      ref="form"
+      type={this.getPageTypes(contract)[pageNum]}
+      options={pageOptions}
+      value={contract}
+    />;
+
+    let page = form;
+
+    if(pageOptions && pageOptions.config && pageOptions.config.horizontal){
+      page = <div className='form-horizontal'>
+        {form}
+      </div>
+    }
+
+    return page
+  }
+
 
   render() {
     return <div className='form-section'>
