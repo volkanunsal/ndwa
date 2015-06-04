@@ -6,6 +6,7 @@ var router = require('../router');
 import FluxComponent from 'flummox/component';
 import cx from 'classnames';
 import moment from 'moment';
+import ActionBar from './ActionBar';
 
 
 var THour = t.subtype(t.Str, function(val){
@@ -295,10 +296,9 @@ export default class SectionPage extends React.Component {
         <FluxComponent
           connectToStores={{calendar: store => ({ calendar: store.state })}} {...this.props}>
           <WorkWeekTimePicker/>
-          <a className='btn btn-primary' onClick={this.save.bind(this, this.props.calendar)}>Save</a>
         </FluxComponent>
-
       </div>
+      <ActionBar handleSave={this.save.bind(this, this.props.calendar)}/>
     </div>
   }
 }

@@ -3,6 +3,7 @@ var t = require('tcomb-form');
 var {nextPageOrSection} = require('../utils/NavUtils');
 var {Form} = t.form;
 var router = require('../router');
+import ActionBar from './ActionBar';
 
 var Recipient = t.struct({
   name: t.Str,
@@ -225,8 +226,8 @@ export default class SectionPage extends React.Component {
     return <div className='form-section'>
       <div className='container-fluid'>
         {this.getPage()}
-        <a className='btn btn-primary' onClick={this.save.bind(this)}>Save</a>
       </div>
+      <ActionBar handleSave={this.save.bind(this)}/>
     </div>
   }
 }

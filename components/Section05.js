@@ -7,7 +7,7 @@ import cx from 'classnames';
 import compact from '../utils/compact';
 import isEmpty from '../utils/isEmpty';
 import YesNo from './YesNo'
-
+import ActionBar from './ActionBar';
 
 export default class SectionPage extends React.Component {
   getPageTypes(contract){
@@ -131,8 +131,9 @@ export default class SectionPage extends React.Component {
     return <div className='form-section'>
       <div className='container-fluid'>
         {this.getPage()}
-        <a className='btn btn-primary' onClick={this.save.bind(this)}>Save</a>
+
       </div>
+      <ActionBar handleSave={this.save.bind(this, this.props.calendar)}/>
     </div>
   }
 }

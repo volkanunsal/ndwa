@@ -1,6 +1,6 @@
 import React from 'react';
 var t = require('tcomb-form');
-  
+
 export default class SectionPage extends React.Component {
   save() {
     // call getValue() to get the values of the form
@@ -8,13 +8,17 @@ export default class SectionPage extends React.Component {
 
     // if validation fails, value will be null
     if (value) {
-      // value here is an instance of Person
+      // TODO: open the payment modal
       console.log(value);
     }
   }
 
   render() {
-    return <div className='container' style={{alignSelf: 'center'}}>
+    return <div className='container text-center' style={{alignSelf: 'center'}}>
+      <h3>Congratulations, you did it! You’ve reached the end of the agreement. Be sure to review your information by using the tabs before printing it, making multiple copies and signing it!</h3>
+      <p>
+        <a className='btn btn-lg btn-primary' style={{marginTop: 20, width: 200}}>Print</a>
+      </p>
     </div>
   }
 }

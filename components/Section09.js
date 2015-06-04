@@ -4,7 +4,8 @@ var {nextPageOrSection} = require('../utils/NavUtils');
 var {Form} = t.form;
 var router = require('../router');
 import YesNo from './YesNo'
-
+import ActionBar from './ActionBar';
+  
 export default class SectionPage extends React.Component {
   save() {
     // call getValue() to get the values of the form
@@ -125,8 +126,9 @@ export default class SectionPage extends React.Component {
     return <div className='form-section'>
       <div className='container-fluid'>
         {this.getPage()}
-        <a className='btn btn-primary' onClick={this.save.bind(this)}>Save</a>
+
       </div>
+      <ActionBar handleSave={this.save.bind(this, this.props.calendar)}/>
     </div>
   }
 }

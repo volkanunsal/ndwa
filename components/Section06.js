@@ -7,8 +7,7 @@ import cx from 'classnames';
 import compact from '../utils/compact';
 import isEmpty from '../utils/isEmpty';
 import YesNo from './YesNo'
-
-
+import ActionBar from './ActionBar';
 
 
 export default class SectionPage extends React.Component {
@@ -25,7 +24,6 @@ export default class SectionPage extends React.Component {
   }
 
   getPageTypes(contract){
-
     let deductions = contract.deductions_taken ? t.struct({
         state_income_tax: t.Str,
         federal_income_tax: t.Str,
@@ -45,13 +43,15 @@ export default class SectionPage extends React.Component {
   getPageOptions(contract){
     let props = this.props;
     var Page1 = {
-
       fields: {
         deductions_taken: {
           label: 'Will the family take deductions from the employee\'s wages?',
           template: function(locals){
             return <div className='text-center'>
-              <YesNo flux={props.flux} {...locals}/>
+              <p className='lead'>
+                {locals.label}
+              </p>
+              <YesNo flux={props.flux} {...locals} label={''}/>
             </div>
           }
         },
@@ -163,8 +163,9 @@ export default class SectionPage extends React.Component {
     return <div className='form-section'>
       <div className='container-fluid'>
         {this.getPage()}
-        <a className='btn btn-primary' onClick={this.save.bind(this)}>Save</a>
+
       </div>
+      <ActionBar handleSave={this.save.bind(this, this.props.calendar)}/>
     </div>
   }
 }
