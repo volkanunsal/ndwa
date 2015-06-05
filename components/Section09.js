@@ -20,7 +20,7 @@ export default class SectionPage extends React.Component {
       router.transitionTo('page', nextPageOrSection(this.props));
     }
   }
-  
+
   getPageOptions(contract, flux){
     var Page1 = {
       fields: {
@@ -81,7 +81,7 @@ export default class SectionPage extends React.Component {
       <div className='container-fluid'>
         {this.getForm()}
       </div>
-      <ActionBar handleSave={this.save.bind(this, this.props.calendar)}/>
+      <ActionBar handleSave={this.save.bind(this)}/>
     </div>
   }
 }
