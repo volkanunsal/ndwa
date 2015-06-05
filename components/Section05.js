@@ -1,5 +1,5 @@
 import React from 'react';
-var t = require('tcomb-form');
+import t from 'tcomb-form';
 var {nextPageOrSection} = require('../utils/NavUtils');
 var {Form} = t.form;
 var router = require('../router');

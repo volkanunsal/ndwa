@@ -52,6 +52,7 @@ export default class Nav extends React.Component {
         };
 
         let secNavParam = {sectionName: sid, pageName: pid};
+        let {name} = pages[j];
 
         secondary.push(<NavTab
           to='page'
@@ -59,7 +60,7 @@ export default class Nav extends React.Component {
           className='btn-sm'
           params={secNavParam}
           key={j}>
-            {pages[j]}
+            {name}
           </NavTab>);
       };
     };

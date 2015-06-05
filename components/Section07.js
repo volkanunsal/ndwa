@@ -1,5 +1,5 @@
 import React from 'react';
-var t = require('tcomb-form');
+import t from 'tcomb-form';
 var {nextPageOrSection} = require('../utils/NavUtils');
 var {Form} = t.form;
 var router = require('../router');
@@ -34,19 +34,19 @@ export default class SectionPage extends React.Component {
   getPageOptions(contract){
     let props = this.props;
     var Page1 = {
-      config: {
-        horizontal: {
-          lg: [4, 8],
-          md: [4, 8],
-          sm: [6, 6]
-        }
-      },
+      // config: {
+      //   horizontal: {
+      //     lg: [4, 8],
+      //     md: [4, 8],
+      //     sm: [6, 6]
+      //   }
+      // },
       fields: {
         evaluation_after_three_months: {
           label: "Will the employer will give the employee a written job evaluation after the first three months of employment?",
           template: function(locals){
             return <div>
-              <YesNo flux={props.flux} {...locals}/>
+              <YesNo flux={props.flux} {...locals} label={<p className='lead'>{locals.label}</p>} />
             </div>
           }
         },
@@ -54,12 +54,12 @@ export default class SectionPage extends React.Component {
           label: "Will the employer also provide a written job evaluation every year thereafter?",
           template: function(locals){
             return <div>
-              <YesNo flux={props.flux} {...locals}/>
+              <YesNo flux={props.flux} {...locals} label={<p className='lead'>{locals.label}</p>} />
             </div>
           }
         },
         complaint_handling_process: {
-          label: 'the employer and the employee shall establish a process for addressing complaints and￼increasing pay and/or benefits. Please describe that process:',
+          label: <p className='lead'>{'The employer and the employee shall establish a process for addressing complaints and￼increasing pay and/or benefits. Please describe that process:'}</p>,
           type: 'textarea',
           help: <i>During these reviews, both parties will have the opportunity to evaluate the contract and propose changes.</i>
         }

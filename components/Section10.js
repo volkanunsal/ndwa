@@ -1,5 +1,5 @@
 import React from 'react';
-var t = require('tcomb-form');
+import t from 'tcomb-form';
 
 export default class SectionPage extends React.Component {
   save() {

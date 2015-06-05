@@ -1,5 +1,5 @@
 import React from 'react';
-var t = require('tcomb-form');
+import t from 'tcomb-form';
 var {nextPageOrSection} = require('../utils/NavUtils');
 var {Form} = t.form;
 var router = require('../router');
@@ -9,9 +9,6 @@ import isEmpty from '../utils/isEmpty';
 import YesNo from './YesNo'
 import ActionBar from './ActionBar';
 
-
-
-
 // const THourlyRate = t.subtype(t.Num, n => n > 9 )
 // const TPayment = t.subtype(t.struct({
 //   hourly_rate: THourlyRate,
@@ -19,7 +16,6 @@ import ActionBar from './ActionBar';
 // }), s => Number(s.overtime_rate) >= 2 * Number(s.hourly_rate));
 
 export default class SectionPage extends React.Component {
-
   save() {
     // call getValue() to get the values of the form
     var value = this.refs.form.getValue();
@@ -217,7 +213,7 @@ export default class SectionPage extends React.Component {
       fields: {
         vacation_days: {
           type: 'number',
-          label: 'the employer agrees to provide the employee with how many vacation days?',
+          label: 'The employer agrees to provide the employee with how many vacation days?',
           config: {
             addonAfter: <i>days</i>
           },
@@ -227,7 +223,7 @@ export default class SectionPage extends React.Component {
         },
         personal_days: {
           type: 'number',
-          label: 'the employer agrees to provide the employee with how many personal/sick days?',
+          label: 'The employer agrees to provide the employee with how many personal/sick days?',
           config: {
             addonAfter: <i>days</i>
           },
@@ -282,24 +278,24 @@ export default class SectionPage extends React.Component {
     };
 
     let Page3 = {
-      config: {
-        horizontal: {
-          lg: [5, 7],
-          md: [5, 7],
-          sm: [6, 6]
-        }
-      },
+      // config: {
+      //   horizontal: {
+      //     lg: [5, 7],
+      //     md: [5, 7],
+      //     sm: [6, 6]
+      //   }
+      // },
       fields: {
         cancelled_day_paid: {
           label: "If the employer has to cancel one or more days of the employee's work week, will the employee be paid as usual?",
           template: function(locals){
-            return <YesNo flux={props.flux} {...locals}/>
+            return <YesNo flux={props.flux} {...locals} label={<p className='lead'>{locals.label}</p>}/>
           }
         },
         bad_weather_day_paid: {
-          label: "the employer expects that the employee will make every effort to come to work during bad weather. When a city or region is shutdown due to poor weather conditions, will the employer pay the employee for days of missed work?",
+          label: "The employer expects that the employee will make every effort to come to work during bad weather. When a city or region is shutdown due to poor weather conditions, will the employer pay the employee for days of missed work?",
           template: function(locals){
-            return <YesNo flux={props.flux} {...locals}/>
+            return <YesNo flux={props.flux} {...locals} label={<p className='lead'>{locals.label}</p>}/>
           }
         }
       }
@@ -393,7 +389,7 @@ export default class SectionPage extends React.Component {
                   template: function(locals){
                     return <fieldset>
                       <hr/>
-                      <p className='lead'>{"the employer may enter the employee's living accommodations only under the following agreed upon circumstances"}</p>
+                      <p className='lead'>{"The employer may enter the employee's living accommodations only under the following agreed upon circumstances"}</p>
                       {React.addons.createFragment(locals.inputs)}
                     </fieldset>
                   }

@@ -1,5 +1,5 @@
 import React from 'react';
-var t = require('tcomb-form');
+import t from 'tcomb-form';
 var {nextPageOrSection} = require('../utils/NavUtils');
 var {Form} = t.form;
 var router = require('../router');
@@ -103,9 +103,14 @@ export default class SectionPage extends React.Component {
 
 
   getPage(){
-    let pageNum = (this.props.params.pageName || 1) - 1;
-    let {contract} = this.props;
+    let {params, contract, nav} = this.props;
+    let {pageName, sectionName} = params;
+
+    let pageNum = (pageName || 1) - 1;
+    let sectionNum = Number(sectionName);
+
     let pageOptions = this.getPageOptions(contract)[pageNum];
+    console.log(nav, pageNum, sectionNum)
 
     let form = <Form
       ref="form"
