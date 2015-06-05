@@ -15,7 +15,7 @@ export default class SectionPage extends React.Component {
     var Page1 = {
       fields: {
         evaluation_after_three_months: {
-          label: <p className='lead'>{"Will the employer will give the employee a written job evaluation after the first three months of employment?"}</p>,
+          label: <p className='lead'>{"Will the EMPLOYER will give the EMPLOYEE a written job evaluation after the first three months of employment?"}</p>,
           template: function(locals){
             return <div>
               <YesNo flux={flux} {...locals}/>
@@ -23,7 +23,7 @@ export default class SectionPage extends React.Component {
           }
         },
         evaluation_every_year: {
-          label: <p className='lead'>{"Will the employer also provide a written job evaluation every year thereafter?"}</p>,
+          label: <p className='lead'>{"Will the EMPLOYER also provide a written job evaluation every year thereafter?"}</p>,
           template: function(locals){
             return <div>
               <YesNo flux={flux} {...locals}/>
@@ -31,7 +31,7 @@ export default class SectionPage extends React.Component {
           }
         },
         complaint_handling_process: {
-          label: <p className='lead'>{'The employer and the employee shall establish a process for addressing complaints and￼increasing pay and/or benefits. Please describe that process:'}</p>,
+          label: <p className='lead'>{'The EMPLOYER and the EMPLOYEE shall establish a process for addressing complaints and￼increasing pay and/or benefits. Please describe that process:'}</p>,
           type: 'textarea',
           help: <i>During these reviews, both parties will have the opportunity to evaluate the contract and propose changes.</i>
         }

@@ -27,16 +27,16 @@ export default class SectionPage extends React.Component {
       },
       fields: {
         payment_frequency: {
-          label: 'How often will the employee be paid?',
+          label: 'How often will the EMPLOYEE be paid?',
           factory: t.form.Radio
         },
         payday: {
-          label: 'When will the employee be paid?',
+          label: 'When will the EMPLOYEE be paid?',
           factory: t.form.Radio
         },
         hourly_rate: {
           type: 'number',
-          label: 'How much will the employee be paid on an hourly basis?',
+          label: 'How much will the EMPLOYEE be paid on an hourly basis?',
           help: <i>Minimum $9/hour</i>,
           attrs: {
             min: 9,
@@ -49,7 +49,7 @@ export default class SectionPage extends React.Component {
         },
         overtime_rate: {
           type: 'number',
-          label: 'When the employee works more than 40 hours a week, what will the overtime rate be?',
+          label: 'When the EMPLOYEE works more than 40 hours a week, what will the overtime rate be?',
           help: <i>Overtime rate must be at least 1.5 times the regular hourly rate</i>,
           attrs: {
             min: 13.5
@@ -62,7 +62,7 @@ export default class SectionPage extends React.Component {
 
         overtime_notice_length: {
           type: 'number',
-          label: 'When possible, the employer will provide the employee with notice how far in advance, prior to requesting the employee to work overtime?',
+          label: 'When possible, the EMPLOYER will provide the EMPLOYEE with notice how far in advance, prior to requesting the EMPLOYEE to work overtime?',
           config: {
             addonAfter: <i>days</i>
           },
@@ -71,7 +71,7 @@ export default class SectionPage extends React.Component {
           }
         },
         overtime_holidays: {
-          label: 'The employee and the employer agree that the employee will be paid when working which of the following holidays?',
+          label: 'The EMPLOYEE and the EMPLOYER agree that the EMPLOYEE will be paid when working which of the following holidays?',
           attrs: {
             style: {height: 130}
           },
@@ -106,7 +106,7 @@ export default class SectionPage extends React.Component {
       fields: {
         vacation_days: {
           type: 'number',
-          label: 'The employer agrees to provide the employee with how many vacation days?',
+          label: 'The EMPLOYER agrees to provide the EMPLOYEE with how many vacation days?',
           config: {
             addonAfter: <i>days</i>
           },
@@ -116,7 +116,7 @@ export default class SectionPage extends React.Component {
         },
         personal_days: {
           type: 'number',
-          label: 'The employer agrees to provide the employee with how many personal/sick days?',
+          label: 'The EMPLOYER agrees to provide the EMPLOYEE with how many personal/sick days?',
           config: {
             addonAfter: <i>days</i>
           },
@@ -125,11 +125,11 @@ export default class SectionPage extends React.Component {
           }
         },
         parental_leave: {
-          label: 'If the employee requests parental leave for the birth or adoption of a child:',
+          label: 'If the EMPLOYEE requests parental leave for the birth or adoption of a child:',
           fields: {
             notice_length: {
               type: 'number',
-              label: 'How much notice will the employee provide the employer, prior to taking her parental leave?',
+              label: 'How much notice will the EMPLOYEE provide the EMPLOYER, prior to taking her parental leave?',
               help: <i>Minimum 2 weeks</i>,
               config: {
                 addonAfter: <i>weeks</i>
@@ -139,7 +139,7 @@ export default class SectionPage extends React.Component {
               }
             },
             paid: {
-              label: 'Will the employer pay the employee for parental leave?',
+              label: 'Will the EMPLOYER pay the EMPLOYEE for parental leave?',
               template: function(locals){
                 return <YesNo flux={flux} {...locals}/>
               }
@@ -161,7 +161,7 @@ export default class SectionPage extends React.Component {
           }
         },
         reduced_hours_reg_wage: {
-          label: "In the event that the employer temporarily reduces employee's hours will they to continue to pay employee regular wages?",
+          label: "In the event that the EMPLOYER temporarily reduces employee's hours will they to continue to pay employee regular wages?",
           template: function(locals){
             return <YesNo flux={flux} {...locals}/>
           }
@@ -173,13 +173,13 @@ export default class SectionPage extends React.Component {
     let Page3 = {
       fields: {
         cancelled_day_paid: {
-          label: <p className='lead'>{"If the employer has to cancel one or more days of the employee's work week, will the employee be paid as usual?"}</p>,
+          label: <p className='lead'>{"If the EMPLOYER has to cancel one or more days of the EMPLOYEE's work week, will the EMPLOYEE be paid as usual?"}</p>,
           template: function(locals){
             return <YesNo flux={flux} {...locals}/>
           }
         },
         bad_weather_day_paid: {
-          label: <p className='lead'>{"The employer expects that the employee will make every effort to come to work during bad weather. When a city or region is shutdown due to poor weather conditions, will the employer pay the employee for days of missed work?"}</p>,
+          label: <p className='lead'>{"The EMPLOYER expects that the EMPLOYEE will make every effort to come to work during bad weather. When a city or region is shutdown due to poor weather conditions, will the EMPLOYER pay the EMPLOYEE for days of missed work?"}</p>,
           template: function(locals){
             return <YesNo flux={flux} {...locals}/>
           }
@@ -192,7 +192,7 @@ export default class SectionPage extends React.Component {
         room: {
           fields: {
             provided: {
-              label: <p className='lead'>{"Will the employer provide the employee with living accommodations?"}</p>,
+              label: <p className='lead'>{"Will the EMPLOYER provide the EMPLOYEE with living accommodations?"}</p>,
               template: function(locals){
                 return <div className='text-center'>
                   <YesNo flux={flux} {...locals}/>
@@ -232,7 +232,7 @@ export default class SectionPage extends React.Component {
                   }
                 },
                 num_people: {
-                  label: 'Number of people living in the room besides the employee?',
+                  label: 'Number of people living in the room besides the EMPLOYEE?',
                   type: 'number',
                   config: {
                     addonAfter: <i>people</i>
@@ -245,7 +245,7 @@ export default class SectionPage extends React.Component {
                   }
                 },
                 heat_controlled: {
-                  label: 'Does the employee control the heat?',
+                  label: 'Does the EMPLOYEE control the heat?',
                   template: function(locals){
                     return <YesNo flux={flux} {...locals}/>
                   }
@@ -259,19 +259,19 @@ export default class SectionPage extends React.Component {
                 entry: {
                   fields: {
                     notice_length: {
-                      label: 'Will the employer provide the employee with at least 24 hours notice?',
+                      label: 'Will the EMPLOYER provide the EMPLOYEE with at least 24 hours notice?',
                       template: function(locals){
                         return <YesNo flux={flux} {...locals}/>
                       }
                     },
                     emergency_repairs: {
-                      label: "Will the employer enter the employee's living space in cases of emergencies or repairs?",
+                      label: "Will the EMPLOYER enter the EMPLOYEE's living space in cases of emergencies or repairs?",
                       template: function(locals){
                         return <YesNo flux={flux} {...locals}/>
                       }
                     },
                     specific_repairs: {
-                      label: "Will the employer enter the employee's living space at the employee's request for specific repairs?",
+                      label: "Will the EMPLOYER enter the EMPLOYEE's living space at the EMPLOYEE's request for specific repairs?",
                       template: function(locals){
                         return <YesNo flux={flux} {...locals}/>
                       }
@@ -287,7 +287,7 @@ export default class SectionPage extends React.Component {
                   template: function(locals){
                     return <fieldset>
                       <hr/>
-                      <p className='lead'>{"The employer may enter the employee's living accommodations only under the following agreed upon circumstances"}</p>
+                      <p className='lead'>{"The EMPLOYER may enter the EMPLOYEE's living accommodations only under the following agreed upon circumstances"}</p>
                       {React.addons.createFragment(locals.inputs)}
                     </fieldset>
                   }
@@ -296,7 +296,7 @@ export default class SectionPage extends React.Component {
               template: function(locals){
 
                 return <div className='form-horizontal'>
-                  <p className='lead'>{'Describe the living accommodations provided by the employer for the employee'}</p>
+                  <p className='lead'>{'Describe the living accommodations provided by the EMPLOYER for the EMPLOYEE'}</p>
                   {locals.order.map(key => {
                     return locals.inputs[key]
                   })}
@@ -315,7 +315,7 @@ export default class SectionPage extends React.Component {
     let Page5 = {
       fields: {
         board_provided: {
-          label: <p className='lead'>{'Will the employee be provided with board (food/beverages) at work?'}</p>,
+          label: <p className='lead'>{'Will the EMPLOYEE be provided with board (food/beverages) at work?'}</p>,
           template: function(locals){
             console.log(locals.value)
             return <div className='text-center'>
@@ -326,7 +326,7 @@ export default class SectionPage extends React.Component {
         board_yes: {
           fields: {
             house_food: {
-              label: 'May the employee eat/drink household foods or beverages?',
+              label: 'May the EMPLOYEE eat/drink household foods or beverages?',
               template: function(locals){
                 return <YesNo flux={flux} {...locals}/>
               }
@@ -348,13 +348,13 @@ export default class SectionPage extends React.Component {
         board_no: {
           fields: {
             bring_own_food: {
-              label: "May the employee bring own food to work?",
+              label: "May the EMPLOYEE bring own food to work?",
               template: function(locals){
                 return <YesNo flux={flux} {...locals}/>
               }
             },
             food_paid: {
-              label: "Have the employee and the employer agreed that the employee will pay for the employee’s own food?",
+              label: "Have the EMPLOYEE and the EMPLOYER agreed that the EMPLOYEE will pay for the EMPLOYEE's own food?",
               template: function(locals){
                 return <YesNo flux={flux} {...locals}/>
               }

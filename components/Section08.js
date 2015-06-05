@@ -22,7 +22,7 @@ export default class SectionPage extends React.Component {
           },
           fields: {
             info_disclosure_permitted: {
-              label: <p className='lead'>{"Will the employee disclose any and all private information obtained about the employer during the course of employment, including but not limited to medical, financial, legal, and career information?"}</p>,
+              label: <p className='lead'>{"Will the EMPLOYEE disclose any and all private information obtained about the EMPLOYER during the course of employment, including but not limited to medical, financial, legal, and career information?"}</p>,
               template: function(locals){
                 return <div>
                   <YesNo flux={flux} {...locals}/>
@@ -30,7 +30,7 @@ export default class SectionPage extends React.Component {
               }
             },
             family_pics_sharing_permitted: {
-              label: <p className='lead'>{"Will the employee share pictures of the employer, their home or children on social media networks or with the employee's friends and family?"}</p>,
+              label: <p className='lead'>{"Will the EMPLOYEE share pictures of the EMPLOYER, their home or children on social media networks or with the EMPLOYEE's friends and family?"}</p>,
               template: function(locals){
                 return <div>
                   <YesNo flux={flux} {...locals}/>
@@ -60,7 +60,7 @@ export default class SectionPage extends React.Component {
           },
           fields: {
             restrict_private_comm: {
-              label: <p className='lead'>{"Will the employer restrict or interfere with the employee's means of private communications?"}</p>,
+              label: <p className='lead'>{"Will the EMPLOYER restrict or interfere with the EMPLOYEE's means of private communications?"}</p>,
               template: function(locals){
                 return <div>
                   <YesNo flux={flux} {...locals}/>
@@ -68,7 +68,7 @@ export default class SectionPage extends React.Component {
               }
             },
             surveillance: {
-              label: <p className='lead'>{"Will the employer employ surveillance technology to monitor the employee?"}</p>,
+              label: <p className='lead'>{"Will the EMPLOYER employ surveillance technology to monitor the EMPLOYEE?"}</p>,
               template: function(locals){
                 return <div>
                   <YesNo flux={flux} {...locals}/>
@@ -76,7 +76,7 @@ export default class SectionPage extends React.Component {
               }
             },
             take_away_personal_docs: {
-              label: <p className='lead'>{"Will the employer take the employee's documents or personal effects, without the employee's permission?"}</p>,
+              label: <p className='lead'>{"Will the EMPLOYER take the EMPLOYEE's documents or personal effects, without the EMPLOYEE's permission?"}</p>,
               template: function(locals){
                 return <div>
                   <YesNo flux={flux} {...locals}/>
@@ -84,7 +84,7 @@ export default class SectionPage extends React.Component {
               }
             },
             force_service: {
-              label: <p className='lead'>{"Will the employer engage in conduct that constitutes forced services?"}</p>,
+              label: <p className='lead'>{"Will the EMPLOYER engage in conduct that constitutes forced services?"}</p>,
               template: function(locals){
                 return <div>
                   <YesNo flux={flux} {...locals}/>

@@ -25,7 +25,7 @@ export default class SectionPage extends React.Component {
           }
         },
         termination_severance_length: {
-          label: <p className='lead'>{"If the employee is terminated with or without cause, the employer shall provide the employee with how much severance pay?"}</p>,
+          label: <p className='lead'>{"If the EMPLOYEE is terminated with or without cause, the EMPLOYER shall provide the EMPLOYEE with how much severance pay?"}</p>,
           type: "number",
           attrs: {
             min: 0
@@ -35,7 +35,7 @@ export default class SectionPage extends React.Component {
           }
         },
         termination_accom_eviction_notice_length: {
-          label: <p className='lead'>{"And if living accommodations have been provided by the employer, how many days of lodging will the employee be given if the employee is terminated?"}</p>,
+          label: <p className='lead'>{"And if living accommodations have been provided by the EMPLOYER, how many days of lodging will the EMPLOYEE be given if the EMPLOYEE is terminated?"}</p>,
           type: "number",
           attrs: {
             min: 0
@@ -45,7 +45,7 @@ export default class SectionPage extends React.Component {
           }
         },
         termination_paid_if_evicted_early: {
-          label: <p className='lead'>{"If the employee is asked to leave before the notice period is up, will the employee be paid for that amount of time?"}</p>,
+          label: <p className='lead'>{"If the EMPLOYEE is asked to leave before the notice period is up, will the EMPLOYEE be paid for that amount of time?"}</p>,
           template: function(locals){
             return <div>
               <YesNo flux={flux} {...locals}/>
@@ -57,7 +57,7 @@ export default class SectionPage extends React.Component {
     var Page2 = {
       fields: {
         immediate_termination_grounds: {
-          label: <p className='lead'>{"There may be cases when there are grounds or cause for immediate termination without notice. the employee and the employer should discuss (and be as concrete as possible) what these might grounds or cause for immediate termination without notice will be, and list them here:"}</p>,
+          label: <p className='lead'>{"There may be cases when there are grounds or cause for immediate termination without notice. the EMPLOYEE and the EMPLOYER should discuss (and be as concrete as possible) what these might grounds or cause for immediate termination without notice will be, and list them here:"}</p>,
           type: 'textarea'
 
         }

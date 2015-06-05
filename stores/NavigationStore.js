@@ -129,8 +129,11 @@ export default class NavigationStore extends Store {
                   hourly_rate: t.subtype(t.Num, n => n >= 9 ),
                   overtime_rate: t.Num,
                   payment_frequency: t.enums({
+                    daily: 'Daily',
                     weekly: 'Weekly',
-                    monthly: 'Monthly'
+                    biweekly: 'Bi-weekly',
+                    monthly: 'Monthly',
+                    other: 'Other'
                   }),
                   payday: t.enums({
                     monday: 'Monday',
@@ -149,7 +152,9 @@ export default class NavigationStore extends Store {
                     "Memorial Day":t.Bool,
                     "Independence Day":t.Bool,
                     "Labor Day":t.Bool,
-                    'Christmas Day':t.Bool
+                    "Thanksgiving Day":t.Bool,
+                    'Christmas Day':t.Bool,
+                    "Other":t.Bool
                   }))
                 });
               }
