@@ -24,19 +24,22 @@ export default class SectionPage extends React.Component {
   }
 
   getPageTypes(contract){
-    let deductions = contract.deductions_taken ? t.struct({
-        state_income_tax: t.Str,
-        federal_income_tax: t.Str,
-        health_insurance: t.Str,
-        food: t.Str,
-        lodging: t.Str,
-        other: t.Str
-      }) : false;
 
-    var Page1 = t.struct(compact({
-      deductions_taken: t.Bool,
-      deductions
-    }));
+    var Page1 = t.struct({
+      deductions_taken: t.Bool
+    });
+    if (contract.deductions_taken) {
+      Page1 = Page1.extend({
+        deductions: t.struct({
+          state_income_tax: t.Str,
+          federal_income_tax: t.Str,
+          health_insurance: t.Str,
+          food: t.Str,
+          lodging: t.Str,
+          other: t.Str
+        })
+      });
+    };
     return [Page1]
   }
 
@@ -48,10 +51,7 @@ export default class SectionPage extends React.Component {
           label: 'Will the employer take deductions from the employee\'s wages?',
           template: function(locals){
             return <div className='text-center'>
-              <p className='lead'>
-                {locals.label}
-              </p>
-              <YesNo flux={props.flux} {...locals} label={''}/>
+              <YesNo flux={props.flux} {...locals} label={<p className='lead'>{locals.label}</p>}/>
             </div>
           }
         },

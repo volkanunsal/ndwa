@@ -4,7 +4,6 @@ var {nextPageOrSection} = require('../utils/NavUtils');
 var {Form} = t.form;
 var router = require('../router');
 import cx from 'classnames';
-import compact from '../utils/compact';
 import isEmpty from '../utils/isEmpty';
 import YesNo from './YesNo'
 import ActionBar from './ActionBar';
@@ -30,34 +29,8 @@ export default class SectionPage extends React.Component {
 
   getPageTypes(contract){
     let {parental_leave, room, board_provided} = contract;
-    let paid_note = parental_leave && parental_leave.paid ? t.Str : false;
-    let heat_controlled = room && room.living_accommodations && room.living_accommodations.working_heat ? t.Bool : false;
 
-    let living_accommodations = room && room.provided ? t.struct(compact({
-      size: t.Num,
-      num_beds: t.Num,
-      working_heat: t.Bool,
-      heat_controlled,
-      clean: t.Bool,
-      num_people: t.Num,
-      entry: t.struct({
-        notice_length: t.Bool,
-        emergency_repairs: t.Bool,
-        specific_repairs: t.Bool,
-        other: t.maybe(t.Str)
-      })
-    })) : false;
 
-    let board_yes = board_provided == true ? t.struct({
-        house_food: t.Bool,
-        free_food: t.Bool
-      }) : false;
-
-    let board_no = board_provided == false ? t.struct({
-        bring_own_food: t.Bool,
-        food_paid: t.Bool,
-        food_paid_notes: t.Str
-      }) : false;
 
     let Page1 = t.struct({
       hourly_rate: t.subtype(t.Num, n => n > 9 ),
@@ -87,14 +60,19 @@ export default class SectionPage extends React.Component {
       }))
     });
 
+    let parental_leave_struct = t.struct({
+      notice_length: t.subtype(t.Num, n => Number(n) >= 2),
+      paid: t.Bool
+    });
+
+    if (parental_leave && parental_leave.paid) {
+      parental_leave_struct = parental_leave_struct.extend({paid_note: t.Str})
+    };
+
     let Page2 = t.struct({
       vacation_days: t.Num,
       personal_days: t.Num,
-      parental_leave: t.struct(compact({
-        notice_length: t.subtype(t.Num, n => Number(n) >= 2),
-        paid: t.Bool,
-        paid_note
-      })),
+      parental_leave: parental_leave_struct,
       reduced_hours_reg_wage: t.Bool
     });
 
@@ -103,18 +81,71 @@ export default class SectionPage extends React.Component {
       bad_weather_day_paid: t.Bool
     });
 
-    let Page4 = t.struct({
-      room: t.struct(compact({
-        provided: t.Bool,
-        living_accommodations
-      }))
+    let room_struct = t.struct({
+        provided: t.Bool
     });
 
-    let Page5 = t.struct(compact({
-      board_provided: t.Bool,
-      board_yes,
-      board_no
-    }))
+    if (room && room.provided) {
+      let living_accommodations_struct = t.struct({
+        size: t.Num,
+        num_beds: t.Num,
+        working_heat: t.Bool
+      });
+
+      if (room.living_accommodations && room.living_accommodations.working_heat) {
+
+        living_accommodations_struct = living_accommodations_struct.extend({
+          heat_controlled: t.Bool
+        })
+      };
+
+      // HACK: This is a bit of a hack, but the order option is not working for nested forms.
+      living_accommodations_struct = living_accommodations_struct.extend({
+        clean: t.Bool,
+        num_people: t.Num,
+        entry: t.struct({
+          notice_length: t.Bool,
+          emergency_repairs: t.Bool,
+          specific_repairs: t.Bool,
+          other: t.maybe(t.Str)
+        })
+      })
+
+      room_struct = room_struct.extend({
+        living_accommodations: living_accommodations_struct
+      });
+
+
+    };
+
+
+    let Page4 = t.struct({
+      room: room_struct
+    });
+
+    let Page5 = t.struct({
+      board_provided: t.Bool
+    });
+
+    if (board_provided == true) {
+      Page5 = Page5.extend({
+        board_yes: t.struct({
+          house_food: t.Bool,
+          free_food: t.Bool
+        })
+      })
+    };
+
+    if (board_provided == false) {
+      Page5 = Page5.extend({
+        board_no: t.struct({
+          bring_own_food: t.Bool,
+          food_paid: t.Bool,
+          food_paid_notes: t.Str
+        })
+      });
+    };
+
 
     return [Page1, Page2, Page3, Page4, Page5]
   }
@@ -301,23 +332,38 @@ export default class SectionPage extends React.Component {
       }
     }
     let Page4 = {
-      config: {
-        horizontal: {
-          lg: [4, 8],
-          md: [4, 8],
-          sm: [6, 6]
-        }
-      },
+
+
       fields: {
         room: {
           fields: {
             provided: {
               label: "Will the employer provide the employee with living accommodations?",
               template: function(locals){
-                return <YesNo flux={props.flux} {...locals}/>
+                return <div className='text-center'>
+                  <YesNo flux={props.flux} {...locals} label={<p className='lead'>{locals.label}</p>}/>
+                </div>
               }
             },
             living_accommodations: {
+
+              order: [
+                'size',
+                'num_beds',
+                'num_people',
+                'working_heat',
+                'heat_controlled',
+                'clean',
+                'entry'
+              ],
+
+              config: {
+                horizontal: {
+                  lg: [4, 8],
+                  md: [4, 8],
+                  sm: [6, 6]
+                }
+              },
               fields: {
                 size: {
                   label: 'Room Size?',
@@ -396,7 +442,7 @@ export default class SectionPage extends React.Component {
                 }
               },
               template: function(locals){
-                return <div>
+                return <div className='form-horizontal'>
                   <p className='lead'>{'Describe the living accommodations provided by the employer for the employee'}</p>
                   {React.addons.createFragment(locals.inputs)}
                 </div>
