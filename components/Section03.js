@@ -7,33 +7,25 @@ import FluxComponent from 'flummox/component';
 import ActionBar from './ActionBar';
 import decorators from '../utils/decorators';
 import WorkWeekTimePicker from './WorkWeekTimePicker';
-
-
+  
 @decorators.getForm
 export default class SectionPage extends React.Component {
   constructor(flux){
     super();
     this.state = {errorMsg: 'The schedule you specified is not valid.', isValid: true};
   }
-  save(contract) {
+  save() {
+    let {contract} = this.props;
     let validatorFn = this.getValidator();
-
-    let formValues = {
-      work_week_duration: contract.work_week_duration,
-      valid_work_schedule: contract.valid_work_schedule
-    };
-
-    let isValid = t.validate(formValues, validatorFn()).isValid();
-
+    let {work_week_duration, valid_work_schedule} = contract;
+    let isValid = t.validate({work_week_duration, valid_work_schedule}, validatorFn()).isValid();
     this.setState({isValid})
 
     // if fieldValidation fails, value will be null
     if (isValid) {
-      // TODO: call the contract action creator to update the contract
       router.transitionTo('page', nextPageOrSection(this.props));
     }
   }
-
 
   render() {
     let errorMsg = this.state.isValid ? null : <div className='alert alert-danger'>{this.state.errorMsg}</div>
@@ -42,7 +34,7 @@ export default class SectionPage extends React.Component {
         {errorMsg}
         <WorkWeekTimePicker {...this.props}/>
       </div>
-      <ActionBar handleSave={this.save.bind(this, this.props.contract)}/>
+      <ActionBar handleSave={this.save.bind(this)}/>
     </div>
   }
 }

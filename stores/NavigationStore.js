@@ -185,15 +185,7 @@ export default class NavigationStore extends Store {
                   let living_accommodations_struct = t.struct({
                     size: t.Num,
                     num_beds: t.Num,
-                    working_heat: t.Bool
-                  });
-                  if (room.living_accommodations && room.living_accommodations.working_heat) {
-                    living_accommodations_struct = living_accommodations_struct.extend({
-                      heat_controlled: t.Bool
-                    })
-                  };
-                  // HACK: This is a bit of a hack, but the order option is not working when a template function modifies the form field.
-                  living_accommodations_struct = living_accommodations_struct.extend({
+                    working_heat: t.Bool,
                     clean: t.Bool,
                     num_people: t.Num,
                     entry: t.struct({
@@ -202,7 +194,12 @@ export default class NavigationStore extends Store {
                       specific_repairs: t.Bool,
                       other: t.maybe(t.Str)
                     })
-                  })
+                  });
+                  if (room.living_accommodations && room.living_accommodations.working_heat) {
+                    living_accommodations_struct = living_accommodations_struct.extend({
+                      heat_controlled: t.Bool
+                    })
+                  };
                   room_struct = room_struct.extend({
                     living_accommodations: living_accommodations_struct
                   });

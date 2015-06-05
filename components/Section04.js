@@ -201,10 +201,6 @@ export default class SectionPage extends React.Component {
 
       fields: {
         room: {
-          // order: [
-          //   'living_accommodations',
-          //   'provided',
-          // ],
           fields: {
             provided: {
               label: <p className='lead'>{"Will the employer provide the employee with living accommodations?"}</p>,
@@ -309,12 +305,20 @@ export default class SectionPage extends React.Component {
                 }
               },
               template: function(locals){
+
                 return <div className='form-horizontal'>
                   <p className='lead'>{'Describe the living accommodations provided by the employer for the employee'}</p>
-                  {React.addons.createFragment(locals.inputs)}
+                  {locals.order.map(key => {
+                    return locals.inputs[key]
+                  })}
                 </div>
               }
             }
+          },
+          template: function(locals){
+            return <div>
+              {React.addons.createFragment(locals.inputs)}
+            </div>
           }
         }
       }
