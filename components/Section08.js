@@ -43,8 +43,7 @@ export default class SectionPage extends React.Component {
   }
 
 
-  getPageOptions(contract){
-    let props = this.props;
+  getPageOptions(contract, flux){
     var Page1 = {
       // config: {
       //   horizontal: {
@@ -66,7 +65,7 @@ export default class SectionPage extends React.Component {
               label: <p className='lead'>{"Will the employee disclose any and all private information obtained about the employer during the course of employment, including but not limited to medical, financial, legal, and career information?"}</p>,
               template: function(locals){
                 return <div>
-                  <YesNo flux={props.flux} {...locals}/>
+                  <YesNo flux={flux} {...locals}/>
                 </div>
               }
             },
@@ -74,7 +73,7 @@ export default class SectionPage extends React.Component {
               label: <p className='lead'>{"Will the employee share pictures of the employer, their home or children on social media networks or with the employee's friends and family?"}</p>,
               template: function(locals){
                 return <div>
-                  <YesNo flux={props.flux} {...locals}/>
+                  <YesNo flux={flux} {...locals}/>
                 </div>
               }
             },
@@ -104,7 +103,7 @@ export default class SectionPage extends React.Component {
               label: <p className='lead'>{"Will the employer restrict or interfere with the employee's means of private communications?"}</p>,
               template: function(locals){
                 return <div>
-                  <YesNo flux={props.flux} {...locals}/>
+                  <YesNo flux={flux} {...locals}/>
                 </div>
               }
             },
@@ -112,7 +111,7 @@ export default class SectionPage extends React.Component {
               label: <p className='lead'>{"Will the employer employ surveillance technology to monitor the employee?"}</p>,
               template: function(locals){
                 return <div>
-                  <YesNo flux={props.flux} {...locals}/>
+                  <YesNo flux={flux} {...locals}/>
                 </div>
               }
             },
@@ -120,7 +119,7 @@ export default class SectionPage extends React.Component {
               label: <p className='lead'>{"Will the employer take the employee's documents or personal effects, without the employee's permission?"}</p>,
               template: function(locals){
                 return <div>
-                  <YesNo flux={props.flux} {...locals}/>
+                  <YesNo flux={flux} {...locals}/>
                 </div>
               }
             },
@@ -128,7 +127,7 @@ export default class SectionPage extends React.Component {
               label: <p className='lead'>{"Will the employer engage in conduct that constitutes forced services?"}</p>,
               template: function(locals){
                 return <div>
-                  <YesNo flux={props.flux} {...locals}/>
+                  <YesNo flux={flux} {...locals}/>
                 </div>
               }
             },
@@ -150,7 +149,7 @@ export default class SectionPage extends React.Component {
   getPage(){
     let pageNum = (this.props.params.pageName || 1) - 1;
     let {contract} = this.props;
-    let pageOptions = this.getPageOptions(contract)[pageNum];
+    let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
 
     let form = <Form
       ref="form"

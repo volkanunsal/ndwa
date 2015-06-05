@@ -50,8 +50,7 @@ export default class SectionPage extends React.Component {
     return [Page1, Page2, Page3]
   }
 
-  getPageOptions(contract){
-    let props = this.props;
+  getPageOptions(contract, flux){
     var Page1 = {
       label: 'Are you a domestic worker or an employer?',
       fields: {
@@ -109,7 +108,7 @@ export default class SectionPage extends React.Component {
     let pageNum = (pageName || 1) - 1;
     let sectionNum = Number(sectionName);
 
-    let pageOptions = this.getPageOptions(contract)[pageNum];
+    let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
     console.log(nav, pageNum, sectionNum)
 
     let form = <Form

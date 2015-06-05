@@ -140,8 +140,7 @@ export default class SectionPage extends React.Component {
     return [Page1, Page2, Page3, Page4, Page5]
   }
 
-  getPageOptions(contract){
-    let props = this.props;
+  getPageOptions(contract, flux){
 
     // Only display the field when the paid is true
     let Page1 = {
@@ -269,7 +268,7 @@ export default class SectionPage extends React.Component {
             paid: {
               label: 'Will the employer pay the employee for parental leave?',
               template: function(locals){
-                return <YesNo flux={props.flux} {...locals}/>
+                return <YesNo flux={flux} {...locals}/>
               }
             },
             paid_note: {
@@ -291,7 +290,7 @@ export default class SectionPage extends React.Component {
         reduced_hours_reg_wage: {
           label: "In the event that the employer temporarily reduces employee's hours will they to continue to pay employee regular wages?",
           template: function(locals){
-            return <YesNo flux={props.flux} {...locals}/>
+            return <YesNo flux={flux} {...locals}/>
           }
         }
 
@@ -303,13 +302,13 @@ export default class SectionPage extends React.Component {
         cancelled_day_paid: {
           label: <p className='lead'>{"If the employer has to cancel one or more days of the employee's work week, will the employee be paid as usual?"}</p>,
           template: function(locals){
-            return <YesNo flux={props.flux} {...locals}/>
+            return <YesNo flux={flux} {...locals}/>
           }
         },
         bad_weather_day_paid: {
           label: <p className='lead'>{"The employer expects that the employee will make every effort to come to work during bad weather. When a city or region is shutdown due to poor weather conditions, will the employer pay the employee for days of missed work?"}</p>,
           template: function(locals){
-            return <YesNo flux={props.flux} {...locals}/>
+            return <YesNo flux={flux} {...locals}/>
           }
         }
       }
@@ -322,7 +321,7 @@ export default class SectionPage extends React.Component {
               label: <p className='lead'>{"Will the employer provide the employee with living accommodations?"}</p>,
               template: function(locals){
                 return <div className='text-center'>
-                  <YesNo flux={props.flux} {...locals}/>
+                  <YesNo flux={flux} {...locals}/>
                 </div>
               }
             },
@@ -368,19 +367,19 @@ export default class SectionPage extends React.Component {
                 working_heat: {
                   label: 'Working heat?',
                   template: function(locals){
-                    return <YesNo flux={props.flux} {...locals}/>
+                    return <YesNo flux={flux} {...locals}/>
                   }
                 },
                 heat_controlled: {
                   label: 'Does the employee control the heat?',
                   template: function(locals){
-                    return <YesNo flux={props.flux} {...locals}/>
+                    return <YesNo flux={flux} {...locals}/>
                   }
                 },
                 clean: {
                   label: 'Room free of dust, bugs and mold?',
                   template: function(locals){
-                    return <YesNo flux={props.flux} {...locals}/>
+                    return <YesNo flux={flux} {...locals}/>
                   }
                 },
                 entry: {
@@ -388,19 +387,19 @@ export default class SectionPage extends React.Component {
                     notice_length: {
                       label: 'Will the employer provide the employee with at least 24 hours notice?',
                       template: function(locals){
-                        return <YesNo flux={props.flux} {...locals}/>
+                        return <YesNo flux={flux} {...locals}/>
                       }
                     },
                     emergency_repairs: {
                       label: "Will the employer enter the employee's living space in cases of emergencies or repairs?",
                       template: function(locals){
-                        return <YesNo flux={props.flux} {...locals}/>
+                        return <YesNo flux={flux} {...locals}/>
                       }
                     },
                     specific_repairs: {
                       label: "Will the employer enter the employee's living space at the employee's request for specific repairs?",
                       template: function(locals){
-                        return <YesNo flux={props.flux} {...locals}/>
+                        return <YesNo flux={flux} {...locals}/>
                       }
                     },
                     other: {
@@ -443,7 +442,7 @@ export default class SectionPage extends React.Component {
           template: function(locals){
             console.log(locals.value)
             return <div className='text-center'>
-              <YesNo flux={props.flux} {...locals}/>
+              <YesNo flux={flux} {...locals}/>
             </div>
           }
         },
@@ -452,13 +451,13 @@ export default class SectionPage extends React.Component {
             house_food: {
               label: 'May the employee eat/drink household foods or beverages?',
               template: function(locals){
-                return <YesNo flux={props.flux} {...locals}/>
+                return <YesNo flux={flux} {...locals}/>
               }
             },
             free_food: {
               label: 'Are the food/beverages provided free of charge?',
               template: function(locals){
-                return <YesNo flux={props.flux} {...locals}/>
+                return <YesNo flux={flux} {...locals}/>
               }
             }
           },
@@ -474,13 +473,13 @@ export default class SectionPage extends React.Component {
             bring_own_food: {
               label: "May the employee bring own food to work?",
               template: function(locals){
-                return <YesNo flux={props.flux} {...locals}/>
+                return <YesNo flux={flux} {...locals}/>
               }
             },
             food_paid: {
               label: "Have the employee and the employer agreed that the employee will pay for the employee’s own food?",
               template: function(locals){
-                return <YesNo flux={props.flux} {...locals}/>
+                return <YesNo flux={flux} {...locals}/>
               }
             },
             food_paid_notes: {
@@ -505,7 +504,7 @@ export default class SectionPage extends React.Component {
   getPage(){
     let pageNum = (this.props.params.pageName || 1) - 1;
     let {contract} = this.props;
-    let pageOptions = this.getPageOptions(contract)[pageNum];
+    let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
 
     let form = <Form
       ref="form"

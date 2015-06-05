@@ -34,17 +34,8 @@ export default class SectionPage extends React.Component {
     return [Page1, Page2]
   }
 
-  getPageOptions(contract){
-    let props = this.props;
+  getPageOptions(contract, flux){
     var Page1 = {
-
-      // config: {
-      //   horizontal: {
-      //     lg: [6, 6],
-      //     md: [6, 6],
-      //     sm: [6, 6]
-      //   }
-      // },
       fields: {
         termination_notice_length: {
           label: <p className='lead'>{"If either party wishes to terminate this agreement, how much notice will be provided?"}</p>,
@@ -80,7 +71,7 @@ export default class SectionPage extends React.Component {
           label: <p className='lead'>{"If the employee is asked to leave before the notice period is up, will the employee be paid for that amount of time?"}</p>,
           template: function(locals){
             return <div>
-              <YesNo flux={props.flux} {...locals}/>
+              <YesNo flux={flux} {...locals}/>
             </div>
           }
         }
@@ -102,7 +93,7 @@ export default class SectionPage extends React.Component {
   getPage(){
     let pageNum = (this.props.params.pageName || 1) - 1;
     let {contract} = this.props;
-    let pageOptions = this.getPageOptions(contract)[pageNum];
+    let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
 
     let form = <Form
       ref="form"

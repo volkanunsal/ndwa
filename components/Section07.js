@@ -31,8 +31,7 @@ export default class SectionPage extends React.Component {
   }
 
 
-  getPageOptions(contract){
-    let props = this.props;
+  getPageOptions(contract, flux){
     var Page1 = {
       // config: {
       //   horizontal: {
@@ -46,7 +45,7 @@ export default class SectionPage extends React.Component {
           label: <p className='lead'>{"Will the employer will give the employee a written job evaluation after the first three months of employment?"}</p>,
           template: function(locals){
             return <div>
-              <YesNo flux={props.flux} {...locals}/>
+              <YesNo flux={flux} {...locals}/>
             </div>
           }
         },
@@ -54,7 +53,7 @@ export default class SectionPage extends React.Component {
           label: <p className='lead'>{"Will the employer also provide a written job evaluation every year thereafter?"}</p>,
           template: function(locals){
             return <div>
-              <YesNo flux={props.flux} {...locals}/>
+              <YesNo flux={flux} {...locals}/>
             </div>
           }
         },
@@ -71,7 +70,7 @@ export default class SectionPage extends React.Component {
   getPage(){
     let pageNum = (this.props.params.pageName || 1) - 1;
     let {contract} = this.props;
-    let pageOptions = this.getPageOptions(contract)[pageNum];
+    let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
 
     let form = <Form
       ref="form"

@@ -11,7 +11,7 @@ var Recipient = t.struct({
   description_of_care: t.Str
 });
 
-  
+
 export default class SectionPage extends React.Component {
   save() {
     // call getValue() to get the values of the form
@@ -39,8 +39,7 @@ export default class SectionPage extends React.Component {
     return [Page1, Page2]
   }
 
-  getPageOptions(contract){
-    let props = this.props;
+  getPageOptions(contract, flux){
     var Page1 = {
       legend: <p className='lead'>What are the work responsibilities?</p>,
       auto: 'placeholders',
@@ -184,7 +183,7 @@ export default class SectionPage extends React.Component {
   getPage(){
     let pageNum = (this.props.params.pageName || 1) - 1;
     let {contract} = this.props;
-    let pageOptions = this.getPageOptions(contract)[pageNum];
+    let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
 
     let form = <Form
       ref="form"
