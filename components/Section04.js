@@ -30,8 +30,6 @@ export default class SectionPage extends React.Component {
   getPageTypes(contract){
     let {parental_leave, room, board_provided} = contract;
 
-
-
     let Page1 = t.struct({
       hourly_rate: t.subtype(t.Num, n => n > 9 ),
       overtime_rate: t.Num,
@@ -82,7 +80,7 @@ export default class SectionPage extends React.Component {
     });
 
     let room_struct = t.struct({
-        provided: t.Bool
+      provided: t.Bool
     });
 
     if (room && room.provided) {
@@ -91,14 +89,11 @@ export default class SectionPage extends React.Component {
         num_beds: t.Num,
         working_heat: t.Bool
       });
-
       if (room.living_accommodations && room.living_accommodations.working_heat) {
-
         living_accommodations_struct = living_accommodations_struct.extend({
           heat_controlled: t.Bool
         })
       };
-
       // HACK: This is a bit of a hack, but the order option is not working for nested forms.
       living_accommodations_struct = living_accommodations_struct.extend({
         clean: t.Bool,
@@ -110,14 +105,10 @@ export default class SectionPage extends React.Component {
           other: t.maybe(t.Str)
         })
       })
-
       room_struct = room_struct.extend({
         living_accommodations: living_accommodations_struct
       });
-
-
     };
-
 
     let Page4 = t.struct({
       room: room_struct
@@ -145,7 +136,6 @@ export default class SectionPage extends React.Component {
         })
       });
     };
-
 
     return [Page1, Page2, Page3, Page4, Page5]
   }
@@ -309,44 +299,34 @@ export default class SectionPage extends React.Component {
     };
 
     let Page3 = {
-      // config: {
-      //   horizontal: {
-      //     lg: [5, 7],
-      //     md: [5, 7],
-      //     sm: [6, 6]
-      //   }
-      // },
       fields: {
         cancelled_day_paid: {
-          label: "If the employer has to cancel one or more days of the employee's work week, will the employee be paid as usual?",
+          label: <p className='lead'>{"If the employer has to cancel one or more days of the employee's work week, will the employee be paid as usual?"}</p>,
           template: function(locals){
-            return <YesNo flux={props.flux} {...locals} label={<p className='lead'>{locals.label}</p>}/>
+            return <YesNo flux={props.flux} {...locals}/>
           }
         },
         bad_weather_day_paid: {
-          label: "The employer expects that the employee will make every effort to come to work during bad weather. When a city or region is shutdown due to poor weather conditions, will the employer pay the employee for days of missed work?",
+          label: <p className='lead'>{"The employer expects that the employee will make every effort to come to work during bad weather. When a city or region is shutdown due to poor weather conditions, will the employer pay the employee for days of missed work?"}</p>,
           template: function(locals){
-            return <YesNo flux={props.flux} {...locals} label={<p className='lead'>{locals.label}</p>}/>
+            return <YesNo flux={props.flux} {...locals}/>
           }
         }
       }
     }
     let Page4 = {
-
-
       fields: {
         room: {
           fields: {
             provided: {
-              label: "Will the employer provide the employee with living accommodations?",
+              label: <p className='lead'>{"Will the employer provide the employee with living accommodations?"}</p>,
               template: function(locals){
                 return <div className='text-center'>
-                  <YesNo flux={props.flux} {...locals} label={<p className='lead'>{locals.label}</p>}/>
+                  <YesNo flux={props.flux} {...locals}/>
                 </div>
               }
             },
             living_accommodations: {
-
               order: [
                 'size',
                 'num_beds',
@@ -356,7 +336,6 @@ export default class SectionPage extends React.Component {
                 'clean',
                 'entry'
               ],
-
               config: {
                 horizontal: {
                   lg: [4, 8],
@@ -462,6 +441,7 @@ export default class SectionPage extends React.Component {
         board_provided: {
           label: <p className='lead'>{'Will the employee be provided with board (food/beverages) at work?'}</p>,
           template: function(locals){
+            console.log(locals.value)
             return <div className='text-center'>
               <YesNo flux={props.flux} {...locals}/>
             </div>

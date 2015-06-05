@@ -43,18 +43,18 @@ export default class SectionPage extends React.Component {
       // },
       fields: {
         evaluation_after_three_months: {
-          label: "Will the employer will give the employee a written job evaluation after the first three months of employment?",
+          label: <p className='lead'>{"Will the employer will give the employee a written job evaluation after the first three months of employment?"}</p>,
           template: function(locals){
             return <div>
-              <YesNo flux={props.flux} {...locals} label={<p className='lead'>{locals.label}</p>} />
+              <YesNo flux={props.flux} {...locals}/>
             </div>
           }
         },
         evaluation_every_year: {
-          label: "Will the employer also provide a written job evaluation every year thereafter?",
+          label: <p className='lead'>{"Will the employer also provide a written job evaluation every year thereafter?"}</p>,
           template: function(locals){
             return <div>
-              <YesNo flux={props.flux} {...locals} label={<p className='lead'>{locals.label}</p>} />
+              <YesNo flux={props.flux} {...locals}/>
             </div>
           }
         },

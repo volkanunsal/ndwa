@@ -22,13 +22,13 @@ export default class YesNo extends React.Component {
 
     let yesClasses = cx({
       'btn': true,
-      'btn-primary': value,
-      'btn-link': !value
+      'btn-primary': value == true,
+      'btn-link': value == false
     })
     let noClasses = cx({
       'btn': true,
-      'btn-primary': !value,
-      'btn-link': value
+      'btn-primary': value == false,
+      'btn-link': value == true
     })
 
     let col1Cs = {

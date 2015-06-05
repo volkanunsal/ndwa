@@ -11,12 +11,7 @@ var Recipient = t.struct({
   description_of_care: t.Str
 });
 
-var RecipientLayout = function (locals) {
-  return <div>
-
-  </div>
-}
-
+  
 export default class SectionPage extends React.Component {
   save() {
     // call getValue() to get the values of the form
@@ -175,24 +170,12 @@ export default class SectionPage extends React.Component {
       }
     };
     var Page2 = {
-      legend: <p className='lead'>Are there additional responsibilities? (Please elaborate.)</p>,
       fields: {
         description: {
-          label: ' ',
+          label: <p className='lead'>Are there additional responsibilities? (Please elaborate.)</p>,
           auto: 'placeholders',
           type: 'textarea'
         }
-      },
-      template: function (locals) {
-        return <div>
-          <h3>{locals.label}</h3>
-          <div className='row'>
-            <div className='col-lg-6'>
-              {locals.inputs.description}
-            </div>
-          </div>
-
-        </div>
       }
     };
     return [Page1, Page2]
