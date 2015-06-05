@@ -12,7 +12,7 @@ import decorators from '../utils/decorators';
 
 @decorators.getForm
 export default class SectionPage extends React.Component {
-  
+
   getPageOptions(contract, flux){
     var Page1 = {
       fields: {
@@ -111,7 +111,7 @@ export default class SectionPage extends React.Component {
       <div className='container-fluid'>
         {this.getForm()}
       </div>
-      <ActionBar handleSave={this.save.bind(this)}/>
+      <ActionBar onSave={this.save.bind(this)}/>
     </div>
   }
 }
