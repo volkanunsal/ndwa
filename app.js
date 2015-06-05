@@ -18,6 +18,7 @@ export class CalendarActions extends Actions {
 export class ContractActions extends Actions {
   setIn(path, value){ return {path, value} }
   merge(value){ return value }
+  validateSections(contract) { return contract }
 }
 //================ APP =======================
 export class AppFlux extends Flux {

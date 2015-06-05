@@ -14,14 +14,27 @@ var TNonZero = t.subtype(t.Num, function(value){
   return value > 0
 })
 var TValidWorkSchedule = t.subtype(t.Bool, function(value){
-  console.log(value)
   return value == true
 })
 
 
 export default class NavigationStore extends Store {
+  handleValidateSections(contract){
+    this.state.sections.map(section => {
+      section.pages.map(page => {
+        console.log(page,t.validate(contract, page.types(contract)).isValid())
+      })
+    })
+    // this.setState({})
+  }
+
   constructor(flux){
     super();
+
+    const CONTRACT_ACTION_IDS = flux.getActionIds('contract_actions');
+    this.register(CONTRACT_ACTION_IDS.validateSections, this.handleValidateSections);
+
+
     this.state = {
       sections: [
         {
@@ -29,7 +42,7 @@ export default class NavigationStore extends Store {
           pages: [
             {
               name: 'About you',
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
                   user_type: t.enums({
                     W: 'Domestic Worker',
@@ -40,7 +53,7 @@ export default class NavigationStore extends Store {
             },
             {
               name: 'Parties',
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
                   employer: t.struct({
                     name: t.Str,
@@ -59,7 +72,7 @@ export default class NavigationStore extends Store {
             },
             {
               name: 'Location',
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
                   work_address: t.Str,
                   start_date: t.Dat
@@ -73,7 +86,7 @@ export default class NavigationStore extends Store {
           pages: [
             {
               name: 'Job Description',
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
                   children: t.list(Recipient),
                   childcare_tasks: t.list(t.Str),
@@ -85,7 +98,7 @@ export default class NavigationStore extends Store {
             },
             {
               name: 'Additional Tasks',
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
                   description: t.maybe(t.Str)
                 });
@@ -97,7 +110,7 @@ export default class NavigationStore extends Store {
           name: 'Scheduling',
           pages: [
             {
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
                   work_week_duration: TNonZero,
                   valid_work_schedule: TValidWorkSchedule
@@ -111,9 +124,9 @@ export default class NavigationStore extends Store {
           pages: [
             {
               name: 'Pay Rate',
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
-                  hourly_rate: t.subtype(t.Num, n => n > 9 ),
+                  hourly_rate: t.subtype(t.Num, n => n >= 9 ),
                   overtime_rate: t.Num,
                   payment_frequency: t.enums({
                     weekly: 'Weekly',
@@ -143,7 +156,7 @@ export default class NavigationStore extends Store {
             },
             {
               name: 'Time Off',
-              types: function(contract){
+              types: (contract) => {
                 let {parental_leave} = contract;
 
                 let parental_leave_struct = t.struct({
@@ -165,7 +178,7 @@ export default class NavigationStore extends Store {
             },
             {
               name: 'Cancellations',
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
                   cancelled_day_paid: t.Bool,
                   bad_weather_day_paid: t.Bool
@@ -174,7 +187,7 @@ export default class NavigationStore extends Store {
             },
             {
               name: 'Room',
-              types: function(contract){
+              types: (contract) => {
                 let {room} = contract;
 
                 let room_struct = t.struct({
@@ -212,7 +225,7 @@ export default class NavigationStore extends Store {
             },
             {
               name: 'Board',
-              types: function(contract){
+              types: (contract) => {
                 let {board_provided} = contract;
 
                 let Page = t.struct({
@@ -246,7 +259,7 @@ export default class NavigationStore extends Store {
           name: 'Insurance',
           pages: [
             {
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
                   benefits: t.struct({
                     health: t.Bool,
@@ -266,7 +279,7 @@ export default class NavigationStore extends Store {
           name: 'Deductions',
           pages: [
             {
-              types: function(contract){
+              types: (contract) => {
                 let Page = t.struct({
                   deductions_taken: t.Bool
                 });
@@ -291,7 +304,7 @@ export default class NavigationStore extends Store {
           name: 'Evaluation',
           pages: [
             {
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
                   evaluation_after_three_months: t.Bool,
                   evaluation_every_year: t.Bool,
@@ -306,7 +319,7 @@ export default class NavigationStore extends Store {
           pages: [
             {
               name: 'Worker',
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
                   worker_privacy: t.struct({
                     info_disclosure_permitted: t.Bool,
@@ -318,7 +331,7 @@ export default class NavigationStore extends Store {
             },
             {
               name: 'Family',
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
                   family_privacy: t.struct({
                     restrict_private_comm: t.Bool,
@@ -337,7 +350,7 @@ export default class NavigationStore extends Store {
           pages: [
             {
               name: 'Severance & Lodging',
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
                   termination_notice_length: t.Str,
                   termination_severance_length: t.Str,
@@ -348,7 +361,7 @@ export default class NavigationStore extends Store {
             },
             {
               name: 'Immediate Termination',
-              types: function(contract){
+              types: (contract) => {
                 return t.struct({
                   immediate_termination_grounds: t.Str
                 });
@@ -360,7 +373,9 @@ export default class NavigationStore extends Store {
           name: 'Finish',
           pages: [
             {
-              types: function(contract){}
+              types: (contract) => {
+                return t.struct({})
+              }
             }
           ]
         }
