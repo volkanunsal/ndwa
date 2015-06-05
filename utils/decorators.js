@@ -1,9 +1,23 @@
 import React from 'react';
 import t from 'tcomb-form';
 var {Form} = t.form;
-
+var router = require('../router');
+var {nextPageOrSection} = require('../utils/NavUtils');
+  
 export default {
   getForm(Component) {
+    Component.prototype.save = function save(){
+      // call getValue() to get the values of the form
+      var value = this.refs.form.getValue();
+
+      // if validation fails, value will be null
+      if (value) {
+        // Update the contract
+        this.props.flux.getActions('contract_actions').merge(value)
+        router.transitionTo('page', nextPageOrSection(this.props));
+      }
+    }
+
     Component.prototype.getValidator = function getValidator(){
       let {params, nav} = this.props;
       let {pageName, sectionName} = params;

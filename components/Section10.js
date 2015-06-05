@@ -1,23 +1,28 @@
 import React from 'react';
 import t from 'tcomb-form';
+import ContractStore from '../stores/ContractStore';
 
 export default class SectionPage extends React.Component {
   save() {
-    // call getValue() to get the values of the form
-    var value = this.refs.form.getValue();
+    // Validate the entire contract
+    let {contract, nav} = this.props;
 
-    // if validation fails, value will be null
-    if (value) {
-      // TODO: open the payment modal
-      console.log(value);
-    }
+    ContractStore.validate(contract, nav.sections);
+
+    // TODO: open the payment modal
+
   }
 
   render() {
+
     return <div className='container text-center' style={{alignSelf: 'center'}}>
       <h3>Congratulations, you did it! You’ve reached the end of the agreement. Be sure to review your information by using the tabs before printing it, making multiple copies and signing it!</h3>
       <p>
-        <a className='btn btn-lg btn-primary' style={{marginTop: 20, width: 200}}>Print</a>
+        <a
+          onClick={this.save.bind(this)}
+          className='btn btn-lg btn-primary'
+          style={{marginTop: 20, width: 200}}>Print</a>
+
       </p>
     </div>
   }

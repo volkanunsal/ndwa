@@ -9,19 +9,7 @@ import decorators from '../utils/decorators';
 
 @decorators.getForm
 export default class SectionPage extends React.Component {
-
-  save() {
-    // call getValue() to get the values of the form
-    var value = this.refs.form.getValue();
-
-    // if validation fails, value will be null
-    if (value) {
-      // Update the contract
-      this.props.flux.getActions('contract_actions').merge(value)
-      router.transitionTo('page', nextPageOrSection(this.props));
-    }
-  }
-
+  
   getPageOptions(contract, flux){
     var Page1 = {
       label: 'Are you a domestic worker or an employer?',

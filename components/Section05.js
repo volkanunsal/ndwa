@@ -78,17 +78,7 @@ export default class SectionPage extends React.Component {
     return [Page1]
   }
 
-  save() {
-    // call getValue() to get the values of the form
-    var value = this.refs.form.getValue();
 
-    // if validation fails, value will be null
-    if (value) {
-      // Update the contract
-      this.props.flux.getActions('contract_actions').merge(value)
-      router.transitionTo('page', nextPageOrSection(this.props));
-    }
-  }
 
   render() {
     return <div className='form-section'>

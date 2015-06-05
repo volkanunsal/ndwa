@@ -7,6 +7,10 @@ import { contractPropTypes } from 'schema';
 
 export default class ContractStore extends Store {
 
+  static validate(state) {
+    console.log(state)
+  }
+
   constructor(flux) {
     super(); // Don't forget this step
     const APP_ACTION_IDS = flux.getActionIds('app');
