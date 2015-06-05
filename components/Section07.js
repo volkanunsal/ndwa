@@ -43,7 +43,7 @@ export default class SectionPage extends React.Component {
       },
       fields: {
         evaluation_after_three_months: {
-          label: "Will the Family will give the employee a written job evaluation after the first three months of employment?",
+          label: "Will the employer will give the employee a written job evaluation after the first three months of employment?",
           template: function(locals){
             return <div>
               <YesNo flux={props.flux} {...locals}/>
@@ -51,7 +51,7 @@ export default class SectionPage extends React.Component {
           }
         },
         evaluation_every_year: {
-          label: "Will the Family also provide a written job evaluation every year thereafter?",
+          label: "Will the employer also provide a written job evaluation every year thereafter?",
           template: function(locals){
             return <div>
               <YesNo flux={props.flux} {...locals}/>
@@ -59,7 +59,7 @@ export default class SectionPage extends React.Component {
           }
         },
         complaint_handling_process: {
-          label: 'The Family and Tia shall establish a process for addressing complaints and￼increasing pay and/or benefits. Please describe that process:',
+          label: 'the employer and Tia shall establish a process for addressing complaints and￼increasing pay and/or benefits. Please describe that process:',
           type: 'textarea',
           help: <i>During these reviews, both parties will have the opportunity to evaluate the contract and propose changes.</i>
         }

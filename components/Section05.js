@@ -39,7 +39,7 @@ export default class SectionPage extends React.Component {
       },
       fields: {
         workers_comp_insurance: {
-          label: "What are the Family’s workers' compensation company and information?",
+          label: "What are the employer’s workers' compensation company and information?",
           template: function(locals){
             return <div>
               <p className='lead'>{locals.label}</p>
@@ -56,7 +56,7 @@ export default class SectionPage extends React.Component {
           }
         },
         benefits: {
-          label: 'Which benefits will the Family offer the employee during the employee\'s employment?',
+          label: 'Which benefits will the employer offer the employee during the employee\'s employment?',
           template: function(locals){
             return <div>
               <p className='lead'>{locals.label}</p>

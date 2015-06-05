@@ -57,7 +57,7 @@ export default class SectionPage extends React.Component {
           }
         },
         termination_severance_length: {
-          label: <p className='lead'>{"If the employee is terminated with or without cause, the Family shall provide the employee with how much severance pay?"}</p>,
+          label: <p className='lead'>{"If the employee is terminated with or without cause, the employer shall provide the employee with how much severance pay?"}</p>,
           type: "number",
           attrs: {
             min: 0
@@ -67,7 +67,7 @@ export default class SectionPage extends React.Component {
           }
         },
         termination_accom_eviction_notice_length: {
-          label: <p className='lead'>{"And if living accommodations have been provided by the Family, how many days of lodging will the employee be given if the employee is terminated?"}</p>,
+          label: <p className='lead'>{"And if living accommodations have been provided by the employer, how many days of lodging will the employee be given if the employee is terminated?"}</p>,
           type: "number",
           attrs: {
             min: 0
@@ -89,7 +89,7 @@ export default class SectionPage extends React.Component {
     var Page2 = {
       fields: {
         immediate_termination_grounds: {
-          label: <p className='lead'>{"There may be cases when there are grounds or cause for immediate termination without notice. the employee and the Family should discuss (and be as concrete as possible) what these might grounds or cause for immediate termination without notice will be, and list them here:"}</p>,
+          label: <p className='lead'>{"There may be cases when there are grounds or cause for immediate termination without notice. the employee and the employer should discuss (and be as concrete as possible) what these might grounds or cause for immediate termination without notice will be, and list them here:"}</p>,
           type: 'textarea'
 
         }

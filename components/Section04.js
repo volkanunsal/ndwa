@@ -173,7 +173,7 @@ export default class SectionPage extends React.Component {
 
         overtime_notice_length: {
           type: 'number',
-          label: 'When possible, the Family will provide the employee with notice how far in advance, prior to requesting the employee to work overtime?',
+          label: 'When possible, the employer will provide the employee with notice how far in advance, prior to requesting the employee to work overtime?',
           config: {
             addonAfter: <i>days</i>
           },
@@ -182,7 +182,7 @@ export default class SectionPage extends React.Component {
           }
         },
         overtime_holidays: {
-          label: 'The employee and the Family agree that the employee will be paid when working which of the following holidays?',
+          label: 'The employee and the employer agree that the employee will be paid when working which of the following holidays?',
           attrs: {
             style: {height: 130}
           },
@@ -217,7 +217,7 @@ export default class SectionPage extends React.Component {
       fields: {
         vacation_days: {
           type: 'number',
-          label: 'The family agrees to provide the employee with how many vacation days?',
+          label: 'the employer agrees to provide the employee with how many vacation days?',
           config: {
             addonAfter: <i>days</i>
           },
@@ -227,7 +227,7 @@ export default class SectionPage extends React.Component {
         },
         personal_days: {
           type: 'number',
-          label: 'The Family agrees to provide the employee with how many personal/sick days?',
+          label: 'the employer agrees to provide the employee with how many personal/sick days?',
           config: {
             addonAfter: <i>days</i>
           },
@@ -240,7 +240,7 @@ export default class SectionPage extends React.Component {
           fields: {
             notice_length: {
               type: 'number',
-              label: 'How much notice will the employee provide the Family, prior to taking her parental leave?',
+              label: 'How much notice will the employee provide the employer, prior to taking her parental leave?',
               help: <i>Minimum 2 weeks</i>,
               config: {
                 addonAfter: <i>weeks</i>
@@ -250,7 +250,7 @@ export default class SectionPage extends React.Component {
               }
             },
             paid: {
-              label: 'Will the Family pay the employee for parental leave?',
+              label: 'Will the employer pay the employee for parental leave?',
               template: function(locals){
                 return <YesNo flux={props.flux} {...locals}/>
               }
@@ -272,7 +272,7 @@ export default class SectionPage extends React.Component {
           }
         },
         reduced_hours_reg_wage: {
-          label: "In the event that the Family temporarily reduces employee's hours will they to continue to pay employee regular wages?",
+          label: "In the event that the employer temporarily reduces employee's hours will they to continue to pay employee regular wages?",
           template: function(locals){
             return <YesNo flux={props.flux} {...locals}/>
           }
@@ -291,13 +291,13 @@ export default class SectionPage extends React.Component {
       },
       fields: {
         cancelled_day_paid: {
-          label: "If the Family has to cancel one or more days of the employee's work week, will Tia be paid as usual?",
+          label: "If the employer has to cancel one or more days of the employee's work week, will Tia be paid as usual?",
           template: function(locals){
             return <YesNo flux={props.flux} {...locals}/>
           }
         },
         bad_weather_day_paid: {
-          label: "The Family expects that the employee will make every effort to come to work during bad weather. When a city or region is shutdown due to poor weather conditions, will the Family pay the employee for days of missed work?",
+          label: "the employer expects that the employee will make every effort to come to work during bad weather. When a city or region is shutdown due to poor weather conditions, will the employer pay the employee for days of missed work?",
           template: function(locals){
             return <YesNo flux={props.flux} {...locals}/>
           }
@@ -316,7 +316,7 @@ export default class SectionPage extends React.Component {
         room: {
           fields: {
             provided: {
-              label: "Will the Family provide the employee with living accommodations?",
+              label: "Will the employer provide the employee with living accommodations?",
               template: function(locals){
                 return <YesNo flux={props.flux} {...locals}/>
               }
@@ -365,19 +365,19 @@ export default class SectionPage extends React.Component {
                 entry: {
                   fields: {
                     notice_length: {
-                      label: 'Will the Family provide the employee with at least 24 hours notice?',
+                      label: 'Will the employer provide the employee with at least 24 hours notice?',
                       template: function(locals){
                         return <YesNo flux={props.flux} {...locals}/>
                       }
                     },
                     emergency_repairs: {
-                      label: "Will the Family enter the employee's living space in cases of emergencies or repairs?",
+                      label: "Will the employer enter the employee's living space in cases of emergencies or repairs?",
                       template: function(locals){
                         return <YesNo flux={props.flux} {...locals}/>
                       }
                     },
                     specific_repairs: {
-                      label: "Will the Family enter the employee's living space at the employee's request for specific repairs?",
+                      label: "Will the employer enter the employee's living space at the employee's request for specific repairs?",
                       template: function(locals){
                         return <YesNo flux={props.flux} {...locals}/>
                       }
@@ -393,7 +393,7 @@ export default class SectionPage extends React.Component {
                   template: function(locals){
                     return <fieldset>
                       <hr/>
-                      <p className='lead'>{"The Family may enter the employee's living accommodations only under the following agreed upon circumstances"}</p>
+                      <p className='lead'>{"the employer may enter the employee's living accommodations only under the following agreed upon circumstances"}</p>
                       {React.addons.createFragment(locals.inputs)}
                     </fieldset>
                   }
@@ -401,7 +401,7 @@ export default class SectionPage extends React.Component {
               },
               template: function(locals){
                 return <div>
-                  <p className='lead'>{'Describe the living accommodations provided by the Family for the employee'}</p>
+                  <p className='lead'>{'Describe the living accommodations provided by the employer for the employee'}</p>
                   {React.addons.createFragment(locals.inputs)}
                 </div>
               }
@@ -456,7 +456,7 @@ export default class SectionPage extends React.Component {
               }
             },
             food_paid: {
-              label: "Have the employee and the Family agreed that the employee will pay for the employee’s own food?",
+              label: "Have the employee and the employer agreed that the employee will pay for the employee’s own food?",
               template: function(locals){
                 return <YesNo flux={props.flux} {...locals}/>
               }

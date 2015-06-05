@@ -45,7 +45,7 @@ export default class SectionPage extends React.Component {
     var Page1 = {
       fields: {
         deductions_taken: {
-          label: 'Will the family take deductions from the employee\'s wages?',
+          label: 'Will the employer take deductions from the employee\'s wages?',
           template: function(locals){
             return <div className='text-center'>
               <p className='lead'>
