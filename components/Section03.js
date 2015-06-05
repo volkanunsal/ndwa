@@ -15,10 +15,18 @@ export default class SectionPage extends React.Component {
     super();
     this.state = {errorMsg: 'The schedule you specified is not valid.', isValid: true};
   }
-  save(calendar) {
-    let validator = this.getValidator();
-    let isValid = validator(calendar);
+  save(contract) {
+    let validatorFn = this.getValidator();
+
+    let formValues = {
+      work_week_duration: contract.work_week_duration,
+      valid_work_schedule: contract.valid_work_schedule
+    };
+
+    let isValid = t.validate(formValues, validatorFn()).isValid();
+
     this.setState({isValid})
+
     // if fieldValidation fails, value will be null
     if (isValid) {
       // TODO: call the contract action creator to update the contract
@@ -26,21 +34,15 @@ export default class SectionPage extends React.Component {
     }
   }
 
+
   render() {
-
-    let page = (this.props.params.pageName || 1) - 1;
     let errorMsg = this.state.isValid ? null : <div className='alert alert-danger'>{this.state.errorMsg}</div>
-
     return <div className='form-section'>
       <div className='container-fluid'>
         {errorMsg}
-        <FluxComponent
-          connectToStores={{calendar: store => ({ calendar: store.state })}}
-          {...this.props}>
-          <WorkWeekTimePicker/>
-        </FluxComponent>
+        <WorkWeekTimePicker {...this.props}/>
       </div>
-      <ActionBar handleSave={this.save.bind(this, this.props.calendar)}/>
+      <ActionBar handleSave={this.save.bind(this, this.props.contract)}/>
     </div>
   }
 }

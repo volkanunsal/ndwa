@@ -13,6 +13,10 @@ var Recipient = t.struct({
 var TNonZero = t.subtype(t.Num, function(value){
   return value > 0
 })
+var TValidWorkSchedule = t.subtype(t.Bool, function(value){
+  console.log(value)
+  return value == true
+})
 
 
 export default class NavigationStore extends Store {
@@ -93,18 +97,11 @@ export default class NavigationStore extends Store {
           name: 'Scheduling',
           pages: [
             {
-              types: function(calendar){
-                // TODO: encode the schedule type
-                let WorkSchedule = t.struct({
-                  work_duration: TNonZero
+              types: function(contract){
+                return t.struct({
+                  work_week_duration: TNonZero,
+                  valid_work_schedule: TValidWorkSchedule
                 });
-
-                let formValues = {
-                  work_duration: calendar.total_time_in_ms
-                };
-                let fieldValidation = t.validate(formValues, WorkSchedule);
-
-                return fieldValidation.isValid() && calendar.all_dates_valid;
               }
             }
           ]

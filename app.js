@@ -7,10 +7,9 @@ require('./styles/Main.scss');
 import assign from 'object-assign';
 import I from 'immutable';
 import moment from 'moment';
-import CalendarStore from './stores/CalendarStore';
 import ContractStore from './stores/ContractStore';
 import NavigationStore from './stores/NavigationStore';
-  
+
 //================ ACTIONS =======================
 export class CalendarActions extends Actions {
   toggleDay(day){ return day }
@@ -30,7 +29,6 @@ export class AppFlux extends Flux {
     // stores
     this.createStore('nav', NavigationStore, this);
     this.createStore('contract', ContractStore, this);
-    this.createStore('calendar', CalendarStore, this);
   }
 }
 const flux = new AppFlux();

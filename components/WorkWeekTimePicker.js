@@ -170,8 +170,9 @@ class TimePicker extends React.Component {
 export default class WorkWeekTimePicker extends React.Component {
 
   render(){
-    let {flux, calendar} = this.props;
-    let work_days = this.props.calendar.work_days.map((day,i) => {
+    let {flux, contract} = this.props;
+    let {work_week_duration, work_days} = contract;
+    work_days = work_days.map((day,i) => {
       let {name, times, valid} = day;
       let {active} = day;
 
@@ -205,7 +206,9 @@ export default class WorkWeekTimePicker extends React.Component {
         </div>
     })
 
-    let totalHours = Math.round(moment.duration(calendar.total_time_in_ms, 'milliseconds').asHours());
+
+
+    let totalHours = Math.round(moment.duration(work_week_duration, 'milliseconds').asHours());
 
     let weeklyTotalHours = <input
       type='text'
@@ -214,11 +217,6 @@ export default class WorkWeekTimePicker extends React.Component {
       value={totalHours}
       className='form-control'
       style={{height: 'inherit', textAlign: 'right', outline: 'none'}}/>
-
-    let weeklyTotalMS = <input
-      type='hidden'
-      tabIndex={-1}
-      value={calendar.total_time_in_ms}/>;
 
     return <div>
       <p className='lead'>What are the hours employee is scheduled to work?</p>
@@ -244,7 +242,6 @@ export default class WorkWeekTimePicker extends React.Component {
           </ul>
         </div>
       </div>
-      {weeklyTotalMS}
     </div>
   }
 }

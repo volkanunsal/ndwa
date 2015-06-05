@@ -14,8 +14,7 @@ export default class SectionPage extends React.Component {
       <FluxComponent
         connectToStores={{
           nav: store => ({ nav: store.state }),
-          contract: store => ({ contract: store.state }),
-          calendar: store => ({ calendar: store.state })
+          contract: store => ({ contract: store.state })
         }} {...this.props}>
         <Nav {...this.props}/>
         <Section/>
