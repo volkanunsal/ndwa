@@ -4,6 +4,7 @@ set -e
 
 git checkout -b gh-pages
 BUILD_PRERELEASE='true' $(npm bin)/webpack -p --color --display-error-details --config webpack.config.js --bail 2>&1
+mv ./public/index.production.html ./public/index.html
 git add .
 git commit -am 'release build'
 git push origin :gh-pages
