@@ -13,10 +13,10 @@ export default class ContractStore extends Store {
     const CONTRACT_ACTION_IDS = flux.getActionIds('contract_actions');
     this.register(CONTRACT_ACTION_IDS.setIn, this.handleSetIn);
     this.register(CONTRACT_ACTION_IDS.merge, this.handleMerge);
-    
+
     this.state = {
-      hourly_rate:9,
-      overtime_rate:18,
+      hourly_rate: 9,
+      overtime_rate: 13.5,
       vacation_days: 2,
       personal_days: 2,
       parental_leave: {

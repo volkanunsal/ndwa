@@ -4,7 +4,6 @@ var {nextPageOrSection} = require('../utils/NavUtils');
 var {Form} = t.form;
 var router = require('../router');
 import cx from 'classnames';
-import compact from '../utils/compact';
 import isEmpty from '../utils/isEmpty';
 import YesNo from './YesNo'
 import ActionBar from './ActionBar';

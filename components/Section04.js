@@ -178,9 +178,9 @@ export default class SectionPage extends React.Component {
         overtime_rate: {
           type: 'number',
           label: 'When the employee works more than 40 hours a week, what will the overtime rate be?',
-          help: <i>Overtime rate must be at least twice the regular hourly rate</i>,
+          help: <i>Overtime rate must be at least 1.5 times the regular hourly rate</i>,
           attrs: {
-            min: 9
+            min: 13.5
           },
           config: {
             addonBefore: <b>$</b>,
