@@ -3,9 +3,13 @@ import t from 'tcomb-form';
 var {Form} = t.form;
 var router = require('../router');
 var {nextPageOrSection} = require('../utils/NavUtils');
-  
+
 export default {
   getForm(Component) {
+    Component.prototype.handleFormChange = function handleFormChange(value){
+      this.props.flux.getActions('contract_actions').merge(value)
+    }
+
     Component.prototype.save = function save(){
       // call getValue() to get the values of the form
       var value = this.refs.form.getValue();
@@ -46,6 +50,7 @@ export default {
           type={pageTypes(contract)}
           options={pageOptions}
           value={contract}
+          onChange={this.handleFormChange.bind(this)}
         />;
         page = form;
       };
