@@ -28,7 +28,8 @@ export default class ContractStore extends Store {
       room: {
         provided: true,
         living_accommodations: {}
-      }
+      },
+      deductions_taken: false
     };
   }
 

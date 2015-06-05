@@ -5,7 +5,9 @@ var {Form} = t.form;
 var router = require('../router');
 import YesNo from './YesNo'
 import ActionBar from './ActionBar';
+import decorators from '../utils/decorators';
 
+@decorators.getForm
 export default class SectionPage extends React.Component {
   save() {
     // call getValue() to get the values of the form
@@ -19,39 +21,8 @@ export default class SectionPage extends React.Component {
     }
   }
 
-
-  getPageTypes(contract){
-    var Page1 = t.struct({
-      worker_privacy: t.struct({
-        info_disclosure_permitted: t.Bool,
-        family_pics_sharing_permitted: t.Bool,
-        notes: t.maybe(t.Str)
-      })
-    });
-
-    var Page2 = t.struct({
-      family_privacy: t.struct({
-        restrict_private_comm: t.Bool,
-        surveillance: t.Bool,
-        take_away_personal_docs: t.Bool,
-        force_service: t.Bool,
-        notes: t.maybe(t.Str)
-      })
-    });
-
-    return [Page1, Page2]
-  }
-
-
   getPageOptions(contract, flux){
     var Page1 = {
-      // config: {
-      //   horizontal: {
-      //     lg: [4, 8],
-      //     md: [4, 8],
-      //     sm: [6, 6]
-      //   }
-      // },
       fields: {
         worker_privacy: {
           label: ' ',
@@ -146,34 +117,11 @@ export default class SectionPage extends React.Component {
     return [Page1, Page2]
   }
 
-  getPage(){
-    let pageNum = (this.props.params.pageName || 1) - 1;
-    let {contract} = this.props;
-    let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
-
-    let form = <Form
-      ref="form"
-      type={this.getPageTypes(contract)[pageNum]}
-      options={pageOptions}
-      value={contract}
-    />;
-
-    let page = form;
-
-    if(pageOptions && pageOptions.config && pageOptions.config.horizontal){
-      page = <div className='form-horizontal'>
-        {form}
-      </div>
-    }
-
-    return page
-  }
 
   render() {
     return <div className='form-section'>
       <div className='container-fluid'>
-        {this.getPage()}
-
+        {this.getForm()}
       </div>
       <ActionBar handleSave={this.save.bind(this, this.props.calendar)}/>
     </div>

@@ -7,13 +7,10 @@ import cx from 'classnames';
 import isEmpty from '../utils/isEmpty';
 import YesNo from './YesNo'
 import ActionBar from './ActionBar';
+import decorators from '../utils/decorators';
 
-// const THourlyRate = t.subtype(t.Num, n => n > 9 )
-// const TPayment = t.subtype(t.struct({
-//   hourly_rate: THourlyRate,
-//   overtime_rate: t.Num
-// }), s => Number(s.overtime_rate) >= 2 * Number(s.hourly_rate));
-
+  
+@decorators.getForm
 export default class SectionPage extends React.Component {
   save() {
     // call getValue() to get the values of the form
@@ -25,119 +22,6 @@ export default class SectionPage extends React.Component {
       this.props.flux.getActions('contract_actions').merge(value)
       router.transitionTo('page', nextPageOrSection(this.props));
     }
-  }
-
-  getPageTypes(contract){
-    let {parental_leave, room, board_provided} = contract;
-
-    let Page1 = t.struct({
-      hourly_rate: t.subtype(t.Num, n => n > 9 ),
-      overtime_rate: t.Num,
-      payment_frequency: t.enums({
-        weekly: 'Weekly',
-        monthly: 'Monthly'
-      }),
-      payday: t.enums({
-        monday: 'Monday',
-        tuesday: 'Tuesday',
-        wednesday: 'Wednesday',
-        thursday: 'Thursday',
-        friday: 'Friday',
-        saturday: 'Saturday',
-        sunday: 'Sunday'
-      }),
-      overtime_notice_length: t.Str,
-      overtime_holidays: t.maybe(t.struct({
-        "New Year's Day":t.Bool,
-        "MLK Birthday":t.Bool,
-        'Presidents Day':t.Bool,
-        "Memorial Day":t.Bool,
-        "Independence Day":t.Bool,
-        "Labor Day":t.Bool,
-        'Christmas Day':t.Bool
-      }))
-    });
-
-    let parental_leave_struct = t.struct({
-      notice_length: t.subtype(t.Num, n => Number(n) >= 2),
-      paid: t.Bool
-    });
-
-    if (parental_leave && parental_leave.paid) {
-      parental_leave_struct = parental_leave_struct.extend({paid_note: t.Str})
-    };
-
-    let Page2 = t.struct({
-      vacation_days: t.Num,
-      personal_days: t.Num,
-      parental_leave: parental_leave_struct,
-      reduced_hours_reg_wage: t.Bool
-    });
-
-    let Page3 = t.struct({
-      cancelled_day_paid: t.Bool,
-      bad_weather_day_paid: t.Bool
-    });
-
-    let room_struct = t.struct({
-      provided: t.Bool
-    });
-
-    if (room && room.provided) {
-      let living_accommodations_struct = t.struct({
-        size: t.Num,
-        num_beds: t.Num,
-        working_heat: t.Bool
-      });
-      if (room.living_accommodations && room.living_accommodations.working_heat) {
-        living_accommodations_struct = living_accommodations_struct.extend({
-          heat_controlled: t.Bool
-        })
-      };
-      // HACK: This is a bit of a hack, but the order option is not working for nested forms.
-      living_accommodations_struct = living_accommodations_struct.extend({
-        clean: t.Bool,
-        num_people: t.Num,
-        entry: t.struct({
-          notice_length: t.Bool,
-          emergency_repairs: t.Bool,
-          specific_repairs: t.Bool,
-          other: t.maybe(t.Str)
-        })
-      })
-      room_struct = room_struct.extend({
-        living_accommodations: living_accommodations_struct
-      });
-    };
-
-    let Page4 = t.struct({
-      room: room_struct
-    });
-
-    let Page5 = t.struct({
-      board_provided: t.Bool
-    });
-
-    if (board_provided == true) {
-      Page5 = Page5.extend({
-        board_yes: t.struct({
-          house_food: t.Bool,
-          free_food: t.Bool
-        })
-      })
-    };
-
-    if (board_provided == false) {
-      Page5 = Page5.extend({
-        board_no: t.struct({
-          bring_own_food: t.Bool,
-          food_paid: t.Bool,
-          food_paid_notes: t.Str
-        })
-      });
-    };
-
-    return [Page1, Page2, Page3, Page4, Page5]
   }
 
   getPageOptions(contract, flux){
@@ -500,35 +384,10 @@ export default class SectionPage extends React.Component {
     };
     return [ Page1, Page2, Page3, Page4, Page5];
   }
-
-  getPage(){
-    let pageNum = (this.props.params.pageName || 1) - 1;
-    let {contract} = this.props;
-    let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
-
-    let form = <Form
-      ref="form"
-      type={this.getPageTypes(contract)[pageNum]}
-      options={pageOptions}
-      value={contract}
-    />;
-
-    let page = form;
-
-    if(pageOptions && pageOptions.config && pageOptions.config.horizontal){
-      page = <div className='form-horizontal'>
-        {form}
-      </div>
-    }
-
-    return page
-  }
-
   render() {
     return <div className='form-section'>
       <div className='container-fluid'>
-        {this.getPage()}
-
+        {this.getForm()}
       </div>
       <ActionBar handleSave={this.save.bind(this, this.props.calendar)}/>
     </div>

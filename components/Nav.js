@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link, State } from 'react-router';
 import cx from 'classnames';
-  
+
 class NavTab extends React.Component {
   render(){
     var isActive = this.context.router.isActive(this.props.to, this.props.params, this.props.query) || this.props.active;
@@ -53,14 +53,16 @@ export default class Nav extends React.Component {
         let secNavParam = {sectionName: sid, pageName: pid};
         let {name} = pages[j];
 
-        secondary.push(<NavTab
-          to='page'
-          active={isActive}
-          className='btn-sm'
-          params={secNavParam}
-          key={j}>
-            {name}
-          </NavTab>);
+        if (name) {
+          secondary.push(<NavTab
+            to='page'
+            active={isActive}
+            className='btn-sm'
+            params={secNavParam}
+            key={j}>
+              {name}
+            </NavTab>);
+        };
       };
     };
 

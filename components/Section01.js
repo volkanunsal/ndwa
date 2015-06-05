@@ -4,7 +4,10 @@ var {nextPageOrSection} = require('../utils/NavUtils');
 var {Form} = t.form;
 var router = require('../router');
 import ActionBar from './ActionBar';
+import decorators from '../utils/decorators';
 
+
+@decorators.getForm
 export default class SectionPage extends React.Component {
 
   save() {
@@ -17,37 +20,6 @@ export default class SectionPage extends React.Component {
       this.props.flux.getActions('contract_actions').merge(value)
       router.transitionTo('page', nextPageOrSection(this.props));
     }
-  }
-
-  getPageTypes(contract){
-    var Page1 = t.struct({
-      user_type: t.enums({
-        W: 'Domestic Worker',
-        E: 'Employer'
-      })
-    });
-
-    var Page2 = t.struct({
-      employer: t.struct({
-        name: t.Str,
-        address: t.Str,
-        phone: t.Str,
-        email: t.maybe(t.Str)
-      }),
-      employee: t.struct({
-        name: t.Str,
-        address: t.Str,
-        phone: t.Str,
-        email: t.maybe(t.Str)
-      })
-    });
-
-    var Page3 = t.struct({
-      work_address: t.Str,
-      start_date: t.Dat
-    });
-
-    return [Page1, Page2, Page3]
   }
 
   getPageOptions(contract, flux){
@@ -100,39 +72,10 @@ export default class SectionPage extends React.Component {
     return [Page1, Page2, Page3]
   }
 
-
-  getPage(){
-    let {params, contract, nav} = this.props;
-    let {pageName, sectionName} = params;
-
-    let pageNum = (pageName || 1) - 1;
-    let sectionNum = Number(sectionName);
-
-    let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
-    console.log(nav, pageNum, sectionNum)
-
-    let form = <Form
-      ref="form"
-      type={this.getPageTypes(contract)[pageNum]}
-      options={pageOptions}
-      value={contract}
-    />;
-
-    let page = form;
-
-    if(pageOptions && pageOptions.config && pageOptions.config.horizontal){
-      page = <div className='form-horizontal'>
-        {form}
-      </div>
-    }
-
-    return page
-  }
-
   render() {
     return <div className='form-section'>
       <div className='container-fluid'>
-        {this.getPage()}
+        {this.getForm()}
       </div>
       <ActionBar handleSave={this.save.bind(this)}/>
     </div>

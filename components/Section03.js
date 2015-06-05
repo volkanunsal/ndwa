@@ -5,6 +5,7 @@ var {Form} = t.form;
 var router = require('../router');
 import FluxComponent from 'flummox/component';
 import ActionBar from './ActionBar';
+import decorators from '../utils/decorators';
 import WorkWeekTimePicker from './WorkWeekTimePicker';
 
 var TNonZero = t.subtype(t.Num, function(value){
@@ -21,7 +22,7 @@ export default class SectionPage extends React.Component {
     let WorkSchedule = t.struct({
       work_duration: TNonZero
     });
-    
+
     let formValues = {
       work_duration: calendar.total_time_in_ms
     };
@@ -45,7 +46,8 @@ export default class SectionPage extends React.Component {
       <div className='container-fluid'>
         {errorMsg}
         <FluxComponent
-          connectToStores={{calendar: store => ({ calendar: store.state })}} {...this.props}>
+          connectToStores={{calendar: store => ({ calendar: store.state })}}
+          {...this.props}>
           <WorkWeekTimePicker/>
         </FluxComponent>
       </div>

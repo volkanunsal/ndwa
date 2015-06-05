@@ -4,14 +4,10 @@ var {nextPageOrSection} = require('../utils/NavUtils');
 var {Form} = t.form;
 var router = require('../router');
 import ActionBar from './ActionBar';
-
-var Recipient = t.struct({
-  name: t.Str,
-  age: t.Num,
-  description_of_care: t.Str
-});
+import decorators from '../utils/decorators';
 
 
+@decorators.getForm
 export default class SectionPage extends React.Component {
   save() {
     // call getValue() to get the values of the form
@@ -23,20 +19,6 @@ export default class SectionPage extends React.Component {
       this.props.flux.getActions('contract_actions').merge(value)
       router.transitionTo('page', nextPageOrSection(this.props));
     }
-  }
-
-  getPageTypes(contract){
-    var Page1 = t.struct({
-      children: t.list(Recipient),
-      childcare_tasks: t.list(t.Str),
-      cleaning_tasks: t.list(t.Str),
-      home_care_recipients: t.list(Recipient),
-      home_care_tasks: t.list(t.Str)
-    });
-    var Page2 = t.struct({
-      description: t.maybe(t.Str)
-    });
-    return [Page1, Page2]
   }
 
   getPageOptions(contract, flux){
@@ -180,34 +162,10 @@ export default class SectionPage extends React.Component {
     return [Page1, Page2]
   }
 
-  getPage(){
-    let pageNum = (this.props.params.pageName || 1) - 1;
-    let {contract} = this.props;
-    let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
-
-    let form = <Form
-      ref="form"
-      type={this.getPageTypes(contract)[pageNum]}
-      options={pageOptions}
-      value={contract}
-    />;
-
-    let page = form;
-
-    if(pageOptions && pageOptions.config && pageOptions.config.horizontal){
-      page = <div className='form-horizontal'>
-        {form}
-      </div>
-    }
-
-    return page
-  }
-
-
   render() {
     return <div className='form-section'>
       <div className='container-fluid'>
-        {this.getPage()}
+        {this.getForm()}
       </div>
       <ActionBar handleSave={this.save.bind(this)}/>
     </div>

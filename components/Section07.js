@@ -5,8 +5,10 @@ var {Form} = t.form;
 var router = require('../router');
 import YesNo from './YesNo'
 import ActionBar from './ActionBar';
+import decorators from '../utils/decorators';
 
 
+@decorators.getForm
 export default class SectionPage extends React.Component {
   save() {
     // call getValue() to get the values of the form
@@ -19,27 +21,9 @@ export default class SectionPage extends React.Component {
       router.transitionTo('page', nextPageOrSection(this.props));
     }
   }
-
-
-  getPageTypes(contract){
-    var Page1 = t.struct({
-      evaluation_after_three_months: t.Bool,
-      evaluation_every_year: t.Bool,
-      complaint_handling_process: t.Str
-    });
-    return [Page1]
-  }
-
-
+  
   getPageOptions(contract, flux){
     var Page1 = {
-      // config: {
-      //   horizontal: {
-      //     lg: [4, 8],
-      //     md: [4, 8],
-      //     sm: [6, 6]
-      //   }
-      // },
       fields: {
         evaluation_after_three_months: {
           label: <p className='lead'>{"Will the employer will give the employee a written job evaluation after the first three months of employment?"}</p>,
@@ -67,34 +51,11 @@ export default class SectionPage extends React.Component {
     return [Page1]
   }
 
-  getPage(){
-    let pageNum = (this.props.params.pageName || 1) - 1;
-    let {contract} = this.props;
-    let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
-
-    let form = <Form
-      ref="form"
-      type={this.getPageTypes(contract)[pageNum]}
-      options={pageOptions}
-      value={contract}
-    />;
-
-    let page = form;
-
-    if(pageOptions && pageOptions.config && pageOptions.config.horizontal){
-      page = <div className='form-horizontal'>
-        {form}
-      </div>
-    }
-
-    return page
-  }
 
   render() {
     return <div className='form-section'>
       <div className='container-fluid'>
-        {this.getPage()}
-
+        {this.getForm()}
       </div>
       <ActionBar handleSave={this.save.bind(this, this.props.calendar)}/>
     </div>
