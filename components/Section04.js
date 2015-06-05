@@ -291,7 +291,7 @@ export default class SectionPage extends React.Component {
       },
       fields: {
         cancelled_day_paid: {
-          label: "If the employer has to cancel one or more days of the employee's work week, will Tia be paid as usual?",
+          label: "If the employer has to cancel one or more days of the employee's work week, will the employee be paid as usual?",
           template: function(locals){
             return <YesNo flux={props.flux} {...locals}/>
           }

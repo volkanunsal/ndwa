@@ -59,7 +59,7 @@ export default class SectionPage extends React.Component {
           }
         },
         complaint_handling_process: {
-          label: 'the employer and Tia shall establish a process for addressing complaints and￼increasing pay and/or benefits. Please describe that process:',
+          label: 'the employer and the employee shall establish a process for addressing complaints and￼increasing pay and/or benefits. Please describe that process:',
           type: 'textarea',
           help: <i>During these reviews, both parties will have the opportunity to evaluate the contract and propose changes.</i>
         }
