@@ -9,7 +9,7 @@ import YesNo from './YesNo'
 import ActionBar from './ActionBar';
 import decorators from '../utils/decorators';
 
-  
+
 @decorators.getForm
 export default class SectionPage extends React.Component {
   save() {
@@ -198,8 +198,13 @@ export default class SectionPage extends React.Component {
       }
     }
     let Page4 = {
+
       fields: {
         room: {
+          // order: [
+          //   'living_accommodations',
+          //   'provided',
+          // ],
           fields: {
             provided: {
               label: <p className='lead'>{"Will the employer provide the employee with living accommodations?"}</p>,
@@ -310,11 +315,6 @@ export default class SectionPage extends React.Component {
                 </div>
               }
             }
-          },
-          template: function(locals){
-            return <div>
-              {React.addons.createFragment(locals.inputs)}
-            </div>
           }
         }
       }

@@ -4,6 +4,14 @@ var {Form} = t.form;
 
 export default {
   getForm(Component) {
+    Component.prototype.getValidator = function getValidator(){
+      let {params, nav} = this.props;
+      let {pageName, sectionName} = params;
+      let pageNum     = (pageName || 1) - 1;
+      let sectionNum  = Number(sectionName) - 1;
+      return nav.sections[sectionNum].pages[pageNum].types;
+    }
+
     Component.prototype.getForm = function getForm(){
       let form, page;
       let {params, contract, nav} = this.props;
@@ -13,7 +21,7 @@ export default {
       let sectionNum  = Number(sectionName) - 1;
 
       let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
-      let pageTypes = nav.sections[sectionNum].pages[pageNum].types;
+      let pageTypes = this.getValidator();
 
 
       // TODO: create a flow type for the navigation section/page JSON

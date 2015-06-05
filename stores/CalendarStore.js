@@ -21,14 +21,14 @@ export default class CalendarStore extends Store {
       work_days = work_days.map(work_day => {
         if (work_day.get('name') == day.name) {
           work_day = work_day.set('active', !work_day.get('active'))
-          work_day = work_day.set('valid', this.getValidity(work_day.get('times').toJS()))
+          work_day = work_day.set('valid', this.getWorkDayValidity(work_day.get('times').toJS()))
         };
         return work_day
       })
       return work_days
     })
-    let total_time_in_ms = this.getTotalWorkDuration(work_days.toJS());
-    this.setState({work_days: work_days.toJS(), total_time_in_ms, all_dates_valid: this.getTotalValidity(work_days.toJS())})
+    let total_time_in_ms = this.getWorkWeekInMS(work_days.toJS());
+    this.setState({work_days: work_days.toJS(), total_time_in_ms, all_dates_valid: this.getWorkWeekValidity(work_days.toJS())})
   }
 
   handleUpdateDay({day, position, hours}){
@@ -36,33 +36,34 @@ export default class CalendarStore extends Store {
       work_days = work_days.map(work_day => {
         if (work_day.get('name') == day) {
           work_day = work_day.update('times', old_hours => old_hours.set(position, hours))
-          work_day = work_day.set('valid', this.getValidity(work_day.get('times').toJS()))
+          work_day = work_day.set('valid', this.getWorkDayValidity(work_day.get('times').toJS()))
         };
         return work_day
       })
       return work_days
     })
-    let total_time_in_ms = this.getTotalWorkDuration(work_days.toJS());
-    this.setState({work_days: work_days.toJS(), total_time_in_ms, all_dates_valid: this.getTotalValidity(work_days.toJS())})
+    let total_time_in_ms = this.getWorkWeekInMS(work_days.toJS());
+    this.setState({work_days: work_days.toJS(), total_time_in_ms, all_dates_valid: this.getWorkWeekValidity(work_days.toJS())})
   }
 
-  getWorkDuration(times){
+  getWorkDayDuration(times){
     return moment(times[1], 'hh:mm A').diff(moment(times[0], 'hh:mm A')) ;
   }
 
-  getValidity(times){
+  getWorkDayValidity(times){
     // The start time is after the end time
     return moment(times[0], 'hh:mm A').isBefore(moment(times[1], 'hh:mm A'));
   }
 
-  getTotalValidity(work_days){
-    return work_days.reduce((prev, day) => prev && day.valid, true)
+  getWorkWeekValidity(work_days){
+    // Active workdays are all valid
+    return work_days.filter(day => day.active).reduce((prev, day) => prev && day.valid, true)
   }
 
-  getTotalWorkDuration(work_days){
+  getWorkWeekInMS(work_days){
     let total_time_in_ms = 0;
     work_days.filter(day => day.active).forEach(day => {
-      let time_diff = this.getWorkDuration(day.times);
+      let time_diff = this.getWorkDayDuration(day.times);
       total_time_in_ms += time_diff;
     })
     return total_time_in_ms

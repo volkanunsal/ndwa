@@ -10,6 +10,9 @@ var Recipient = t.struct({
   age: t.Num,
   description_of_care: t.Str
 });
+var TNonZero = t.subtype(t.Num, function(value){
+  return value > 0
+})
 
 
 export default class NavigationStore extends Store {
@@ -90,8 +93,18 @@ export default class NavigationStore extends Store {
           name: 'Scheduling',
           pages: [
             {
-              types: function(contract){
+              types: function(calendar){
                 // TODO: encode the schedule type
+                let WorkSchedule = t.struct({
+                  work_duration: TNonZero
+                });
+
+                let formValues = {
+                  work_duration: calendar.total_time_in_ms
+                };
+                let fieldValidation = t.validate(formValues, WorkSchedule);
+
+                return fieldValidation.isValid() && calendar.all_dates_valid;
               }
             }
           ]
@@ -182,7 +195,7 @@ export default class NavigationStore extends Store {
                       heat_controlled: t.Bool
                     })
                   };
-                  // HACK: This is a bit of a hack, but the order option is not working for nested forms.
+                  // HACK: This is a bit of a hack, but the order option is not working when a template function modifies the form field.
                   living_accommodations_struct = living_accommodations_struct.extend({
                     clean: t.Bool,
                     num_people: t.Num,
