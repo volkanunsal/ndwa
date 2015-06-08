@@ -11,25 +11,35 @@ export default {
     }
 
     Component.prototype.save = function save(){
+      // Define the actions
+      let contractActions = this.props.flux.getActions('contract_actions');
+      let formActions = this.props.flux.getActions('form_actions');
+
       // call getValue() to get the values of the form
       var value = this.refs.form.getValue();
 
       // if validation fails, value will be null
       if (value) {
         // Update the contract
-        let contractActions = this.props.flux.getActions('contract_actions');
-        let formActions = this.props.flux.getActions('form_actions');
         contractActions.merge(value);
-
-        // FormStore waits for the contract store
-        let sectionNum = Number(this.props.params.sectionName) - 1;
-        formActions.validateSection(sectionNum);
-        router.transitionTo('page', nextPageOrSection(this.props));
       }
+
+      // FormStore waits for the contract store
+      let sectionNum = Number(this.props.params.sectionName) - 1;
+      formActions.validateSection(sectionNum);
+
+      if (value) {
+        router.transitionTo('page', nextPageOrSection(this.props));
+      };
     }
 
     // TODO: remove duplication between the save functions
     Component.prototype.saveSchedule = function saveSchedule() {
+      let contractActions = this.props.flux.getActions('contract_actions');
+      let sectionNum = Number(this.props.params.sectionName) - 1;
+
+      let formActions = this.props.flux.getActions('form_actions');
+
       let {contract} = this.props;
       let validatorFn = this.getValidator();
       let {work_week_duration, valid_work_schedule} = contract;
@@ -39,15 +49,14 @@ export default {
       // if fieldValidation fails, value will be null
       if (isValid) {
         // Update the contract
-        let contractActions = this.props.flux.getActions('contract_actions');
-        let formActions = this.props.flux.getActions('form_actions');
         contractActions.merge({work_week_duration, valid_work_schedule});
-
-        // FormStore waits for the contract store
-        let sectionNum = Number(this.props.params.sectionName) - 1;
-        formActions.validateSection(sectionNum);
-        router.transitionTo('page', nextPageOrSection(this.props));
       }
+
+      formActions.validateSection(sectionNum);
+
+      if (isValid) {
+        router.transitionTo('page', nextPageOrSection(this.props));
+      };
     }
 
     Component.prototype.getValidator = function getValidator(){
