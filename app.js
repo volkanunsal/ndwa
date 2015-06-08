@@ -17,7 +17,7 @@ export class CalendarActions extends Actions {
 }
 export class FormActions extends Actions {
   validateSections(contract) { return contract }
-  validateSection(sectionNum,contract) { return {sectionNum,contract} }
+  validateSection(sectionNum) { return sectionNum }
 }
 export class ContractActions extends Actions {
   setIn(path, value){ return {path, value} }

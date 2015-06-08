@@ -5,6 +5,10 @@ import { Store } from 'flummox';
 import assign from 'object-assign';
 import t from 'tcomb-form';
 
+import {MyModal, OverlayTrigger} from '../components/MyModal';
+
+
+
 var Recipient = t.struct({
   name: t.Str,
   age: t.Num,
@@ -20,10 +24,9 @@ var TValidWorkSchedule = t.subtype(t.Bool, function(value){
 
 export default class FormStore extends Store {
 
-  handleValidateSection({sectionNum, contract}){
-    
-    this.waitFor(this.contractStore)
+  handleValidateSection(sectionNum){
 
+    let contract = this.contractStore.state;
 
     let state = I.fromJS(this.state).update('sections', sections => {
       sections = sections.update(sectionNum, section => {
@@ -92,12 +95,52 @@ export default class FormStore extends Store {
               types: (contract) => {
                 return t.struct({
                   user_type: t.enums({
-                    W: 'Domestic Worker',
-                    E: 'Employer'
+                    W: <OverlayTrigger anchorText='Domestic Worker' modalContent={<div>
+                        <p>You are a 'domestic worker' if:</p>
+                        <ol>
+                          <li>you are an independent contractor or an employee.</li>
+                          <li>who has been or will be hired, paid, or permitted to perform work of a domestic nature.</li>
+                          <li>within a household, and </li>
+                          <li>you work or will work more than 16 hours a week.</li>
+                        </ol>
+
+                        <p>If this sounds like you, please:</p>
+                        <ul>
+                          <li>Send this contract to your employer, or</li>
+                          <li>Fill out this contract</li>
+                        </ul>
+
+                      </div>}/>,
+                    E: <OverlayTrigger anchorText='Employer' modalContent={<div>
+                        <p>You are a "domestic employer" if:</p>
+                        <ol>
+                          <li>an independent contractor or an employee works for you,</li>
+                          <li>whom you have hired or intend to hire, pay, or permit to perform work of a domestic nature,</li>
+                          <li>within a household, and</li>
+                          <li>who works or will work more than 16 hours a week.</li>
+                        </ol>
+
+                        <p>This definition specifically excludes employers who:</p>
+                        <ol>
+                          <li>are considered staffing, employment or placement agencies already licensed or registered under the Employment Agency Law,</li>
+                          <li>any individual for whom a personal care attendant provides services under the MassHealth personal care attendant program or any successor program,</li>
+                          <li>and casual babysitters.</li>
+                        </ol>
+
+                        <p>If this sounds like you, please:</p>
+
+                        <ol>
+                          <li>Fill out this contract</li>
+                          <li>Share it with your peers</li>
+                        </ol>
+
+                      </div>}/>
                   })
                 });
               }
             },
+
+
             {
               name: 'Parties',
               types: (contract) => {

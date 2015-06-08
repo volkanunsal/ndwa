@@ -21,12 +21,10 @@ export default {
         let formActions = this.props.flux.getActions('form_actions');
         contractActions.merge(value);
 
-        setTimeout(()=>{
-          // FormStore waits for the contract store
-          let sectionNum = Number(this.props.params.sectionName) - 1;
-          formActions.validateSection(sectionNum, this.props.contract);
-          router.transitionTo('page', nextPageOrSection(this.props));
-        },0)
+        // FormStore waits for the contract store
+        let sectionNum = Number(this.props.params.sectionName) - 1;
+        formActions.validateSection(sectionNum);
+        router.transitionTo('page', nextPageOrSection(this.props));
       }
     }
 
@@ -45,12 +43,10 @@ export default {
         let formActions = this.props.flux.getActions('form_actions');
         contractActions.merge({work_week_duration, valid_work_schedule});
 
-        setTimeout(()=>{
-          // FormStore waits for the contract store
-          let sectionNum = Number(this.props.params.sectionName) - 1;
-          formActions.validateSection(sectionNum, this.props.contract);
-          router.transitionTo('page', nextPageOrSection(this.props));
-        },1)
+        // FormStore waits for the contract store
+        let sectionNum = Number(this.props.params.sectionName) - 1;
+        formActions.validateSection(sectionNum);
+        router.transitionTo('page', nextPageOrSection(this.props));
       }
     }
 

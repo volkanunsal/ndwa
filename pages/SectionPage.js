@@ -3,8 +3,9 @@ import AppFlux from '../app';
 import FluxComponent from 'flummox/component';
 import Nav from 'components/Nav';
 
+
 export default class SectionPage extends React.Component {
-  
+
   render() {
     let num = this.props.params.sectionName;
     if (num.split('')[-1] !== 0 && num.split('').length == 1) {
@@ -20,6 +21,7 @@ export default class SectionPage extends React.Component {
         <Nav {...this.props}/>
         <Section/>
       </FluxComponent>
+
     </div>;
   }
 }
