@@ -35,7 +35,7 @@ export default class SectionPage extends React.Component {
         {errorMsg}
         <WorkWeekTimePicker {...this.props}/>
       </div>
-      <ActionBar onSave={this.saveSchedule.bind(this)}/>
+      <ActionBar {...this.props} onSave={this.saveSchedule.bind(this)}/>
     </div>
   }
 }

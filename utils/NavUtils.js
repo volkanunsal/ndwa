@@ -1,8 +1,8 @@
 module.exports = {
   nextPageOrSection: function (props) {
-    let {params, nav} = props;
+    let {params, form} = props;
     let {pageName, sectionName} = params;
-    let {sections} = nav;
+    let {sections} = form;
     if (!pageName) { pageName = "1" };
     pageName = Number(pageName);
     sectionName = Number(sectionName);

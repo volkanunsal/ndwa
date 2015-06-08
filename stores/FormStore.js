@@ -19,13 +19,29 @@ var TValidWorkSchedule = t.subtype(t.Bool, function(value){
 
 
 export default class FormStore extends Store {
+
   handleValidateSections(contract){
-    this.state.sections.map(section => {
-      section.pages.map(page => {
-        console.log(page,t.validate(contract, page.types(contract)).isValid())
+    let state = I.fromJS(this.state).update('sections', sections => {
+      // console.log(section)
+      sections = sections.map(section => {
+        let isSectionValid = true;
+        section = section.update('pages', pages => {
+          pages = pages.map(page => {
+            let valid = t.validate(contract, page.toJS().types(contract)).isValid();
+            isSectionValid = isSectionValid && valid;
+            page = page.set('valid', valid)
+            page = page.set('validated', true)
+            return page
+          })
+          return pages
+        })
+        section = section.set('valid', isSectionValid)
+        section = section.set('validated', true)
+        return section
       })
+      return sections
     })
-    // this.setState({})
+    this.setState(state.toJS());
   }
 
   constructor(flux){
@@ -33,6 +49,7 @@ export default class FormStore extends Store {
 
     const CONTRACT_ACTION_IDS = flux.getActionIds('contract_actions');
     this.register(CONTRACT_ACTION_IDS.validateSections, this.handleValidateSections);
+    this.register(CONTRACT_ACTION_IDS.validateSection, this.handleValidateSection);
 
 
     this.state = {

@@ -1,3 +1,4 @@
+@import '../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables';
 
 .form-nav{
   padding: 10px 20px 0;
@@ -5,7 +6,36 @@
 
   .secondary{
     margin-top: 20px;
+    li a{
+      border: none;
+      border-radius: 0;
+    }
+    li.active a{
+      background: transparent;
+      border-bottom: solid 1px $brand-primary;
+      color: $brand-primary;
+    }
+    li.invalid a{
+      color: $brand-danger;
+    }
+    li.valid a{
+      color: $brand-success;
+    }
   }
+  .primary{
+    li.valid a{
+      color: $brand-success;
+      // color:white;
+    }
+    li.invalid a{
+      color: $brand-danger;
+      // color:white;
+    }
+    // li.invalid.active a, li.valid.active a{
+    //   border-bottom: solid 3px $brand-primary;
+    // }
+  }
+
   .nav li{
     margin-right: 5px;
   }

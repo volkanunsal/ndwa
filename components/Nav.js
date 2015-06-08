@@ -4,12 +4,20 @@ import cx from 'classnames';
 
 class NavTab extends React.Component {
   render(){
-    var isActive = this.context.router.isActive(this.props.to, this.props.params, this.props.query) || this.props.active;
-    var className = isActive ? 'active' : '';
+    var active = this.context.router.isActive(this.props.to, this.props.params, this.props.query) || this.props.active;
+    let valid = this.props.valid && this.props.validated;
+    let invalid = !this.props.valid && this.props.validated;
+
+    var liClass = cx({
+      active,
+      valid,
+      invalid
+    });
+
     var link = (
         <Link {...this.props} />
     );
-    return <li className={className}>{link}</li>;
+    return <li className={liClass}>{link}</li>;
   }
 }
 NavTab.contextTypes = {router: React.PropTypes.func};
@@ -27,11 +35,14 @@ export default class Nav extends React.Component {
         let sid = i+1;
         let priNavParams = {sectionName: sid};
         // TODO: ensure the nav item looks disabled when the link is not authorized according to the policy
+        let section = sections[i];
         primary.push(<NavTab
           to='section'
           params={priNavParams}
+          valid={section.valid}
+          validated={section.validated}
           key={i}>
-            {sections[i].name}
+            {section.name}
           </NavTab>);
       };
     };
@@ -51,7 +62,8 @@ export default class Nav extends React.Component {
         };
 
         let secNavParam = {sectionName: sid, pageName: pid};
-        let {name} = pages[j];
+        let page = pages[j];
+        let {name} = page;
 
         if (name) {
           secondary.push(<NavTab
@@ -59,6 +71,8 @@ export default class Nav extends React.Component {
             active={isActive}
             className='btn-sm'
             params={secNavParam}
+            valid={page.valid}
+            validated={page.validated}
             key={j}>
               {name}
             </NavTab>);

@@ -17,7 +17,8 @@ export default {
       // if validation fails, value will be null
       if (value) {
         // Update the contract
-        this.props.flux.getActions('contract_actions').merge(value)
+        let contractActions = this.props.flux.getActions('contract_actions');
+        contractActions.merge(value);
         router.transitionTo('page', nextPageOrSection(this.props));
       }
     }
@@ -40,7 +41,7 @@ export default {
 
       let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
       let pageTypes   = this.getValidator();
-      
+
       // TODO: create a flow type for the navigation section/page JSON
       if (pageTypes) {
         formComp = <Form

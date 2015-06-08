@@ -112,7 +112,7 @@ export default class SectionPage extends React.Component {
       <div className='container-fluid'>
         {this.getForm()}
       </div>
-      <ActionBar onSave={this.save.bind(this)}/>
+      <ActionBar {...this.props} onSave={this.save.bind(this)}/>
     </div>
   }
 }
