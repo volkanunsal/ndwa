@@ -2,7 +2,7 @@ import React from 'react';
 import t from 'tcomb-form';
 import moment from 'moment';
 import cx from 'classnames';
-
+import {MyModal, TipTrigger} from '../components/MyModal';
 
 var THour = t.subtype(t.Str, function(val){
   // assert both hour and minute are numbers
@@ -240,6 +240,9 @@ export default class WorkWeekTimePicker extends React.Component {
           <ul className='list-unstyled'>
             <li>{weeklyTotalHours}</li>
           </ul>
+          <TipTrigger anchorText='9' modalContent={<div>
+            <p>Domestic workers who work at least 40 hours a week are entitled to 24 consecutive hours of rest each week and 48 consecutive hours of rest each month.</p>
+          </div>}/>
         </div>
       </div>
     </div>

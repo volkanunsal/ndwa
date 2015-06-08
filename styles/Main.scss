@@ -1,5 +1,24 @@
 @import '../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables';
 
+.form-hint{
+  background: purple;
+  color: white;
+  border-radius: 50%;
+  // padding-top: 3px;
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: normal;
+
+  width: 25px;
+  height: 25px;
+  display: inline-block;
+  text-align: center;
+  // top: 10px;
+  position: relative;
+
+}
+
+  
 .form-nav{
   padding: 10px 20px 0;
   margin-bottom: 20px;

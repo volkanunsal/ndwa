@@ -6,7 +6,9 @@ var router = require('../router');
 import YesNo from './YesNo'
 import ActionBar from './ActionBar';
 import decorators from '../utils/decorators';
+import {MyModal, TipTrigger} from '../components/MyModal';
 
+  
 @decorators.getForm
 export default class SectionPage extends React.Component {
 
@@ -25,7 +27,9 @@ export default class SectionPage extends React.Component {
           }
         },
         termination_severance_length: {
-          label: <p className='lead'>{"If the EMPLOYEE is terminated with or without cause, the EMPLOYER shall provide the EMPLOYEE with how much severance pay?"}</p>,
+          label: <div><p className='lead'>{"If the EMPLOYEE is terminated with or without cause, the EMPLOYER shall provide the EMPLOYEE with how much severance pay?"}</p> <TipTrigger anchorText='32' modalContent={<div>
+                  {"Regulations require that the Employer must give written notice AND 30 days lodging or 2 weeks salary as severance if the Domestic Worker is a live-in employee. If Domestic Worker resides in Employer’s household and Employer terminates employment, Employer must provide written notice and either 30 days of lodging, either on-site or off-site, or severance pay equivalent to Domestic Worker’s average earnings during the last two weeks of employment, pursuant to M.G.L. c. 149, § 190(k)."}
+                </div>}/></div>,
           type: "number",
           attrs: {
             min: 0
@@ -35,7 +39,9 @@ export default class SectionPage extends React.Component {
           }
         },
         termination_accom_eviction_notice_length: {
-          label: <p className='lead'>{"And if living accommodations have been provided by the EMPLOYER, how many days of lodging will the EMPLOYEE be given if the EMPLOYEE is terminated?"}</p>,
+          label: <div><p className='lead'>{"And if living accommodations have been provided by the EMPLOYER, how many days of lodging will the EMPLOYEE be given if the EMPLOYEE is terminated?"}</p> <TipTrigger anchorText='33' modalContent={<div>
+                  {"No advance notice or severance payment shall be required where the employer provides a good faith allegation that the domestic worker has abused, neglected, or caused any other harmful conduct against the employer, members of the employer’s family, or individuals residing in the employer’s household, as described in 940 C.M.R. 32.03(19). "}
+                </div>}/></div>,
           type: "number",
           attrs: {
             min: 0

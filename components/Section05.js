@@ -8,6 +8,7 @@ import isEmpty from '../utils/isEmpty';
 import YesNo from './YesNo'
 import ActionBar from './ActionBar';
 import decorators from '../utils/decorators';
+import {MyModal, TipTrigger} from '../components/MyModal';
 
 
 @decorators.getForm
@@ -25,7 +26,9 @@ export default class SectionPage extends React.Component {
       },
       fields: {
         workers_comp_insurance: {
-          label: "What are the EMPLOYER's workers' compensation company and information?",
+          label: <div>What are the EMPLOYER's workers' compensation company and information? <TipTrigger anchorText='21' modalContent={<div>
+                  Employees have the right to collect worker compensation if injured on the job. Note: some homeowners and renters insurance cover workers comp, but not all; if you use a payroll system, please make sure to ask your provider or vendor about this.
+                </div>}/></div>,
           template: function(locals){
             return <div>
               <p className='lead'>{locals.label}</p>
@@ -57,7 +60,9 @@ export default class SectionPage extends React.Component {
               }
             },
             transportation: {
-              label: "Transportation costs?",
+              label: <div>Transportation costs? <TipTrigger anchorText='20' modalContent={<div>
+                  These would be additional transportation costs exclusive of mileage/car use for on-the-job related tasks. Examples: train fare, gas/mileage/wear and tear on employee’s car for travel to and from work, etc
+                </div>}/></div>,
               template: function(locals){
                 return <YesNo flux={flux} {...locals}/>
               }

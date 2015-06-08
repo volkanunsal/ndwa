@@ -6,6 +6,8 @@ var router = require('../router');
 import YesNo from './YesNo'
 import ActionBar from './ActionBar';
 import decorators from '../utils/decorators';
+import {MyModal, TipTrigger} from '../components/MyModal';
+
 
 @decorators.getForm
 export default class SectionPage extends React.Component {
@@ -60,7 +62,9 @@ export default class SectionPage extends React.Component {
           },
           fields: {
             restrict_private_comm: {
-              label: <p className='lead'>{"Will the EMPLOYER restrict or interfere with the EMPLOYEE's means of private communications?"}</p>,
+              label: <div><p className='lead'>{"Will the EMPLOYER restrict or interfere with the EMPLOYEE's means of private communications?"}</p> <TipTrigger anchorText='30' modalContent={<div>
+                  {"Employers cannot restrict or interfere with the domestic employees’ means of private communications. This means employers cannot monitor the employee’s private communications (phone calls, texts, emails, conversations etc) and cannot take employee’s documents or personal effects."}
+                </div>}/></div>,
               template: function(locals){
                 return <div>
                   <YesNo flux={flux} {...locals}/>
@@ -84,7 +88,9 @@ export default class SectionPage extends React.Component {
               }
             },
             force_service: {
-              label: <p className='lead'>{"Will the EMPLOYER engage in conduct that constitutes forced services?"}</p>,
+              label: <div><p className='lead'>{"Will the EMPLOYER engage in conduct that constitutes forced services?"}</p> <TipTrigger anchorText='31' modalContent={<div>
+                  {"Employers and cannot engage in conduct that constitutes forced services. Example: Employer can tell domestic worker employee not to use her cell phone while working (unless for an emergency) but cannot take away her cell phone. If domestic worker doesn’t have a phone and she needs to make calls, she should be able to use the employer’s phone (with her own phone card, if need be)."}
+                </div>}/></div>,
               template: function(locals){
                 return <div>
                   <YesNo flux={flux} {...locals}/>

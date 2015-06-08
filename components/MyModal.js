@@ -4,7 +4,7 @@ import {Modal, ModalTrigger, Button} from 'react-bootstrap';
 export const MyModal = React.createClass({
   render() {
     return (
-      <Modal {...this.props} title='Tips' animation={false}>
+      <Modal {...this.props} title='Hints and Explanations' animation={false}>
         <div className='modal-body'>
           {this.props.modalContent}
         </div>
@@ -16,10 +16,10 @@ export const MyModal = React.createClass({
   }
 });
 
-export class OverlayTrigger extends React.Component {
+export class TipTrigger extends React.Component {
   render(){
     return <ModalTrigger modal={<MyModal {...this.props} />}>
-      <a href='javascript:;'>{this.props.anchorText}</a>
+      <a href='javascript:;' className='form-hint'>{this.props.anchorText}</a>
     </ModalTrigger>
   }
 }

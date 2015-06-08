@@ -6,6 +6,7 @@ var router = require('../router');
 import YesNo from './YesNo'
 import ActionBar from './ActionBar';
 import decorators from '../utils/decorators';
+import {MyModal, TipTrigger} from '../components/MyModal';
 
 
 @decorators.getForm
@@ -15,7 +16,11 @@ export default class SectionPage extends React.Component {
     var Page1 = {
       fields: {
         evaluation_after_three_months: {
-          label: <p className='lead'>{"Will the EMPLOYER will give the EMPLOYEE a written job evaluation after the first three months of employment?"}</p>,
+          label: <div><p className='lead'>{"Will the EMPLOYER will give the EMPLOYEE a written job evaluation after the first three months of employment?"}</p> <TipTrigger anchorText='28' modalContent={<div>
+                  Massachusetts regulations provide that domestic worker has the right to request a written evaluation after the first 3 months of employment. If you would like to see an example of a performance review form please click <a href='http://www.massdomesticworkers.org/sample/'>HERE</a>.
+                </div>}/>
+
+          </div>,
           template: function(locals){
             return <div>
               <YesNo flux={flux} {...locals}/>
@@ -31,7 +36,9 @@ export default class SectionPage extends React.Component {
           }
         },
         complaint_handling_process: {
-          label: <p className='lead'>{'The EMPLOYER and the EMPLOYEE shall establish a process for addressing complaints and￼increasing pay and/or benefits. Please describe that process:'}</p>,
+          label: <div><p className='lead'>{'The EMPLOYER and the EMPLOYEE shall establish a process for addressing complaints and￼increasing pay and/or benefits. Please describe that process:'}</p> <TipTrigger anchorText='29' modalContent={<div>
+                  {"Be sure to complete/fill in this sample section, if applicable, to fit your own situation, and be as specific as possible. If the Employer completes a written evaluation, the Domestic Worker has the right to review and receive a copy of the evaluation. If the Domestic Worker disagrees with any information in their performance evaluation, the Domestic Worker and the Employer may mutually agree to make appropriate changes. If no agreement is made, the Domestic Worker may submit a written statement to the Employer explaining their position, which must be included as part of the personnel file; any statement submitted must be included whenever the performance evaluation is provided to anyone else. M.G.L. c. 149, § 52C."}
+                </div>}/></div>,
           type: 'textarea',
           help: <i>During these reviews, both parties will have the opportunity to evaluate the contract and propose changes.</i>
         }
