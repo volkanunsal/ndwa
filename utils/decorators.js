@@ -26,7 +26,7 @@ export default {
           let sectionNum = Number(this.props.params.sectionName) - 1;
           formActions.validateSection(sectionNum, this.props.contract);
           router.transitionTo('page', nextPageOrSection(this.props));
-        },1)
+        },0)
       }
     }
 
