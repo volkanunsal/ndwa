@@ -9,6 +9,8 @@ export default class ContractStore extends Store {
 
   constructor(flux) {
     super(); // Don't forget this step
+    this.flux = flux;
+
     const APP_ACTION_IDS = flux.getActionIds('app');
     const CONTRACT_ACTION_IDS = flux.getActionIds('contract_actions');
     this.register(CONTRACT_ACTION_IDS.setIn, this.handleSetIn);
@@ -42,7 +44,7 @@ export default class ContractStore extends Store {
       }
     };
   }
-
+  
   handleSetIn({path, value}){
     this.setState(I.fromJS(this.state).setIn(path, value).toJS())
   }

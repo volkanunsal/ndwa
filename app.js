@@ -15,10 +15,13 @@ export class CalendarActions extends Actions {
   toggleDay(day){ return day }
   updateDay(day, position, hours){ return {day, position, hours} }
 }
+export class FormActions extends Actions {
+  validateSections(contract) { return contract }
+  validateSection(sectionNum,contract) { return {sectionNum,contract} }
+}
 export class ContractActions extends Actions {
   setIn(path, value){ return {path, value} }
   merge(value){ return value }
-  validateSections(contract) { return contract }
 }
 //================ APP =======================
 export class AppFlux extends Flux {
@@ -27,9 +30,12 @@ export class AppFlux extends Flux {
     // actions
     this.createActions('calendar_actions', CalendarActions);
     this.createActions('contract_actions', ContractActions);
+    this.createActions('form_actions', FormActions);
+
     // stores
-    this.createStore('form', FormStore, this);
     this.createStore('contract', ContractStore, this);
+    this.createStore('form', FormStore, this);
+
   }
 }
 const flux = new AppFlux();

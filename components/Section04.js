@@ -317,7 +317,6 @@ export default class SectionPage extends React.Component {
         board_provided: {
           label: <p className='lead'>{'Will the EMPLOYEE be provided with board (food/beverages) at work?'}</p>,
           template: function(locals){
-            console.log(locals.value)
             return <div className='text-center'>
               <YesNo flux={flux} {...locals}/>
             </div>

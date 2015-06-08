@@ -20,6 +20,34 @@ var TValidWorkSchedule = t.subtype(t.Bool, function(value){
 
 export default class FormStore extends Store {
 
+  handleValidateSection({sectionNum, contract}){
+    
+    this.waitFor(this.contractStore)
+
+
+    let state = I.fromJS(this.state).update('sections', sections => {
+      sections = sections.update(sectionNum, section => {
+        let isSectionValid = true;
+
+        section = section.update('pages', pages => {
+          pages = pages.map(page => {
+            let valid = t.validate(contract, page.toJS().types(contract)).isValid();
+            isSectionValid = isSectionValid && valid;
+            page = page.set('valid', valid)
+            page = page.set('validated', true)
+            return page
+          })
+          return pages
+        })
+        section = section.set('valid', isSectionValid)
+        section = section.set('validated', true)
+        return section
+      })
+      return sections
+    })
+    this.setState(state.toJS());
+  }
+
   handleValidateSections(contract){
     let state = I.fromJS(this.state).update('sections', sections => {
       // console.log(section)
@@ -47,9 +75,11 @@ export default class FormStore extends Store {
   constructor(flux){
     super();
 
-    const CONTRACT_ACTION_IDS = flux.getActionIds('contract_actions');
-    this.register(CONTRACT_ACTION_IDS.validateSections, this.handleValidateSections);
-    this.register(CONTRACT_ACTION_IDS.validateSection, this.handleValidateSection);
+    const FORM_ACTION_IDS = flux.getActionIds('form_actions');
+    this.register(FORM_ACTION_IDS.validateSections, this.handleValidateSections);
+    this.register(FORM_ACTION_IDS.validateSection, this.handleValidateSection);
+
+    this.contractStore = flux.getStore('contract');
 
 
     this.state = {

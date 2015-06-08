@@ -18,8 +18,39 @@ export default {
       if (value) {
         // Update the contract
         let contractActions = this.props.flux.getActions('contract_actions');
+        let formActions = this.props.flux.getActions('form_actions');
         contractActions.merge(value);
-        router.transitionTo('page', nextPageOrSection(this.props));
+
+        setTimeout(()=>{
+          // FormStore waits for the contract store
+          let sectionNum = Number(this.props.params.sectionName) - 1;
+          formActions.validateSection(sectionNum, this.props.contract);
+          router.transitionTo('page', nextPageOrSection(this.props));
+        },1)
+      }
+    }
+
+    // TODO: remove duplication between the save functions
+    Component.prototype.saveSchedule = function saveSchedule() {
+      let {contract} = this.props;
+      let validatorFn = this.getValidator();
+      let {work_week_duration, valid_work_schedule} = contract;
+      let isValid = t.validate({work_week_duration, valid_work_schedule}, validatorFn()).isValid();
+      this.setState({isValid})
+
+      // if fieldValidation fails, value will be null
+      if (isValid) {
+        // Update the contract
+        let contractActions = this.props.flux.getActions('contract_actions');
+        let formActions = this.props.flux.getActions('form_actions');
+        contractActions.merge({work_week_duration, valid_work_schedule});
+
+        setTimeout(()=>{
+          // FormStore waits for the contract store
+          let sectionNum = Number(this.props.params.sectionName) - 1;
+          formActions.validateSection(sectionNum, this.props.contract);
+          router.transitionTo('page', nextPageOrSection(this.props));
+        },1)
       }
     }
 

@@ -3,7 +3,7 @@ import React from 'react';
 export default class ActionBar extends React.Component {
   handleValidate(){
     let {contract, flux} = this.props;
-    flux.getActions('contract_actions').validateSections(contract)
+    flux.getActions('form_actions').validateSections(contract)
   }
   render(){
     return <div className='navbar navbar-default navbar-fixed-bottom'>
