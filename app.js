@@ -8,7 +8,7 @@ import assign from 'object-assign';
 import I from 'immutable';
 import moment from 'moment';
 import ContractStore from './stores/ContractStore';
-import NavigationStore from './stores/NavigationStore';
+import FormStore from './stores/FormStore';
 
 //================ ACTIONS =======================
 export class CalendarActions extends Actions {
@@ -28,7 +28,7 @@ export class AppFlux extends Flux {
     this.createActions('calendar_actions', CalendarActions);
     this.createActions('contract_actions', ContractActions);
     // stores
-    this.createStore('nav', NavigationStore, this);
+    this.createStore('form', FormStore, this);
     this.createStore('contract', ContractStore, this);
   }
 }

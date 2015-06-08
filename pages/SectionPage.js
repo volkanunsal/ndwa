@@ -13,7 +13,7 @@ export default class SectionPage extends React.Component {
     return <div>
       <FluxComponent
         connectToStores={{
-          nav: store => ({ nav: store.state }),
+          form: store => ({ form: store.state }),
           contract: store => ({ contract: store.state })
         }} {...this.props}>
         <Nav {...this.props}/>

@@ -18,7 +18,7 @@ var TValidWorkSchedule = t.subtype(t.Bool, function(value){
 })
 
 
-export default class NavigationStore extends Store {
+export default class FormStore extends Store {
   handleValidateSections(contract){
     this.state.sections.map(section => {
       section.pages.map(page => {

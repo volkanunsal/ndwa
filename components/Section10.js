@@ -5,19 +5,15 @@ export default class SectionPage extends React.Component {
   validateForm() {
     // Validate the entire contract
     let {contract, flux} = this.props;
-
-    // NavigationStore.validate(contract, nav.sections);
-
+    // FormStore.validate(contract, form.sections);
     flux.getActions('contract_actions').validateSections(contract)
-
     // TODO: open the payment modal
 
   }
 
   render() {
-    let {nav} = this.props;
+    let {form} = this.props;
     
-    console.log(nav.sections[8])
     return <div className='container text-center' style={{alignSelf: 'center'}}>
       <h3>Congratulations, you did it! You’ve reached the end of the agreement. Be sure to review your information by using the tabs before printing it, making multiple copies and signing it!</h3>
       <p>

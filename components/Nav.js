@@ -17,7 +17,7 @@ NavTab.contextTypes = {router: React.PropTypes.func};
 
 export default class Nav extends React.Component {
   render(){
-    var {sections} = this.props.nav;
+    var {sections} = this.props.form;
     var sname = this.props.params.sectionName;
     var pname = this.props.params.pageName;
 

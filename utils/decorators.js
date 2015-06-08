@@ -23,41 +23,39 @@ export default {
     }
 
     Component.prototype.getValidator = function getValidator(){
-      let {params, nav} = this.props;
+      let {params, form} = this.props;
       let {pageName, sectionName} = params;
       let pageNum     = (pageName || 1) - 1;
       let sectionNum  = Number(sectionName) - 1;
-      return nav.sections[sectionNum].pages[pageNum].types;
+      return form.sections[sectionNum].pages[pageNum].types;
     }
 
     Component.prototype.getForm = function getForm(){
-      let form, page;
-      let {params, contract, nav} = this.props;
+      let formComp, page;
+      let {params, contract, form} = this.props;
       let {pageName, sectionName} = params;
 
       let pageNum     = (pageName || 1) - 1;
       let sectionNum  = Number(sectionName) - 1;
 
       let pageOptions = this.getPageOptions(contract, this.props.flux)[pageNum];
-      let pageTypes = this.getValidator();
-
-
+      let pageTypes   = this.getValidator();
+      
       // TODO: create a flow type for the navigation section/page JSON
-
       if (pageTypes) {
-        form = <Form
+        formComp = <Form
           ref="form"
           type={pageTypes(contract)}
           options={pageOptions}
           value={contract}
           onChange={this.handleFormChange.bind(this)}
         />;
-        page = form;
+        page = formComp;
       };
 
       if(pageOptions && pageOptions.config && pageOptions.config.horizontal){
         page = <div className='form-horizontal'>
-          {form}
+          {formComp}
         </div>
       }
 
