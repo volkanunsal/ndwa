@@ -18,7 +18,10 @@
 
 }
 
-  
+@media print {
+  .form-nav, .action-bar{display: none;}
+}
+
 .form-nav{
   padding: 10px 20px 0;
   margin-bottom: 20px;
