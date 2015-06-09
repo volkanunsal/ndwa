@@ -13,6 +13,13 @@ export default class SectionPage extends React.Component {
     };
     var Section = require('../components/Section' + num);
     return <div>
+      <nav className='navbar navbar-default'>
+        <div className='container-fluid'>
+          <div className='navbar-header'>
+            <a href='/' className='navbar-brand'>In-house agreements</a>
+          </div>
+        </div>
+      </nav>
       <FluxComponent
         connectToStores={{
           form: store => ({ form: store.state }),
