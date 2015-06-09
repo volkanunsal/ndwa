@@ -8,7 +8,7 @@ import ActionBar from './ActionBar';
 import decorators from '../utils/decorators';
 import {MyModal, TipTrigger} from '../components/MyModal';
 
-  
+
 @decorators.getForm
 export default class SectionPage extends React.Component {
 
@@ -38,7 +38,7 @@ export default class SectionPage extends React.Component {
             addonAfter: <i>weeks</i>
           }
         },
-        termination_accom_eviction_notice_length: {
+        termination_lodging_length: {
           label: <div><p className='lead'>{"And if living accommodations have been provided by the EMPLOYER, how many days of lodging will the EMPLOYEE be given if the EMPLOYEE is terminated?"}</p> <TipTrigger anchorText='33' modalContent={<div>
                   {"No advance notice or severance payment shall be required where the employer provides a good faith allegation that the domestic worker has abused, neglected, or caused any other harmful conduct against the employer, members of the employer’s family, or individuals residing in the employer’s household, as described in 940 C.M.R. 32.03(19). "}
                 </div>}/></div>,

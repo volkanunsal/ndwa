@@ -5,7 +5,7 @@ import { Store } from 'flummox';
 import assign from 'object-assign';
 import t from 'tcomb-form';
 
-  
+
 
 
 var Recipient = t.struct({
@@ -151,7 +151,7 @@ export default class FormStore extends Store {
               name: 'Additional Tasks',
               types: (contract) => {
                 return t.struct({
-                  description: t.maybe(t.Str)
+                  additional_tasks: t.maybe(t.Str)
                 });
               }
             }
@@ -344,10 +344,10 @@ export default class FormStore extends Store {
                     deductions: t.struct({
                       state_income_tax: t.Str,
                       federal_income_tax: t.Str,
-                      health_insurance: t.Str,
-                      food: t.Str,
-                      lodging: t.Str,
-                      other: t.Str
+                      health_insurance: t.maybe(t.Str),
+                      food: t.maybe(t.Str),
+                      lodging: t.maybe(t.Str),
+                      other: t.maybe(t.Str)
                     })
                   });
                 };
@@ -410,7 +410,7 @@ export default class FormStore extends Store {
                 return t.struct({
                   termination_notice_length: t.Str,
                   termination_severance_length: t.Str,
-                  termination_accom_eviction_notice_length: t.Str,
+                  termination_lodging_length: t.Str,
                   termination_paid_if_evicted_early: t.Bool
                 })
               }

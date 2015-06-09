@@ -151,12 +151,11 @@ export default class SectionPage extends React.Component {
     };
     var Page2 = {
       fields: {
-        description: {
+        additional_tasks: {
           label: <div>
             <p className='lead'>Are there additional responsibilities? (Please elaborate.) <TipTrigger anchorText='8' modalContent={<div>
               <p>Be sure to complete/fill in this sample agreement to fit your own situation, and be as specific as possible. Include and identify any and all tasks/responsibilities that both parties have agreed the employee will perform during the course of employment.</p>
             </div>}/></p> </div>,
-          auto: 'placeholders',
           type: 'textarea'
         }
       }

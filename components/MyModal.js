@@ -19,7 +19,7 @@ export const MyModal = React.createClass({
 export class TipTrigger extends React.Component {
   render(){
     return <ModalTrigger modal={<MyModal {...this.props} />}>
-      <a href='javascript:;' className='form-hint'>{this.props.anchorText}</a>
+      <a href='javascript:;' tabIndex={-1} className='form-hint'>{this.props.anchorText}</a>
     </ModalTrigger>
   }
 }

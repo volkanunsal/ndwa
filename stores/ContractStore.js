@@ -44,7 +44,7 @@ export default class ContractStore extends Store {
       }
     };
   }
-  
+
   handleSetIn({path, value}){
     this.setState(I.fromJS(this.state).setIn(path, value).toJS())
   }
