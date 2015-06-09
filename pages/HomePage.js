@@ -3,6 +3,10 @@ import {Link} from 'react-router';
 var basePath = '/';
 
 export default class SectionPage extends React.Component {
+  handleCTAClick(){
+    window.scrollTo(0,React.findDOMNode(this.refs.createSection).getBoundingClientRect().top)
+  }
+
   render() {
     return <div style={{position: 'relative'}}>
       <a className='logo' style={{position: 'absolute', left: 0, top: 0, height: 50, width: 50, marginBottom: 0}}>
@@ -15,18 +19,16 @@ export default class SectionPage extends React.Component {
             <h2 className='text-center'>Did you know that as of April 1st, 2015 Massachusetts requires a written agreement if you employ or you are employed as a domestic worker?</h2>
             <img src={require('../images/plane.png')} style={{position: 'absolute', top: -80, right: -50}} className='visible-lg visible-md'/>
           </div>
-
-
           <div style={{display: 'flex', justifyContent: 'center'}}>
             <ul className='list-inline'>
-              <li><a href={basePath + '#create'} className='btn btn-link btn-lg' style={{borderRadius: 0, border: 'solid 1px black', color: 'black'}}>No, I Didn’t</a></li>
-              <li><a href={basePath + '#create'} className='btn btn-link btn-lg' style={{borderRadius: 0, border: 'solid 1px black', color: 'black'}}>Yes, I Did</a></li>
+              <li><a onClick={this.handleCTAClick.bind(this)} className='btn btn-link btn-lg' style={{borderRadius: 0, border: 'solid 1px black', color: 'black'}}>No, I Didn’t</a></li>
+              <li><a onClick={this.handleCTAClick.bind(this)} className='btn btn-link btn-lg' style={{borderRadius: 0, border: 'solid 1px black', color: 'black'}}>Yes, I Did</a></li>
             </ul>
           </div>
         </div>
       </div>
 
-      <a name='create' />
+      <a name='create' ref='createSection' />
       <div style={{backgroundColor: '#66666f', color: 'white', marginBottom: 0, height: 800, fontSize: '2em', paddingTop: 40}}>
         <h1 className='text-center'> Create, Comply and Print!</h1>
         <h3 className='text-center'>Constructing your own work agreement just got easier.</h3>
