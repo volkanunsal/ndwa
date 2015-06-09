@@ -30,8 +30,8 @@ module.exports = {
 };
 
 router = createRouter({
-  // location: __PRERELEASE__ ? HashLocation : HistoryLocation,
-  location: HistoryLocation,
+  location: __PRERELEASE__ ? HashLocation : HistoryLocation,
+  // location: HistoryLocation,
   routes: routes
 });
 
