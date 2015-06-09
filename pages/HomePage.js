@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
-var basePath = __PRERELEASE__ ? '/ndwa' : '/';
+var basePath = '/';
 
 export default class SectionPage extends React.Component {
   render() {

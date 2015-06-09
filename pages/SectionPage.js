@@ -2,7 +2,7 @@ import React from 'react';
 import AppFlux from '../app';
 import FluxComponent from 'flummox/component';
 import Nav from 'components/Nav';
-var basePath = __PRERELEASE__ ? '/ndwa' : '/';
+var basePath = '/';
 
 
 export default class SectionPage extends React.Component {
