@@ -1,5 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router';
+var basePath = __PRERELEASE__ ? '/ndwa' : '/';
 
 export default class SectionPage extends React.Component {
   render() {
@@ -18,8 +19,8 @@ export default class SectionPage extends React.Component {
 
           <div style={{display: 'flex', justifyContent: 'center'}}>
             <ul className='list-inline'>
-              <li><a href='#create' className='btn btn-link btn-lg' style={{borderRadius: 0, border: 'solid 1px black', color: 'black'}}>No, I Didn’t</a></li>
-              <li><a href='#create' className='btn btn-link btn-lg' style={{borderRadius: 0, border: 'solid 1px black', color: 'black'}}>Yes, I Did</a></li>
+              <li><a href={basePath + '#create'} className='btn btn-link btn-lg' style={{borderRadius: 0, border: 'solid 1px black', color: 'black'}}>No, I Didn’t</a></li>
+              <li><a href={basePath + '#create'} className='btn btn-link btn-lg' style={{borderRadius: 0, border: 'solid 1px black', color: 'black'}}>Yes, I Did</a></li>
             </ul>
           </div>
         </div>

@@ -2,6 +2,7 @@ import React from 'react';
 import AppFlux from '../app';
 import FluxComponent from 'flummox/component';
 import Nav from 'components/Nav';
+var basePath = __PRERELEASE__ ? '/ndwa' : '/';
 
 
 export default class SectionPage extends React.Component {
@@ -13,10 +14,13 @@ export default class SectionPage extends React.Component {
     };
     var Section = require('../components/Section' + num);
     return <div>
-      <nav className='navbar navbar-default'>
+      <nav className='navbar navbar-default hidden-print'>
         <div className='container-fluid'>
           <div className='navbar-header'>
-            <a href='/' className='navbar-brand'>In-house agreements</a>
+            <a href={basePath} className='navbar-brand'>
+              <img src={require('../images/logo.png')} style={{height:20, marginRight: 10}} alt='In-house agreements' className='pull-left'/>
+              <span className='pull-left'>In-house agreements</span>
+            </a>
           </div>
         </div>
       </nav>
