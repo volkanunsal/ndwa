@@ -84,7 +84,7 @@ export default class SectionPage extends React.Component {
       <ul>{childcare_tasks.map(task => <li>{task}</li>)}</ul></div> : null}
     </div> : null
 
-    let resp_2 = (home_care_recipients home_care_recipients.length > 0) ? <div>
+    let resp_2 = (home_care_recipients && home_care_recipients.length > 0) ? <div>
       <h3>Home/Elder care, including sick, convalescing, and elderly individuals </h3>
 
       <h4>Recipient</h4>
