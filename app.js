@@ -48,7 +48,7 @@ export default class App extends React.Component {
   }
   render() {
     return (
-      <DocumentTitle title={'National Domestic Workers Alliance'}>
+      <DocumentTitle title={'Inhouse Agreements | Generate work agreements effortlessly'}>
         <div>
           <RouteHandler {...this.props} />
         </div>
