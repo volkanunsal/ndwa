@@ -10,7 +10,7 @@ export default class SectionPage extends React.Component {
         <section id='hs-01' className='home-section bg-brand-black'>
           <div className='container-fluid text-center'>
             <img src={require('../images/home_01.png')}/>
-            <img src={require('../images/pencil_paper_main.png')} style={{position: 'relative', bottom: -120}}/>
+            <img src={require('../images/pencil_paper_main.png')} style={{position: 'relative', bottom: -120, zIndex: 998}}/>
           </div>
         </section>
 
