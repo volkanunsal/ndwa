@@ -6,7 +6,7 @@ export default class SectionPage extends React.Component {
 
 
   render() {
-    return <div style={{position: 'relative'}}>
+    return <div>
         <section id='hs-01' className='home-section bg-brand-black'>
           <div className='container-fluid text-center'>
             <img src={require('../images/home_01.png')}/>
@@ -105,9 +105,28 @@ export default class SectionPage extends React.Component {
               make informed decisions about your working relationship. It’s time that creating a contract makes
               sense to everyone, so you can agree amicably, easily and with dignity, like you wanted all along.
             </p>
+
+            <div className='partners'>
+              <div className='row'>
+                <div className='col-lg-3 partner-slot'><h2>Our Partners</h2></div>
+                <div className='col-lg-3 partner-slot'>
+                  <img src={require('../images/ndwa_slate.png')}/></div>
+                <div className='col-lg-3 partner-slot'>
+                  <img src={require('../images/HIH_slate.png')}/></div>
+                <div className='col-lg-3 partner-slot'>
+                  <img src={require('../images/MCDW_slate.png')}/></div>
+              </div>
+            </div>
+            <hr/>
+            <p className='text-center' style={{fontSize: '0.7em'}}>
+              Disclaimer: You can use the ideas/terms set forth in the sample agreement on the website to create your own agreement. Be sure
+              to complete/fill in your agreement to fit your own situation, and be as specific as possible about benefits, time off, rights and
+              obligations, and so on.
+            </p>
+
           </div>
         </section>
-        <section id='hs-07' className='home-section bg-brand-black' style={{padding:'10px 0 20px'}}>
+        <section id='hs-07' className='home-section bg-brand-black' style={{padding:'10px 0 20px', marginBottom: 0}}>
           <div className='container'>
             <h1 style={{fontSize: '4em', marginBottom: 40}}>Additional Information</h1>
             <p style={{fontSize: '2em'}}>
@@ -147,7 +166,10 @@ export default class SectionPage extends React.Component {
               </div>
             </div>
           </div>
+          <img src={require('../images/FCL_Labs.png')} style={{position: 'absolute', right: 20, bottom: 10}}/>
         </section>
+
+
     </div>;
   }
 }

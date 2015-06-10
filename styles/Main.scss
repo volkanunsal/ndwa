@@ -9,6 +9,7 @@ $yellow: #d3b52a;
 .bg-brand-blue{ background: $blue; }
 .bg-brand-orange{ background: $orange; }
 .bg-brand-yellow{ background: $yellow; }
+.bg-white{ background: white; }
 
 .home-section{
   // min-height: 400px;
@@ -113,7 +114,19 @@ $yellow: #d3b52a;
 
 
 
+.partners{
+  color: $blue;
+  .partner-slot{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height:240px;
 
+    img{
+      width: 90%;
+    }
+  }
+}
 
 
 
