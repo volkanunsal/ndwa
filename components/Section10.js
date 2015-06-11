@@ -55,8 +55,8 @@ export default class SectionPage extends React.Component {
 
     let {contract} = this.props;
 
-    let printPage = <div>
-        <div className='text-center hidden-print'>
+    let printPage = <div className='hidden-print'>
+        <div className='text-center'>
           <h3>Congratulations, you did it! You’ve reached the end of the agreement. Be sure to review your information by using the tabs before printing it, making multiple copies and signing it!</h3>
           <p>
             <a
