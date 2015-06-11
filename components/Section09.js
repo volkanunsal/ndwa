@@ -11,7 +11,7 @@ import {MyModal, TipTrigger} from '../components/MyModal';
 
 @decorators.getForm
 export default class SectionPage extends React.Component {
-  
+
 
   getPageOptions(contract, flux){
     var Page1 = {
@@ -20,10 +20,12 @@ export default class SectionPage extends React.Component {
           label: <p className='lead'>{"If either party wishes to terminate this agreement, how much notice will be provided?"}</p>,
           type: "number",
           attrs: {
-            min: 0
+            min: 0,
+            className: 'input-lg'
           },
           config: {
             addonAfter: <i>weeks</i>
+
           }
         },
         termination_severance_length: {
@@ -32,7 +34,8 @@ export default class SectionPage extends React.Component {
                 </div>}/></div>,
           type: "number",
           attrs: {
-            min: 0
+            min: 0,
+            className: 'input-lg'
           },
           config: {
             addonAfter: <i>weeks</i>
@@ -44,7 +47,8 @@ export default class SectionPage extends React.Component {
                 </div>}/></div>,
           type: "number",
           attrs: {
-            min: 0
+            min: 0,
+            className: 'input-lg'
           },
           config: {
             addonAfter: <i>days of lodging</i>

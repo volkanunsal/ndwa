@@ -5,7 +5,7 @@ import moment from 'moment';
 
 export default class Contract extends React.Component {
   render(){
-    let {additional_tasks, bad_weather_day_paid, benefits, board_no, board_provided, board_yes, cancelled_day_paid, childcare_tasks, children, cleaning_tasks, complaint_handling_process, deductions, employee, employer, evaluation_after_three_months, evaluation_every_year, family_privacy, home_care_recipients, home_care_tasks, hourly_rate, immediate_termination_grounds, overtime_holidays, overtime_notice_length, overtime_rate, parental_leave, payday, payment_frequency, personal_days, reduced_hours_reg_wage, room, start_date, termination_lodging_length, termination_notice_length, termination_paid_if_evicted_early, termination_severance_length, vacation_days, valid_work_schedule, work_address, work_days, work_week_duration, worker_privacy, workers_comp_insurance} = this.props;
+    let {additional_tasks, bad_weather_day_paid, benefits, board_no, board_provided, board_yes, cancelled_day_paid, childcare_tasks, children, cleaning_tasks, complaint_handling_process, deductions, employee, employer, evaluation_after_three_months, evaluation_every_year, family_privacy, home_care_recipients, home_care_tasks, hourly_rate, immediate_termination_grounds, overtime_holidays, overtime_holidays_other, overtime_notice_length, overtime_rate, parental_leave, payday, payment_frequency, personal_days, reduced_hours_reg_wage, room, start_date, termination_lodging_length, termination_notice_length, termination_paid_if_evicted_early, termination_severance_length, vacation_days, valid_work_schedule, work_address, work_days, work_week_duration, worker_privacy, workers_comp_insurance} = this.props;
 
     let employee_name = employee && employee.name;
     let employer_name = employer && employer.name;
@@ -124,7 +124,7 @@ export default class Contract extends React.Component {
       <p>The Employee will {personal_days && personal_days > 0 ?  null : <span>NOT</span> } be given {personal_days} paid personal/sick days.</p>
 
       {overtime_holidays && overtime_holidays.length > 0 ? <div><p>The Employee will be paid for the following Holidays:</p>
-      <ul>{overtime_holidays}</ul></div> : null}
+      <ul>{overtime_holidays}</ul> {overtime_holidays_other ? <div> and also <p>{overtime_holidays_other}</p></div> : null}</div> : null}
 
 
       <p>If Employee requests parental leave for the birth or adoption of a child, Employee will provide {parental_leave && parental_leave.notice} days notice prior to taking the requested leave.</p>
@@ -189,7 +189,7 @@ export default class Contract extends React.Component {
 
       <h3>9. Evaluations/reviews</h3>
       <p>The Employer will {evaluation_after_three_months ? null : <span>NOT</span>} provide Employee a written job evaluation after three months, and will {evaluation_every_year ? null : <span>NOT</span>} provide an evaluation every year.</p>
-      
+
       <p>Employer and Employee shall establish a fair process for settling complaints and increasing pay and benefits, giving due process to both parties. That process is described below:</p>
       <p>{complaint_handling_process}</p>
 
@@ -207,11 +207,7 @@ export default class Contract extends React.Component {
 
       <h3>11. Job Termination</h3>
       <h4>Severance and Lodging</h4>
-      <p>The Employer and Employee agree that if either party chooses to end the employment, both the Employer and Employee will give each other {termination_notice_length} days notice. Employer will provide Employee with {termination_severance_length} weeks of severance upon termination.</p>
-      <ul>
-        <li>If the Employer asks the Employee to leave before the notice period is up, the Employee will {termination_paid_if_evicted_early ? null : <span>NOT</span>} be paid for those weeks.</li>
-        <li>If living accommodations have been provided to Employee, {termination_lodging_length} days of lodging will be provided to Employee if Employee is terminated.</li>
-      </ul>
+      <p>The Employer and Employee agree that either party may terminate this Agreement by providing {termination_notice_length} week's notice. Provided, however, if Employee is a live-in Employee and is terminated without cause, the Employer shall give written notice, and Employer shall give {termination_lodging_length} days of lodging to Employee or {termination_severance_length} weeks of salary to Employee as severance. Whether terminated with or without cause, the Employer will provide {termination_severance_length} week's severance pay upon termination. If Employer asks the Employee to leave before the notice period is up, the Employee will be paid for those weeks.</p>
       <h4>Immediate Termination</h4>
       <p>There may be cases when there are grounds or cause for immediate termination without notice (which the Employer and Employee hopes will never happen). The Employer and Employee should discuss (and be as concrete as possible) what these grounds or cause for immediate termination without notice will be, and list them here:</p>
       <p>{immediate_termination_grounds}</p>

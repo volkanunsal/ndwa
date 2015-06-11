@@ -13,6 +13,7 @@ var TRecipient = t.struct({
   age: t.Num,
   description_of_care: t.Str
 });
+
 var TNonZero = t.subtype(t.Num, function(value){
   return value > 0
 })
@@ -197,16 +198,16 @@ export default class FormStore extends Store {
                   }),
                   overtime_notice_length: t.Str,
                   overtime_holidays: t.maybe(t.struct({
-                    "New Year's Day":t.Bool,
-                    "MLK Birthday":t.Bool,
-                    'Presidents Day':t.Bool,
-                    "Memorial Day":t.Bool,
-                    "Independence Day":t.Bool,
-                    "Labor Day":t.Bool,
-                    "Thanksgiving Day":t.Bool,
-                    'Christmas Day':t.Bool,
-                    "Other":t.Bool
-                  }))
+                    "New Year's Day": t.Bool,
+                    "MLK Birthday": t.Bool,
+                    'Presidents Day': t.Bool,
+                    "Memorial Day": t.Bool,
+                    "Independence Day": t.Bool,
+                    "Labor Day": t.Bool,
+                    "Thanksgiving Day": t.Bool,
+                    'Christmas Day': t.Bool
+                  })),
+                  overtime_holidays_other: t.Str
                 });
               }
             },

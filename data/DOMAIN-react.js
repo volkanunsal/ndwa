@@ -78,9 +78,9 @@ module.exports = {
     "Independence Day": T.bool,
     "Labor Day": T.bool,
     "Thanksgiving Day": T.bool,
-    "Christmas Day": T.bool,
-    "Other": T.bool
+    "Christmas Day": T.bool
   }),
+  overtime_holidays_other: T.string,
   overtime_notice_length: T.string,
   overtime_rate: T.number,
   parental_leave: T.shape({

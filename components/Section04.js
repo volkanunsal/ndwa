@@ -48,11 +48,15 @@ export default class SectionPage extends React.Component {
           </div>}/></span>,
           attrs: {
             min: 9,
-            max: 20
+            max: 20,
+            className: 'input-lg'
           },
           config: {
             addonBefore: <b>$</b>,
-            addonAfter: <b>per hour</b>
+            addonAfter: <b>per hour</b>,
+            horizontal: {
+              lg: [3, 2]
+            }
           }
         },
         overtime_rate: {
@@ -63,11 +67,16 @@ export default class SectionPage extends React.Component {
               Under current law, you must already pay overtime ("time and a half") for each hour over 40 hours worked in one week.</p>
           </div>}/></span>,
           attrs: {
-            min: 13.5
+            min: 13.5,
+            className: 'input-lg'
           },
           config: {
             addonBefore: <b>$</b>,
-            addonAfter: <b>per hour</b>
+            addonAfter: <b>per hour</b>,
+            horizontal: {
+              lg: [3, 2]
+            }
+
           }
         },
 
@@ -75,11 +84,25 @@ export default class SectionPage extends React.Component {
           type: 'number',
           label: 'When possible, the Employer will provide the Employee with notice how far in advance, prior to requesting the Employee to work overtime?',
           config: {
-            addonAfter: <i>days</i>
+            addonAfter: <i>days</i>,
+            horizontal: {
+              lg: [3, 2]
+            }
+
           },
           attrs: {
-            min: 0
+            min: 0,
+            className: 'input-lg'
           }
+        },
+        overtime_holidays_other: {
+          label: 'Other holidays',
+          type: 'textarea',
+          attrs: {
+            placeholder: 'e.g. Some Holiday, 06/04',
+            className: 'input-lg'
+          },
+          help: <i>Provide name and date</i>
         },
         overtime_holidays: {
           label: 'The Employee and the Employer agree that the Employee will be paid when working which of the following holidays?',
@@ -126,10 +149,14 @@ export default class SectionPage extends React.Component {
           type: 'number',
           label: 'The Employer agrees to provide the Employee with how many vacation days?',
           config: {
-            addonAfter: <i>days</i>
+            addonAfter: <i>days</i>,
+            horizontal: {
+              lg: [3, 2]
+            }
           },
           attrs: {
-            min: 0
+            min: 0,
+            className: 'input-lg'
           }
         },
         personal_days: {
@@ -140,10 +167,14 @@ export default class SectionPage extends React.Component {
                   </p>
                 </div>}/></div>,
           config: {
-            addonAfter: <i>days</i>
+            addonAfter: <i>days</i>,
+            horizontal: {
+              lg: [3, 2]
+            }
           },
           attrs: {
-            min: 0
+            min: 0,
+            className: 'input-lg'
           }
         },
         parental_leave: {
@@ -159,10 +190,14 @@ export default class SectionPage extends React.Component {
               label: 'How much notice will the Employee provide the Employer, prior to taking her parental leave?',
               help: <i>Minimum 2 weeks</i>,
               config: {
-                addonAfter: <i>weeks</i>
+                addonAfter: <i>weeks</i>,
+                horizontal: {
+                  lg: [3, 2]
+                }
               },
               attrs: {
-                min: 2
+                min: 2,
+                className: 'input-lg'
               }
             },
             paid: {
