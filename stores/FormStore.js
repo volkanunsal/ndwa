@@ -342,8 +342,8 @@ export default class FormStore extends Store {
                 if (contract.deductions_taken) {
                   Page = Page.extend({
                     deductions: t.struct({
-                      state_income_tax: t.Str,
-                      federal_income_tax: t.Str,
+                      state_income_tax: t.maybe(t.Str),
+                      federal_income_tax: t.maybe(t.Str),
                       health_insurance: t.maybe(t.Str),
                       food: t.maybe(t.Str),
                       lodging: t.maybe(t.Str),

@@ -106,7 +106,7 @@ export default class SectionPage extends React.Component {
     </div> : null;
 
     let endResult = <div className='visible-print'>
-      <h1>Domestic Employer/Employee Agreement</h1>
+      <h1>Sample Domestic Employer/Employee Agreement</h1>
       <p>This agreement is between {employee_name}, hereinafter 'Employee” and'{employer_name}, hereinafter 'Employer.' The work will be done at: {contract.work_address}. This agreement will begin on  {contract.start_date}.</p>
 
       <h2>Work Responsibilities</h2>
