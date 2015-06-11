@@ -8,7 +8,7 @@ import t from 'tcomb-form';
 
 
 
-var Recipient = t.struct({
+var TRecipient = t.struct({
   name: t.Str,
   age: t.Num,
   description_of_care: t.Str
@@ -139,10 +139,10 @@ export default class FormStore extends Store {
               name: 'Job Description',
               types: (contract) => {
                 return t.struct({
-                  children: t.list(Recipient),
+                  children: t.list(TRecipient),
                   childcare_tasks: t.list(t.Str),
                   cleaning_tasks: t.list(t.Str),
-                  home_care_recipients: t.list(Recipient),
+                  home_care_recipients: t.list(TRecipient),
                   home_care_tasks: t.list(t.Str)
                 })
               }

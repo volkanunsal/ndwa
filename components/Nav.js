@@ -49,7 +49,7 @@ export default class Nav extends React.Component {
             params={priNavParams}
             valid={section.valid}
             validated={section.validated}
-            enabled={allValid}
+            enabled={true}
             key={i}>
               {section.name}
             </NavTab>);

@@ -18,7 +18,7 @@ export default class SectionPage extends React.Component {
     var Page1 = {
       fields: {
         deductions_taken: {
-          label: <div><p className='lead'>{'Will the EMPLOYER take deductions from the EMPLOYEE\'s wages?'}</p> <TipTrigger anchorText='22' modalContent={<div>
+          label: <div><p className='lead'>{'Will the Employer take deductions from the Employee\'s wages?'}</p> <TipTrigger anchorText='22' modalContent={<div>
                   {"Other than food and living accommodations specified and agreed upon in writing by both employer and employee, no other deductions shall be made from a domestic worker's wages other than for specifically named, identified and agreed-upon purposes, or goods or services required or expressly authorized by law.  An employer's dissatisfaction with the quality of a domestic worker's services shall not be a basis for withholding, or taking deductions from, a domestic worker's compensation. "}
                 </div>}/></div>,
           template: function(locals){
