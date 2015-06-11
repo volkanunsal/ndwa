@@ -228,6 +228,29 @@ export default class Contract extends React.Component {
           </tr>
         </tbody>
       </table>
+
+
+      <div style={{minHeight: 900}}>
+        <h3 className='text-center'>APPENDIX 1</h3>
+
+
+        <p>If the Employee voluntarily agrees to work on a scheduled day off, this agreement must be in writing and s/he must be paid at time-and-a-half for hours worked during this period. </p>
+
+        <p>I, _____________________ (Employee), agree to work on _________ (date) for ________ (amount of time) and I, ________ (Employer), agree to pay time and a half for hours worked.</p>
+
+        <p>Initialed:_____ (Employee)    Initialed: _____ (Employee)     Date: ____________</p>
+      </div>
+      <div style={{minHeight: 1000}}>
+        <h3 className='text-center'>APPENDIX 2</h3>
+
+        <p>If the Employee must be on duty for 24 consecutive hours or more:
+        The Employer and Employee may make a prior written agreement to exclude from pay a regularly scheduled sleeping period of 8 hours or less for each 24-hour period. </p>
+
+        <p>I, _____________________ (Employee), knowing I am working 24 consecutive hours, agree that  ____ hours (up to 8 hours ) will be unpaid paid time provided that I am given undisturbed and uninterrupted sleeping time.</p>
+
+        <p>Initialed: _____ (Employee)     Initialed: _____ (Employer)     Date: ______________</p>
+
+      </div>
     </div>
   }
 }
