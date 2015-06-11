@@ -44,11 +44,11 @@ $yellow: #d3b52a;
 
 .btn-custom{
   color: white;
-  border: solid 1px white;
+  border: solid 2px white;
   border-radius: 0;
   font-size: 2em;
   font-weight: 300;
-  padding: 10px 40px;
+  padding: 20px 60px;
 
   &:hover{
     color: white;
@@ -68,20 +68,47 @@ $yellow: #d3b52a;
 }
 
 #hs-03{
-  td{
-    border-left: solid 1px white;
-    padding: 0 20px;
-  }
+  @media(min-width: $screen-md-min){
+    .col-lg-4{
+      border-left: solid 1px white;
+      padding: 0 20px;
+    }
 
-  td:first-child{
-    border-left: none;
+    .col-lg-4:first-child{
+      border-left: none;
+    }
   }
   padding-bottom: 80px;
 }
 
+#hs-04{
+  .container, .row {
+    min-height: 250px;
+  }
+  .col-lg-6:nth-child(2){
+    font-size: 2em;
+    padding-top: 20px;
+    padding-left: 40px;
+  }
+
+
+  @media(max-width: $screen-md-min){
+    .col-lg-6:nth-child(1){
+      text-align: center;
+    }
+  }
+  @media(min-width: $screen-md-min){
+    .col-lg-6:nth-child(2){
+      border-left: solid 1px white;
+    }
+  }
+
+}
 
 #hs-06{
   color: $black;
+  padding-bottom: 40px;
+  font-size: 2em;
 }
 
 
@@ -123,7 +150,7 @@ $yellow: #d3b52a;
     height:240px;
 
     img{
-      width: 90%;
+      max-width: 90%;
     }
   }
 }

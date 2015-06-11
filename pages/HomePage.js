@@ -8,61 +8,59 @@ export default class SectionPage extends React.Component {
   render() {
     return <div>
         <section id='hs-01' className='home-section bg-brand-black'>
-          <div className='container-fluid text-center'>
-            <img src={require('../images/home_01.png')}/>
-            <img src={require('../images/pencil_paper_main.png')} style={{position: 'relative', bottom: -120, zIndex: 998}}/>
+          <div className='container-fluid'>
+            <div className='row'>
+              <div className='col-lg-6 col-sm-12 col-md-12 text-center'>
+                <img src={require('../images/home_01.png')}/>
+              </div>
+              <div className='col-lg-4 visible-lg' style={{position: 'relative', bottom: -90, zIndex: 1001}}>
+                <img src={require('../images/pencil_paper_main.png')}/>
+              </div>
+            </div>
           </div>
         </section>
 
         <section id='hs-02' className='home-section bg-brand-blue'>
-          <div className='container text-center'>
-
-            <Link to='section' params={{sectionName: '1'}} className='btn btn-link btn-lg btn-custom' style={{marginTop: 80, marginBottom: 80}}>
-              Get Started!
-            </Link>
-
-            <p style={{fontSize: '3em'}}>
-              With In-House Agreements, creating your own work agreement is effortless. Step-by-step you’ll find the information you need, right at your fingertips. Simply answer the questions and fill in the blanks to fit your situation. Print your completed agreement, and CONGRATS you’re done!
-            </p>
+          <div className='container text-center' style={{paddingBottom: 200}}>
+            <div className='row'>
+              <div className='col-lg-12'>
+                <Link to='section' params={{sectionName: '1'}} className='btn btn-link btn-lg btn-custom' style={{marginTop: 80, marginBottom: 80}}>
+                  Get Started!
+                </Link>
+                <p style={{fontSize: '3em'}}>
+                  With In-House Agreements, creating your own work agreement is effortless. Step-by-step you’ll find the information you need, right at your fingertips. Simply answer the questions and fill in the blanks to fit your situation. Print your completed agreement, and CONGRATS you’re done!
+                </p>
+              </div>
+            </div>
           </div>
         </section>
         <section id='hs-03' className='home-section bg-brand-orange'>
-          <div className='container'>
-            <table style={{color: 'white'}}>
-              <tbody>
-                <tr>
-                  <td>
-                    <div className='text-center'><img src={require('../images/scale.png')}/></div>
-                    <h2>Keeps You Informed </h2>
-                  </td>
-                  <td>
-                    <div className='text-center'><img src={require('../images/arrow.png')}/></div>
-                    <h2>Straightforward</h2>
-                  </td>
-                  <td>
-                    <div className='text-center'><img src={require('../images/speech_bubbles.png')}/></div>
-                    <h2>Improves Communication</h2>
-                  </td>
-                </tr>
-                <tr style={{color: 'white', fontSize: '1.6em'}}>
-                  <td>
-                    <p>We work with the folks who helped implement the Bill of Rights, because agreements can feel complicated.</p>
-                  </td>
-                  <td>
-                    <p>We use plain language not legalese, because agreements can be daunting and confusing. </p>
-                  </td>
-                  <td>
-                    <p>You can avoid problems in the future, because agreements resolve potential conflicts at the outset.</p>
-                  </td>
-                </tr>
-              </tbody>
-            </table>
+          <div className='container' style={{color: 'white'}}>
+            <div className='row'>
+              <div className='col-lg-4'>
+                <div className='text-center' style={{height: 80, display: 'flex', justifyContent: 'center', alignItems: 'center'}}><img src={require('../images/scale.png')}/></div>
+                <h2>Keeps You Informed </h2>
+                <p style={{fontSize: '1.4em'}}>We work with the folks who helped implement the Bill of Rights, because agreements can feel complicated.</p>
+              </div>
+              <div className='col-lg-4'>
+                <div className='text-center' style={{height: 80, display: 'flex', justifyContent: 'center', alignItems: 'center'}}><img src={require('../images/arrow.png')}/></div>
+                <h2>Straightforward</h2>
+                <p style={{fontSize: '1.4em'}}>We use plain language not legalese, because agreements can be daunting and confusing. </p>
+              </div>
+              <div className='col-lg-4'>
+                <div className='text-center' style={{height: 80, display: 'flex', justifyContent: 'center', alignItems: 'center'}}><img src={require('../images/speech_bubbles.png')}/></div>
+                <h2>Improves Communication</h2>
 
+                <p style={{fontSize: '1.4em'}}>You can avoid problems in the future, because agreements resolve potential conflicts at the outset.</p>
+
+
+              </div>
+            </div>
           </div>
         </section>
         <section id='hs-04' className='home-section bg-brand-blue'>
-           <div className='container' style={{minHeight: 250}}>
-            <div className='row' style={{display: 'flex', alignItems: 'stretch', justifyContent: 'center', minHeight: 250, paddingBottom: 40}}>
+           <div className='container'>
+            <div className='row' style={{paddingBottom: 40}}>
               <div className='col-lg-6' style={{paddingTop: 20}}>
                 <h2 style={{lineHeight:'1.4em', fontSize: '3em'}}>Share In-House Agreements</h2>
                 <ul className='list-inline'>
@@ -71,11 +69,11 @@ export default class SectionPage extends React.Component {
                   <li><img src={require('../images/circle_tweet.png')}/></li>
                 </ul>
               </div>
-              <div className='col-lg-6' style={{borderLeft: 'solid 1px white', fontSize: '2em', paddingTop: 20, paddingLeft: 40}} >
+              <div className='col-lg-6'>
                 <p>We’re just getting started! Sign-up for news and updates</p>
                 <form id='signup-form'>
-                  <input type='text' className='form-control input-lg' placeholder='Name'/>
-                  <input type='text' className='form-control input-lg' placeholder='Email Address'/>
+                  <input type='text' style={{border: 'solid 2px white'}} className='form-control input-lg' placeholder='Name'/>
+                  <input type='text' style={{border: 'solid 2px white'}} className='form-control input-lg' placeholder='Email Address'/>
                   <a href='javascript:;'>
                     <img src={require('../images/circle_check.png')}/>
                   </a>
@@ -89,7 +87,7 @@ export default class SectionPage extends React.Component {
             <h1 style={{fontSize: '4em'}}>About the project</h1>
           </div>
         </section>
-        <section id='hs-06' className='home-section bg-white' style={{color: 'black', paddingBottom: 40, fontSize: '2em'}}>
+        <section id='hs-06' className='home-section bg-white'>
           <div className='container'>
             <p>
               We imagined In-House Agreements as a tool that makes it easier to create a work agreement. As a
@@ -106,16 +104,14 @@ export default class SectionPage extends React.Component {
               sense to everyone, so you can agree amicably, easily and with dignity, like you wanted all along.
             </p>
 
-            <div className='partners'>
-              <div className='row'>
-                <div className='col-lg-3 partner-slot'><h2>Our Partners</h2></div>
-                <div className='col-lg-3 partner-slot'>
-                  <img src={require('../images/ndwa_slate.png')}/></div>
-                <div className='col-lg-3 partner-slot'>
-                  <img src={require('../images/HIH_slate.png')}/></div>
-                <div className='col-lg-3 partner-slot'>
-                  <img src={require('../images/MCDW_slate.png')}/></div>
-              </div>
+            <div className='row partners'>
+              <div className='col-lg-3 partner-slot'><h2>Our Partners</h2></div>
+              <div className='col-lg-3 partner-slot'>
+                <img src={require('../images/ndwa_slate.png')} className='img-responsive'/></div>
+              <div className='col-lg-3 partner-slot'>
+                <img src={require('../images/HIH_slate.png')} className='img-responsive'/></div>
+              <div className='col-lg-3 partner-slot'>
+                <img src={require('../images/MCDW_slate.png')} className='img-responsive'/></div>
             </div>
             <hr/>
             <p className='text-center' style={{fontSize: '0.7em'}}>
@@ -136,7 +132,7 @@ export default class SectionPage extends React.Component {
             </p>
 
             <div className='row' style={{marginTop: 100, width: '90%', marginLeft: 'auto', marginRight: 'auto', paddingBottom: 90}}>
-              <div className='col-lg-6'>
+              <div className='col-lg-6' style={{marginBottom: 60}}>
                 <p className='text-center' style={{marginBottom: 80}}>
                   <img src={require('../images/terms.png')}/>
                 </p>
@@ -148,7 +144,7 @@ export default class SectionPage extends React.Component {
               </div>
               <div className='col-lg-6'>
                 <div className='row' style={{borderBottom: 'solid 1px white', paddingBottom: 40}}>
-                  <div className='col-lg-4'>
+                  <div className='col-lg-4 text-center'>
                     <img src={require('../images/fair_employer.png')} align='left'/>
                   </div>
                   <div className='col-lg-8'>
@@ -156,7 +152,7 @@ export default class SectionPage extends React.Component {
                   </div>
                 </div>
                 <div className='row'>
-                  <div className='col-lg-4' style={{paddingTop: 40}}>
+                  <div className='col-lg-4 text-center' style={{paddingTop: 40}}>
                     <img src={require('../images/bill.png')}/>
                   </div>
                   <div className='col-lg-8' style={{paddingTop: 40}}>
