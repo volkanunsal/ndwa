@@ -14,6 +14,9 @@ var TRecipient = t.struct({
   description_of_care: t.Str
 });
 
+var TStartDate = t.subtype(t.Dat, function(value){
+  return moment(new Date()).isBefore(value)
+})
 var TNonZero = t.subtype(t.Num, function(value){
   return value > 0
 })
@@ -127,7 +130,7 @@ export default class FormStore extends Store {
               types: (contract) => {
                 return t.struct({
                   work_address: t.Str,
-                  start_date: t.Dat
+                  start_date: TStartDate
                 });
               }
             }
