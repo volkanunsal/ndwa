@@ -231,10 +231,13 @@ h1,h2,h3,h4{
 
   .secondary{
     margin-top: 20px;
+    li{ background: white; }
     li a{
       border: none;
       border-radius: 0;
-      background: transparent;
+      &:hover, &:active, &:link, &:visited{
+        background: white;
+      }
     }
     li.invalid a{
       background-color: $red-lighter;
@@ -251,6 +254,7 @@ h1,h2,h3,h4{
       border-bottom: solid 2px $blue;
       color: $black;
     }
+
   }
   .primary{
 

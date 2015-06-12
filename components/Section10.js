@@ -67,7 +67,7 @@ export default class SectionPage extends React.Component {
                   style={{marginTop: 20, width: 200}}>Print</a>
               </p>
               <p>
-                <span className='fa fa-info-circle'/> Remember: You can always edit an agreement that you’ve printed with a pen.</p>
+                <span className='fa fa-info-circle'/> Remember: You can always edit your agreement after you print it, by making handwritten changes.</p>
             </div>
           </div>
 
