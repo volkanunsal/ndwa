@@ -4,15 +4,6 @@ import moment from 'moment';
 import Contract from './Contract';
 import $script from 'scriptjs';
 
-class PrintNow extends React.Component {
-  render(){
-    return <div className='text-center'>
-      <h3>Your agreement is ready! Please remember that you can amend the agreement with a pen, on the document itself, after you’ve printed it out.</h3>
-
-
-    </div>
-  }
-}
 export default class SectionPage extends React.Component {
   constructor(){
     super();
@@ -113,10 +104,12 @@ export default class SectionPage extends React.Component {
                 <p>For taking the steps toward creating an agreement between you and your domestic worker!</p>
               </div>
             </div>
+            <Contract {...contract} />
           </div> : null }
+
         </div>
 
-      <Contract {...contract} />
+
     </div>
     let fixErrors = <div className='final-page' style={{height: 400}}>
       <div className='container text-center'>
