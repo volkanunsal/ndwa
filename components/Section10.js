@@ -14,9 +14,22 @@ class PrintNow extends React.Component {
   }
 }
 export default class SectionPage extends React.Component {
+  constructor(){
+    super();
+
+    this.state = {
+      page: 0
+    }
+  }
+
   printForm() {
     window.print()
   }
+
+  nextPage(){
+    this.setState({page: 1})
+  }
+
 
   openChargeModal(){
     // Open Checkout with further options
@@ -57,22 +70,15 @@ export default class SectionPage extends React.Component {
 
     let printPage = <div>
         <div className='hidden-print'>
-          <div className='text-center final-congrats final-page'>
+          {this.state.page == 0 ? <div className='text-center final-congrats final-page'>
             <div className='container'>
               <h3>Congratulations, you did it! You’ve reached the end of the agreement. Be sure to review your information by using the tabs before printing it, making multiple copies and signing it!</h3>
               <p>
                 <a
-                  onClick={this.printForm.bind(this)}
+                  onClick={this.nextPage.bind(this)}
                   className='btn btn-lg btn-print'
-                  style={{marginTop: 20, width: 200}}>Print</a>
+                  style={{marginTop: 20, width: 200}}>Next</a>
               </p>
-              <p>
-                <span className='fa fa-info-circle'/> Remember: You can always edit your agreement after you print it, by making handwritten changes.</p>
-            </div>
-          </div>
-
-          <div className='text-center final-page'>
-            <div className='container'>
               <h3>
                 We need your help to pay for this tool and keep it up to date. Please make a $10.00 donation (or other amount) and/or give us your email address so we can send you the latest updates and access to new tools, like this one.
                 You can print and download your agreement once your donation clears.
@@ -83,10 +89,11 @@ export default class SectionPage extends React.Component {
                   className='btn btn-lg btn-yesno'
                   style={{marginTop: 20, width: 200}}>Donate</a>
               </p>
-            </div>
-          </div>
 
-          <div className='text-center final-page'>
+            </div>
+          </div> : null}
+
+          {this.state.page == 1 ? <div className='text-center final-page'>
             <div className='container'>
               <h3>Your agreement is ready! Please remember that you can amend the agreement with a pen, on the document itself, after you’ve printed it out.</h3>
               <a
@@ -97,12 +104,15 @@ export default class SectionPage extends React.Component {
                   <br/>
                   <img src={require('../images/print.png')}/>
                 </a>
+              <div style={{width: '50%', margin: '0 auto'}}>
+                <p>
+                  <span className='fa fa-info-circle'/> Remember: You can always edit your agreement after you print it, by making handwritten changes.</p>
 
-              <h3>Thank you</h3>
-              <p style={{width: '50%', margin: '0 auto'}}>For taking the steps toward creating an agreement between you and your domestic worker!</p>
+                <h3>Thank you</h3>
+                <p>For taking the steps toward creating an agreement between you and your domestic worker!</p>
+              </div>
             </div>
-          </div>
-
+          </div> : null }
         </div>
 
       <Contract {...contract} />
