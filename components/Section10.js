@@ -42,6 +42,8 @@ export default class SectionPage extends React.Component {
   }
 
   componentDidMount(){
+    let {contract, flux} = this.props;
+    flux.getActions('form_actions').validateSections(contract)
     // image: '/img/documentation/checkout/marketplace.png',
     $script('https://checkout.stripe.com/checkout.js', ()=>{
       this.handler = StripeCheckout.configure({
@@ -123,7 +125,7 @@ export default class SectionPage extends React.Component {
         </div>
     </div>
 
-
+    console.log(isValid)
     return <div className='container-fluid' style={{alignSelf: 'center'}}>
       {(isValid != undefined && isValid) ? printPage : fixErrors}
     </div>

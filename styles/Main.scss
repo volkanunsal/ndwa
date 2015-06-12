@@ -468,3 +468,22 @@ label p.lead{
     z-index: -1;
   }
 }
+
+.st_facebook_custom{
+  background: url('../images/circle_FB.png') left top no-repeat;
+  padding: 25px 30px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.st_email_custom{
+  background: url('../images/circle_mail.png') left top no-repeat;
+  padding:25px 30px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}
+.st_twitter_custom{
+  background: url('../images/circle_tweet.png') left top no-repeat;
+  padding:25px 30px 20px;
+  margin-right: 10px;
+  cursor: pointer;
+}

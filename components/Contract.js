@@ -53,8 +53,8 @@ export default class Contract extends React.Component {
       <h4>Childcare and nanny services</h4>
 
       <h4>Children</h4>
-      {children && children.map(child => {
-        return <p>
+      {children && children.map((child,i) => {
+        return <p key={i}>
           <b>Name:</b> {child.name}<br/>
           <b>Age:</b> {child.age}<br/>
           <b>Description of care:</b> {child.description_of_care}
@@ -68,25 +68,25 @@ export default class Contract extends React.Component {
       <h4>Home/Elder care, including sick, convalescing, and elderly individuals </h4>
 
       <h4>Recipient</h4>
-      {home_care_recipients.map(recip => {
-        return <p>
+      {home_care_recipients.map((recip,i) => {
+        return <p key={i}>
           <b>Name:</b> {recip.name}<br/>
           <b>Age:</b> {recip.age}<br/>
           <b>Description of care:</b> {recip.description_of_care}
         </p>
       })}
       {home_care_tasks && home_care_tasks.length > 0 ? <div><h4>Homecare tasks</h4>
-      <ul>{home_care_tasks.map(task => <li>{task}</li>)}</ul></div> : null}
+      <ul>{home_care_tasks.map((task,i) => <li key={i}>{task}</li>)}</ul></div> : null}
     </div> : null;
 
     let resp_3 = (cleaning_tasks && cleaning_tasks.length > 0) ? <div>
       <h4>House Cleaning and Home Management</h4>
       {cleaning_tasks.length > 0 ? <div><h4>Homecare tasks</h4>
-      <ul>{cleaning_tasks.map(task => <li>{task}</li>)}</ul></div> : null}
+      <ul>{cleaning_tasks.map((task,i) => <li key={i}>{task}</li>)}</ul></div> : null}
     </div> : null;
 
 
-    return <div>
+    return <div className='visible-print'>
       <div style={{pageBreakAfter: 'always'}}>
         <h2>Sample Domestic Employer/Employee Agreement</h2>
         <p>This agreement is between {employee_name}, hereinafter 'Employee” and'{employer_name}, hereinafter 'Employer.' {work_address ? <span>The work will be done at: {work_address}.</span> : null} {start_date ? <span>This agreement will begin on  {moment(start_date).format("dddd, MMMM Do YYYY")}.</span> : null}</p>
@@ -100,8 +100,8 @@ export default class Contract extends React.Component {
         <h3>2. Scheduling</h3>
         <p>The hours of employment will be the following:</p>
         <ul>
-          {work_days && work_days.filter(day=> day.active).map(day => {
-            return <li>{day.name}: {day.times[0]} - {day.times[1]}</li>
+          {work_days && work_days.filter(day=> day.active).map((day,i) => {
+            return <li key={i}>{day.name}: {day.times[0]} - {day.times[1]}</li>
           })}
         </ul>
 

@@ -207,7 +207,7 @@ export default class FormStore extends Store {
                     "Thanksgiving Day": t.Bool,
                     'Christmas Day': t.Bool
                   })),
-                  overtime_holidays_other: t.Str
+                  overtime_holidays_other: t.maybe(t.Str)
                 });
               }
             },
@@ -409,9 +409,9 @@ export default class FormStore extends Store {
               name: 'Severance & Lodging',
               types: (contract) => {
                 return t.struct({
-                  termination_notice_length: t.Str,
-                  termination_severance_length: t.Str,
-                  termination_lodging_length: t.Str,
+                  termination_notice_length: t.Num,
+                  termination_severance_length: t.Num,
+                  termination_lodging_length: t.Num,
                   termination_paid_if_evicted_early: t.Bool
                 })
               }

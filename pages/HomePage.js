@@ -2,9 +2,19 @@ import React from 'react';
 import {Link} from 'react-router';
 var basePath = '/';
 import EmailSignUp from '../components/EmailSignUp';
+import $script from 'scriptjs';
+
+
+
 
 export default class SectionPage extends React.Component {
 
+  componentDidMount(){
+    window.switchTo5x = true;
+    $script('http://w.sharethis.com/button/buttons.js', function(){
+      stLight.options({publisher: "126f4359-08ea-4054-a9af-defe6a39880a", doNotHash: false, doNotCopy: false, hashAddressBar: false});
+    })
+  }
 
   render() {
     return <div>
@@ -63,12 +73,10 @@ export default class SectionPage extends React.Component {
            <div className='container'>
             <div className='row' style={{paddingBottom: 40}}>
               <div className='col-lg-6' style={{paddingTop: 20}}>
-                <h2 style={{lineHeight:'1.4em', fontSize: '3em'}}>Share In-House Agreements</h2>
-                <ul className='list-inline'>
-                  <li><img src={require('../images/circle_FB.png')}/></li>
-                  <li><img src={require('../images/circle_mail.png')}/></li>
-                  <li><img src={require('../images/circle_tweet.png')}/></li>
-                </ul>
+                <h2 style={{lineHeight:'1.4em', fontSize: '3em', marginBottom: 20}}>Share In-House Agreements</h2>
+                <span className='st_facebook_custom' displayText='Facebook'/>
+                <span className='st_email_custom' displayText='Email'/>
+                <span className='st_twitter_custom' displayText='Tweet'/>
               </div>
               <div className='col-lg-6'>
                 <p>We’re just getting started! Sign-up for news and updates</p>

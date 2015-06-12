@@ -15,7 +15,7 @@ var TWorkDay = T.shape({
 });
 
 module.exports = {
-  additional_tasks: T.arrayOf(T.string),
+  additional_tasks: T.string,
   bad_weather_day_paid: T.bool,
   benefits: T.shape({
     health: T.bool,
@@ -127,7 +127,7 @@ module.exports = {
       })
     })
   }),
-  start_date: T.string,
+  start_date: T.any,
   termination_lodging_length: T.number,
   termination_notice_length: T.number,
   termination_paid_if_evicted_early: T.bool,
