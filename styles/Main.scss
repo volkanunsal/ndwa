@@ -498,3 +498,9 @@ label p.lead{
   margin-right: 10px;
   cursor: pointer;
 }
+
+.modal-vertical-centered {
+  transform: translate(0, 20%) !important;
+  -ms-transform: translate(0, 20%) !important; /* IE 9 */
+  -webkit-transform: translate(0, 20%) !important; /* Safari and Chrome */
+}

@@ -72,7 +72,7 @@ export default class SectionPage extends React.Component {
         <div className='hidden-print'>
           {this.state.page == 0 ? <div className='text-center final-congrats final-page'>
             <div className='container'>
-              <h3>Congratulations, you did it! You’ve reached the end of the agreement. We need your help to pay for this tool and keep it up to date. Please make a $10.00 donation (or other amount) so we can build new tools, like this one. You can print and download your agreement once your donation clears.</h3>
+              <h3 style={{width: 800, margin: '0 auto'}}>Congratulations, you did it! You’ve reached the end of the agreement. We need your help to pay for this tool and keep it up to date. Please make a $10.00 donation (or other amount) so we can build new tools, like this one. You can print and download your agreement once your donation clears.</h3>
               <p>
                 <div className='input-group' style={{width:200, margin: '0 auto'}}>
                   <span className='input-group-addon'>$</span>

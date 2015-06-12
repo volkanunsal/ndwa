@@ -4,7 +4,7 @@ import {Modal, ModalTrigger, Button} from 'react-bootstrap';
 export const MyModal = React.createClass({
   render() {
     return (
-      <Modal {...this.props} title='Hints and Explanations' animation={false}>
+      <Modal {...this.props} title='Hints and Explanations' animation={false} className='modal-vertical-centered'>
         <div className='modal-body'>
           {this.props.modalContent}
         </div>
