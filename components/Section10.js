@@ -120,7 +120,8 @@ export default class SectionPage extends React.Component {
     </div>
     let fixErrors = <div className='final-page' style={{height: 400}}>
       <div className='container text-center'>
-        <span className='fa fa-warning fa-3x text-danger' style={{fontSize: '6em'}}/>
+        <img src={require('../images/warning.png')} />
+
         <h1>{"Oops. Looks like you missed a few things. You can review your information by clicking on the tabs. Tabs in red indicate that there is an error or information missing."}</h1>
         </div>
     </div>
