@@ -9,7 +9,7 @@ import I from 'immutable';
 import moment from 'moment';
 import ContractStore from './stores/ContractStore';
 import FormStore from './stores/FormStore';
-  
+
 
 //================ ACTIONS =======================
 export class CalendarActions extends Actions {
@@ -47,6 +47,7 @@ export default class App extends React.Component {
     params: PropTypes.object.isRequired,
     query: PropTypes.object.isRequired
   }
+  
   render() {
     return (
       <DocumentTitle title={'Inhouse Agreements | Generate work agreements effortlessly'}>
