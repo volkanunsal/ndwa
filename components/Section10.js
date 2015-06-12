@@ -50,7 +50,9 @@ export default class SectionPage extends React.Component {
   }
 
   componentWillUnmount(){
-    this.handler.close();
+    if (this.handler) {
+      this.handler.close();
+    };
   }
 
   render() {
@@ -104,11 +106,9 @@ export default class SectionPage extends React.Component {
                 <p>For taking the steps toward creating an agreement between you and your domestic worker!</p>
               </div>
             </div>
-            <Contract {...contract} />
           </div> : null }
-
         </div>
-
+        {this.state.page == 1 ? <Contract {...contract} /> : null}
 
     </div>
     let fixErrors = <div className='final-page' style={{height: 400}}>
