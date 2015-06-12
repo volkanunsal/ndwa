@@ -46,11 +46,10 @@ export default class SectionPage extends React.Component {
     $script('https://checkout.stripe.com/checkout.js', ()=>{
       this.handler = StripeCheckout.configure({
         key: 'pk_KTys5b7o2EoLYZ6BkRxUD1QeqhEvf',
-        token: function(token) {
+        token: (token)=>{
           // Use the token to create the charge with a server-side script.
           // You can access the token ID with `token.id`
-          console.log(token)
-
+          this.setState({page: 1})
           // TODO: show the print now component
         }
       });
@@ -117,13 +116,16 @@ export default class SectionPage extends React.Component {
 
       <Contract {...contract} />
     </div>
-    let fixErrors = <div>
-      <h3>{"Oops. Looks like you missed a few things. You can review your information by clicking on the tabs. Tabs in red indicate that there is an error or information missing."}</h3>
+    let fixErrors = <div className='final-page' style={{height: 400}}>
+      <div className='container text-center'>
+        <span className='fa fa-warning fa-3x text-danger' style={{fontSize: '6em'}}/>
+        <h1>{"Oops. Looks like you missed a few things. You can review your information by clicking on the tabs. Tabs in red indicate that there is an error or information missing."}</h1>
+        </div>
     </div>
 
 
     return <div className='container-fluid' style={{alignSelf: 'center'}}>
-      {(isValid != undefined && isValid) ? printPage : printPage}
+      {(isValid != undefined && isValid) ? printPage : fixErrors}
     </div>
   }
 }
