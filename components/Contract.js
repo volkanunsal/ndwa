@@ -14,10 +14,14 @@ export default class Contract extends React.Component {
       let i = 0;
       let days = []
       for(let day in overtime_holidays){
-        days.push(<li key={i++}>{day}</li>)
+        if (overtime_holidays[day]) {
+          days.push(<li key={i++}>{day}</li>)
+        };
       }
       overtime_holidays = days
     };
+
+    
 
     let employee_room;
     if (room) {

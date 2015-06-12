@@ -125,7 +125,6 @@ export default class SectionPage extends React.Component {
         </div>
     </div>
 
-    console.log(isValid)
     return <div className='container-fluid' style={{alignSelf: 'center'}}>
       {(isValid != undefined && isValid) ? printPage : fixErrors}
     </div>
