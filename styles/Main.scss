@@ -389,10 +389,8 @@ h1,h2,h3,h4{
     resize: none;
 
     &:hover {
-      background: #3cb0fd;
-      background-image: linear-gradient(to bottom, #3cb0fd, #3498db);
+      background: #3c4049;
       text-decoration: none;
-      color: #3c4049;
     }
 
     &.active{
@@ -400,7 +398,6 @@ h1,h2,h3,h4{
       border: solid 1px #3498db;
       color: #3498db;
     }
-
 
   }
 
