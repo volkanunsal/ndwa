@@ -13,21 +13,7 @@ export default class SectionPage extends React.Component {
 
   getPageOptions(contract, flux){
     var Page1 = {
-      label: 'Are you a domestic worker or an employer?',
-      fields: {
-        user_type: {
-          label: ' ',
-          factory: t.form.Radio
-        }
-      },
-      template: function(locals){
-        return <div className='text-center'>
-          <p className='lead'>{locals.label}</p>
-          <div className='form-inline q-domestic-or-employer'>
-            {React.addons.createFragment(locals.inputs)}
-            <ul className='list-inline'>
-              <li>
-                <TipTrigger anchorText='1' modalContent={<div>
+      label: <span>Are you a <TipTrigger anchorText='1' modalContent={<div>
                   <p>You are a 'domestic worker' if:</p>
                   <ol>
                     <li>you are an independent contractor or an employee.</li>
@@ -40,10 +26,7 @@ export default class SectionPage extends React.Component {
                     <li>Send this contract to your employer, or</li>
                     <li>Fill out this contract</li>
                   </ul>
-                </div>}/>
-              </li>
-              <li>
-                <TipTrigger anchorText='2' modalContent={<div>
+                </div>}/>domestic worker or <TipTrigger anchorText='2' modalContent={<div>
                   <p>You are a "domestic employer" if:</p>
                   <ol>
                     <li>an independent contractor or an employee works for you,</li>
@@ -66,11 +49,18 @@ export default class SectionPage extends React.Component {
                     <li>Share it with your peers</li>
                   </ol>
 
-                </div>}/>
-              </li>
-            </ul>
-
-
+                </div>}/>an employer?</span>,
+      fields: {
+        user_type: {
+          label: ' ',
+          factory: t.form.Radio
+        }
+      },
+      template: function(locals){
+        return <div className='text-center'>
+          <p className='lead'>{locals.label}</p>
+          <div className='form-inline q-domestic-or-employer'>
+            {React.addons.createFragment(locals.inputs)}
           </div>
         </div>
 
@@ -95,10 +85,11 @@ export default class SectionPage extends React.Component {
       fields: {
         work_address: {
           label: <div>
-            <p className='lead'>Where will the work take place?</p>
-            <TipTrigger anchorText='3' modalContent={<div>
-              <p>Employer may have multiple addresses or employee may work for a family at multiple locations.</p>
-            </div>}/>
+            <p className='lead'>
+              <TipTrigger anchorText='3' modalContent={<div>
+                <p>Employer may have multiple addresses or employee may work for a family at multiple locations.</p>
+              </div>}/> Where will the work take place?</p>
+
           </div>,
           help: <i>Please enter an address</i>,
           config: {
@@ -107,10 +98,11 @@ export default class SectionPage extends React.Component {
         },
         start_date: {
           label: <div>
-            <p className='lead'>On what date will this agreement begin?</p>
+            <p className='lead'>
             <TipTrigger anchorText='4' modalContent={<div>
               <p>This agreement is effective upon signing, not date of original hire.</p>
-            </div>}/>
+            </div>}/> On what date will this agreement begin?</p>
+
           </div>
         }
       }

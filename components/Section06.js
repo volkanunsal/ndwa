@@ -18,9 +18,9 @@ export default class SectionPage extends React.Component {
     var Page1 = {
       fields: {
         deductions_taken: {
-          label: <div><p className='lead'>{'Will the Employer take deductions from the Employee\'s wages?'}</p> <TipTrigger anchorText='22' modalContent={<div>
+          label: <div><p className='lead'><TipTrigger anchorText='22' modalContent={<div>
                   {"Other than food and living accommodations specified and agreed upon in writing by both employer and employee, no other deductions shall be made from a domestic worker's wages other than for specifically named, identified and agreed-upon purposes, or goods or services required or expressly authorized by law.  An employer's dissatisfaction with the quality of a domestic worker's services shall not be a basis for withholding, or taking deductions from, a domestic worker's compensation. "}
-                </div>}/></div>,
+                </div>}/> {'Will the Employer take deductions from the Employee\'s wages?'} </p></div>,
           template: function(locals){
             return <div className='text-center'>
               <YesNo flux={flux} {...locals}/>
@@ -66,7 +66,7 @@ export default class SectionPage extends React.Component {
               attrs: {
                 min: 0
               },
-              label: <div>Employee contribution to Health Insurance (optional) <TipTrigger anchorText='25' modalContent={<div>
+              label: <div>Employee contribution to Health Insurance <TipTrigger anchorText='25' modalContent={<div>
                   {"There are different ways an employer can provide health insurance: provide health insurance yourself, support or assist a domestic worker by accessing new exchanges created by the Affordable Care Act, augment wages on an hourly basis to cover medical costs, or pay for a preset number of doctor visits and up to a certain monetary amount."}
                 </div>}/></div>,
               config: {
@@ -78,7 +78,7 @@ export default class SectionPage extends React.Component {
               attrs: {
                 min: 0
               },
-              label: <div>Food and Beverages (optional) <TipTrigger anchorText='26' modalContent={<div>
+              label: <div>Food and Beverages <TipTrigger anchorText='26' modalContent={<div>
                   {"Employers cannot charge (or deduct from wages) for meals unless the domestic worker employee agrees and freely chooses the food and drink, and it’s for her benefit. The price must accurately reflect the cost of food and cannot exceed $1.50 for breakfast, $2.25 for lunch, and $2.25 for dinner per day. An employer may not charge for meals if the employee cannot easily bring meals to or prepare meals on the premises. "}
                 </div>}/></div>,
               config: {
@@ -90,7 +90,7 @@ export default class SectionPage extends React.Component {
               attrs: {
                 min: 0
               },
-              label: <div>Lodging/Living Accommodations (optional) <TipTrigger anchorText='27' modalContent={<div>
+              label: <div>Lodging/Living Accommodations <TipTrigger anchorText='27' modalContent={<div>
                   {"Employers cannot deduct (or charge) for lodging unless the employee freely accepts, wants, and uses it, and it’s for his/her benefit (i.e., she is in your home as a convenience to her, not to you).  Charges must be reasonable and cannot exceed $35/week for a room used by one person, $30/week for a room occupied by two people, $25/week for a room occupied by three or more persons. "}
                 </div>}/></div>,
               config: {
@@ -104,7 +104,8 @@ export default class SectionPage extends React.Component {
               },
               config: {
                 addonAfter: <i>frequency</i>
-              }
+              },
+              label: 'Other'
             }
           },
           template: function(locals){

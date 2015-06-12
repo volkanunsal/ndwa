@@ -29,9 +29,9 @@ export default class SectionPage extends React.Component {
           }
         },
         termination_severance_length: {
-          label: <div><p className='lead'>{"If the Employee is terminated with or without cause, the Employer shall provide the Employee with how much severance pay?"}</p> <TipTrigger anchorText='32' modalContent={<div>
+          label: <div><p className='lead'><TipTrigger anchorText='32' modalContent={<div>
                   {"Regulations require that the Employer must give written notice AND 30 days lodging or 2 weeks salary as severance if the Domestic Worker is a live-in employee. If Domestic Worker resides in Employer’s household and Employer terminates employment, Employer must provide written notice and either 30 days of lodging, either on-site or off-site, or severance pay equivalent to Domestic Worker’s average earnings during the last two weeks of employment, pursuant to M.G.L. c. 149, § 190(k)."}
-                </div>}/></div>,
+                </div>}/> {"If the Employee is terminated with or without cause, the Employer shall provide the Employee with how much severance pay?"}</p> </div>,
           type: "number",
           attrs: {
             min: 0,
@@ -42,9 +42,9 @@ export default class SectionPage extends React.Component {
           }
         },
         termination_lodging_length: {
-          label: <div><p className='lead'>{"And if living accommodations have been provided by the Employer, how many days of lodging will the Employee be given if the Employee is terminated?"}</p> <TipTrigger anchorText='33' modalContent={<div>
+          label: <div><p className='lead'><TipTrigger anchorText='33' modalContent={<div>
                   {"No advance notice or severance payment shall be required where the employer provides a good faith allegation that the domestic worker has abused, neglected, or caused any other harmful conduct against the employer, members of the employer’s family, or individuals residing in the employer’s household, as described in 940 C.M.R. 32.03(19). "}
-                </div>}/></div>,
+                </div>}/> {"And if living accommodations have been provided by the Employer, how many days of lodging will the Employee be given if the Employee is terminated?"}</p> </div>,
           type: "number",
           attrs: {
             min: 0,

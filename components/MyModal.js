@@ -19,7 +19,9 @@ export const MyModal = React.createClass({
 export class TipTrigger extends React.Component {
   render(){
     return <ModalTrigger modal={<MyModal {...this.props} />}>
-      <a href='javascript:;' tabIndex={-1} className='form-hint'>{this.props.anchorText}</a>
+      <a href='javascript:;' tabIndex={-1} className='form-hint'>
+        <img src={require('../images/light_bulb.png')} style={{width: 15}} />
+      </a>
     </ModalTrigger>
   }
 }

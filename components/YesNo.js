@@ -22,12 +22,12 @@ export default class YesNo extends React.Component {
 
     let yesClasses = cx({
       'btn': true,
-      'btn-primary': value == true,
+      'btn-yesno': value == true,
       'btn-link': value == false
     })
     let noClasses = cx({
       'btn': true,
-      'btn-primary': value == false,
+      'btn-yesno': value == false,
       'btn-link': value == true
     })
 
@@ -53,7 +53,7 @@ export default class YesNo extends React.Component {
         {label}
       </label>
       <div className={cx(col2Cs)}>
-        <ul className='list-inline'>
+        <ul className='list-inline btn-group-yesno'>
           <li>
             <a className={yesClasses}
               onClick={this.handleYesClick.bind(this)}>Yes</a>

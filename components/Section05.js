@@ -26,9 +26,9 @@ export default class SectionPage extends React.Component {
       },
       fields: {
         workers_comp_insurance: {
-          label: <div>What are the Employer's workers' compensation company and information? <TipTrigger anchorText='21' modalContent={<div>
+          label: <div className='lead'><TipTrigger anchorText='21' modalContent={<div>
                   Employees have the right to collect worker compensation if injured on the job. Note: some homeowners and renters insurance cover workers comp, but not all; if you use a payroll system, please make sure to ask your provider or vendor about this.
-                </div>}/></div>,
+                </div>}/> What are the Employer's workers' compensation company and information?</div>,
           template: function(locals){
             return <div>
               <p className='lead'>{locals.label}</p>

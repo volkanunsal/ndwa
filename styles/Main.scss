@@ -1,16 +1,40 @@
 @import '../node_modules/bootstrap-sass/assets/stylesheets/bootstrap/variables';
+@import url(http://fonts.googleapis.com/css?family=Muli:300,400|Bree+Serif);
 
 $black: #3b3f48;
 $blue: #8fb1c6;
-$orange: #df6359;
-$yellow: #d3b52a;
+$yellow: #d3b52b;
+
+$red: #cb3536;
+$red-light: #df6359;
+$red-lighter: #faaba8;
+$green: #38baa4;
+$green-light: #88e2d4;
+$black-light: #e6e6e6;
+$white: #f1f1f2;
+
+
+// Muli Reg
+// Muli light
+// Bree Serif Reg
 
 .bg-brand-black{ background: $black; }
 .bg-brand-blue{ background: $blue; }
-.bg-brand-orange{ background: $orange; }
+.bg-brand-orange{ background: $red-light; }
 .bg-brand-yellow{ background: $yellow; }
 .bg-white{ background: white; }
 
+.label-green{ background-color: $green; }
+.label-red{ background-color: $red; }
+.label-yellow{ background-color: $yellow; }
+.label-blue{ background-color: $blue; }
+
+body{
+  font-family: 'Muli';
+}
+h1,h2,h3,h4{
+  font-family: 'Bree Serif';
+}
 .home-section{
   // min-height: 400px;
   padding-top: 70px;
@@ -53,6 +77,15 @@ $yellow: #d3b52a;
   &:hover{
     color: white;
     border-color: white;
+  }
+}
+
+.btn-yesno{
+  background-color: $yellow;
+  color: white;
+  border-radius: 0;
+  &:hover{
+    color: white;
   }
 }
 
@@ -115,7 +148,7 @@ $yellow: #d3b52a;
 #signup-form{
   margin-top: 40px;
 
-  input[type='text']{
+  input[type='text'], input[type='email']{
     background: none !important;
     border-radius: 0;
     margin-bottom: 20px;
@@ -161,7 +194,7 @@ $yellow: #d3b52a;
 
 
 .form-hint{
-  background: purple;
+  // background: purple;
   color: white;
   border-radius: 50%;
   // padding-top: 3px;
@@ -194,24 +227,34 @@ $yellow: #d3b52a;
     }
     li.active a{
       background: transparent;
-      border-bottom: solid 1px $brand-primary;
-      color: $brand-primary;
+      border-bottom: solid 1px $black;
+      color: $black;
     }
     li.invalid a{
-      color: $brand-danger;
+      background-color: $red-lighter;
+      color: $black;
+      border-bottom: solid 2px $red;
     }
     li.valid a{
-      color: $brand-success;
+      background-color: $green-light;
+      color: $black;
+      border-bottom: solid 2px $green;
     }
   }
   .primary{
+    li.active a{
+      background-color: $blue;
+      color: $black;
+    }
+
+
     li.valid a{
-      color: $brand-success;
-      // color:white;
+      background-color: $green-light;
+      color: $black;
     }
     li.invalid a{
-      color: $brand-danger;
-      // color:white;
+      background-color: $red-lighter;
+      color: $black;
     }
     // li.invalid.active a, li.valid.active a{
     //   border-bottom: solid 3px $brand-primary;
@@ -316,14 +359,15 @@ $yellow: #d3b52a;
     align-items: center;
     position: relative;
 
-    background: #3498db;
+    background: $blue;
     cursor: pointer;
     color: white;
-    background-image: linear-gradient(to bottom, #3498db, #2980b9);
+    background-image: linear-gradient(to bottom, lighten($blue,5%), darken($blue,10%));
     border-radius: 0px;
     font-family: Arial;
     color: #ffffff;
     font-size: 1.1em;
+    font-weight: normal;
     padding: 0;
     text-decoration: none;
     outline: 0;
@@ -344,6 +388,13 @@ $yellow: #d3b52a;
 
   }
 
+  .total-hours{
+    border-color: $blue;
+    border-radius: 0;
+    color: $blue;
+    outline: 0;
+    user-select: none;
+  }
   .time-picker-cell{
     display: flex;
     width: 100%;
@@ -353,18 +404,18 @@ $yellow: #d3b52a;
     position: relative;
     cursor: not-allowed;
 
-    border: solid 1px #3498db;
-    color: #3498db;
+    border: solid 1px $blue;
+    color: $blue;
     font-size: 1.2em;
 
 
     &.active{
-      border-color: orange;
-      color: orange;
+      border-color: $yellow;
+      color: $yellow;
 
       &.invalid{
-        border: solid 1px red;
-        color: red;
+        border: solid 1px $red;
+        color: $red;
       }
     }
   }

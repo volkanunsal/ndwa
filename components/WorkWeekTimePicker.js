@@ -31,11 +31,11 @@ class DayPicker extends React.Component {
     let cs = cx({
       active, 'day-name': true
     })
-    return <b
+    return <span
       className={cs}
       onClick={this.toggleDay.bind(this)}>
         {this.props.value.name}
-    </b>
+    </span>
   }
 }
 
@@ -215,7 +215,7 @@ export default class WorkWeekTimePicker extends React.Component {
       readOnly={true}
       tabIndex={-1}
       value={totalHours}
-      className='form-control'
+      className='form-control total-hours'
       style={{height: 'inherit', textAlign: 'right', outline: 'none'}}/>
 
     return <div>
@@ -223,9 +223,9 @@ export default class WorkWeekTimePicker extends React.Component {
       <div className='row calendar-row'>
         <div className='col-lg-1'>
           <ul className='list-unstyled'>
-            <li className='label-danger label'>Day</li>
-            <li className='label-warning label'>Start</li>
-            <li className='label-success label'>End</li>
+            <li className='label-yellow label'>Day</li>
+            <li className='label-green label'>Start</li>
+            <li className='label-red label'>End</li>
           </ul>
         </div>
         {work_days}
@@ -233,7 +233,7 @@ export default class WorkWeekTimePicker extends React.Component {
       <div className='row calendar-row'>
         <div className='col-lg-2'>
           <ul className='list-unstyled'>
-            <li className='label-warning label'>Weekly Total (in hours)</li>
+            <li className='label-blue label'>Weekly Total (in hours)</li>
           </ul>
         </div>
         <div className='col-lg-1'>

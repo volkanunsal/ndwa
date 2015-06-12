@@ -1,6 +1,7 @@
 import React from 'react';
 import {Link} from 'react-router';
 var basePath = '/';
+import EmailSignUp from '../components/EmailSignUp';
 
 export default class SectionPage extends React.Component {
 
@@ -71,13 +72,7 @@ export default class SectionPage extends React.Component {
               </div>
               <div className='col-lg-6'>
                 <p>We’re just getting started! Sign-up for news and updates</p>
-                <form id='signup-form'>
-                  <input type='text' style={{border: 'solid 2px white'}} className='form-control input-lg' placeholder='Name'/>
-                  <input type='text' style={{border: 'solid 2px white'}} className='form-control input-lg' placeholder='Email Address'/>
-                  <a href='javascript:;'>
-                    <img src={require('../images/circle_check.png')}/>
-                  </a>
-                </form>
+                <EmailSignUp/>
               </div>
             </div>
           </div>
