@@ -21,7 +21,7 @@ export default class Contract extends React.Component {
       overtime_holidays = days
     };
 
-    
+
 
     let employee_room;
     if (room) {
@@ -193,7 +193,7 @@ export default class Contract extends React.Component {
         </ul>
 
         <h3>9. Evaluations/reviews</h3>
-        <p>The Employer will {evaluation_after_three_months ? null : <span>NOT</span>} provide Employee a written job evaluation after three months, and will {evaluation_every_year ? null : <span>NOT</span>} provide an evaluation every year.</p>
+        <p>The Employer will {evaluation_after_three_months ? null : <span>NOT</span>} provide Employee a written job evaluation after three months, and will {evaluation_every_year ? null : <span>NOT</span>} provide a written evaluation every year.</p>
 
         <p>Employer and Employee shall establish a fair process for settling complaints and increasing pay and benefits, giving due process to both parties. That process is described below:</p>
         <p>{complaint_handling_process}</p>
