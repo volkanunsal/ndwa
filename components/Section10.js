@@ -72,26 +72,26 @@ export default class SectionPage extends React.Component {
         <div className='hidden-print'>
           {this.state.page == 0 ? <div className='text-center final-congrats final-page'>
             <div className='container'>
-              <h3>Congratulations, you did it! You’ve reached the end of the agreement. Be sure to review your information by using the tabs before printing it, making multiple copies and signing it!</h3>
-              <p>
-                <a
-                  onClick={this.nextPage.bind(this)}
-                  className='btn btn-lg btn-print'
-                  style={{marginTop: 20, width: 200}}>Next</a>
-              </p>
-              <h3>
-                We need your help to pay for this tool and keep it up to date. Please make a $10.00 donation (or other amount) and/or give us your email address so we can send you the latest updates and access to new tools, like this one.
-                You can print and download your agreement once your donation clears.
-              </h3>
+              <h3>Congratulations, you did it! You’ve reached the end of the agreement. We need your help to pay for this tool and keep it up to date. Please make a $10.00 donation (or other amount) so we can build new tools, like this one. You can print and download your agreement once your donation clears.</h3>
               <p>
                 <div className='input-group' style={{width:200, margin: '0 auto'}}>
                   <span className='input-group-addon'>$</span>
-                  <input className='form-control input-lg' type='number' placeholder='Enter donation amount' value={this.state.amount / 100} onChange={this.handleAmountChange.bind(this)}/>
+                  <input className='form-control input-lg' type='number' placeholder='Enter donation amount' value={this.state.amount / 100} onChange={this.handleAmountChange.bind(this)} min={0.5}/>
                 </div>
                 <a
                   onClick={this.openChargeModal.bind(this)}
                   className='btn btn-lg btn-yesno'
                   style={{marginTop: 20, width: 200}}>Donate</a>
+              </p>
+
+              <p>
+                Be sure to review your information by using the tabs before printing it, making multiple copies and signing it!
+              </p>
+              <p>
+                <a
+                  onClick={this.nextPage.bind(this)}
+                  className='btn btn-lg btn-print'
+                  style={{marginTop: 20, width: 200}}>Ready to Print</a>
               </p>
 
             </div>

@@ -446,6 +446,8 @@ h1,h2,h3,h4{
 .form-section{
   margin-left: 10px;
   margin-bottom: 140px;
+  padding-left: 15%;
+  padding-right: 15%;
 }
 
 label p.lead{
@@ -454,7 +456,7 @@ label p.lead{
 
 .final-page{
   width: 100%;
-  height: 800px;
+  height: 600px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -466,7 +468,7 @@ label p.lead{
   &::after {
     content: "";
     background: url('../images/confetti.png') left top repeat;
-    opacity: 0.5;
+    opacity: 0.2;
     top: 0;
     left: 0;
     bottom: 0;

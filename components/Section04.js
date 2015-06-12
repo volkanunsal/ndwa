@@ -21,7 +21,7 @@ export default class SectionPage extends React.Component {
       config: {
         // for each of lg md sm xs you can specify the columns width
         horizontal: {
-          lg: [3, 9],
+          lg: [4, 8],
           md: [3, 9],
           sm: [6, 6]
         }
@@ -55,7 +55,7 @@ export default class SectionPage extends React.Component {
             addonBefore: <b>$</b>,
             addonAfter: <b>per hour</b>,
             horizontal: {
-              lg: [3, 2]
+              lg: [4, 3]
             }
           }
         },
@@ -74,7 +74,7 @@ export default class SectionPage extends React.Component {
             addonBefore: <b>$</b>,
             addonAfter: <b>per hour</b>,
             horizontal: {
-              lg: [3, 2]
+              lg: [4, 3]
             }
 
           }
@@ -86,7 +86,7 @@ export default class SectionPage extends React.Component {
           config: {
             addonAfter: <i>days</i>,
             horizontal: {
-              lg: [3, 2]
+              lg: [4, 4]
             }
 
           },
@@ -116,7 +116,7 @@ export default class SectionPage extends React.Component {
           },
           template: function(locals){
             return <div className='form-group form-group-depth-2'>
-              <label className='control-label col-sm-6 col-md-3 col-lg-3'>
+              <label className='control-label col-sm-6 col-md-4 col-lg-4'>
                 {locals.label}
                 <br/>
                 <TipTrigger anchorText='12' modalContent={<div>
@@ -125,7 +125,7 @@ export default class SectionPage extends React.Component {
                   </p>
                 </div>}/>
               </label>
-              <div className='col-sm-6 col-md-9 col-lg-9'>
+              <div className='col-sm-6 col-md-8 col-lg-8'>
                 {React.addons.createFragment(locals.inputs)}
 
               </div>
@@ -139,7 +139,7 @@ export default class SectionPage extends React.Component {
       config: {
         // for each of lg md sm xs you can specify the columns width
         horizontal: {
-          lg: [3, 9],
+          lg: [4, 9],
           md: [3, 9],
           sm: [6, 6]
         }
@@ -151,7 +151,7 @@ export default class SectionPage extends React.Component {
           config: {
             addonAfter: <i>days</i>,
             horizontal: {
-              lg: [3, 2]
+              lg: [4, 4]
             }
           },
           attrs: {
@@ -169,7 +169,7 @@ export default class SectionPage extends React.Component {
           config: {
             addonAfter: <i>days</i>,
             horizontal: {
-              lg: [3, 2]
+              lg: [4, 4]
             }
           },
           attrs: {
@@ -192,7 +192,7 @@ export default class SectionPage extends React.Component {
               config: {
                 addonAfter: <i>weeks</i>,
                 horizontal: {
-                  lg: [3, 2]
+                  lg: [4, 4]
                 }
               },
               attrs: {
@@ -289,8 +289,8 @@ export default class SectionPage extends React.Component {
               ],
               config: {
                 horizontal: {
-                  lg: [4, 8],
-                  md: [4, 8],
+                  lg: [4, 3],
+                  md: [4, 3],
                   sm: [6, 6]
                 }
               },
@@ -359,7 +359,14 @@ export default class SectionPage extends React.Component {
                       type: 'textarea',
                       attrs: {
                         placeholder: 'Other'
-                      }
+                      },
+                      config: {
+                        horizontal: {
+                          lg: [4, 6],
+                          md: [4, 6],
+                          sm: [6, 6]
+                        }
+                      },
                     }
                   },
                   template: function(locals){
