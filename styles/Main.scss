@@ -301,6 +301,12 @@ h1,h2,h3,h4{
     justify-content: center;
   }
 
+  .col-lg-1{
+    @media(min-width: $screen-lg){
+      width: 12%;
+    }
+  }
+
   .label{
     font-size: 1em;
     border-radius: 0;
@@ -322,6 +328,8 @@ h1,h2,h3,h4{
 
 
     }
+
+
   }
 
   .time-input-meridiem{
@@ -381,7 +389,7 @@ h1,h2,h3,h4{
     border-radius: 0px;
     font-family: Arial;
     color: #ffffff;
-    font-size: 1.1em;
+    font-size: 0.9em;
     font-weight: normal;
     padding: 0;
     text-decoration: none;
@@ -398,6 +406,7 @@ h1,h2,h3,h4{
       border: solid 1px #3498db;
       color: #3498db;
     }
+
 
   }
 

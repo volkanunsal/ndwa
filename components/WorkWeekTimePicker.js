@@ -176,7 +176,7 @@ export default class WorkWeekTimePicker extends React.Component {
       let {name, times, valid} = day;
       let {active} = day;
 
-      return <div className='col-lg-1' key={i}>
+      return <div className='col-lg-1 col-md-12 col-sm-12 col-xs-12' key={i}>
           <ul className='list-unstyled'>
             <li>
               <DayPicker

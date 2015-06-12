@@ -18,7 +18,7 @@ export default class SectionPage extends React.Component {
   render() {
     let errorMsg = this.state.isValid ? null : <div className='alert alert-danger'>{this.state.errorMsg}</div>
     return <div className='form-section'>
-      <div className='container-fluid'>
+      <div className='container'>
         {errorMsg}
         <WorkWeekTimePicker {...this.props}/>
       </div>
