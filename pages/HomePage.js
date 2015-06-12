@@ -102,11 +102,20 @@ export default class SectionPage extends React.Component {
             <div className='row partners'>
               <div className='col-lg-3 partner-slot'><h2>Our Partners</h2></div>
               <div className='col-lg-3 partner-slot'>
-                <img src={require('../images/ndwa_slate.png')} className='img-responsive'/></div>
+                <a href='http://www.domesticworkers.org/' target='_blank'>
+                  <img src={require('../images/ndwa_slate.png')} className='img-responsive'/>
+                </a>
+                </div>
               <div className='col-lg-3 partner-slot'>
-                <img src={require('../images/HIH_slate.png')} className='img-responsive'/></div>
+                <a href='http://domesticemployers.org/' target='_blank'>
+                  <img src={require('../images/HIH_slate.png')} className='img-responsive'/>
+                </a>
+              </div>
               <div className='col-lg-3 partner-slot'>
-                <img src={require('../images/MCDW_slate.png')} className='img-responsive'/></div>
+                <a href='http://www.massdomesticworkers.org' target='_blank'>
+                  <img src={require('../images/MCDW_slate.png')} className='img-responsive'/>
+                </a>
+                </div>
             </div>
             <hr/>
             <p className='text-center' style={{fontSize: '0.7em'}}>
@@ -129,7 +138,9 @@ export default class SectionPage extends React.Component {
             <div className='row' style={{marginTop: 100, width: '90%', marginLeft: 'auto', marginRight: 'auto', paddingBottom: 90}}>
               <div className='col-lg-6' style={{marginBottom: 60}}>
                 <p className='text-center' style={{marginBottom: 80}}>
-                  <img src={require('../images/terms.png')}/>
+                  <a href='http://www.massdomesticworkers.org/new-page/' target='_blank'>
+                    <img src={require('../images/terms.png')}/>
+                  </a>
                 </p>
 
                 <p style={{fontSize: '2em'}}>Review the terms
@@ -140,7 +151,9 @@ export default class SectionPage extends React.Component {
               <div className='col-lg-6'>
                 <div className='row' style={{borderBottom: 'solid 1px white', paddingBottom: 40}}>
                   <div className='col-lg-4 text-center'>
-                    <img src={require('../images/fair_employer.png')} align='left'/>
+                    <a href='http://domesticemployers.org/the-checklist/' target='_blank'>
+                      <img src={require('../images/fair_employer.png')} align='left'/>
+                    </a>
                   </div>
                   <div className='col-lg-8'>
                     <p style={{fontSize: '2em'}}>Learn more about being a fair domestic employer.</p>
@@ -148,7 +161,9 @@ export default class SectionPage extends React.Component {
                 </div>
                 <div className='row'>
                   <div className='col-lg-4 text-center' style={{paddingTop: 40}}>
-                    <img src={require('../images/bill.png')}/>
+                    <a href='http://www.huffingtonpost.com/2015/06/10/clinton-global-initiative_n_7546826.html?1433948679' target='_blank'>
+                      <img src={require('../images/bill.png')}/>
+                    </a>
                   </div>
                   <div className='col-lg-8' style={{paddingTop: 40}}>
                     <p style={{fontSize: '2em'}}>Read the Domestic Workers Bill of Rights</p>
@@ -157,7 +172,9 @@ export default class SectionPage extends React.Component {
               </div>
             </div>
           </div>
-          <img src={require('../images/FCL_Labs.png')} style={{position: 'absolute', right: 20, bottom: 10}}/>
+          <a href='http://www.faircarelabs.org/' target='_blank'  style={{position: 'absolute', right: 20, bottom: 10}}>
+            <img src={require('../images/FCL_Labs.png')}/>
+          </a>
         </section>
 
 

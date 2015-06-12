@@ -79,6 +79,16 @@ h1,h2,h3,h4{
     border-color: white;
   }
 }
+.btn-print{
+  color: $blue;
+  background-color: white;
+  border-radius: 0;
+  border: solid 1px $blue;
+  &:hover{
+    color: $black;
+    border-color: $black;
+  }
+}
 
 .btn-yesno{
   background-color: $yellow;
@@ -224,11 +234,7 @@ h1,h2,h3,h4{
     li a{
       border: none;
       border-radius: 0;
-    }
-    li.active a{
       background: transparent;
-      border-bottom: solid 1px $black;
-      color: $black;
     }
     li.invalid a{
       background-color: $red-lighter;
@@ -240,13 +246,13 @@ h1,h2,h3,h4{
       color: $black;
       border-bottom: solid 2px $green;
     }
-  }
-  .primary{
+
     li.active a{
-      background-color: $blue;
+      border-bottom: solid 2px $blue;
       color: $black;
     }
-
+  }
+  .primary{
 
     li.valid a{
       background-color: $green-light;
@@ -254,6 +260,11 @@ h1,h2,h3,h4{
     }
     li.invalid a{
       background-color: $red-lighter;
+      color: $black;
+    }
+
+    li.active a{
+      border-bottom: solid 3px $blue;
       color: $black;
     }
     // li.invalid.active a, li.valid.active a{
@@ -428,4 +439,28 @@ h1,h2,h3,h4{
 
 label p.lead{
   margin-bottom: 0;
+}
+
+.final-page{
+  width: 100%;
+  height: 800px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.final-congrats{
+
+
+  position: relative;
+  &::after {
+    content: "";
+    background: url('../images/confetti.png') left top repeat;
+    opacity: 0.5;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    position: absolute;
+    z-index: -1;
+  }
 }
