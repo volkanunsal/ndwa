@@ -15,6 +15,13 @@ export default class SectionPage extends React.Component {
 
   getPageOptions(contract, flux){
     var Page1 = {
+      config: {
+        horizontal: {
+          lg: [8, 2],
+          md: [8, 2],
+          sm: [6, 6]
+        }
+      },
       fields: {
         termination_notice_length: {
           label: <p className='lead'>{"If either party wishes to terminate this agreement, how much notice will be provided?"}</p>,

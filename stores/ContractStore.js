@@ -38,6 +38,9 @@ export default class ContractStore extends Store {
       },
       reduced_hours_reg_wage: true,
       board_provided: true,
+      termination_notice_length: 2,
+      termination_severance_length: 4,
+      termination_lodging_length: 30,
       room: {
         provided: true,
         living_accommodations: {}
