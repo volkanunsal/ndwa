@@ -38,12 +38,12 @@ export default class SectionPage extends React.Component {
     // image: '/img/documentation/checkout/marketplace.png',
     $script('https://checkout.stripe.com/checkout.js', ()=>{
       this.handler = StripeCheckout.configure({
-        key: 'pk_KTys5b7o2EoLYZ6BkRxUD1QeqhEvf',
+        key: 'pk_test_LPJDRjnjCAGO99G80Jn2m37E',
+        image: '/favicon.ico',
         token: (token)=>{
           // Use the token to create the charge with a server-side script.
           // You can access the token ID with `token.id`
           this.setState({page: 1})
-          // TODO: show the print now component
         }
       });
     });
