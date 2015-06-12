@@ -31,8 +31,8 @@ export default class SectionPage extends React.Component {
           label: 'Which of the following deductions will made?',
           config: {
             horizontal: {
-              lg: [2, 10],
-              md: [2, 10],
+              lg: [2, 2],
+              md: [2, 2],
               sm: [6, 6]
             }
           },

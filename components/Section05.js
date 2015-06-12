@@ -19,8 +19,8 @@ export default class SectionPage extends React.Component {
     var Page1 = {
       config: {
         horizontal: {
-          lg: [2, 10],
-          md: [2, 10],
+          lg: [2, 4],
+          md: [2, 4],
           sm: [6, 6]
         }
       },
