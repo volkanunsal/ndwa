@@ -29,29 +29,23 @@ export default class SectionPage extends React.Component {
           label: <div className='lead'><TipTrigger anchorText='21' modalContent={<div>
                   Employees have the right to collect worker compensation if injured on the job. Note: some homeowners and renters insurance cover workers comp, but not all; if you use a payroll system, please make sure to ask your provider or vendor about this.
                 </div>}/> What are the Employer's workers' compensation company and information?</div>,
-          template: function(locals){
-            return <div>
-              <p className='lead'>{locals.label}</p>
-              {React.addons.createFragment(locals.inputs)}
-            </div>
-          },
           fields: {
             company: {
-              label: 'Insurance Company'
+              label: 'Insurance Company',
+              attrs: {
+                className: 'input-lg'
+              }
             },
             policy: {
-              label: 'Insurance Policy'
+              label: 'Insurance Policy',
+              attrs: {
+                className: 'input-lg'
+              }
             }
           }
         },
         benefits: {
-          label: 'Which benefits will the Employer offer the Employee during the Employee\'s employment?',
-          template: function(locals){
-            return <div>
-              <p className='lead'>{locals.label}</p>
-              {React.addons.createFragment(locals.inputs)}
-            </div>
-          },
+          label: <p className='lead'>{"Which benefits will the Employer offer the Employee during the Employee's employment?"}</p>,
           fields: {
             health: {
               label: "Paid Health Insurance?",
@@ -68,14 +62,21 @@ export default class SectionPage extends React.Component {
               }
             },
             notes: {
+              config: {
+                horizontal: {
+                  lg: [2, 8],
+                  md: [2, 8],
+                  sm: [6, 6]
+                }
+              },
               label: ' ',
               type: 'textarea',
               attrs: {
-                placeholder: "￼Further details (i.e., if certain benefits are not paid, not paid in full, etc., or additional benefits)"
+                placeholder: "￼Further details (i.e., if certain benefits are not paid, not paid in full, etc., or additional benefits)",
+                className: 'input-lg'
               }
             }
           }
-
         }
 
       }
