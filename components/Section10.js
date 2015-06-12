@@ -9,7 +9,8 @@ export default class SectionPage extends React.Component {
     super();
 
     this.state = {
-      page: 0
+      page: 0,
+      amount: 1000
     }
   }
 
@@ -22,14 +23,15 @@ export default class SectionPage extends React.Component {
   }
 
 
-  openChargeModal(){
+  openChargeModal(e){
+    e.preventDefault();
     // Open Checkout with further options
     this.handler.open({
       name: 'Fair Care Labs',
       description: '1 contract',
-      amount: 1000
+      amount: this.state.amount
     });
-    e.preventDefault();
+
   }
 
   componentDidMount(){
@@ -55,6 +57,10 @@ export default class SectionPage extends React.Component {
     };
   }
 
+  handleAmountChange(e){
+    this.setState({amount: e.target.value * 100})
+  }
+
   render() {
 
     let {form} = this.props;
@@ -78,6 +84,10 @@ export default class SectionPage extends React.Component {
                 You can print and download your agreement once your donation clears.
               </h3>
               <p>
+                <div className='input-group' style={{width:200, margin: '0 auto'}}>
+                  <span className='input-group-addon'>$</span>
+                  <input className='form-control input-lg' type='number' placeholder='Enter donation amount' value={this.state.amount / 100} onChange={this.handleAmountChange.bind(this)}/>
+                </div>
                 <a
                   onClick={this.openChargeModal.bind(this)}
                   className='btn btn-lg btn-yesno'

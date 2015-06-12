@@ -7,9 +7,11 @@ var basePath = '/';
 
 export default class SectionPage extends React.Component {
   componentDidMount(){
-    window.onbeforeunload = function() {
-      return 'You have unsaved changes!';
-    }
+    if (__PRERELEASE__) {
+      window.onbeforeunload = function() {
+        return 'You have unsaved changes!';
+      }
+    };
   }
 
   render() {
