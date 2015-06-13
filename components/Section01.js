@@ -6,8 +6,8 @@ var router = require('../router');
 import ActionBar from './ActionBar';
 import decorators from '../utils/decorators';
 import {MyModal, TipTrigger} from '../components/MyModal';
-
-
+import {TStartDate} from '../lib/tcomb-types';
+  
 @decorators.getForm
 export default class SectionPage extends React.Component {
 
@@ -103,7 +103,12 @@ export default class SectionPage extends React.Component {
               <p>This agreement is effective upon signing, not date of original hire.</p>
             </div>}/> On what date will this agreement begin?</p>
 
-          </div>
+          </div>,
+          error: function(value){
+            if (!TStartDate.is(new Date(value))) {
+              return <i>The start date must be in the future</i>
+            };
+          }
         }
       }
     };

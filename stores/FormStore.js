@@ -4,26 +4,7 @@ import moment from 'moment';
 import { Store } from 'flummox';
 import assign from 'object-assign';
 import t from 'tcomb-form';
-
-
-
-
-var TRecipient = t.struct({
-  name: t.Str,
-  age: t.Num,
-  description_of_care: t.Str
-});
-
-var TStartDate = t.subtype(t.Dat, function(value){
-  return moment(new Date()).isBefore(value)
-})
-var TNonZero = t.subtype(t.Num, function(value){
-  return value > 0
-})
-var TValidWorkSchedule = t.subtype(t.Bool, function(value){
-  return value == true
-})
-
+import {TRecipient, TStartDate, TNonZero, TValidWorkSchedule} from '../lib/tcomb-types';
 
 export default class FormStore extends Store {
 
