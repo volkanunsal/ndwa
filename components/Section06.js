@@ -31,8 +31,8 @@ export default class SectionPage extends React.Component {
           label: 'Which of the following deductions will made?',
           config: {
             horizontal: {
-              lg: [2, 3],
-              md: [2, 3],
+              lg: [4, 4],
+              md: [4, 4],
               sm: [6, 6]
             }
           },
@@ -43,7 +43,8 @@ export default class SectionPage extends React.Component {
                 min: 0
               },
               config: {
-                addonAfter: <i>frequency</i>
+                addonAfter: <i>per paycheck</i>,
+                addonBefore: <i>$</i>
               },
               label: <div>State income tax <TipTrigger anchorText='23' modalContent={<div>
                   {"Employing a domestic worker may implicate various state and federal tax laws. The these taxes are a combination of taxes you withhold from your employee and the taxes you pay as the employer. Typically, Social Security and Medicare (collectively known as FICA) and federal and state income taxes are withheld from your employee each pay period. Employers would also pay a matching portion of FICA, as well as federal and state unemployment insurance taxes. "}
@@ -58,7 +59,8 @@ export default class SectionPage extends React.Component {
                   {"Employing a domestic worker may implicate various state and federal tax laws. The these taxes are a combination of taxes you withhold from your employee and the taxes you pay as the employer. Typically, Social Security and Medicare (collectively known as FICA) and federal and state income taxes are withheld from your employee each pay period. Employers would also pay a matching portion of FICA, as well as federal and state unemployment insurance taxes."}
                 </div>}/></div>,
               config: {
-                addonAfter: <i>frequency</i>
+                addonAfter: <i>per paycheck</i>,
+                addonBefore: <i>$</i>
               }
             },
             health_insurance: {
@@ -70,7 +72,8 @@ export default class SectionPage extends React.Component {
                   {"There are different ways an employer can provide health insurance: provide health insurance yourself, support or assist a domestic worker by accessing new exchanges created by the Affordable Care Act, augment wages on an hourly basis to cover medical costs, or pay for a preset number of doctor visits and up to a certain monetary amount."}
                 </div>}/></div>,
               config: {
-                addonAfter: <i>frequency</i>
+                addonAfter: <i>per paycheck</i>,
+                addonBefore: <i>$</i>
               }
             },
             food: {
@@ -82,7 +85,8 @@ export default class SectionPage extends React.Component {
                   {"Employers cannot charge (or deduct from wages) for meals unless the domestic worker employee agrees and freely chooses the food and drink, and it’s for her benefit. The price must accurately reflect the cost of food and cannot exceed $1.50 for breakfast, $2.25 for lunch, and $2.25 for dinner per day. An employer may not charge for meals if the employee cannot easily bring meals to or prepare meals on the premises. "}
                 </div>}/></div>,
               config: {
-                addonAfter: <i>frequency</i>
+                addonAfter: <i>per paycheck</i>,
+                addonBefore: <i>$</i>
               }
             },
             lodging: {
@@ -94,7 +98,8 @@ export default class SectionPage extends React.Component {
                   {"Employers cannot deduct (or charge) for lodging unless the employee freely accepts, wants, and uses it, and it’s for his/her benefit (i.e., she is in your home as a convenience to her, not to you).  Charges must be reasonable and cannot exceed $35/week for a room used by one person, $30/week for a room occupied by two people, $25/week for a room occupied by three or more persons. "}
                 </div>}/></div>,
               config: {
-                addonAfter: <i>frequency</i>
+                addonAfter: <i>per paycheck</i>,
+                addonBefore: <i>$</i>
               }
             },
             other: {
@@ -103,7 +108,8 @@ export default class SectionPage extends React.Component {
                 min: 0
               },
               config: {
-                addonAfter: <i>frequency</i>
+                addonAfter: <i>per paycheck</i>,
+                addonBefore: <i>$</i>
               },
               label: 'Other'
             }
