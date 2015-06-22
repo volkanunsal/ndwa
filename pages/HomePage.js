@@ -3,7 +3,7 @@ import {Link} from 'react-router';
 var basePath = '/';
 import EmailSignUp from '../components/EmailSignUp';
 import $script from 'scriptjs';
-
+import {FirstTimeTrigger} from '../components/MyModal';
 
 
 
@@ -18,11 +18,51 @@ export default class SectionPage extends React.Component {
     ['hs-01', 'hs-02', 'hs-03'].forEach(id => {
       React.findDOMNode(this.refs[id]).setAttribute('style', 'height:'+window.outerHeight+'px')
     });
+  }
 
+  constructor(flux){
+    super();
+    this.state = {
+      isModalOpen: true,
+      modalWasShown: localStorage.getItem('modalWasShown')
+    }
+  }
+
+  handleLearnMore(){
+    this.setState({isModalOpen: false})
+    localStorage.setItem('modalWasShown', true);
+    window.scrollTo(0,React.findDOMNode(this.refs['hs-06']).offsetTop)
+  }
+
+  shouldModalBeShown(){
+    return this.state.isModalOpen && !this.state.modalWasShown
   }
 
   render() {
     return <div>
+        {this.shouldModalBeShown() ? <FirstTimeTrigger modalContent={<div>
+            <div className='text-center'>
+              <img src={require('../images/didyouknow_mass.png')}/>
+              <a href='javascript:;'><span className='fa fa-times'/></a>
+            </div>
+            <div className='container'>
+              <div className='row'>
+                <div className='col-lg-7 col-lg-offset-1'>
+                  <p style={{fontSize: '2em', marginTop: 40, color:'white'}}>Did you know that as of April 1st, 2015 Massachusetts requires a written agreement if you employ or you are employed as a domestic worker?</p>
+                </div>
+              </div>
+              <div className='row'>
+                <div className='col-lg-8 col-lg-offset-1'>
+                  <a onClick={this.handleLearnMore.bind(this)} className='btn btn-link btn-lg btn-custom' style={{marginTop: 80, marginBottom: 80, marginRight: 40}}>
+                    Learn More
+                  </a>
+                  <Link to='section' params={{sectionName: '1'}} className='btn btn-link btn-lg btn-custom' style={{marginTop: 80, marginBottom: 80}}>
+                    Get an Agreement
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>}/> : null}
         <section ref='hs-01' id='hs-01' className='home-section bg-brand-black'>
           <div className='container-fluid'>
             <div className='row'>

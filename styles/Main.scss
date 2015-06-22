@@ -547,3 +547,16 @@ label p.lead{
         opacity: 0;
     }
 }
+
+.welcome-modal{
+  .modal-content{
+    border-radius: 0;
+    background: $red;
+  }
+  .modal-body{
+    border: solid 2px white;
+    height: 700px;
+    padding: 0;
+    margin: 15px;
+  }
+}
