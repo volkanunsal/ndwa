@@ -12,7 +12,7 @@ export default class YesNo extends React.Component {
   }
   render(){
     let {value, hasError, label, attrs, config, path} = this.props;
-
+    
     let cs = {
       'has-error': hasError,
       'form-group':true

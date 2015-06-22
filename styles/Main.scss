@@ -17,6 +17,7 @@ $white: #f1f1f2;
 // Muli Reg
 // Muli light
 // Bree Serif Reg
+a:hover{ text-decoration: none !important; }
 
 .bg-brand-black{ background: $black; }
 .bg-brand-blue{ background: $blue; }
@@ -100,7 +101,7 @@ h1,h2,h3,h4{
 }
 
 #hs-02{
-  min-height: 800px;
+  min-height: 700px;
 
 
 
@@ -122,6 +123,13 @@ h1,h2,h3,h4{
     }
   }
   padding-bottom: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  & > div {
+
+  }
 }
 
 #hs-04{
@@ -135,12 +143,12 @@ h1,h2,h3,h4{
   }
 
 
-  @media(max-width: $screen-md-min){
+  @media(max-width: $screen-sm-min){
     .col-lg-6:nth-child(1){
       text-align: center;
     }
   }
-  @media(min-width: $screen-md-min){
+  @media(min-width: $screen-sm-min){
     .col-lg-6:nth-child(2){
       border-left: solid 1px white;
     }
@@ -152,6 +160,19 @@ h1,h2,h3,h4{
   color: $black;
   padding-bottom: 40px;
   font-size: 2em;
+}
+
+
+#hs-07{
+  // margin-bottom: 60px;
+  // margin-right: 60px;
+  padding: 10px 0 20px;
+  margin-bottom:0;
+  @media(min-width: $screen-sm-min){
+    .leftColumn .innerWrapper{
+      border-right: solid 1px white;
+    }
+  }
 }
 
 
@@ -325,10 +346,7 @@ h1,h2,h3,h4{
 
     *[class^='time-input-']{
       align-self: stretch;
-
-
     }
-
 
   }
 
@@ -375,6 +393,7 @@ h1,h2,h3,h4{
   }
 
   .day-name{
+
     display: flex;
     width: 100%;
     height: inherit;
@@ -385,9 +404,9 @@ h1,h2,h3,h4{
     background: $blue;
     cursor: pointer;
     color: white;
-    background-image: linear-gradient(to bottom, lighten($blue,5%), darken($blue,10%));
+    // background-image: linear-gradient(to bottom, lighten($blue,5%), darken($blue,10%));
     border-radius: 0px;
-    font-family: Arial;
+    font-family: Muli;
     color: #ffffff;
     font-size: 0.9em;
     font-weight: normal;
@@ -446,9 +465,15 @@ h1,h2,h3,h4{
 .form-section{
   margin-left: 10px;
   margin-bottom: 140px;
-  @media(min-width: $screen-md-min){
-    padding-left: 15%;
+  @media(min-width: $screen-lg-min){
+    padding-left: 10%;
     padding-right: 15%;
+  }
+  .day-labels{
+    @media(max-width: $screen-md-min){
+      display: none;
+    }
+
   }
 }
 
@@ -470,14 +495,19 @@ label p.lead{
   &::after {
     content: "";
     background: url('../images/confetti.png') left top repeat;
-    opacity: 0.2;
+    opacity: 0;
     top: 0;
     left: 0;
     bottom: 0;
     right: 0;
     position: absolute;
     z-index: -1;
+
+    animation: blink 2s;
+    animation-iteration-count: 1;
   }
+
+
 }
 
 .st_facebook_custom{
@@ -503,4 +533,17 @@ label p.lead{
   transform: translate(0, 20%) !important;
   -ms-transform: translate(0, 20%) !important; /* IE 9 */
   -webkit-transform: translate(0, 20%) !important; /* Safari and Chrome */
+}
+
+
+@keyframes blink {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
 }

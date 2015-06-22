@@ -28,8 +28,8 @@ export default class ContractStore extends Store {
       work_days,
       work_week_duration: 0,
       valid_work_schedule: true,
-      hourly_rate: 9,
-      overtime_rate: 13.5,
+      hourly_rate: 18,
+      overtime_rate: 18*1.5,
       vacation_days: 2,
       personal_days: 2,
       parental_leave: {
@@ -54,6 +54,11 @@ export default class ContractStore extends Store {
 
   handleMerge(value){
     this.setState(I.fromJS(this.state).merge(value).toJS())
+    // Check the invariants
+    let {overtime_rate, hourly_rate} = this.state;
+    if (Number(overtime_rate) <= (Number(hourly_rate) * 1.5)) {
+      this.setState({overtime_rate: hourly_rate * 1.5})
+    };
   }
 
   handleToggleDay(day){

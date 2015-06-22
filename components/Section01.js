@@ -7,7 +7,7 @@ import ActionBar from './ActionBar';
 import decorators from '../utils/decorators';
 import {MyModal, TipTrigger} from '../components/MyModal';
 import {TStartDate} from '../lib/tcomb-types';
-  
+
 @decorators.getForm
 export default class SectionPage extends React.Component {
 
@@ -68,15 +68,30 @@ export default class SectionPage extends React.Component {
     };
     var Page2 = {
       // auto: 'placeholders',
-      legend: 'This agreement is between the following parties',
+      legend: <p className='lead'>This agreement is between the following parties</p>,
       config: {
         horizontal: {
           lg: [2, 10]
         }
       },
+      fields: {
+        employee: {
+          fields: {
+            email: {
+              label: 'Email'
+            }
+          }
+        },
+        employer: {
+          fields: {
+            email: {
+              label: 'Email'
+            }
+          }
+        }
+      },
       template: function(locals){
         return <div>
-          <p className='lead'>{locals.label}</p>
           {React.addons.createFragment(locals.inputs)}
         </div>;
       }

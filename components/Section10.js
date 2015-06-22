@@ -114,6 +114,10 @@ export default class SectionPage extends React.Component {
 
                 <h3>Thank you</h3>
                 <p>For taking the steps toward creating an agreement between you and your domestic worker!</p>
+                <ul className='list-inline'>
+                  <li><a href='http://faircarepledge.com' target='_blank'>Take the Fair Care Pledge</a></li>
+                  <li><a href='www.faircarelabs.org' target='_blank'>Visit Fair Care Labs</a></li>
+                </ul>
               </div>
             </div>
           </div> : null }

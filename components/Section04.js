@@ -48,7 +48,7 @@ export default class SectionPage extends React.Component {
           help: <span><i>Minimum $9/hour</i></span>,
           attrs: {
             min: 9,
-            max: 20,
+            max: 100,
             className: 'input-lg'
           },
           config: {
@@ -127,7 +127,6 @@ export default class SectionPage extends React.Component {
               </label>
               <div className='col-sm-6 col-md-8 col-lg-8'>
                 {React.addons.createFragment(locals.inputs)}
-
               </div>
             </div>
           }
@@ -139,7 +138,7 @@ export default class SectionPage extends React.Component {
       config: {
         // for each of lg md sm xs you can specify the columns width
         horizontal: {
-          lg: [4, 9],
+          lg: [4, 8],
           md: [3, 9],
           sm: [6, 6]
         }
@@ -178,16 +177,12 @@ export default class SectionPage extends React.Component {
           }
         },
         parental_leave: {
-          label: <div><TipTrigger anchorText='14' modalContent={<div>
-              <p>
-                {"Domestic workers who are employees are entitled to take up to eight weeks of unpaid, job-protected leave for the birth or adoption of a child, in accordance with the Parental Leave Act, M.G.L. c. 149, § 105D. Employees must give at least two weeks’ notice of anticipated date of departure and intention to return."}
-              </p>
-            </div>}/> If the Employee requests parental leave for the birth or adoption of a child:
+          label: <div>If the Employee requests parental leave for the birth or adoption of a child:
           </div>,
           fields: {
             notice_length: {
               type: 'number',
-              label: 'How much notice will the Employee provide the Employer, prior to taking her parental leave?',
+              label: <p>How much notice will the Employee provide the Employer, prior to taking her parental leave?</p>,
               help: <i>Minimum 2 weeks</i>,
               config: {
                 addonAfter: <i>weeks</i>,
@@ -201,7 +196,11 @@ export default class SectionPage extends React.Component {
               }
             },
             paid: {
-              label: 'Will the Employer pay the Employee for parental leave?',
+              label: <p>Will the Employer pay the Employee for parental leave? <TipTrigger anchorText='14' modalContent={<div>
+              <p>
+                {"Domestic workers who are employees are entitled to take up to eight weeks of unpaid, job-protected leave for the birth or adoption of a child, in accordance with the Parental Leave Act, M.G.L. c. 149, § 105D. Employees must give at least two weeks’ notice of anticipated date of departure and intention to return."}
+              </p>
+            </div>}/> </p>,
               template: function(locals){
                 return <YesNo flux={flux} {...locals}/>
               }

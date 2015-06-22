@@ -176,7 +176,7 @@ export default class WorkWeekTimePicker extends React.Component {
       let {name, times, valid} = day;
       let {active} = day;
 
-      return <div className='col-lg-1 col-md-12 col-sm-12 col-xs-12' key={i}>
+      return <div className='col-lg-1 col-md-2 col-sm-12 col-xs-12' key={i}>
           <ul className='list-unstyled'>
             <li>
               <DayPicker
@@ -221,7 +221,7 @@ export default class WorkWeekTimePicker extends React.Component {
     return <div>
       <p className='lead'>What are the hours employee is scheduled to work?</p>
       <div className='row calendar-row'>
-        <div className='col-lg-1'>
+        <div className='col-lg-1 col-md-2 day-labels'>
           <ul className='list-unstyled'>
             <li className='label-yellow label'>Day</li>
             <li className='label-green label'>Start</li>
@@ -231,18 +231,17 @@ export default class WorkWeekTimePicker extends React.Component {
         {work_days}
       </div>
       <div className='row calendar-row'>
-        <div className='col-lg-2'>
+        <div className='col-lg-2 col-md-3'>
           <ul className='list-unstyled'>
             <li className='label-blue label'>Weekly Total (in hours)</li>
           </ul>
         </div>
-        <div className='col-lg-1'>
+        <div className='col-lg-1 col-md-2'>
           <ul className='list-unstyled'>
-            <li>{weeklyTotalHours}</li>
-          </ul>
-          <TipTrigger anchorText='9' modalContent={<div>
+            <li>{weeklyTotalHours}<span>&nbsp;</span><TipTrigger anchorText='9' modalContent={<div>
             <p>Domestic workers who work at least 40 hours a week are entitled to 24 consecutive hours of rest each week and 48 consecutive hours of rest each month.</p>
-          </div>}/>
+          </div>}/></li>
+          </ul>
         </div>
       </div>
     </div>
