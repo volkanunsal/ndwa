@@ -179,8 +179,8 @@ export default class SectionPage extends React.Component {
         parental_leave: {
           label: 'If the Employee requests parental leave for the birth or adoption of a child:',
           order: [
-            'paid',
             'notice_length',
+            'paid',
             'paid_note'
           ],
           fields: {
