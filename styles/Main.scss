@@ -140,7 +140,7 @@ h1,h2,h3,h4{
   .col-lg-6:nth-child(2){
     font-size: 2em;
     padding-top: 20px;
-    padding-left: 40px;
+    margin-top: 20px;
   }
 
 
@@ -149,9 +149,10 @@ h1,h2,h3,h4{
       text-align: center;
     }
   }
-  @media(min-width: $screen-sm-min){
+  @media(min-width: $screen-md-min){
     .col-lg-6:nth-child(2){
       border-left: solid 1px white;
+      padding-left: 40px;
     }
   }
 

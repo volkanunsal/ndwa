@@ -38,7 +38,6 @@ export default class SectionPage extends React.Component {
         <Nav {...this.props}/>
         <Section/>
       </FluxComponent>
-
     </div>;
   }
 }

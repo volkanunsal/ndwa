@@ -177,8 +177,12 @@ export default class SectionPage extends React.Component {
           }
         },
         parental_leave: {
-          label: <div>If the Employee requests parental leave for the birth or adoption of a child:
-          </div>,
+          label: 'If the Employee requests parental leave for the birth or adoption of a child:',
+          order: [
+            'paid',
+            'notice_length',
+            'paid_note'
+          ],
           fields: {
             notice_length: {
               type: 'number',
@@ -214,10 +218,14 @@ export default class SectionPage extends React.Component {
             }
           },
           template: function(locals){
+            let items = locals.order.map(key => {
+                return locals.inputs[key]
+              }).filter(item => item);
+            console.log(items);
             return <fieldset>
               <hr/>
               <p className='lead'>{locals.label}</p>
-              {React.addons.createFragment(locals.inputs)}
+              {items}
             </fieldset>
           }
         },
@@ -382,7 +390,6 @@ export default class SectionPage extends React.Component {
                 }
               },
               template: function(locals){
-
                 return <div className='form-horizontal'>
                   <p className='lead'>{'Describe the living accommodations provided by the Employer for the Employee'}</p>
                   {locals.order.map(key => {
