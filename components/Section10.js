@@ -40,7 +40,7 @@ export default class SectionPage extends React.Component {
     // image: '/img/documentation/checkout/marketplace.png',
     $script('https://checkout.stripe.com/checkout.js', ()=>{
       this.handler = StripeCheckout.configure({
-        key: 'pk_test_LPJDRjnjCAGO99G80Jn2m37E',
+        key: 'pk_live_okq9QvfGQ7syX4sqWjOQzSRR',
         image: '/favicon.ico',
         token: (token)=>{
           // Use the token to create the charge with a server-side script.
