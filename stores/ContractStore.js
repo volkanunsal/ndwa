@@ -4,6 +4,7 @@ import moment from 'moment';
 import { Store } from 'flummox';
 import assign from 'object-assign';
 import { contractPropTypes } from 'schema';
+import request from 'superagent';
 
 export default class ContractStore extends Store {
 
@@ -15,10 +16,12 @@ export default class ContractStore extends Store {
     const CONTRACT_ACTION_IDS = flux.getActionIds('contract_actions');
     this.register(CONTRACT_ACTION_IDS.setIn, this.handleSetIn);
     this.register(CONTRACT_ACTION_IDS.merge, this.handleMerge);
+    this.register(CONTRACT_ACTION_IDS.addParties, this.handleAddParties);
 
     const CAL_ACTION_IDS = flux.getActionIds('calendar_actions');
     this.register(CAL_ACTION_IDS.toggleDay, this.handleToggleDay);
     this.register(CAL_ACTION_IDS.updateDay, this.handleUpdateDay);
+
 
     let day = { times: ['8:00 AM','5:00 PM'], active: false, valid: true };
     let work_days = ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday', 'Sunday'].map(name => assign({}, day, {name}));
@@ -59,6 +62,27 @@ export default class ContractStore extends Store {
     if (Number(overtime_rate) <= (Number(hourly_rate) * 1.5)) {
       this.setState({overtime_rate: hourly_rate * 1.5})
     };
+  }
+
+  handleAddParties(){
+    let {employer, employee} = this.state;
+    let {email, name, phone, address} = employer;
+    this.addPartiesToMailingList(email, name, phone, 'employer', address);
+    this.addPartiesToMailingList(employee.email, employee.name, employee.phone, 'employee', employee.address);
+  }
+
+  addPartiesToMailingList(email, NAME, PHONE, USER_TYPE, ADDR1){
+    let url = 'https://us10.api.mailchimp.com/2.0/lists/subscribe';
+
+    let args = {
+    };
+
+    request
+      .post(url)
+      .query(args)
+      .end(function(err, res){
+         console.log(res)
+      });
   }
 
   handleToggleDay(day){

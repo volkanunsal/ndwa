@@ -27,6 +27,7 @@
     "style-loader": "0.8.3",
     "script-loader": "0.6.1",
     "scriptjs": "2.5.7",
+    "superagent": "1.2.0",
     "json-loader": "0.5.1",
     "compression-webpack-plugin": "0.2.0",
     "jsx-loader": "volkanunsal/jsx-loader"

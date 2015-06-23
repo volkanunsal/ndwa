@@ -13,7 +13,9 @@ export default class SectionPage extends React.Component {
 
   getPageOptions(contract, flux){
     var Page1 = {
-      label: <span>Are you a <TipTrigger anchorText='1' modalContent={<div>
+      label: <div>
+      <p className='lead'>{"Welcome to In-House Agreements, powered by Fair Care Labs! In less than 20 minutes you can create a printable PDF setting out the terms you’ve agreed upon for your working relationship. Simply answer the questions, and click on the light bulbs when you need or want further explanations and information to help you complete an agreement. As you move through the questions you'll see tabs in green, which have been completed, while tabs in red still need some input. Answer the questions and fill in the blanks to fit your situation."}</p>
+      Are you a <TipTrigger anchorText='1' modalContent={<div>
                   <p>You are a 'domestic worker' if:</p>
                   <ol>
                     <li>you are an independent contractor or an employee.</li>
@@ -49,7 +51,7 @@ export default class SectionPage extends React.Component {
                     <li>Share it with your peers</li>
                   </ol>
 
-                </div>}/>an employer?</span>,
+                </div>}/>an employer?</div>,
       fields: {
         user_type: {
           label: ' ',
@@ -71,7 +73,7 @@ export default class SectionPage extends React.Component {
       legend: <p className='lead'>This agreement is between the following parties</p>,
       config: {
         horizontal: {
-          lg: [2, 10]
+          lg: [2, 6]
         }
       },
       fields: {
@@ -128,6 +130,11 @@ export default class SectionPage extends React.Component {
       }
     };
     return [Page1, Page2, Page3]
+  }
+
+  addParties(){
+    // console.log(this.props.flux.getActions('contract_actions'))
+    // this.props.flux.getActions('contract_actions').addParties();
   }
 
   render() {

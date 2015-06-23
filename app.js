@@ -23,6 +23,7 @@ export class FormActions extends Actions {
 export class ContractActions extends Actions {
   setIn(path, value){ return {path, value} }
   merge(value){ return value }
+  addParties(){ return null }
 }
 //================ APP =======================
 export class AppFlux extends Flux {
@@ -47,7 +48,7 @@ export default class App extends React.Component {
     params: PropTypes.object.isRequired,
     query: PropTypes.object.isRequired
   }
-  
+
   render() {
     return (
       <DocumentTitle title={'Inhouse Agreements | Generate work agreements effortlessly'}>
