@@ -49,7 +49,11 @@ export default class SectionPage extends React.Component {
           attrs: {
             min: 9,
             max: 100,
-            className: 'input-lg'
+            className: 'input-lg',
+            onBlur: function(e){
+              let hourly_rate = e.target.value;
+              flux.getActions('contract_actions').merge({hourly_rate})
+            }
           },
           config: {
             addonBefore: <b>$</b>,
