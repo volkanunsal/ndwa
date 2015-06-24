@@ -52,9 +52,7 @@ export default class App extends React.Component {
   render() {
     return (
       <DocumentTitle title={'Inhouse Agreements | Generate work agreements effortlessly'}>
-        <div>
-          <RouteHandler {...this.props} />
-        </div>
+        <RouteHandler {...this.props} />
       </DocumentTitle>
     );
   }

@@ -39,7 +39,7 @@ export default class SectionPage extends React.Component {
   }
 
   render() {
-    return <div>
+    return <div style={{paddingBottom: 40, backgroundColor: '#3b3f48'}}>
         {this.shouldModalBeShown() ? <FirstTimeTrigger modalContent={<div>
             <div className='text-center'>
               <img src={require('../images/didyouknow_mass.png')}/>
@@ -178,7 +178,7 @@ export default class SectionPage extends React.Component {
 
           </div>
         </section>
-        <section ref='hs-07' id='hs-07' className='home-section bg-brand-black' style={{padding:'10px 0 20px', marginBottom: 0}}>
+        <section ref='hs-07' id='hs-07' className='home-section bg-brand-black clearfix'>
           <div className='container'>
             <h1 style={{fontSize: '4em', marginBottom: 40}}>Additional Information</h1>
             <p style={{fontSize: '2em'}}>
@@ -226,9 +226,11 @@ export default class SectionPage extends React.Component {
               </div>
             </div>
           </div>
-          <a href='http://www.faircarelabs.org/' target='_blank'  style={{position: 'absolute', right: 20, bottom: 10}}>
-            <img src={require('../images/greyfcl.png')}/>
-          </a>
+          <div className='container-fluid'  style={{marginTop: 10}}>
+            <a href='http://www.faircarelabs.org/' target='_blank' className='pull-right'>
+              <img src={require('../images/greyfcl.png')}/>
+            </a>
+          </div>
         </section>
 
 

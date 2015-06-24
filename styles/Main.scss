@@ -32,6 +32,12 @@ a:hover{ text-decoration: none !important; }
 
 body{
   font-family: 'Muli';
+  // background-color: $black;
+  position: relative;
+}
+#root{
+  height:100%;
+  position: relative;
 }
 h1,h2,h3,h4{
   font-family: 'Bree Serif';
