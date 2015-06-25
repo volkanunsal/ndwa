@@ -42,7 +42,7 @@ export default class SectionPage extends React.Component {
     return <div style={{paddingBottom: 40, backgroundColor: '#3b3f48'}}>
         {this.shouldModalBeShown() ? <FirstTimeTrigger modalContent={<div>
             <div className='text-center'>
-              <img src={require('../images/didyouknow_mass.png')}/>
+              <img src={require('../images/didyouknow_mass.png')} style={{margin: '0 auto', display: 'block'}}/>
               <a href='javascript:;'><span className='fa fa-times'/></a>
             </div>
             <div className='container'>
