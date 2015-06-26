@@ -42,7 +42,7 @@ export default class SectionPage extends React.Component {
     return <div style={{paddingBottom: 40, backgroundColor: '#3b3f48'}}>
         {this.shouldModalBeShown() ? <FirstTimeTrigger modalContent={<div>
             <div className='text-center'>
-              <img src={require('../images/didyouknow_mass.png')} style={{margin: '0 auto', display: 'block'}}/>
+              <img src={require('../images/didyouknow_mass.png')}/>
               <a href='javascript:;'><span className='fa fa-times'/></a>
             </div>
             <div className='container'>
@@ -67,7 +67,7 @@ export default class SectionPage extends React.Component {
           <div className='container-fluid'>
             <div className='row'>
               <div className='col-lg-6 col-md-6 col-sm-12 col-md-12 text-center'>
-                <img src={require('../images/home_01.png')}/>
+                <img src={require('../images/home_01.png')} style={{margin: '0 auto', display: 'block'}}/>
                 <Link to='section' params={{sectionName: '1'}} className='btn btn-link btn-lg btn-custom' style={{marginTop: 80, marginBottom: 80}}>
                   Get Started!
                 </Link>
