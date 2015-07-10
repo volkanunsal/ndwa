@@ -27,6 +27,12 @@ export default class SectionPage extends React.Component {
             <a href={basePath} className='navbar-brand'>
               <img src={require('../images/greylogo.png')} style={{width:270, marginRight: 10, position: 'relative', top: -13}} alt='In-house agreements' className='pull-left'/>
             </a>
+
+          </div>
+          <div className='navbar-right' style={{padding: '15px 20px 5px'}}>
+            <span >
+              Beta
+            </span>
           </div>
         </div>
       </nav>
