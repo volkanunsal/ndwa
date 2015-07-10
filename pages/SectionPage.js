@@ -30,8 +30,8 @@ export default class SectionPage extends React.Component {
 
           </div>
           <div className='navbar-right' style={{padding: '15px 20px 5px'}}>
-            <span >
-              Beta
+            <span className='font-family: Muli'>
+              BETA
             </span>
           </div>
         </div>
