@@ -48,22 +48,23 @@ h1,h2,h3,h4{
   position: relative !important;
   color: white;
 
+  @media(min-width: $screen-md-min){
+    &:after{
+      top: 100%;
+      left: 44%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
 
-  &:after{
-    top: 100%;
-    left: 44%;
-    border: solid transparent;
-    content: " ";
-    height: 0;
-    width: 0;
-    position: absolute;
-    pointer-events: none;
-
-    width: 0;
-    height: 0;
-    border-style: solid;
-    border-width: 40px 80px 0 80px;
-    z-index: 999;
+      width: 0;
+      height: 0;
+      border-style: solid;
+      border-width: 40px 80px 0 80px;
+      z-index: 999;
+    }
   }
 }
 

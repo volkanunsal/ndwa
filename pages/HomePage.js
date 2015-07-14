@@ -15,9 +15,9 @@ export default class SectionPage extends React.Component {
       stLight.options({publisher: "126f4359-08ea-4054-a9af-defe6a39880a", doNotHash: false, doNotCopy: false, hashAddressBar: false});
     });
 
-    ['hs-01', 'hs-02', 'hs-03'].forEach(id => {
-      React.findDOMNode(this.refs[id]).setAttribute('style', 'height:'+window.outerHeight+'px')
-    });
+    // ['hs-01', 'hs-02', 'hs-03'].forEach(id => {
+    //   React.findDOMNode(this.refs[id]).setAttribute('style', 'height:'+window.outerHeight+'px')
+    // });
   }
 
   constructor(flux){
@@ -67,7 +67,7 @@ export default class SectionPage extends React.Component {
           <div className='container-fluid'>
             <div className='row'>
               <div className='col-lg-6 col-md-6 col-sm-12 col-md-12 text-center'>
-                <img src={require('../images/home_01.png')} style={{margin: '0 auto', display: 'block'}}/>
+                <img src={require('../images/home_01.png')} style={{margin: '0 auto', display: 'block'}} className='img-responsive' />
                 <Link to='section' params={{sectionName: '1'}} className='btn btn-link btn-lg btn-custom' style={{marginTop: 80, marginBottom: 80}}>
                   Get Started!
                 </Link>
