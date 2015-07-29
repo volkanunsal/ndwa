@@ -89,13 +89,23 @@ h1,h2,h3,h4{
   }
 }
 .btn-print{
+  border-radius: 0;
+
   color: $blue;
   background-color: white;
-  border-radius: 0;
   border: solid 1px $blue;
   &:hover{
     color: $black;
     border-color: $black;
+  }
+  &.invert{
+    color: white;
+    background-color: $blue;
+    border: solid 1px white;
+    &:hover{
+      color: $black;
+      border-color: $black;
+    }
   }
 }
 

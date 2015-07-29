@@ -89,6 +89,13 @@ export default class SectionPage extends React.Component {
               </p>
               <p>
                 <a
+                  href='https://www.research.net/s/inhouseagreements'
+                  target='_blank'
+                  className='btn btn-lg btn-print invert'
+                  style={{marginTop: 20, width: 200}}>TAKE THIS SURVEY</a>
+              </p>
+              <p>
+                <a
                   onClick={this.nextPage.bind(this)}
                   className='btn btn-lg btn-print'
                   style={{marginTop: 20, width: 200}}>Ready to Print</a>
