@@ -215,7 +215,7 @@ export default class SectionPage extends React.Component {
                 </div>
                 <div className='row'>
                   <div className='col-lg-4 col-md-4 text-center' style={{paddingTop: 40}}>
-                    <a href='http://www.huffingtonpost.com/2015/06/10/clinton-global-initiative_n_7546826.html?1433948679' target='_blank'>
+                    <a href='http://www.mass.gov/ago/doing-business-in-massachusetts/labor-laws-and-public-construction/domestic-workers/' target='_blank'>
                       <img src={require('../images/bill.png')}/>
                     </a>
                   </div>
