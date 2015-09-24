@@ -3,8 +3,11 @@ import t from 'tcomb-form';
 import moment from 'moment';
 import Contract from './Contract';
 import $script from 'scriptjs';
+import decorators from '../utils/decorators';
 
+@decorators.googleAnalytics
 export default class SectionPage extends React.Component {
+
   constructor(){
     super();
 
@@ -21,8 +24,7 @@ export default class SectionPage extends React.Component {
   nextPage(){
     this.setState({page: 1})
   }
-
-
+  
   openChargeModal(e){
     e.preventDefault();
     // Open Checkout with further options
@@ -35,6 +37,7 @@ export default class SectionPage extends React.Component {
   }
 
   componentDidMount(){
+    this.sendPageViewToGA()
     let {contract, flux} = this.props;
     flux.getActions('form_actions').validateSections(contract)
     // image: '/img/documentation/checkout/marketplace.png',

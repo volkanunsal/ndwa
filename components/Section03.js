@@ -9,7 +9,13 @@ import decorators from '../utils/decorators';
 import WorkWeekTimePicker from './WorkWeekTimePicker';
 
 @decorators.getForm
+@decorators.googleAnalytics
 export default class SectionPage extends React.Component {
+
+  componentDidMount() {
+    this.sendPageViewToGA()
+  }
+
   constructor(flux){
     super();
     this.state = {errorMsg: 'The schedule you specified is not valid.', isValid: true};

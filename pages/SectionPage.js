@@ -20,6 +20,7 @@ export default class SectionPage extends React.Component {
       num = "0" + num;
     };
     var Section = require('../components/Section' + num);
+
     return <div>
       <nav className='navbar navbar-default hidden-print'>
         <div className='container-fluid'>

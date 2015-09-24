@@ -9,7 +9,12 @@ import {MyModal, TipTrigger} from '../components/MyModal';
 
 
 @decorators.getForm
+@decorators.googleAnalytics
 export default class SectionPage extends React.Component {
+
+  componentDidMount() {
+    this.sendPageViewToGA()
+  }
 
   getPageOptions(contract, flux){
     var Page1 = {

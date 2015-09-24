@@ -5,6 +5,19 @@ var router = require('../router');
 var {nextPageOrSection} = require('../utils/NavUtils');
 
 export default {
+  googleAnalytics(Component) {
+    Component.prototype.sendPageViewToGA = function () {
+      let sectionName = this.props.flux.getStore('form').state.sections[parseInt(this.props.params.sectionName) - 1].name;
+      if (__PRERELEASE__ && window.ga) {
+        ga('set', {
+          page: this.props.path,
+          title: sectionName
+        });
+        ga('send', 'pageview');
+      }
+    }
+  },
+
   getForm(Component) {
     Component.prototype.handleFormChange = function handleFormChange(value){
       this.props.flux.getActions('contract_actions').merge(value)
@@ -87,16 +100,18 @@ export default {
           value={contract}
           onChange={this.handleFormChange.bind(this)}
         />;
-        page = formComp;
       };
 
       if(pageOptions && pageOptions.config && pageOptions.config.horizontal){
         page = <div className='form-horizontal'>
           {formComp}
         </div>
+      } else {
+        page = formComp;
       }
 
       return page
     }
+    // return Component
   }
 }
