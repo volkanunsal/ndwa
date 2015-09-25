@@ -9,11 +9,10 @@ export default {
     Component.prototype.sendPageViewToGA = function () {
       let sectionName = this.props.flux.getStore('form').state.sections[parseInt(this.props.params.sectionName) - 1].name;
       if (__PRERELEASE__ && window.ga) {
-        ga('set', {
-          page: this.props.path,
+        ga('send', 'pageview', {
+          page: '#' + this.props.path,
           title: sectionName
         });
-        ga('send', 'pageview');
       }
     }
   },
