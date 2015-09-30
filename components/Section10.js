@@ -18,13 +18,19 @@ export default class SectionPage extends React.Component {
   }
 
   printForm() {
+    if (__PRERELEASE__ && window.ga) {
+      ga('send', 'pageview', {
+        page: '#' + this.props.path,
+        title: 'PRINT!!'
+      });
+    }
     window.print()
   }
 
   nextPage(){
     this.setState({page: 1})
   }
-  
+
   openChargeModal(e){
     e.preventDefault();
     // Open Checkout with further options
