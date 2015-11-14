@@ -74,12 +74,12 @@ export default {
     Component.prototype.getValidator = function getValidator(){
       let {params, form} = this.props;
       let {pageName, sectionName} = params;
-      let pageNum     = (pageName || 1) - 1;
+      let pageNum = (pageName || 1) - 1;
       let sectionNum  = Number(sectionName) - 1;
       return form.sections[sectionNum].pages[pageNum].types;
     }
 
-    Component.prototype.getForm = function getForm(){
+    Component.prototype.getForm = function getForm() {
       let formComp, page;
       let {params, contract, form} = this.props;
       let {pageName, sectionName} = params;
@@ -93,7 +93,7 @@ export default {
       // TODO: create a flow type for the navigation section/page JSON
       if (pageTypes) {
         formComp = <Form
-          ref="form"
+          ref='form'
           type={pageTypes(contract)}
           options={pageOptions}
           value={contract}
@@ -108,7 +108,6 @@ export default {
       } else {
         page = formComp;
       }
-
       return page
     }
     // return Component

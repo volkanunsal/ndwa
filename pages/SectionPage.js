@@ -19,7 +19,7 @@ export default class SectionPage extends React.Component {
     if (num.split('')[-1] !== 0 && num.split('').length == 1) {
       num = "0" + num;
     };
-    var Section = require('../components/Section' + num);
+    let Section = require('../components/Section' + num);
 
     return <div>
       <nav className='navbar navbar-default hidden-print'>

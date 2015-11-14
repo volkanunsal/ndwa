@@ -5,6 +5,7 @@ $black: #3b3f48;
 $blue: #8fb1c6;
 $yellow: #d3b52b;
 
+$red2: #ee4e4f;
 $red: #cb3536;
 $red-light: #df6359;
 $red-lighter: #faaba8;
@@ -23,6 +24,8 @@ a:hover{ text-decoration: none !important; }
 .bg-brand-blue{ background: $blue; }
 .bg-brand-orange{ background: $red-light; }
 .bg-brand-yellow{ background: $yellow; }
+.bg-brand-red{ background: $red2; }
+.bg-brand-red-light{ background: $red-light; }
 .bg-white{ background: white; }
 
 .label-green{ background-color: $green; }
@@ -39,40 +42,8 @@ body{
   height:100%;
   position: relative;
 }
-h1,h2,h3,h4{
+h1, h2, h3, h4{
   font-family: 'Bree Serif';
-}
-.home-section{
-  // min-height: 400px;
-  padding-top: 70px;
-  position: relative !important;
-  color: white;
-
-  @media(min-width: $screen-md-min){
-    &:after{
-      top: 100%;
-      left: 44%;
-      border: solid transparent;
-      content: " ";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-
-      width: 0;
-      height: 0;
-      border-style: solid;
-      border-width: 40px 80px 0 80px;
-      z-index: 999;
-    }
-  }
-}
-
-#hs-01{
-  a{ color: white !important;}
-  &:after{
-    border-color: $black transparent transparent transparent;
-  }
 }
 
 .btn-custom{
@@ -88,6 +59,7 @@ h1,h2,h3,h4{
     border-color: white;
   }
 }
+
 .btn-print{
   border-radius: 0;
 
@@ -118,61 +90,179 @@ h1,h2,h3,h4{
   }
 }
 
-#hs-02{
-  min-height: 700px;
+.home-section{
+  padding-top: 70px;
+  position: relative !important;
+  color: white;
+}
 
+#hs-00{
+  .home-logo {
+    position: absolute;
+    left: 10px;
+    top: 10px;
+    width: 225px;
 
+    @media(max-width: $screen-md-min){
+      width: 150px;
+    }
+  }
+  .hero {
+    position: relative;
+  }
+  .tagline-wrapper {
+    position: absolute;
+    top: 50%;
+    @media(max-width: $screen-md-min){
+      top: 30%;
+    }
+    width: 100%;
+  }
+  .tagline {
+    width: 50%;
+    text-align: center;
+    margin: 0 auto;
+    @media(min-width: $screen-md-min){
+      font-size: 54px;
+    }
+    @media(max-width: $screen-md-min){
+      font-size: 24px;
+    }
+    line-height: 1.5em;
+    color: $black;
+  }
+  .home-band {
+    height: 64px;
 
-  &:after{
-    border-color: $blue transparent transparent transparent;
+    @media(min-width: $screen-md-min){
+      font-size: 28px;
+    }
+    @media(max-width: $screen-md-min){
+      font-size: 18px;
+    }
+    margin: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+#hs-01{
+  padding-bottom: 40px;
+
+  .btn-custom {
+    color: $red;
+    border-color: $red;
   }
 
+  p {
+    line-height: 44px;
+    color: #3b3f48;
+    font-size: 28px;
+  }
+}
+
+
+#hs-05{
+  position: relative;
+  padding-top: 20px;
+  padding-bottom: 40px;
+
+  h2 {
+    font-size: 34px;
+    line-height: 38px;
+  }
+  p {
+    color: $black;
+    font-size: 20px;
+  }
+  .disclaimer {
+    font-size: 0.9em;
+  }
+
+  .footer-logo {
+    position: absolute;
+    right: 10px;
+    bottom: 10px;
+    width: 60px;
+  }
 }
 
 #hs-03{
   @media(min-width: $screen-md-min){
-    .col-lg-4{
-      border-left: solid 1px white;
-      padding: 0 20px;
-    }
-
-    .col-lg-4:first-child{
-      border-left: none;
+    .pencil-paper {
+      width: 340px;
     }
   }
-  padding-bottom: 80px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  & > div {
-
+  @media(max-width: $screen-md-min){
+    .pencil-paper {
+      width: 340px;
+    }
   }
+
+  h2 {
+    font-size: 44px;
+    color: $blue;
+    margin-bottom: 40px;
+  }
+
+  .section-body {
+    font-size: 26px;
+    line-height: 40px;
+
+    p {
+      margin-bottom: 20px;
+    }
+  }
+
+  .btn-custom {
+    color: $red;
+    border-color: $red;
+  }
+
+  padding-bottom: 40px;
 }
 
 #hs-04{
+  .share-block {
+    padding-top: 20px;
+    text-align: center;
+    background: url("../images/speech-bubble.png") center center no-repeat;
+    height: 400px;
+    display: flex;
+    justify-content: center;
+    // align-items: center;
+  }
+
+  .share h2 {
+    line-height: 1.4em;
+    font-size: 4em;
+    margin-top: 50px;
+    margin-bottom: 40px;
+  }
+
   .container, .row {
     min-height: 250px;
   }
+
   .col-lg-6:nth-child(2){
     font-size: 2em;
     padding-top: 20px;
     margin-top: 20px;
   }
 
-
   @media(max-width: $screen-sm-min){
     .col-lg-6:nth-child(1){
       text-align: center;
     }
   }
+
   @media(min-width: $screen-md-min){
     .col-lg-6:nth-child(2){
       border-left: solid 1px white;
       padding-left: 40px;
     }
   }
-
 }
 
 #hs-06{
@@ -183,14 +273,50 @@ h1,h2,h3,h4{
 
 
 #hs-07{
-  // margin-bottom: 60px;
-  // margin-right: 60px;
-  padding: 10px 0 20px;
-  margin-bottom:0;
-  @media(min-width: $screen-sm-min){
-    .leftColumn .innerWrapper{
-      border-right: solid 1px white;
+  padding-bottom: 40px;
+
+  color: $black;
+  h2 {
+    font-size: 44px;
+    color: $blue;
+    margin-bottom: 40px;
+  }
+  p {
+    font-size: 24px;
+  }
+
+
+  ul {
+    padding: 0;
+  }
+
+  li {
+    padding: 0;
+    list-style: none;
+    font-size: 18px;
+    padding-bottom: 10px;
+  }
+
+  .partners{
+    h2 {
+      margin-bottom: 0;
+      margin-left: 15px;
     }
+    color: $blue;
+    .partner-slot{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      // height:240px;
+      img{
+        max-width: 90%;
+      }
+    }
+  }
+
+
+  @media(min-width: $screen-sm-min){
+
   }
 }
 
@@ -221,26 +347,6 @@ h1,h2,h3,h4{
     }
   }
 }
-
-
-
-.partners{
-  color: $blue;
-  .partner-slot{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height:240px;
-
-    img{
-      max-width: 90%;
-    }
-  }
-}
-
-
-
-
 
 
 .form-hint{
@@ -294,7 +400,6 @@ h1,h2,h3,h4{
       border-bottom: solid 2px $blue;
       color: $black;
     }
-
   }
   .primary{
 
@@ -302,6 +407,7 @@ h1,h2,h3,h4{
       background-color: $green-light;
       color: $black;
     }
+
     li.invalid a{
       background-color: $red-lighter;
       color: $black;
@@ -311,9 +417,6 @@ h1,h2,h3,h4{
       border-bottom: solid 3px $blue;
       color: $black;
     }
-    // li.invalid.active a, li.valid.active a{
-    //   border-bottom: solid 3px $brand-primary;
-    // }
   }
 
   .nav li{
@@ -326,7 +429,6 @@ h1,h2,h3,h4{
     margin-right:20px;
   }
 }
-
 
 .calendar-row{
   & > div {
@@ -362,11 +464,9 @@ h1,h2,h3,h4{
     align-items: center;
 
     // TODO: make the text unselectable
-
     *[class^='time-input-']{
       align-self: stretch;
     }
-
   }
 
   .time-input-meridiem{
@@ -385,7 +485,6 @@ h1,h2,h3,h4{
     padding: 0 3px;
     max-width: 26px;
     border: 0;
-    // cursor: ns-resize;
 
     &.left{
       text-align: right;

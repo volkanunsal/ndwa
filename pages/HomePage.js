@@ -63,68 +63,99 @@ export default class SectionPage extends React.Component {
               </div>
             </div>
           </div>}/> : null}
-        <section ref='hs-01' id='hs-01' className='home-section bg-brand-black'>
-          <div className='container-fluid'>
-            <div className='row'>
-              <div className='col-lg-6 col-md-6 col-sm-12 col-md-12 text-center'>
-                <img src={require('../images/home_01.png')} style={{margin: '0 auto', display: 'block'}} className='img-responsive' />
-                <Link to='section' params={{sectionName: '1'}} className='btn btn-link btn-lg btn-custom' style={{marginTop: 80, marginBottom: 80}}>
-                  Get Started!
-                </Link>
-              </div>
-              <div className='col-lg-4 col-md-4 visible-lg' style={{position: 'relative', bottom: -90, zIndex: 1001}}>
-                <img src={require('../images/pencil_paper_main.png')}/>
-              </div>
+
+
+        <section ref='hs-00' id='hs-00' className='bg-brand-blue'>
+          <div className='hero'>
+            <img src={require('../images/IHA_BG.jpg')} width='100%'/>
+            <img src={require('../images/home_01.png')} className='home-logo'/>
+            <div className='tagline-wrapper'>
+              <p className='tagline'>Take care of the people who take care of your family</p>
             </div>
           </div>
+          <div className='home-band text-center'>Use our online tool to easily create your own work agreement.</div>
         </section>
 
-        <section ref='hs-02' id='hs-02' className='home-section bg-brand-blue'>
-          <div className='container text-center' style={{paddingBottom: 100, paddingTop: 100}}>
+        <section ref='hs-01' id='hs-01' className='home-section bg-white'>
+          <div className='container'>
             <div className='row'>
-              <div className='col-lg-12 col-lmd12'>
-                <p style={{fontSize: '2.2em'}}>
-                  With In-House Agreements, creating your own work agreement is effortless. Step-by-step you’ll find the information you need, right at your fingertips. Simply answer the questions and fill in the blanks to fit your situation. Print your completed agreement, and CONGRATS you’re done!
+              <div className='col-lg-12 col-md-12 col-sm-12 col-md-12 text-center'>
+                <p>
+                  <img src={require('../images/favi_inhouse_red.png')} width='64px'/>
                 </p>
-                <Link to='section' params={{sectionName: '1'}} className='btn btn-link btn-lg btn-custom' style={{marginTop: 80, marginBottom: 80}}>
+                <p>Nannies are among the most important people to your family. They clean up the spills and make sure naptime happens like clockwork, but while they are caring for your family are you taking care of them?</p>
+                <p>Having a written agreement with your nanny is one of the easiest ways to take a meaningful step in taking care of her. And we've made it so simple you'll be done in 20 minutes!</p>
+                <Link to='section' params={{sectionName: '1'}} className='btn btn-link btn-lg btn-custom'>
                   Get Started!
                 </Link>
               </div>
             </div>
           </div>
         </section>
-        <section ref='hs-03' id='hs-03' className='home-section bg-brand-orange'>
-          <div className='container' style={{color: 'white'}}>
+
+        <section ref='hs-03' id='hs-03' className='home-section bg-brand-black'>
+          <div className='container'>
             <div className='row'>
-              <div className='col-lg-4 col-md-4'>
-                <div className='text-center' style={{height: 80, display: 'flex', justifyContent: 'center', alignItems: 'center'}}><img src={require('../images/scale.png')}/></div>
-                <h2>Keeps You Informed </h2>
-                <p style={{fontSize: '1.4em'}}>We work with the folks who helped implement the Bill of Rights, because agreements can feel complicated.</p>
+              <div className='col-lg-6 col-md-6'>
+                <img src={require('../images/pencil_paper_main.png')} className='pencil-paper'/>
               </div>
-              <div className='col-lg-4 col-md-4'>
-                <div className='text-center' style={{height: 80, display: 'flex', justifyContent: 'center', alignItems: 'center'}}><img src={require('../images/arrow.png')}/></div>
-                <h2>Straightforward</h2>
-                <p style={{fontSize: '1.4em'}}>We use plain language not legalese, because agreements can be daunting and confusing. </p>
-              </div>
-              <div className='col-lg-4 col-md-4'>
-                <div className='text-center' style={{height: 80, display: 'flex', justifyContent: 'center', alignItems: 'center'}}><img src={require('../images/speech_bubbles.png')}/></div>
-                <h2>Improves Communication</h2>
-
-                <p style={{fontSize: '1.4em'}}>You can avoid problems in the future, because agreements resolve potential conflicts at the outset.</p>
-
-
+              <div className='col-lg-6 col-md-6'>
+                <div className='section-body'>
+                  <h2>How it works</h2>
+                  <p>Helpful comments will guide you as you check a box here or fill in a blank there.</p>
+                  <p>Need more insight? Click on one of the light bulbs <img src={require('../images/light_bulb_small.png')}/> to find further information.</p>
+                  <p>All done? You are ready to PRINT your own work agreement!</p>
+                </div>
+                <div className='text-center'>
+                  <Link to='section' params={{sectionName: '1'}} className='btn btn-link btn-lg btn-custom'>
+                    Get Started!
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
         </section>
-        <section ref='hs-04' id='hs-04' className='home-section bg-brand-blue'>
+        <section ref='hs-07' id='hs-07' className='home-section bg-white'>
+          <div className='container'>
+            <h2>Additional Information</h2>
+            <p>
+              If you’d like to learn more about the Massachusetts requirement for a written work agreement, or more information about the Bill of Rights in general, we suggest you check out the following resources
+            </p>
+            <ul>
+              <li>
+                <img src={require('../images/light_bulb_small.png')}/> <a target='_blank' href='http://www.mass.gov/ago/doing-business-in-massachusetts/labor-laws-and-public-construction/domestic-workers/'>Learn more about the new Massachussets regulations</a></li>
+              <li>
+                <img src={require('../images/light_bulb_small.png')}/> <a target='_blank' href='http://static1.squarespace.com/static/546dde9ae4b0d7784fd2a0a5/t/54e655f8e4b0e3df8c057ab9/1424381432739/CHECKLIST+for+Employers.pdf'>Review the terms or conditions of employment</a></li>
+              <li>
+                <img src={require('../images/light_bulb_small.png')}/> <a target='_blank' href='http://domesticemployers.org/the-checklist/'>Find out more about being a fair employer.</a></li>
+            </ul>
+            <div className='row partners'>
+              <h2>Our Partners</h2>
+              <div className='col-lg-6 col-md-6 col-sm-12 partner-slot'>
+                <a href='http://www.domesticworkers.org/' target='_blank'>
+                  <img width='150px' src={require('../images/ndwa_slate.png')} className='img-responsive'/>
+                </a>
+                <a href='http://domesticemployers.org/' target='_blank'>
+                  <img width='150px' src={require('../images/HIH_slate.png')} className='img-responsive'/>
+                </a>
+                <a href='http://www.massdomesticworkers.org' target='_blank'>
+                  <img width='150px' src={require('../images/MCDW_slate.png')} className='img-responsive'/>
+                </a>
+              </div>
+            </div>
+          </div>
+        </section>
+        <section ref='hs-04' id='hs-04' className='home-section bg-brand-red'>
            <div className='container'>
             <div className='row' style={{paddingBottom: 40}}>
-              <div className='col-lg-6 col-md-6' style={{paddingTop: 20}}>
-                <h2 style={{lineHeight:'1.4em', fontSize: '3em', marginBottom: 20}}>Share In-House Agreements</h2>
-                <span className='st_facebook_custom' displayText='Facebook'/>
-                <span className='st_email_custom' displayText='Email'/>
-                <span className='st_twitter_custom' displayText='Tweet'/>
+              <div className='col-lg-6 col-md-6 share-block'>
+                <div className='share'>
+                  <h2>Share!</h2>
+                  <span className='st_facebook_custom' displayText='Facebook'/>
+                  <span className='st_email_custom' displayText='Email'/>
+                  <span className='st_twitter_custom' displayText='Tweet'/>
+                </div>
+
               </div>
               <div className='col-lg-6 col-md-6'>
                 <p>We’re just getting started! Sign-up for news and updates</p>
@@ -133,19 +164,11 @@ export default class SectionPage extends React.Component {
             </div>
           </div>
         </section>
-        <section ref='hs-05' id='hs-05' className='home-section bg-brand-yellow' style={{padding:'10px 0 20px'}}>
+        <section ref='hs-05' id='hs-05' className='home-section bg-brand-blue'>
           <div className='container'>
-            <h1 style={{fontSize: '4em'}}>About the project</h1>
-          </div>
-        </section>
-        <section ref='hs-06' id='hs-06' className='home-section bg-white'>
-          <div className='container'>
+            <h2>About the project</h2>
             <p>
-              We imagined In-House Agreements as a tool that makes it easier to create a work agreement. As a
-              non-profit venture of <a href='http://www.faircarelabs.org/' target='_blank'>Fair Care Labs</a>, we are always looking for innovative ways to solve problems
-              facing domestic workers and their employers. With Massachusetts’ new requirement for a written
-              work agreement, we wondered: how will employers and employees, without HR departments of their
-              own, create agreements that comply with the law?
+              We imagined In-House Agreements as a tool that makes it easier to create a work agreement. As a non-profit venture of <a href='http://www.faircarelabs.org/' target='_blank'>Fair Care Labs</a>, we are always looking for innovative ways to solve problems facing domestic workers and their employers. With Massachusetts' new requirement for a written work agreement, we wondered: how will employers and employees, without HR departments of their own, create agreements that comply with the law?
             </p>
             <p>
               We think that the process of creating an agreement should be friendly, easy to understand,
@@ -154,85 +177,12 @@ export default class SectionPage extends React.Component {
               make informed decisions about your working relationship. It’s time that creating a contract makes
               sense to everyone, so you can agree amicably, easily and with dignity, like you wanted all along.
             </p>
-
-            <div className='row partners'>
-              <div className='col-lg-3 col-md-4 partner-slot'><h2>Our Partners</h2></div>
-              <div className='col-lg-3 col-md-4 partner-slot'>
-                <a href='http://www.domesticworkers.org/' target='_blank'>
-                  <img src={require('../images/ndwa_slate.png')} className='img-responsive'/>
-                </a>
-                </div>
-              <div className='col-lg-3 col-md-4 partner-slot'>
-                <a href='http://domesticemployers.org/' target='_blank'>
-                  <img src={require('../images/HIH_slate.png')} className='img-responsive'/>
-                </a>
-              </div>
-              <div className='col-lg-3 col-md-4 partner-slot'>
-                <a href='http://www.massdomesticworkers.org' target='_blank'>
-                  <img src={require('../images/MCDW_slate.png')} className='img-responsive'/>
-                </a>
-                </div>
-            </div>
             <hr/>
-            <p className='text-center' style={{fontSize: '0.7em'}}>{'Disclaimer: You can use the ideas/terms set forth in the sample agreement on the website to create your own agreement. Be sure to complete/fill in your agreement to fit your own situation, and be as specific as possible about benefits, time off, rights and obligations, and so on.'}</p>
-
-          </div>
-        </section>
-        <section ref='hs-07' id='hs-07' className='home-section bg-brand-black clearfix'>
-          <div className='container'>
-            <h1 style={{fontSize: '4em', marginBottom: 40}}>Additional Information</h1>
-            <p style={{fontSize: '2em'}}>
-              If you’d like to learn more about the Massachusetts requirement for a written
-              work agreement, or more information about the Bill of Rights in general, we
-              suggest you check out the following resources:
+            <p className='disclaimer'>{'Disclaimer: You can use the ideas/terms set forth in the sample agreement on the website to create your own agreement. Be sure to complete/fill in your agreement to fit your own situation, and be as specific as possible about benefits, time off, rights and obligations, and so on.'}
             </p>
-
-            <div className='row' style={{marginTop: 100, width: '90%', marginLeft: 'auto', marginRight: 'auto', paddingBottom: 90}}>
-              <div className='col-lg-6 col-md-6 leftColumn'>
-                <div className='innerWrapper'>
-                  <p className='text-center' style={{marginBottom: 80}}>
-                    <a href='http://www.massdomesticworkers.org/new-page/' target='_blank'>
-                      <img src={require('../images/terms.png')}/>
-                    </a>
-                  </p>
-
-                  <p style={{fontSize: '2em'}}>Review the terms
-                    or conditions of
-                    employment for
-                    domestic workers</p>
-                </div>
-              </div>
-              <div className='col-lg-6 col-md-6'>
-                <div className='row' style={{borderBottom: 'solid 1px white', paddingBottom: 40}}>
-                  <div className='col-lg-4 col-md-4 text-center'>
-                    <a href='http://domesticemployers.org/the-checklist/' target='_blank'>
-                      <img src={require('../images/fair_employer.png')} align='left'/>
-                    </a>
-                  </div>
-                  <div className='col-lg-8 col-md-8'>
-                    <p style={{fontSize: '2em'}}>Learn more about being a fair domestic employer.</p>
-                  </div>
-                </div>
-                <div className='row'>
-                  <div className='col-lg-4 col-md-4 text-center' style={{paddingTop: 40}}>
-                    <a href='http://www.mass.gov/ago/doing-business-in-massachusetts/labor-laws-and-public-construction/domestic-workers/' target='_blank'>
-                      <img src={require('../images/bill.png')}/>
-                    </a>
-                  </div>
-                  <div className='col-lg-8 col-md-8' style={{paddingTop: 40}}>
-                    <p style={{fontSize: '2em'}}>Read the Domestic Workers Bill of Rights</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
-          <div className='container-fluid'  style={{marginTop: 10}}>
-            <a href='http://www.faircarelabs.org/' target='_blank' className='pull-right'>
-              <img src={require('../images/greyfcl.png')}/>
-            </a>
-          </div>
+          <img src={require('../images/FCL_Labs.png')} className='footer-logo' />
         </section>
-
 
     </div>;
   }
