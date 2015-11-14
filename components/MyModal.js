@@ -6,7 +6,7 @@ export const MyModal = React.createClass({
   render() {
     return (
       <Modal {...this.props} title='Hints and Explanations' animation={false} className='modal-vertical-centered'>
-        <div className='modal-body'>
+        <div className='modal-body' style={{fontSize: '16px'}}>
           {this.props.modalContent}
         </div>
         <div className='modal-footer'>

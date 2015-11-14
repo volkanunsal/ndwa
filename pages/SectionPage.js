@@ -9,7 +9,7 @@ export default class SectionPage extends React.Component {
   componentDidMount(){
     if (__PRERELEASE__) {
       window.onbeforeunload = function() {
-        return 'You have unsaved changes!';
+        return 'For this BETA version, closing this tab means you will lose the information you typed in.';
       }
     };
   }

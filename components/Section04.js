@@ -155,7 +155,7 @@ export default class SectionPage extends React.Component {
       fields: {
         vacation_days: {
           type: 'number',
-          label: 'The Employer agrees to provide the Employee with how many vacation days?',
+          label: 'The Employer agrees to provide the Employee with how many vacation days per year?',
           config: {
             addonAfter: <i>days</i>,
             horizontal: {
@@ -169,7 +169,7 @@ export default class SectionPage extends React.Component {
         },
         personal_days: {
           type: 'number',
-          label: <div>The Employer agrees to provide the Employee with how many personal/sick days? <TipTrigger anchorText='13' modalContent={<div>
+          label: <div>The Employer agrees to provide the Employee with how many personal/sick days per year? <TipTrigger anchorText='13' modalContent={<div>
                   <p>
                     {"Effective July 1, 2015, domestic workers have the right to earn and use up to 40 hours of sick time in a calendar year. M.G.L. c. 149, § 148C."}
                   </p>

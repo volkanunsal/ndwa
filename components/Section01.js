@@ -19,7 +19,6 @@ export default class SectionPage extends React.Component {
   getPageOptions(contract, flux){
     var Page1 = {
       label: <div>
-      <p className='lead'>{"Welcome to In-House Agreements, powered by Fair Care Labs! In less than 20 minutes you can create a printable PDF setting out the terms you’ve agreed upon for your working relationship. Simply answer the questions, and click on the light bulbs when you need or want further explanations and information to help you complete an agreement. As you move through the questions you'll see tabs in green, which have been completed, while tabs in red still need some input. Answer the questions and fill in the blanks to fit your situation."}</p>
       Are you a <TipTrigger anchorText='1' modalContent={<div>
                   <p>You are a 'domestic worker' if:</p>
                   <ol>
@@ -55,7 +54,7 @@ export default class SectionPage extends React.Component {
                     <li>Fill out this contract</li>
                     <li>Share it with your peers</li>
                   </ol>
-
+                  
                 </div>}/>an employer?</div>,
       fields: {
         user_type: {
@@ -69,6 +68,7 @@ export default class SectionPage extends React.Component {
           <div className='form-inline q-domestic-or-employer'>
             {React.addons.createFragment(locals.inputs)}
           </div>
+          <p className='lead' style={{marginTop: 40}}>{"Welcome to the InHouse Agreements contract tool. In less than 20 minutes you can create a printable PDF of your agreement. As you answer the questions/fill in the blanks you'll see tabs at the top turn green. Green tabs indicate that the section has been completed; tabs in red still need some input. "}</p>
         </div>
 
       }
