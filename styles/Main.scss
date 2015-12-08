@@ -33,15 +33,18 @@ a:hover{ text-decoration: none !important; }
 .label-yellow{ background-color: $yellow; }
 .label-blue{ background-color: $blue; }
 
-body{
+html, body, #root{
   font-family: 'Muli';
   // background-color: $black;
   position: relative;
+  height: auto;
 }
-#root{
-  height:100%;
-  position: relative;
+
+#root {
+  padding-bottom: 40px;
+  background-color: #3b3f48;
 }
+
 h1, h2, h3, h4{
   font-family: 'Bree Serif';
 }
@@ -94,6 +97,9 @@ h1, h2, h3, h4{
   padding-top: 70px;
   position: relative !important;
   color: white;
+  min-height: 720px;
+  display: flex;
+  align-items: center;
 }
 
 #hs-00{
@@ -109,12 +115,17 @@ h1, h2, h3, h4{
   }
   .hero {
     position: relative;
+    min-height: 720px;
+    background: url('../images/IHA_BG.jpg') left center no-repeat;
+    background-size: cover;
   }
   .tagline-wrapper {
     position: absolute;
     top: 50%;
     @media(max-width: $screen-md-min){
-      top: 30%;
+      // top: 30%;
+      display: flex;
+      justify-content: center;
     }
     width: 100%;
   }
@@ -172,10 +183,12 @@ h1, h2, h3, h4{
     font-size: 34px;
     line-height: 38px;
   }
+
   p {
     color: $black;
     font-size: 20px;
   }
+
   .disclaimer {
     font-size: 0.9em;
   }
@@ -188,6 +201,10 @@ h1, h2, h3, h4{
   }
 }
 
+footer {
+  height: 600px;
+}
+
 #hs-03{
   @media(min-width: $screen-md-min){
     .pencil-paper {
@@ -196,7 +213,7 @@ h1, h2, h3, h4{
   }
   @media(max-width: $screen-md-min){
     .pencil-paper {
-      width: 340px;
+      width: 240px;
     }
   }
 
@@ -232,6 +249,13 @@ h1, h2, h3, h4{
     display: flex;
     justify-content: center;
     // align-items: center;
+
+    @media(max-width: $screen-sm-min){
+      background-size: 90%;
+    }
+    @media(max-width: $screen-md-min){
+      background-size: 65%;
+    }
   }
 
   .share h2 {
@@ -312,11 +336,6 @@ h1, h2, h3, h4{
         max-width: 90%;
       }
     }
-  }
-
-
-  @media(min-width: $screen-sm-min){
-
   }
 }
 
@@ -666,15 +685,9 @@ label p.lead{
     }
 }
 
-.welcome-modal{
-  .modal-content{
-    border-radius: 0;
-    background: $red;
-  }
-  .modal-body{
-    border: solid 2px white;
-    height: 700px;
-    padding: 0;
-    margin: 15px;
+.q-domestic-or-employer {
+  font-size: 1.6em;
+  .input {
+    vertical-align: baseline;
   }
 }

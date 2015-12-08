@@ -79,7 +79,7 @@ export default class FormStore extends Store {
               types: (contract) => {
                 return t.struct({
                   user_type: t.enums({
-                    W: 'Domestic Worker',
+                    W: 'Employee',
                     E: 'Employer'
                   })
                 });

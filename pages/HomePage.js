@@ -20,54 +20,10 @@ export default class SectionPage extends React.Component {
     // });
   }
 
-  constructor(flux){
-    super();
-    this.state = {
-      isModalOpen: true,
-      modalWasShown: localStorage.getItem('modalWasShown')
-    }
-  }
-
-  handleLearnMore(){
-    this.setState({isModalOpen: false})
-    localStorage.setItem('modalWasShown', true);
-    window.scrollTo(0,React.findDOMNode(this.refs['hs-06']).offsetTop)
-  }
-
-  shouldModalBeShown(){
-    return this.state.isModalOpen && !this.state.modalWasShown
-  }
-
   render() {
-    return <div style={{paddingBottom: 40, backgroundColor: '#3b3f48'}}>
-        {this.shouldModalBeShown() ? <FirstTimeTrigger modalContent={<div>
-            <div className='text-center'>
-              <img src={require('../images/didyouknow_mass.png')}/>
-              <a href='javascript:;'><span className='fa fa-times'/></a>
-            </div>
-            <div className='container'>
-              <div className='row'>
-                <div className='col-lg-7 col-lg-offset-1'>
-                  <p style={{fontSize: '2em', marginTop: 40, color:'white'}}>Did you know that as of April 1st, 2015 Massachusetts requires a written agreement if you employ or you are employed as a domestic worker?</p>
-                </div>
-              </div>
-              <div className='row'>
-                <div className='col-lg-8 col-lg-offset-1'>
-                  <a onClick={this.handleLearnMore.bind(this)} className='btn btn-link btn-lg btn-custom' style={{marginTop: 80, marginBottom: 80, marginRight: 40}}>
-                    Learn More
-                  </a>
-                  <Link to='section' params={{sectionName: '1'}} className='btn btn-link btn-lg btn-custom' style={{marginTop: 80, marginBottom: 80}}>
-                    Get an Agreement
-                  </Link>
-                </div>
-              </div>
-            </div>
-          </div>}/> : null}
-
-
-        <section ref='hs-00' id='hs-00' className='bg-brand-blue'>
+    return <div>
+        <section ref='hs-00' id='hs-00' className='bg-brand-blue clearfix'>
           <div className='hero'>
-            <img src={require('../images/IHA_BG.jpg')} width='100%'/>
             <img src={require('../images/home_01.png')} className='home-logo'/>
             <div className='tagline-wrapper'>
               <p className='tagline'>Take care of the people who take care of your family</p>
@@ -76,7 +32,7 @@ export default class SectionPage extends React.Component {
           <div className='home-band text-center'>Use our online tool to easily create your own work agreement.</div>
         </section>
 
-        <section ref='hs-01' id='hs-01' className='home-section bg-white'>
+        <section ref='hs-01' id='hs-01' className='home-section clearfix bg-white'>
           <div className='container'>
             <div className='row'>
               <div className='col-lg-12 col-md-12 col-sm-12 col-md-12 text-center'>
@@ -93,10 +49,10 @@ export default class SectionPage extends React.Component {
           </div>
         </section>
 
-        <section ref='hs-03' id='hs-03' className='home-section bg-brand-black'>
+        <section ref='hs-03' id='hs-03' className='home-section clearfix bg-brand-black'>
           <div className='container'>
             <div className='row'>
-              <div className='col-lg-6 col-md-6'>
+              <div className='col-lg-6 col-md-6 text-center'>
                 <img src={require('../images/pencil_paper_main.png')} className='pencil-paper'/>
               </div>
               <div className='col-lg-6 col-md-6'>
@@ -115,7 +71,7 @@ export default class SectionPage extends React.Component {
             </div>
           </div>
         </section>
-        <section ref='hs-07' id='hs-07' className='home-section bg-white'>
+        <section ref='hs-07' id='hs-07' className='home-section clearfix bg-white'>
           <div className='container'>
             <h2>Additional Information</h2>
             <p>
@@ -145,7 +101,7 @@ export default class SectionPage extends React.Component {
             </div>
           </div>
         </section>
-        <section ref='hs-04' id='hs-04' className='home-section bg-brand-red'>
+        <section ref='hs-04' id='hs-04' className='home-section clearfix bg-brand-red'>
            <div className='container'>
             <div className='row' style={{paddingBottom: 40}}>
               <div className='col-lg-6 col-md-6 share-block'>
@@ -164,7 +120,7 @@ export default class SectionPage extends React.Component {
             </div>
           </div>
         </section>
-        <section ref='hs-05' id='hs-05' className='home-section bg-brand-blue'>
+        <section ref='hs-05' id='hs-05' className='home-section clearfix bg-brand-blue'>
           <div className='container'>
             <h2>About the project</h2>
             <p>
@@ -183,7 +139,6 @@ export default class SectionPage extends React.Component {
           </div>
           <img src={require('../images/FCL_Labs.png')} className='footer-logo' />
         </section>
-
     </div>;
   }
 }
