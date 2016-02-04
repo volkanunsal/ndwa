@@ -5,7 +5,7 @@ import moment from 'moment';
 
 export default class Contract extends React.Component {
   render(){
-    let {additional_tasks, bad_weather_day_paid, benefits, board_no, board_provided, board_yes, cancelled_day_paid, childcare_tasks, children, cleaning_tasks, complaint_handling_process, deductions, employee, employer, evaluation_after_three_months, evaluation_every_year, family_privacy, home_care_recipients, home_care_tasks, hourly_rate, immediate_termination_grounds, overtime_holidays, overtime_holidays_other, overtime_notice_length, overtime_rate, parental_leave, payday, payment_frequency, personal_days, reduced_hours_reg_wage, room, start_date, termination_lodging_length, termination_notice_length, termination_paid_if_evicted_early, termination_severance_length, vacation_days, valid_work_schedule, work_address, work_days, work_week_duration, worker_privacy, workers_comp_insurance} = this.props;
+    let {additional_tasks, bad_weather_day_paid, benefits, board_no, board_provided, board_yes, cancelled_day_paid, childcare_tasks, children, cleaning_tasks, complaint_handling_process, deductions, employee, employer, evaluation_after_three_months, evaluation_every_year, family_privacy, home_care_recipients, home_care_tasks, hourly_rate, immediate_termination_grounds, overtime_holidays, overtime_holidays_other, overtime_notice_length, overtime_rate, parental_leave, payday, payment_frequency, personal_days, reduced_hours_reg_wage, room, start_date, termination_lodging_length, termination_notice_length, termination_paid_if_evicted_early, termination_severance_length, vacation_days, valid_work_schedule, work_address, work_days, work_week_duration, worker_privacy, workers_comp_insurance, unemployment_insurance} = this.props;
 
     let employee_name = employee && employee.name;
     let employer_name = employer && employer.name;
@@ -163,6 +163,12 @@ export default class Contract extends React.Component {
         <ul>
           <li>INSURANCE COMPANY: {workers_comp_insurance.company}</li>
           <li>INSURANCE POLICY: {workers_comp_insurance.policy}</li>
+        </ul></div> : null}
+
+        {unemployment_insurance ? <div><p>The Employer's unemployment insurance company and information are as follows:</p>
+        <ul>
+          <li>INSURANCE COMPANY: {unemployment_insurance.company}</li>
+          <li>INSURANCE POLICY: {unemployment_insurance.policy}</li>
         </ul></div> : null}
 
         <h3>8. Deductions</h3>
