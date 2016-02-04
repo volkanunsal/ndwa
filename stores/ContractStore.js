@@ -47,7 +47,17 @@ export default class ContractStore extends Store {
       room: {
         provided: true,
         living_accommodations: {}
-      }
+      },
+      deductions_taken: true,
+      cancelled_day_paid: true,
+      bad_weather_day_paid: true,
+      benefits: {
+        health: true,
+        transportation: true
+      },
+      evaluation_after_three_months: true,
+      evaluation_every_year: true,
+      termination_paid_if_evicted_early: false
     };
   }
 

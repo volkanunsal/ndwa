@@ -72,7 +72,7 @@ export default class SectionPage extends React.Component {
             health: {
               label: "Paid Health Insurance?",
               template: function(locals){
-                return <YesNo flux={flux} {...locals} value={true} />
+                return <YesNo flux={flux} {...locals} />
               }
             },
             transportation: {
@@ -80,7 +80,7 @@ export default class SectionPage extends React.Component {
                   These would be additional transportation costs exclusive of mileage/car use for on-the-job related tasks. Examples: train fare, gas/mileage/wear and tear on employee’s car for travel to and from work, etc
                 </div>}/></div>,
               template: function(locals){
-                return <YesNo flux={flux} {...locals} value={true}/>
+                return <YesNo flux={flux} {...locals} />
               }
             },
             notes: {
