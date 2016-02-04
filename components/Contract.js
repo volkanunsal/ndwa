@@ -80,6 +80,20 @@ export default class Contract extends React.Component {
         <h2>Sample Domestic Employer/Employee Agreement</h2>
         <p>This agreement is between {employee_name}, hereinafter 'Employee” and'{employer_name}, hereinafter 'Employer.' {work_address ? <span>The work will be done at: {work_address}.</span> : null} {start_date ? <span>This agreement will begin on  {moment(start_date).format("dddd, MMMM Do YYYY")}.</span> : null}</p>
 
+        <h4>Additional Party Information</h4>
+        <h5>Employer</h5>
+        <p>
+          {employer.phone ? <p>Phone: {employer.phone}</p> :null}
+          {employer.address ? <p>Address: {employer.address}</p> :null}
+          {employer.additional_info ? <p>Additional Info: {employer.additional_info}</p> :null}
+        </p>
+        <h5>Employee</h5>
+        <p>
+          {employee.phone ? <p>Phone: {employee.phone}</p> :null}
+          {employee.address ? <p>Address: {employee.address}</p> :null}
+          {employee.additional_info ? <p>Additional Info: {employee.additional_info}</p> :null}
+        </p>
+
         <h3>1. Work Responsibilities</h3>
         {resp_1}
         {resp_3}
@@ -245,17 +259,6 @@ export default class Contract extends React.Component {
 
         <p>Initialed: _____ (Employee)     Initialed: _____ (Employer)     Date: ______________</p>
 
-      </div>
-      <div>
-        <h3 className='text-center'>APPENDIX 3: Additional Party Information</h3>
-        <h4>Employer</h4>
-        {employer.phone ? <p>Phone: {employer.phone}</p> :null}
-        {employer.address ? <p>Address: {employer.address}</p> :null}
-        {employer.additional_info ? <p>Additional Info: {employer.additional_info}</p> :null}
-        <h4>Employee</h4>
-        {employee.phone ? <p>Phone: {employee.phone}</p> :null}
-        {employee.address ? <p>Address: {employee.address}</p> :null}
-        {employee.additional_info ? <p>Additional Info: {employee.additional_info}</p> :null}
       </div>
     </div>
   }
