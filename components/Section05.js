@@ -32,7 +32,7 @@ export default class SectionPage extends React.Component {
       fields: {
         workers_comp_insurance: {
           label: <div className='lead'><TipTrigger anchorText='21' modalContent={<div>
-                  Employees have the right to collect worker compensation if injured on the job. Note: some homeowners and renters insurance cover workers comp, but not all; if you use a payroll system, such as <a href='http://www.myhomepay.com/Answers/WorkersCompensation'>HomePay</a>, please make sure to ask your provider about how to obtain workers compensation insurance.
+                  Employees have the right to collect worker compensation if injured on the job. Note: some homeowners and renters insurance cover workers comp, but not all; if you use a payroll system, such as <a href='http://www.myhomepay.com/Answers/WorkersCompensation?utm_source=Care.com%20Email%20Tests.1&utm_medium=IHA%20Workers%20Comp%20Link&utm_campaign=Round%201%20Care.com%20Testing'>HomePay</a>, please make sure to ask your provider about how to obtain workers compensation insurance.
                 </div>}/> What are the Employer's workers' compensation company and information?</div>,
           fields: {
             company: {
