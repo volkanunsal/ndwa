@@ -115,7 +115,7 @@ export default class SectionPage extends React.Component {
 
           {this.state.page == 1 ? <div className='text-center final-page'>
             <div className='container'>
-              <h3>Your agreement is ready! Please remember that you can amend the agreement with a pen, on the document itself, after you’ve printed it out.</h3>
+              <h3>Leave this browser/page open after you print your agreement. Once you’ve read/reviewed your printed agreement you can return to the sections/questions on this site and make edits to your responses if needed, and then print the agreement again.</h3>
               <a
                 onClick={this.printForm.bind(this)}
                 className='btn btn-lg btn-link'
