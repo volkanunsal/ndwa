@@ -98,10 +98,10 @@ export default class SectionPage extends React.Component {
               </p>
               <p>
                 <a
-                  href='https://www.research.net/s/inhouseagreements'
+                  href='https://fclabs.typeform.com/to/FW7sdk'
                   target='_blank'
                   className='btn btn-lg btn-print invert'
-                  style={{marginTop: 20, width: 200}}>TAKE THIS SURVEY</a>
+                  style={{marginTop: 20, width: 200}}>SHARE YOUR FEEDBACK</a>
               </p>
               <p>
                 <a
