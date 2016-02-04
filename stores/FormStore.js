@@ -95,13 +95,13 @@ export default class FormStore extends Store {
                     name: t.Str,
                     address: t.Str,
                     phone: t.Str,
-                    email: t.maybe(t.Str)
+                    additional_info: t.maybe(t.Str)
                   }),
                   employee: t.struct({
                     name: t.Str,
                     address: t.Str,
                     phone: t.Str,
-                    email: t.maybe(t.Str)
+                    additional_info: t.maybe(t.Str)
                   })
                 });
               }

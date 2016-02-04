@@ -54,7 +54,7 @@ export default class SectionPage extends React.Component {
                     <li>Fill out this contract</li>
                     <li>Share it with your peers</li>
                   </ol>
-                  
+
                 </div>}/>an employer?</div>,
       fields: {
         user_type: {
@@ -68,7 +68,9 @@ export default class SectionPage extends React.Component {
           <div className='form-inline q-domestic-or-employer'>
             {React.addons.createFragment(locals.inputs)}
           </div>
-          <p className='lead' style={{marginTop: 40}}>{"Welcome to the InHouse Agreements contract tool. In less than 20 minutes you can create a printable PDF of your agreement. As you answer the questions/fill in the blanks you'll see tabs at the top turn green. Green tabs indicate that the section has been completed; tabs in red still need some input. "}</p>
+          <p className='lead' style={{marginTop: 40}}>{"Welcome to InHouseAgreements.org. This site is best viewed on your computer rather than your mobile device."}</p>
+          <h3>How it Works:</h3>
+          <p className='lead' style={{marginTop: 40}}>{"We do more than give you questions to answer, we will guide you through and help you find the right answers. As you fill in the form you'll see tabs at the top turn green. Green tabs indicate that the section has been completed; tabs in red still need some input. In less than 20 minutes you will have a printable PDF of your unique agreement!"}</p>
         </div>
 
       }
@@ -84,15 +86,15 @@ export default class SectionPage extends React.Component {
       fields: {
         employee: {
           fields: {
-            email: {
-              label: 'Email'
+            additional_info: {
+              label: 'Additional Info'
             }
           }
         },
         employer: {
           fields: {
-            email: {
-              label: 'Email'
+            additional_info: {
+              label: 'Additional Info'
             }
           }
         }

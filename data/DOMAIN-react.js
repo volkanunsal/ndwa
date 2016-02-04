@@ -49,13 +49,13 @@ module.exports = {
     name: T.string,
     address: T.string,
     phone: T.string,
-    email: T.string
+    additional_info: T.string
   }).isRequired,
   employer: T.shape({
     name: T.string,
     address: T.string,
     phone: T.string,
-    email: T.string
+    additional_info: T.string
   }).isRequired,
   evaluation_after_three_months: T.bool,
   evaluation_every_year: T.bool,

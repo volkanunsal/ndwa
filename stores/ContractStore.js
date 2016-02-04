@@ -66,16 +66,15 @@ export default class ContractStore extends Store {
 
   handleAddParties(){
     let {employer, employee} = this.state;
-    let {email, name, phone, address} = employer;
-    this.addPartiesToMailingList(email, name, phone, 'employer', address);
-    this.addPartiesToMailingList(employee.email, employee.name, employee.phone, 'employee', employee.address);
+    let {additional_info, name, phone, address} = employer;
+    this.addPartiesToMailingList(additional_info, name, phone, 'employer', address);
+    this.addPartiesToMailingList(employee.additional_info, employee.name, employee.phone, 'employee', employee.address);
   }
 
-  addPartiesToMailingList(email, NAME, PHONE, USER_TYPE, ADDR1){
+  addPartiesToMailingList(additional_info, NAME, PHONE, USER_TYPE, ADDR1){
     let url = 'https://us10.api.mailchimp.com/2.0/lists/subscribe';
 
-    let args = {
-    };
+    let args = {};
 
     request
       .post(url)
