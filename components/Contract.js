@@ -246,6 +246,17 @@ export default class Contract extends React.Component {
         <p>Initialed: _____ (Employee)     Initialed: _____ (Employer)     Date: ______________</p>
 
       </div>
+      <div>
+        <h3 className='text-center'>APPENDIX 3: Additional Party Information</h3>
+        <h4>Employer</h4>
+        {employer.phone ? <p>Phone: {employer.phone}</p> :null}
+        {employer.address ? <p>Address: {employer.address}</p> :null}
+        {employer.additional_info ? <p>Additional Info: {employer.additional_info}</p> :null}
+        <h4>Employee</h4>
+        {employee.phone ? <p>Phone: {employee.phone}</p> :null}
+        {employee.address ? <p>Address: {employee.address}</p> :null}
+        {employee.additional_info ? <p>Additional Info: {employee.additional_info}</p> :null}
+      </div>
     </div>
   }
 }
