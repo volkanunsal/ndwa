@@ -44,15 +44,15 @@ export default class SectionPage extends React.Component {
           type: 'number',
           label: <span>How much will the Employee be paid on an hourly basis? <TipTrigger anchorText='10' modalContent={<div>
             <p>
-              Under current law, you must already pay at least the minimum wage in Massachusetts ($9/hour) as well as overtime ('time and a half') for each hour over 40 hours worked in one week. Please consider finding the <a href='http://livingwage.mit.edu/states/25/locations'>living wage</a> in your community, if you haven’t already done so. While the minimum wage sets an earnings threshold, it fails to approximate the basic expenses of families. Consequently, many working adults must seek public assistance and/or hold multiple jobs in order to afford to feed, clothe, house, and provide medical care for themselves and their families.
+              Under current law, you must already pay at least the minimum wage in Massachusetts ($10/hour) as well as overtime ('time and a half') for each hour over 40 hours worked in one week. Please consider finding the <a href='http://livingwage.mit.edu/states/25/locations'>living wage</a> in your community, if you haven’t already done so. While the minimum wage sets an earnings threshold, it fails to approximate the basic expenses of families. Consequently, many working adults must seek public assistance and/or hold multiple jobs in order to afford to feed, clothe, house, and provide medical care for themselves and their families.
             </p>
             <p>
               And if applicable, house cleaners must be paid for time traveling between jobs.
             </p>
           </div>}/></span>,
-          help: <span><i>Minimum $9/hour</i></span>,
+          help: <span><i>Minimum $10/hour</i></span>,
           attrs: {
-            min: 9,
+            min: 10,
             max: 100,
             className: 'input-lg',
             onBlur: function(e){
@@ -76,7 +76,7 @@ export default class SectionPage extends React.Component {
           </div>}/></span>,
           help: <span><i>Overtime rate must be at least 1.5 times the regular hourly rate</i></span>,
           attrs: {
-            min: 13.5,
+            min: 15,
             className: 'input-lg'
           },
           config: {
