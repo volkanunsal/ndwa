@@ -73,46 +73,6 @@ export default class SectionPage extends React.Component {
             help: <i>Describe the task</i>,
             type: 'textarea'
           }
-        },
-        home_care_tasks: {
-          label: ' ',
-          i18n: {
-            add: '+ Task',
-            optional: ' (optional)',
-            remove: 'Remove'
-          },
-          disableOrder: true,
-          item: {
-            help: <i>Describe the task</i>,
-            type: 'textarea'
-          }
-        },
-        home_care_recipients: {
-          label: ' ',
-          auto: 'placeholders',
-          i18n: {
-            add: '+ Care Recipient',
-            optional: ' (optional)',
-            remove: 'Remove'
-          },
-          disableOrder: true,
-          item: {
-            fields: {
-              age: {
-                type: 'number',
-                attrs:{
-                  min: 0,
-                  max: 150
-                },
-                config: {
-                  addonAfter: <i>years old</i>
-                }
-              },
-              description_of_care: {
-                type: 'textarea'
-              }
-            }
-          }
         }
       },
       template: function (locals) {
@@ -120,8 +80,6 @@ export default class SectionPage extends React.Component {
           children
           , childcare_tasks
           , cleaning_tasks
-          , home_care_recipients
-          , home_care_tasks
         } = locals.inputs;
 
         return <div className='row'>
@@ -142,14 +100,6 @@ export default class SectionPage extends React.Component {
             </div>}/> House Cleaning & Home Management
             </h4>
             {cleaning_tasks}
-          </div>
-          <div className='col-lg-12'>
-            <h4><TipTrigger anchorText='7' modalContent={<div>
-              <p>Employment of home attendants who support seniors and people with disabilities within your household, that exceeds 16 hours per week on a recurring basis.</p>
-            </div>}/> Home Care & Elder Care
-            </h4>
-            {home_care_recipients}
-            {home_care_tasks}
           </div>
         </div>
       }

@@ -68,21 +68,6 @@ export default class Contract extends React.Component {
       <ul>{childcare_tasks.map(task => <li>{task}</li>)}</ul></div> : null}
     </div> : null
 
-    let resp_2 = (home_care_recipients && home_care_recipients.length > 0) ? <div>
-      <h4>Home/Elder care, including sick, convalescing, and elderly individuals </h4>
-
-      <h4>Recipient</h4>
-      {home_care_recipients.map((recip,i) => {
-        return <p key={i}>
-          <b>Name:</b> {recip.name}<br/>
-          <b>Age:</b> {recip.age}<br/>
-          <b>Description of care:</b> {recip.description_of_care}
-        </p>
-      })}
-      {home_care_tasks && home_care_tasks.length > 0 ? <div><h4>Homecare tasks</h4>
-      <ul>{home_care_tasks.map((task,i) => <li key={i}>{task}</li>)}</ul></div> : null}
-    </div> : null;
-
     let resp_3 = (cleaning_tasks && cleaning_tasks.length > 0) ? <div>
       <h4>House Cleaning and Home Management</h4>
       {cleaning_tasks.length > 0 ? <div><h4>Homecare tasks</h4>
@@ -97,7 +82,6 @@ export default class Contract extends React.Component {
 
         <h3>1. Work Responsibilities</h3>
         {resp_1}
-        {resp_2}
         {resp_3}
         {additional_tasks ? <div><h4>Additional tasks</h4> <p>{additional_tasks}</p></div> : null}
 
