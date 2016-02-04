@@ -263,13 +263,13 @@ export default class SectionPage extends React.Component {
               </p>
             </div>}/> {"If the Employer has to cancel one or more days of the Employee's work week, will the Employee be paid as usual?"}</p> </div>,
           template: function(locals){
-            return <YesNo flux={flux} {...locals}/>
+            return <YesNo flux={flux} {...locals} value={true} />
           }
         },
         bad_weather_day_paid: {
           label: <p className='lead'>{"The Employer expects that the Employee will make every effort to come to work during bad weather. When a city or region is shutdown due to poor weather conditions, will the Employer pay the Employee for days of missed work?"}</p>,
           template: function(locals){
-            return <YesNo flux={flux} {...locals}/>
+            return <YesNo flux={flux} {...locals} value={true} />
           }
         }
       }

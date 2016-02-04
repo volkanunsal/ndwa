@@ -307,10 +307,10 @@ export default class FormStore extends Store {
                     transportation: t.Bool,
                     notes: t.maybe(t.Str)
                   }),
-                  workers_comp_insurance: t.struct({
+                  workers_comp_insurance: t.maybe(t.struct({
                     company: t.Str,
                     policy: t.Str
-                  })
+                  }))
                 });
               }
             }

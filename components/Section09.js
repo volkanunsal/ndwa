@@ -69,7 +69,7 @@ export default class SectionPage extends React.Component {
           label: <p className='lead'>{"If the Employee is asked to leave before the notice period is up, will the Employee be paid for that amount of time?"}</p>,
           template: function(locals){
             return <div>
-              <YesNo flux={flux} {...locals}/>
+              <YesNo flux={flux} {...locals} value={false} />
             </div>
           }
         }

@@ -159,11 +159,11 @@ export default class Contract extends React.Component {
           </ul>
         </div> : <p>The Employer does not offer the Employee any insurance benefits.</p>}
 
-        <p>The Employer's workers compensation company and information are as follows:</p>
+        {workers_comp_insurance ? <div><p>The Employer's workers compensation company and information are as follows:</p>
         <ul>
-          <li>INSURANCE COMPANY: {workers_comp_insurance && workers_comp_insurance.company}</li>
-          <li>INSURANCE POLICY: {workers_comp_insurance && workers_comp_insurance.policy}</li>
-        </ul>
+          <li>INSURANCE COMPANY: {workers_comp_insurance.company}</li>
+          <li>INSURANCE POLICY: {workers_comp_insurance.policy}</li>
+        </ul></div> : null}
 
         <h3>8. Deductions</h3>
         <p>Wage Deductions: Employer may make the following deductions from Employee’s wages: </p>

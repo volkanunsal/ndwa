@@ -32,7 +32,7 @@ export default class SectionPage extends React.Component {
       fields: {
         workers_comp_insurance: {
           label: <div className='lead'><TipTrigger anchorText='21' modalContent={<div>
-                  Employees have the right to collect worker compensation if injured on the job. Note: some homeowners and renters insurance cover workers comp, but not all; if you use a payroll system, please make sure to ask your provider or vendor about this.
+                  Employees have the right to collect worker compensation if injured on the job. Note: some homeowners and renters insurance cover workers comp, but not all; if you use a payroll system, such as <a href='http://www.myhomepay.com/Answers/WorkersCompensation'>HomePay</a>, please make sure to ask your provider about how to obtain workers compensation insurance.
                 </div>}/> What are the Employer's workers' compensation company and information?</div>,
           fields: {
             company: {
@@ -55,7 +55,7 @@ export default class SectionPage extends React.Component {
             health: {
               label: "Paid Health Insurance?",
               template: function(locals){
-                return <YesNo flux={flux} {...locals}/>
+                return <YesNo flux={flux} {...locals} value={true} />
               }
             },
             transportation: {
@@ -63,7 +63,7 @@ export default class SectionPage extends React.Component {
                   These would be additional transportation costs exclusive of mileage/car use for on-the-job related tasks. Examples: train fare, gas/mileage/wear and tear on employee’s car for travel to and from work, etc
                 </div>}/></div>,
               template: function(locals){
-                return <YesNo flux={flux} {...locals}/>
+                return <YesNo flux={flux} {...locals} value={true}/>
               }
             },
             notes: {
