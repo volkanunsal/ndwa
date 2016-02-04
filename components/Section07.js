@@ -28,7 +28,7 @@ export default class SectionPage extends React.Component {
           </div>,
           template: function(locals){
             return <div>
-              <YesNo flux={flux} {...locals}/>
+              <YesNo flux={flux} {...locals} value={true} />
             </div>
           }
         },
@@ -36,7 +36,7 @@ export default class SectionPage extends React.Component {
           label: <p className='lead'>{"Will the Employer also provide a written job evaluation every year thereafter?"}</p>,
           template: function(locals){
             return <div>
-              <YesNo flux={flux} {...locals}/>
+              <YesNo flux={flux} {...locals} value={true} />
             </div>
           }
         },

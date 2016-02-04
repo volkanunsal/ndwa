@@ -52,7 +52,7 @@ export default class SectionPage extends React.Component {
                 addonBefore: <i>$</i>
               },
               label: <div>State income tax <TipTrigger anchorText='23' modalContent={<div>
-                  Employing a domestic worker may implicate various state and federal tax laws. The these taxes are a combination of taxes you withhold from your employee and the taxes you pay as the employer. Typically, Social Security and Medicare (collectively known as FICA) and federal and state income taxes are withheld from your employee each pay period. Employers would also pay a matching portion of FICA, as well as federal and state unemployment insurance taxes. You can learn more about State Employment taxes <a href='http://www.mass.gov/dor/businesses/current-tax-info/guide-to-employer-tax-obligations/'>HERE</a>.
+                  Employing a domestic worker may implicate various state and federal tax laws. The these taxes are a combination of taxes you withhold from your employee and the taxes you pay as the employer. Typically, Social Security and Medicare (collectively known as FICA) and federal and state income taxes are withheld from your employee each pay period. Employers would also pay a matching portion of FICA, as well as federal and state unemployment insurance taxes. You can learn more about how to calculate Employment taxes <a href='http://www.myhomepay.com/Resources/Nanny-Tax-Calculator'>HERE</a>.
                 </div>}/></div>
             },
             federal_income_tax: {
@@ -61,7 +61,7 @@ export default class SectionPage extends React.Component {
                 min: 0
               },
               label: <div>Federal Income Tax <TipTrigger anchorText='24' modalContent={<div>
-                  Employing a domestic worker may implicate various state and federal tax laws. The these taxes are a combination of taxes you withhold from your employee and the taxes you pay as the employer. Typically, Social Security and Medicare (collectively known as FICA) and federal and state income taxes are withheld from your employee each pay period. Employers would also pay a matching portion of FICA, as well as federal and state unemployment insurance taxes. You can learn more about Federal Employment taxes <a href='http://www.irs.gov/Businesses/Small-Businesses-&-Self-Employed/Understanding-Employment-Taxes'>HERE</a>.
+                  Employing a domestic worker may implicate various state and federal tax laws. The these taxes are a combination of taxes you withhold from your employee and the taxes you pay as the employer. Typically, Social Security and Medicare (collectively known as FICA) and federal and state income taxes are withheld from your employee each pay period. Employers would also pay a matching portion of FICA, as well as federal and state unemployment insurance taxes. You can learn more about how to calculate Employment taxes <a href='http://www.myhomepay.com/Resources/Nanny-Tax-Calculator'>HERE</a>.
                 </div>}/></div>,
               config: {
                 addonAfter: <i>per paycheck</i>,
