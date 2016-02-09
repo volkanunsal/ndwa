@@ -76,44 +76,36 @@ export default class FormStore extends Store {
           pages: [
             {
               name: 'About you',
-              types: (contract) => {
-                return t.struct({
-                  user_type: t.enums({
-                    W: 'Employee',
-                    E: 'Employer'
-                  })
-                });
-              }
+              types: (contract) => t.struct({
+                user_type: t.enums({
+                  W: 'Employee',
+                  E: 'Employer'
+                })
+              })
             },
-
-
             {
               name: 'Parties',
-              types: (contract) => {
-                return t.struct({
-                  employer: t.struct({
-                    name: t.Str,
-                    address: t.Str,
-                    phone: t.Str,
-                    additional_info: t.maybe(t.Str)
-                  }),
-                  employee: t.struct({
-                    name: t.Str,
-                    address: t.Str,
-                    phone: t.Str,
-                    additional_info: t.maybe(t.Str)
-                  })
-                });
-              }
+              types: () => t.struct({
+                employer: t.struct({
+                  name: t.Str,
+                  address: t.Str,
+                  phone: t.Str,
+                  additional_info: t.maybe(t.Str)
+                }),
+                employee: t.struct({
+                  name: t.Str,
+                  address: t.Str,
+                  phone: t.Str,
+                  additional_info: t.maybe(t.Str)
+                })
+              })
             },
             {
               name: 'Location',
-              types: (contract) => {
-                return t.struct({
-                  work_address: t.Str,
-                  start_date: TStartDate
-                });
-              }
+              types: (contract) => t.struct({
+                work_address: t.Str,
+                start_date: TStartDate
+              })
             }
           ]
         },
@@ -122,23 +114,17 @@ export default class FormStore extends Store {
           pages: [
             {
               name: 'Job Description',
-              types: (contract) => {
-                return t.struct({
-                  children: t.list(TRecipient),
-                  childcare_tasks: t.list(t.Str),
-                  cleaning_tasks: t.list(t.Str),
-                  home_care_recipients: t.list(TRecipient),
-                  home_care_tasks: t.list(t.Str)
-                })
-              }
+              types: () => t.struct({
+                children: t.list(TRecipient),
+                childcare_tasks: t.list(t.Str),
+                cleaning_tasks: t.list(t.Str)
+              })
             },
             {
               name: 'Additional Tasks',
-              types: (contract) => {
-                return t.struct({
-                  additional_tasks: t.maybe(t.Str)
-                });
-              }
+              types: (contract) => t.struct({
+                additional_tasks: t.maybe(t.Str)
+              })
             }
           ]
         },
@@ -146,12 +132,10 @@ export default class FormStore extends Store {
           name: 'Scheduling',
           pages: [
             {
-              types: (contract) => {
-                return t.struct({
-                  work_week_duration: TNonZero,
-                  valid_work_schedule: TValidWorkSchedule
-                });
-              }
+              types: (contract) => t.struct({
+                work_week_duration: TNonZero,
+                valid_work_schedule: TValidWorkSchedule
+              })
             }
           ]
         },

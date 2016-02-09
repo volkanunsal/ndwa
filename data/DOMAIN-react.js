@@ -1,12 +1,12 @@
 import React from 'react';
-import {PropTypes} from 'react/addons';
+import { PropTypes } from 'react/addons';
 var T = PropTypes;
 
 
 var TRecipient = T.shape({
   name: T.string,
-  age: T.number,
-  description_of_care: T.string
+  age: T.string,
+  description_of_care: t.maybe(T.string)
 });
 
 var TWorkDay = T.shape({
@@ -66,8 +66,6 @@ module.exports = {
     force_service: T.bool,
     notes: T.string
   }),
-  home_care_recipients: T.arrayOf(TRecipient),
-  home_care_tasks: T.arrayOf(T.string),
   hourly_rate: T.number,
   immediate_termination_grounds: T.string,
   overtime_holidays: T.shape({
