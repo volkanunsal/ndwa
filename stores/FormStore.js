@@ -5,6 +5,7 @@ import { Store } from 'flummox';
 import assign from 'object-assign';
 import t from 'tcomb-form';
 import {TRecipient, TStartDate, TNonZero, TValidWorkSchedule} from '../lib/tcomb-types';
+import Tabletop from '../lib/tabletop';
 
 export default class FormStore extends Store {
 
@@ -59,6 +60,24 @@ export default class FormStore extends Store {
     this.setState(state.toJS());
   }
 
+  configureFeatureToggles(cells, tt) {
+    let _phoneNumVisible = cells.reduce((sum, a) => (a.footer_phone_num === 'TRUE') && sum, true);
+
+    if (_phoneNumVisible !== this.state.featureToggles.phoneNumVisible) {
+      this.setState({featureToggles: {phoneNumVisible: _phoneNumVisible}});
+    }
+
+    // let showPhoneSessionVar = sessionStorage.getItem('phoneNumVisible');
+    // let showPhoneThisSession;
+    // if (showPhoneSessionVar) {
+    //   showPhoneThisSession = showPhoneSessionVar === 'true';
+    // }
+    // if (showPhoneSessionVar && showPhoneThisSession !== phoneNumVisible) {
+    //   phoneNumVisible = showPhoneThisSession;
+    //   this.forceUpdate();
+    // }
+  }
+
   constructor(flux){
     super();
 
@@ -68,8 +87,14 @@ export default class FormStore extends Store {
 
     this.contractStore = flux.getStore('contract');
 
+    Tabletop.init({key: 'https://docs.google.com/spreadsheets/d/1ZNsQFNMNDl8j6PTvkldCI7QBHvDroGqNsppjGJQvccU/pubhtml',
+                     callback: ::this.configureFeatureToggles,
+                     simpleSheet: true})
 
     this.state = {
+      featureToggles: {
+        phoneNumVisible: false
+      },
       sections: [
         {
           name: 'Getting Started',
