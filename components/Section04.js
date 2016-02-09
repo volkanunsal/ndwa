@@ -230,7 +230,7 @@ export default class SectionPage extends React.Component {
             let items = locals.order.map(key => {
                 return locals.inputs[key]
               }).filter(item => item);
-            console.log(items);
+
             return <fieldset>
               <hr/>
               <p className='lead'>{locals.label}</p>

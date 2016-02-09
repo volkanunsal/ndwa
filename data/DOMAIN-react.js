@@ -6,7 +6,7 @@ var T = PropTypes;
 var TRecipient = T.shape({
   name: T.string,
   age: T.string,
-  description_of_care: t.maybe(T.string)
+  description_of_care: T.string
 });
 
 var TWorkDay = T.shape({
