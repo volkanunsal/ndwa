@@ -6,13 +6,26 @@ export default class ActionBar extends React.Component {
 
   showInfo(cells, tt) {
     let _phoneNumVisible = cells.reduce((sum, a) => (a.footer_phone_num === 'TRUE') && sum, true);
+
+    let showPhoneSessionVar = sessionStorage.getItem('show_phone');
+    let showPhoneThisSession;
+    if (showPhoneSessionVar) {
+      showPhoneThisSession = showPhoneSessionVar === 'true';
+    }
+
     if (_phoneNumVisible !== phoneNumVisible) {
       phoneNumVisible = _phoneNumVisible;
-      this.forceUpdate();
     }
+    if (showPhoneSessionVar && showPhoneThisSession !== phoneNumVisible) {
+      phoneNumVisible = showPhoneThisSession;
+    }
+
+    this.forceUpdate();
   }
 
   componentWillMount() {
+    sessionStorage.setItem('show_phone', this.props.query.show_phone);
+
     Tabletop.init({key: 'https://docs.google.com/spreadsheets/d/1ZNsQFNMNDl8j6PTvkldCI7QBHvDroGqNsppjGJQvccU/pubhtml',
                      callback: ::this.showInfo,
                      simpleSheet: true})
