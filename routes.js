@@ -12,6 +12,5 @@ module.exports = (
       <Route name='page' path='p/:pageName' handler={SectionPage}/>
     </Route>
     <NotFoundRoute handler={NotFoundPage}/>
-    <Redirect from="/" to="section" params={{sectionName: '1'}} />
   </Route>
 );
