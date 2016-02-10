@@ -4,7 +4,7 @@ import HomePage from './pages/HomePage';
 import SectionPage from './pages/SectionPage';
 import NotFoundPage from './pages/NotFoundPage';
 import App from './app';
-// <Redirect from="/" to="section" params={{sectionName: '1'}} />
+
 module.exports = (
   <Route name='app' path='/' handler={App}>
     <DefaultRoute name='home' handler={HomePage}/>
@@ -12,5 +12,6 @@ module.exports = (
       <Route name='page' path='p/:pageName' handler={SectionPage}/>
     </Route>
     <NotFoundRoute handler={NotFoundPage}/>
+    <Redirect from="/" to="section" params={{sectionName: '1'}} />
   </Route>
 );
