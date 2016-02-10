@@ -10,6 +10,8 @@ import {FirstTimeTrigger} from '../components/MyModal';
 export default class SectionPage extends React.Component {
 
   componentDidMount(){
+    // TODO: redirect to section/1
+
     window.switchTo5x = true;
     $script('http://w.sharethis.com/button/buttons.js', function(){
       stLight.options({publisher: "126f4359-08ea-4054-a9af-defe6a39880a", doNotHash: false, doNotCopy: false, hashAddressBar: false});

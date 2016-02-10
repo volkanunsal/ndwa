@@ -9,7 +9,7 @@
 /test/tmp/
 /test/version_tmp/
 /tmp/
-  
+
 
 ## Documentation cache and generated files:
 /.yardoc/
@@ -154,3 +154,4 @@ test/dummy/.sass-cache
 
 
 build/
+*.log
