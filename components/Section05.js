@@ -48,20 +48,20 @@ export default class SectionPage extends React.Component {
               }
             }
           },
-          unemployment_insurance: {
-            label: <div className='lead'>What are the Employer’s unemployment insurance providers’ company and information?</div>,
-            fields: {
-              company: {
-                label: 'Insurance Company',
-                attrs: {
-                  className: 'input-lg'
-                }
-              },
-              policy: {
-                label: 'Insurance Policy',
-                attrs: {
-                  className: 'input-lg'
-                }
+        },
+        unemployment_insurance: {
+          label: <div className='lead'>What are the Employer’s unemployment insurance providers’ company and information?</div>,
+          fields: {
+            company: {
+              label: 'Insurance Company',
+              attrs: {
+                className: 'input-lg'
+              }
+            },
+            policy: {
+              label: 'Insurance Policy',
+              attrs: {
+                className: 'input-lg'
               }
             }
           }
@@ -100,7 +100,6 @@ export default class SectionPage extends React.Component {
             }
           }
         }
-
       }
     }
     return [Page1]

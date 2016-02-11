@@ -18,7 +18,7 @@ export default class SectionPage extends React.Component {
 
   getPageOptions(contract, flux){
     var Page1 = {
-      label: <div>
+      label: <div style={{fontSize: 18}}>
       Are you a <TipTrigger anchorText='1' modalContent={<div>
                   <p>You are a 'domestic worker' if:</p>
                   <ol>
@@ -68,9 +68,9 @@ export default class SectionPage extends React.Component {
           <div className='form-inline q-domestic-or-employer'>
             {React.addons.createFragment(locals.inputs)}
           </div>
-          <p className='lead' style={{marginTop: 40}}>{"Welcome to InHouseAgreements.org. This site is best viewed on your computer rather than your mobile device."}</p>
+          <p className='lead' style={{marginTop: 40, fontSize: 18}}>{"Welcome to InHouseAgreements.org. This site is best viewed on your computer rather than your mobile device."}</p>
           <h3>How it Works:</h3>
-          <p className='lead' style={{marginTop: 40}}>{"We do more than give you questions to answer, we will guide you through and help you find the right answers. As you fill in the form you'll see tabs at the top turn green. Green tabs indicate that the section has been completed; tabs in red still need some input. In less than 20 minutes you will have a printable PDF of your unique agreement!"}</p>
+          <p className='lead' style={{marginTop: 40, fontSize: 18}}>{"We do more than give you questions to answer, we will guide you through and help you find the right answers. As you fill in the form you'll see tabs at the top turn green. Green tabs indicate that the section has been completed; tabs in red still need some input. In less than 20 minutes you will have a printable PDF of your unique agreement!"}</p>
         </div>
 
       }

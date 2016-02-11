@@ -624,9 +624,8 @@ label p.lead{
   justify-content: center;
   align-items: center;
 }
+
 .final-congrats{
-
-
   position: relative;
   &::after {
     content: "";
@@ -638,12 +637,9 @@ label p.lead{
     right: 0;
     position: absolute;
     z-index: -1;
-
     animation: blink 2s;
     animation-iteration-count: 1;
   }
-
-
 }
 
 .st_facebook_custom{
@@ -685,7 +681,7 @@ label p.lead{
 }
 
 .q-domestic-or-employer {
-  font-size: 1.6em;
+  font-size: 18px;
   .input {
     vertical-align: baseline;
   }

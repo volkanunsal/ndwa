@@ -321,8 +321,8 @@ export default class FormStore extends Store {
                     policy: t.Str
                   })),
                   unemployment_insurance: t.maybe(t.struct({
-                    company: t.Str,
-                    policy: t.Str
+                    company: t.maybe(t.Str),
+                    policy: t.maybe(t.Str)
                   }))
                 });
               }

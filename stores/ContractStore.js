@@ -57,7 +57,7 @@ export default class ContractStore extends Store {
       },
       evaluation_after_three_months: true,
       evaluation_every_year: true,
-      termination_paid_if_evicted_early: false
+      termination_paid_if_evicted_early: true
     };
   }
 
