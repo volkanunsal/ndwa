@@ -2,8 +2,7 @@ import React from 'react';
 import AppFlux from '../app';
 import FluxComponent from 'flummox/component';
 import Nav from 'components/Nav';
-var basePath = '/';
-
+  
 
 export default class SectionPage extends React.Component {
   componentDidMount(){
@@ -31,21 +30,6 @@ export default class SectionPage extends React.Component {
     let Section = require('../components/Section' + num);
 
     return <div>
-      <nav className='navbar navbar-default hidden-print'>
-        <div className='container-fluid'>
-          <div className='navbar-header'>
-            <a href={basePath} className='navbar-brand'>
-              <img src={require('../images/greylogo.png')} style={{width:270, marginRight: 10, position: 'relative', top: -13}} alt='In-house agreements' className='pull-left'/>
-            </a>
-
-          </div>
-          <div className='navbar-right' style={{padding: '15px 20px 5px'}}>
-            <span className='font-family: Muli'>
-              Questions about your nanny contract? Call HomePay experts at 888-273-3356
-            </span>
-          </div>
-        </div>
-      </nav>
       <FluxComponent
         connectToStores={{
           form: store => ({ form: store.state }),

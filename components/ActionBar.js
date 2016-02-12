@@ -8,11 +8,6 @@ export default class ActionBar extends React.Component {
         <a href='http://www.faircarelabs.org/' target='_blank' className='pull-left'>
           <img src={require('../images/greyfcl.png')} style={{height: 50}}/>
         </a>
-        {this.props.form.featureToggles.phoneNumVisible ? <span className='pull-left'>
-          <div  style={{display: 'flex', alignItems: 'center', height: 50, paddingLeft: 10}}>
-            <span>Questions? Please call 888-273-3356</span>
-          </div>
-        </span> : null}
         <a className='btn btn-yesno navbar-btn pull-right' onClick={this.props.onSave}>CONTINUE</a>
       </div>
     </div>

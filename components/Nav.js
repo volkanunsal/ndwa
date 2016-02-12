@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link, State } from 'react-router';
 import cx from 'classnames';
+var basePath = '/';
 
 class NavTab extends React.Component {
   render(){
@@ -101,13 +102,29 @@ export default class Nav extends React.Component {
       };
     };
 
-    return <div className='form-nav'>
-      <ul className='primary nav nav-tabs'>
-        {primary}
-      </ul>
-      <ul className='secondary nav nav-pills'>
-        {secondary}
-      </ul>
+    return <div>
+      <nav className='navbar navbar-default hidden-print'>
+        <div className='container-fluid'>
+          <div className='navbar-header'>
+            <a href={basePath} className='navbar-brand'>
+              <img src={require('../images/greylogo.png')} style={{width:270, marginRight: 10, position: 'relative', top: -13}} alt='In-house agreements' className='pull-left'/>
+            </a>
+          </div>
+          <div className='navbar-right' style={{padding: '15px 20px 5px'}}>
+            {this.props.form.featureToggles.phoneNumVisible ? <span className='pull-left' style={{fontFamily: 'Muli'}}>
+                Questions about your nanny contract? Call HomePay experts at 888-273-3356
+            </span> : null}
+          </div>
+        </div>
+      </nav>
+      <div className='form-nav'>
+        <ul className='primary nav nav-tabs'>
+          {primary}
+        </ul>
+        <ul className='secondary nav nav-pills'>
+          {secondary}
+        </ul>
+      </div>
     </div>
   }
 }
